@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<body>
+<script>
+    /*选择排序（升序）：将未排序的第一个元素与其他元素比较，比较完成后最小元素放在前面，然后从下一个元素开始比较
+    * 当进行到数组的倒数第二个位置时，所有数据完成排序。*/
+    function selectionsort( arr){
+        for(var j =0;j<arr.length-1;j++){
+            for(var i =j+1;i<arr.length;i++){
+                if(arr[j]>arr[i]){
+                    var temp = arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

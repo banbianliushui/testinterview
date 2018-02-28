@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提升、this</title>
+</head>
+<body>
+<script>
+/*例子一: 结果为1*/
+foo();
+var foo;/*变量提升*/
+function  foo() {/*函数提升*/
+    console.log(1)
+}
+
+foo=function () {
+    console.log(2)
+}
+
+
+function foo(){
+    console.log(this.a)
+}
+var a = 2;
+foo();//2
+
+
+function foo(){
+    console.log(this.a)
+}
+var obj = {
+    a:2,
+    foo:foo
+}
+obj.foo()//2
+
+
+function foo(){
+    console.log(this.a)
+}
+var obj = {
+    a:2,
+    foo:foo
+}
+var bar =obj.foo;
+var a="global"
+bar();//global
+//2
+
+/*应用一*/
+function foo(name){
+    console.log(this.a,name);
+    return this.a += name;
+}
+var bar =function (){
+
+    foo.apply(obj,arguments);
+
+}
+var obj = {a:2};
+bar("小明");
+
+/*应用二*/
+
+var bar =bind(foo,obj);
+bar("小明")
+
+
+    function foo(name){
+        console.log(this.a,name);
+        return this.a += name;
+    }
+    function bind (fn,obj){
+        return function () {
+            fn.apply(obj,arguments);
+        }
+    }
+    var obj = {a:2};
+    var bar =bind(foo,obj);
+    bar("小明")
+
+
+    function  foo() {
+        console.log(this.a)
+    }
+    var obj1 = {
+        a:2,
+        foo:foo
+    }
+
+var obj2 = {
+    a:3,
+    foo:foo
+}
+obj1.foo()
+    obj1.foo.call(obj2);
+
+
+function  foo(num) {
+    this.a=num
+}
+var obj1 = {
+    foo:foo
+}
+var obj2 = { }
+obj1.foo(2)
+console.log(obj1.a);//2
+obj1.foo.call(obj2,3);
+console.log(obj2.a);//3
+
+    var bar  = new obj1.foo(4);
+console.log(obj1.a);//2
+console.log(bar.a);//4
+
+</script>
+
+</body>
+</html>

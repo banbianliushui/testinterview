@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>清除浮动，使父级元素获得内部元素的高度</title>
+
+<style>
+.box{
+    background: #42c9b6;
+    padding: 5px;
+}
+.left{
+    float: left;
+   /*  width: 100px; *//*实际使用中可以去掉宽高  */
+   /*  height: 30px; *//*实际使用中可以去掉宽高  */
+    background: bisque;
+}
+
+.clear-div{
+    clear: both;
+}
+.clearfix{
+
+*zoom:1;/*兼容IE8使父级容器布局一下以获得高度  */   
+/* 至于暂不支持:after伪类的IE6/IE7，我们可以使用IE私有的zoom缩放属性让div远离浮动的破坏。 */
+}
+.clearfix:after{
+content:"111"; /* 这个必须，这是和after配对使用的,不加这个，页面就不显示after相关的样式 */
+height:0;/* 不让他有高度，影响实际需求，实际只要获得浮动元素的高度就可以了 */
+display:block;/* 块级元素 */
+clear: both;
+visibility: hidden;/*如果 content 中有内容，不加hidden，内容会显示处理  */
+
+}
+.overflow-hidden{
+overflow:hidden;
+}
+.overflow-auto{
+overflow:auto;
+}
+.display-inline-block{
+	display:inline-block;
+}
+p{
+font-size:12px;
+}
+.display-flex{
+display:flex;
+}
+.parent-float{
+	float:left;
+}
+.parent-position{
+position:absolute;
+}
+</style>
+</head>
+<body>
+<p>浮动状态：子元素后面的元素向前补位；父元素后面的元素也向前补位。http://blog.csdn.net/javaloveiphone/article/details/50907308</p>
+<p>清除浮动，指的是让父元素可以检测到浮动元素的高度，从而撑起父元素(解决高度塌陷)，父元素有了自己的高度，从而避免父元素后面的元素向前补位；清除浮动，解决的是对父元素后面同级元素排版的影响，而子元素后面同级元素排版依然向前补位。</p>
+<h1>1.使用clear:both，</h1>
+<p>在浮动元素的最后一个后面加上块级元素，这个块级元素需使用clear:both，清除浮动后，块级元素将在浮动元素后面渲染（否则它忽视浮动元素按正常流进行渲染（）），使父级获得包括它和浮动元素一起时的高度</p>
+<div>为了使页面效果更清晰给父级容器多加了padding：5；</div>
+<h3>1.1 在浮动元素后面加一个block 的div，使用clear:both</h3>
+<div>优点：比较简单，兼容性好；缺点：多余标签</div>
+<div class="box">
+	<div class="left">这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是</div>
+	<div class="clear-div"></div>
+</div>
+<h3>1.2 在浮动元素后面加一个br,clear="all"；IE7及以下不兼容，容器拿到的是行高，可能br有特殊处理，待查证？</h3>
+<div>优点：比较简单；缺点：多余标签</div>
+<div class="box">
+	<div class="left">这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容</div>
+	  <br clear="all"/>
+</div>
+<h3>1.3 给浮动元素父容器加:after伪元素</h3>
+<div>优点：不产生多余标签；基本都兼容。 IE8及以上用伪元素支持。IE6/7不支持:after伪类，则用缩放属性zoom:1</div>
+<div class="box clearfix">
+	<div class="left" style="width:auto;">这里是测试内这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是容</div>
+	
+</div>
+<h1>2.使用overflow，利用BFC</h1>
+
+<p>原理：overflow 取值只要不是 visible ，就会开启这个超级属性（BFC），此超级属性反过来决定了 height: auto 是如何计算的（参考 @貘吃馍香的答案）。从 BFC 的机制设计来看，把 float 元素纳入尺寸计算（即所谓父块包裹子块）是合理的。
+</p>
+<h3>2.1 overflow:hidden,可兼容到IE7，IE6无法测，IE5不兼容</h3>
+<p>对于overflow:hidden的功能就是说超出部分不显示，达到一个效果“让子元素只在父元素内显示”
+（1、是剪掉外面的 2、撑开显示）对应下面两种情况。
+有两种情况：
+1、有宽度高度值（是剪掉外面的 ）：这样会剪切掉父元素外的子元素，达到“让子元素只在父元素内显示”的效果。（这才是overflow:hidden的正确用法）
+2、无宽度高度值（撑开显示），这样就没有固定边界让它无法识别那是为那是内，但是还是要达到“让子元素只在父元素内显示”的效果，这样寻找边界以达到这种效果，我们不难发现在最大显示子元素（也就是子元素的边上时）刚好能达到“让子元素只在父元素内显示”的效果。即使有了 ”float：left；“ 浮动分离了父子元素，分离是分离但是还是父子啊（就像断绝父子关系，但是血浓于水，生理上有遗传），只要是父子也能满足这句话达到“让子元素只在父元素内显示”的效果。
+</p>
+<div class="box overflow-hidden">
+	<div class="left" style="width:auto;">这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是</div>	
+</div>
+<h3>2.2 overflow:auto,可兼容到IE7，IE6待测，IE5不兼容</h3>
+<div class="box overflow-auto">
+	<div class="left" style="width:auto;">这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是测试内容这里是</div>	
+</div>
+<h1>3.使用display，利用BFC</h1>
+<h3>3.1 display:inline-block</h3>
+
+<p>父容器获得高度，但其宽度是由内容决定</p>
+<div class="box display-inline-block">
+<div class="left"> 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容</div>
+</div>
+
+<h3>3.2 display:flex</h3>
+<p>缺点：兼容性不好，IE10及以上,且IE10浮动元素内容超出宽度时，不会自动换行，Edge可以，IE11待测，flex是css3</p>
+<div class="box display-flex">
+<div class="left"> 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容 这里是测试内容</div>
+</div>
+<!-- <div>阿克苏的发送到非ask</div> -->
+
+
+<h1>4 父容器float</h1>
+<p>缺点：如果不是从根开始浮动的话，浮动元素的父级元素虽然获得了子项的高度，但他本身也是浮动元素，它后面的元素显示时还是会跟上去，除非浮动到根节点，所以这里不是很合理。</p>
+<div class="box parent-float">
+<div class="left"> 测试内容 这里是测试内容</div>
+</div>
+<div style="color:green;">后面的内容后面的内容</div>
+
+
+<h1>5 父容器position</h1>
+<h3>5.1 父容器设置position:absolute</h3>
+<p>缺点：position:absolute使得浮动元素的父容器脱离了正常流，所以它后面的元素节点和它也会出现显示叠加重合。不合理</p>
+<div class="box parent-position">
+<div class="left"> 测试内容这里是测试内容</div>
+</div>
+<div style="color:green;">后面的内容后面的内容后面的内容后面的内容</div>
+
+<h3>5.2 父容器设置position:fixed</h3>
+<p>缺点：position:fixed，位置相对于窗口，一般不这么用，父容器也脱离了正常流</p>
+<!-- <div class="box parent-position-fixed">
+<div class="left"> 测试内容这里是测试内容</div>
+</div>
+<div style="color:green;">后面的内容后面的内容后面的内容后面的内容</div> -->
+
+
+<p>
+备注：能触发BFC的样式有：
+•	float的值不为none；
+•	overflow的值不为visible；
+•	position的值为fixed / absolute；
+•	display的值为table-cell / table-caption / inline-block / flex / inline-flex。
+
+</p>
+</body>
+</html>

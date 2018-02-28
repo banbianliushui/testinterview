@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+Object.create1=function(o){
+    function F(){}
+    F.prototype=o;
+    return new F();
+}
+var c ={c:"dd"}
+var  d= Object.create1(c);
+console.log(d);
+var  e =Object.create(c);
+console.log(e);
+</script>
+
+</body>
+</html>

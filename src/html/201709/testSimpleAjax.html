@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>使用 XMLHttpRequest实现简单的ajax</title>
+</head>
+<body>
+<script>
+function reqListener(){
+	console.log(this.responseText);
+}
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.open("GET",url,true);
+oReq.send();
+
+/* XMLHttpRequest Level 2  */
+</script>
+
+</body>
+</html>

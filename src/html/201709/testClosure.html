@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+/*因为在解析器解析全局的function或者function内部function关键字的时候，默认是认为function声明，
+而不是function表达式，如果你不显示告诉编译器
+，它默认会声明成一个缺少名字的function，并且抛出一个语法错误信息，因为function声明需要一个名字。*/
+
+
+/*下面是自执行函数 http://www.cnblogs.com/TomXu/archive/2011/12/31/2289423.html*/
+/*正确用法*/
+    (function () { /* code */ } ()); // 推荐使用这个
+    (function () { /* code */ })(); // 但是这个也是可以用的
+    // 由于括弧()和JS的&&，异或，逗号等操作符是在函数表达式和函数声明上消除歧义的
+    // 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了
+    // 不过，请注意下一章节的内容解释
+    var i = function () { return 10; } ();
+    true && function () { /* code */ } ();
+    0, function () { /* code */ } ();
+
+
+/*错误用法*/
+//即便你为上面那个错误的代码加上一个名字，他也会提示语法错误，只不过和上面的原因不一样。
+    // 在一个表达式后面加上括号()，
+    // 该表达式会立即执行，但是在一个语句后面加上括号()，是完全不一样的意思，他的只是分组操作符。
+// 下面这个function在语法上是没问题的，但是依然只是一个语句
+    // 加上括号()以后依然会报错，因为分组操作符需要包含表达式
+
+  //  function foo(){ /* code */ }(); // SyntaxError: Unexpected token )
+
+    // 但是如果你在括弧()里传入一个表达式，将不会有异常抛出
+    // 但是foo函数依然不会执行. 分组操作符
+    function foo(){ /* code */ }( 1 );
+
+    // 因为它完全等价于下面这个代码，一个function声明后面，又声明了一个毫无关系的表达式：
+    function foo(){ /* code */ }
+
+    ( 1 );
+
+
+
+
+/*function fn(){
+    var max = 10;
+
+    return function bar(x){
+        if(x>max){
+            console.log(x);
+        }
+    }
+}
+var f1= fn();
+max = 100;
+f1(15);*/
+</script>
+
+</body>
+</html>

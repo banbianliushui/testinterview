@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shell排序</title>
+</head>
+<body>
+<script>
+    /*shell排序，有间隔的插入排序（从假定一个只有一个元素的有序序列中插入新数据）；
+    * 再最后一次（或前面有间隔时排序后序列基本有序的话）后面大部分元素都将在正确的位置，算法就不必对很多元素进行交换
+    * 这就是希尔排序比插入排序更高效的地方。*/
+    function shellsort(arr){
+        var gaps =[5,3,1];//  length = 4* x +1 x为gaps最大值，后面都除以2，待查
+
+        for(var g =0; g<gaps.length;g++){
+            for(var i = gaps[g];i<arr.length;i++){
+                var temp = arr[i];
+                for(var j = i;j>0;j=j-gaps[g]){
+                    if(arr[j-gaps[g]]>temp){
+                        arr[j] =arr[j-gaps[g]];
+                    }else{
+                        break;
+                    }
+                }
+                arr[j]=temp;
+            }
+        }
+    }
+function sellsort1() {
+    var N = arr.length;
+    var h =1;
+    while (h<N/3){
+        h=3*h+1
+    }
+    while(h>=1){
+        for(var i = h;i<arr.length;i++){
+            var temp = arr[i];
+            for(var j = i;j>0;j=j-h){
+                if(arr[j-h]>temp){
+                    arr[j] =arr[j-h];
+                }else{
+                    break;
+                }
+            }
+            arr[j]=temp;
+        }
+        h=(h-1)/3
+    }
+}
+    var arr =[22,43,10,1,31,51,16,20,9,45,21,28,19]
+    shellsort(arr)
+</script>
+
+</body>
+</html>

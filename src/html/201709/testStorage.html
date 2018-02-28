@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试存储</title>
+</head>
+<body>
+
+<script>
+   /* localStorage 存储*/
+
+   localStorage.setItem("name1","localstorage第一个")
+   console.log(localStorage.getItem("name1"))
+   console.log(localStorage.name1)
+   localStorage.name2="第二个"
+   console.log( localStorage.name2)
+   console.log(localStorage.getItem("name2"))
+
+
+   sessionStorage.setItem("name1","sessionStorage第一个")
+   console.log(sessionStorage.getItem("name1"))
+   console.log(sessionStorage.name1)
+   sessionStorage.name2="第二个"
+   console.log( sessionStorage.name2)
+   console.log(sessionStorage.getItem("name2"))
+
+   document.cookie = "Test=cooo";
+   alert(document.cookie);
+
+    function setCookie(name,value,expdays){
+       if(expdays!=null){
+           var expiredays = new Date();
+           expiredays.setTime(expiredays.getTime() + expdays*24*60*60*1000);
+       }
+
+        document.cookie= name+"="+escape(value)+((expdays==null) ? "" : ";expires="+expiredays.toGMTString())
+    }
+function getCookie1(cname){
+        var name = cname+"=";
+        var ca = document.cookie.split(";");
+        for(var i =0;i<ca.length;i++){
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);//去掉空格？
+            if(c.indexOf(name)!=-1){
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+}
+
+   function getCookie2(name)
+   {
+       var reg = new RegExp("()")
+       var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+       if(arr=document.cookie.match(reg))
+
+           return (arr[2]);
+       else
+           return null;
+   }
+   function getCookie3(c_name)
+   {
+       if (document.cookie.length>0)
+       {
+           c_start=document.cookie.indexOf(c_name + "=")
+           if (c_start!=-1)
+           {
+               c_start=c_start + c_name.length+1
+               c_end=document.cookie.indexOf(";",c_start)
+               if (c_end==-1) c_end=document.cookie.length
+               return unescape(document.cookie.substring(c_start,c_end))
+           }
+       }
+       return ""
+   }
+
+   function clearCookie(name) {
+       setCookie(name, "", -1);
+
+   }
+function delCookie(name){
+
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null)
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+
+}
+
+   /*Given nums = [2, 7, 11, 15], target = 9,
+
+       Because nums[0] + nums[1] = 2 + 7 = 9,
+   return [0, 1].*/
+
+   function getindices (arr ,targetnum){
+       var res=[];
+       for(var i =0;i<arr.length;i++){
+           for(var j =i+1;j<arr.length;j++){
+                if(arr[i]+arr[j]==targetnum){
+                    res.push({in1:i,in2:j})
+                }
+           }
+       }
+       return res;
+   }
+
+</script>
+
+
+</body>
+</html>

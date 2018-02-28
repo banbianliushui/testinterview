@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入排序</title>
+</head>
+<body>
+<script>
+/*插入排序（升序）：开始时将数组的第一个元素认为是第一个有序的元素序列，然后第二个元素与原有序序列进行比较
+* 将较小的元素放在前面，以此类推。两层循环，外层循环相当于一个个加入新元素，内层是一个有序的序列*/
+
+function insertsort( arr) {
+    for(var i =1 ;i<arr.length;i++){
+        var temp = arr[i];
+        for(var j =i;j>0;j--){
+            if(arr[j-1]>temp){
+                arr[j]=arr[j-1];
+            }else{
+                break;
+            }
+        }
+        arr[j] = temp;
+    }
+}
+var arr =[22,43,10,1,31,51,16,20]
+insertsort(arr)
+</script>
+
+</body>
+</html>

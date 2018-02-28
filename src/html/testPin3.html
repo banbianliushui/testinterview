@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>品字布局-flex布局</title>
+<style type="text/css">
+
+html,body{  
+    margin:0;  
+    padding:0;  
+    height:100%;  
+    overflow:auto;/*IE7及以下默认显示垂直滚动条，用这个属性可以去除垂直滚动条，IE5还是不行*/
+}  
+div{
+	overflow-y : hidden; 
+}
+.header{
+    height: 50%;
+    background: aliceblue;
+   
+   
+}
+.main{
+ display:flex;
+ height:50%;
+ 
+ }
+.left{
+	flex:1;
+	   background: antiquewhite;
+}
+.right{
+    background: aquamarine;
+flex:1;
+} 
+</style>
+</head>
+<body>
+
+<div class="header"></div>
+<div class="main"> <div class="left"></div>
+<div class="right"></div></div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css -三角形</title>
+<style>
+
+.triangle1{
+     border-top: 50px solid rebeccapurple;
+     border-left: 50px solid transparent;
+     width: 0px;
+     height: 0px;
+    margin-top:10px;
+ }
+.triangle2{
+    border-top: 50px solid rebeccapurple;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    width: 0px;
+    height: 0px;
+    margin-top:10px;
+}
+
+.triangle3{
+    border-top: 50px solid rebeccapurple;
+    border-right: 50px solid transparent;
+    width: 0px;
+    height: 0px;
+    margin-top:10px;
+}
+    .outer{
+        position: relative;
+
+    }
+    .big-triangle1{
+        border-bottom: 50px solid black;
+        border-left:50px solid transparent;
+        border-right:50px solid transparent;
+        display:block;/*必加*/
+        height:0px;/*必加*/
+        width:0px;/*必加，实际原因待查*/
+
+    }/*用span 标签设置border，默认是行元素，不会以它当前的高度（border构成的）撑开父级框，父级高度只有默认行高21px（chrome）*/
+    .small-triangle1{
+        border-bottom: 48px solid salmon;
+        border-left: 48px solid transparent;
+        border-right: 48px solid transparent;
+        position: absolute;
+        top: 1px;
+        left: 2px;
+        display:block;/*必加*/
+        height:0px;/*必加*/
+        width:0px;/*必加*/
+    }
+.back-triangle{
+    border-bottom: 50px solid black;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    display: block;
+    height: 0px;
+    width: 0px;
+}
+.inner-line-triangle{
+    border-bottom: 50px solid white;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    display: block;
+    height: 0px;
+    width: 0px;
+}
+.popup{
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.popupspan{
+     border-bottom: 10px solid black;
+     border-left: 10px solid transparent;
+     border-right: 10px solid transparent;
+     display: block;
+     height: 0px;
+     width: 0px;
+     position: relative;
+     top: -10px;
+     left: 20px;
+ }
+em{
+
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    display: block;
+    height: 0px;
+    width: 0px;
+    left: -10px;
+    top: 1px;
+    position: absolute;
+}
+</style>
+
+</head>
+<body>
+<div>
+    满色三角
+    <div class="triangle1"></div>
+
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+</div>
+<div>
+    带边框三角
+    <div class="outer"><span class="big-triangle1"></span>
+        <span class="small-triangle1"></span></div>
+
+
+</div>
+<div>
+    冒泡三角线:覆盖三角形和周边区域的颜色一致即可
+    <div class="outer">
+        <span class="back-triangle"></span>
+        <span class="inner-line-triangle"></span>
+    </div>
+
+
+</div>
+
+
+<div class="outer">
+    <a href="#">三角形</a>
+    <div class="popup">
+        <span class="popupspan"><em></em></span>纯CSS写带边框的三角形
+    </div>
+</div>
+</body>
+</html>

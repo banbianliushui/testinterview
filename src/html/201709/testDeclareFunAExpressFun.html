@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数声明和函数表达式</title>
+</head>
+<body>
+
+<script>
+
+    var num = 10;
+    var fn = function(x){
+        if(x > num) {
+            console.log(x);
+        }
+    }    (function(f){        var num = 100;        f(50);    })(fn)
+
+</script>
+
+</body>
+</html>

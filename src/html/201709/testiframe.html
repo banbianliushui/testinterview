@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试iframe和内部document.clientHeight高度</title>
+</head>
+<body>
+<a id="ifrheight">获取iframe高度</a>
+<iframe id ="csiframe"src="testinnerIframe.html" scrolling="no" frameborder="0" ></iframe>
+
+<script>
+var csiframe = document.getElementById("csiframe");
+var ifbtn =document.getElementById("ifrheight");
+if(ifbtn.attachEvent){
+    ifbtn.attachEvent('onclick',function(){
+        console.log("csiframe Height=",csiframe.height)
+    })
+}else{
+    ifbtn.addEventListener('click',function(){
+        console.log(" csiframe Height=",csiframe.height)
+    })
+}
+
+
+/*<iframe src="http://www.fulibac.com" id="myiframe" scrolling="no" onload="changeFrameHeight()" frameborder="0"></iframe>
+    js代码也得跟着改
+function changeFrameHeight(){
+    var ifm= document.getElementById("iframepage");
+    ifm.height=document.documentElement.clientHeight;
+}
+window.onresize=function(){
+    changeFrameHeight();
+}*/
+</script>
+</body>
+</html>

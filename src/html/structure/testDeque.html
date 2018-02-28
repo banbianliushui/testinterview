@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向队列</title>
+</head>
+<body>
+
+<script>
+function Deque(){
+    this.queue=[];
+}
+
+Deque.prototype.isEmpty=function(){
+
+}
+
+Deque.prototype.leftPush=function(obj){
+this.queue.unshift(obj)
+
+}
+
+Deque.prototype.rightPush=function(obj){
+this.queue.push(obj)
+}
+Deque.prototype.leftPop=function(){
+    return  this.queue.shift()
+}
+Deque.prototype.rightPop=function(){
+ return this.queue.pop()
+}
+
+Deque.prototype.isPlalindrome=function(str){
+    var halflen = str.length/2;
+    this.queue = str.split("");
+    for(var i=0;i<halflen;i++){
+      var left=  this.leftPop();
+      if(this.queue.length>0){
+          var right = this.rightPop();
+          if(left!=right){
+              return false;
+          }
+      }
+
+    }
+    return true;
+}
+var deque = new Deque();
+
+deque.leftPush(3)
+    deque.rightPush(5)
+deque.leftPush(4)
+    console.log(deque)
+var deque1 = new Deque();
+console.log(deque1.isPlalindrome("rever"));
+console.log(deque1.isPlalindrome("reer"));
+console.log(deque1.isPlalindrome("revser"));
+</script>
+</body>
+</html>

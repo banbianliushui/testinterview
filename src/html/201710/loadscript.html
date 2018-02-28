@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无阻塞脚本 -动态加载js - XMLHttpRequest</title>
+</head>
+<body>
+<div></div>
+<script>
+    /*动态加载js*/
+    function loadscript(url ,callback){
+        var script = document.createElement("script");
+
+        script.type ="text/javascript";
+        if(script.readyState){//IE
+            script.onreadystatechange = function(){
+                if(script.readyState == "loaded"||script.readyState =="compete"){//script加载完成后控制只触发一次
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            }
+        }else{
+            script.onload = function(){
+                callback();
+            }
+        }
+        script.src =url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+    }
+
+//    XMLHttpRequest
+    /*发送get请求一个js文件，如url等于file1.js。状态码2xx是有效响应，304是缓存里面读。
+    * 如果是有效响应，创建一个带有内联脚本的<script>的标签。新创建的<script>元素被添加到页面，代
+    * 码会立即执行然后准备就绪。
+    * 优点：下载的js代码可以不立即执行，可以把脚本的执行推迟到你准备好的时候。
+    *       浏览器兼容性好
+    * 缺点：js文件必须与所请求的页面同域
+    * */
+    function ajaxloadscript(url){
+        var xhr = new XMLHttpRequest();
+        xhr.open("get",url,true);//异步
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.text = xhr.responseText;
+                    document.body.appendChild(script);
+
+                }
+            }
+            xhr.send(null)
+        }
+    }
+
+    /*补充：https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
+     readyState
+     值	状态	描述
+     0	UNSENT (未打开)	open()方法还未被调用.
+     1	OPENED  (未发送)	send()方法还未被调用.
+     2	HEADERS_RECEIVED (已获取响应头)	send()方法已经被调用, 响应头和响应状态已经返回.
+     3	LOADING (正在下载响应体)	响应体下载中; responseText中已经获取了部分数据.
+     4	DONE (请求完成)	整个请求过程已经完毕.
+    *
+    * */
+    function assignEvents(){
+        var  id ="xdi9592";
+        document.getElementById("savebtn").onclick=function(){
+        saveDocument(id)
+        }
+    }
+    var book={
+        title:'High Performance JavaScript',
+        publisher:"Yahoo! Press"
+    }
+</script>
+</body>
+</html>

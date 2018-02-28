@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom事件测试</title>
+</head>
+<body>
+
+<button onclick="console.log(event)">DOM 0事件</button>
+<button id="bindbtn">测试事件this绑定</button>
+<div id="box" style="height:100px;width:300px;background-color:pink;"></div>
+<button id="reset">还原</button>
+<script>
+    var value=123;
+</script>
+<!--<input type="button" onclick = "alert(value)">-->
+<input type="button" onclick = "console.log(this)">
+<script>
+/*冒泡路径*/
+var bindbtn = document.getElementById("bindbtn");
+var  reset = document.getElementById("reset");
+var  box = document.getElementById("box");
+
+/*box.attachEvent('onclick',function(){
+    box.innerHTML += '1';
+});
+box.attachEvent('onclick',function(){
+    box.innerHTML += '2';
+});*/
+
+/*reset.onclick = function(){
+   /!* history.go();*!/
+}*/
+/*事件捕获*/
+box.addEventListener('click',function(){
+    box.innerHTML += 'div\n'
+},true)
+document.body.addEventListener('click',function(){
+    box.innerHTML += 'body\n';
+    },true);
+document.documentElement.addEventListener('click',function(){
+    box.innerHTML += 'html\n';
+    },true);
+document.addEventListener('click',function(){
+    box.innerHTML += 'document\n';
+    },true);
+window.addEventListener('click',function(){
+    box.innerHTML += 'window\n';
+    },true);
+
+
+/*事件冒泡*/
+/*box.onclick = function(){
+    box.innerHTML += 'div\n';
+}
+document.body.onclick = function(){
+    box.innerHTML += 'body\n';
+}
+document.documentElement.onclick = function(){
+    box.innerHTML += 'html\n';}
+document.onclick = function(){
+    box.innerHTML += 'document\n';
+}
+window.onclick = function(){
+    box.innerHTML += 'window\n';
+}*/
+
+
+/*var bindbtn = document.getElementById("bindbtn");*/
+/*
+var user ={
+    name:"小明",
+    greeting:function(){
+        console.log("this=",this);
+       console.log(this.name)
+}
+}
+*/
+
+/*user.greeting = user.greeting.bind(user);*///这个返回函数
+/*bind绑定函数this的简单绑定实现，*/
+/*Function.prototype.bind1=function (context){
+var self = this;
+    return function (){
+        self.call(context);
+    }
+}*/
+//user.greeting = user.greeting.call(user);//这个执行函数
+/*bindbtn.addEventListener("click",user.greeting);*/
+
+
+    /*IE dege可以，这个但其他IE系列（IE11及以下）new Event不能用*/
+/*var ev = new Event("look",{"bubbles":true,"cancelable":false})
+document.addEventListener('look', function (e) {
+    // e.target matches elem
+    alert("look")
+}, false);
+    document.dispatchEvent(ev);*/
+
+</script>
+</body>
+</html>

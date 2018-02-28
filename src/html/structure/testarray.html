@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*[].every()每个数组成员遍历都返回true，则这个方法返回true;如果有一个为false，则后续不再遍历，方法直接返回false*/
+    var arr = [3,9,5,2,7,8]
+
+   var everyarr =  arr.every(function(item,i,array){
+
+       console.log(arguments)
+       array[i]=item*2;
+       console.log("every"+i+" =",item);
+       if(i==2){return false;}
+       return true;
+   })
+    console.log("arr",arr)
+    console.log("everyarr",everyarr)
+
+    /*[].some()数组成员中只要有一个遍历返回true，则这个方法返回true，后续也不再遍历。否则直到运行到返回false或最后*/
+    var arr = [3,9,5,2,7,8]
+
+    var everyarr =  arr.some(function(item,i,array){
+
+        console.log("some"+i+" =",item)
+      //  if(i==1){ return true}
+        return false;
+    })
+    console.log("arr",arr)
+    console.log("somearr",everyarr)
+/*[].reduce 数组成员累加计算，传入函数有四个参数，一是累加初始化数值，二是当前值（item）,三当前值索引，四数组；
+total初始是从数组的第一个成员开始，当前值的初始值就是数组的第二个字段
+* */
+    var arr = [3,9,5,2,7,8]
+
+    var total =  arr.reduce(function(total,item,i,arr){
+       return total+item;
+    })
+console.log("total=",total)
+var strarr=["你","好","飞","人"]
+var rightstr=    strarr.reduceRight(function(total,currentVal,i,arr){
+        return total+currentVal;
+    })
+console.log("rightstr=",rightstr);
+/*[].forEach对数组每个元素都使用这个函数*/
+    var strarr=["你","好","飞","人"]
+   var foreachreturn= strarr.forEach(function (item,i,arr) {
+        console.log("forEach=",arguments)
+    })
+    console.log("foreach返回",foreachreturn)
+/*[].map对数组中每个元素都使用这个函数并返回新函数*/
+    var strarr=["你","好","飞","人"]
+    var newmap=  strarr.map(function (item,i,arr) {
+      //  console.log("map=",arguments)
+      return item+"哈哈";
+    })
+    console.log("map返回",newmap)
+    /*[].filter传入一个返回值为布尔类型的函数。返回一个包含应用该函数后结果为true的数组*/
+
+    var strarr=["你","好","飞","人"]
+    var newfilter=  strarr.filter(function (item,i,arr) {
+
+        if(i%2==0)return true;
+        return false;
+    })
+    console.log("filter返回",newfilter)
+
+</script>
+
+</body>
+</html>

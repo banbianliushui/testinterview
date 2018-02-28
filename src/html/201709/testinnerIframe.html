@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html,body{
+margin:0;
+            border:0;
+            padding:0;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div style="height:100px;background:orange"></div>
+这里是内容部部分
+<a id="docheight">获取当前高度</a>
+<a id="topheight">设置iframe高度</a>
+<script>
+
+var docbtn = document.getElementById('docheight');
+var topbtn = document.getElementById('topheight');
+if(docbtn.attachEvent){
+    docbtn.attachEvent('onclick',function(){
+        console.log("documentElement.clientHeight=",document.documentElement.clientHeight)
+    })
+    topbtn.attachEvent('onclick',function(){
+       var piframe= parent.document.getElementById('csiframe')
+        piframe.height=document.documentElement.clientHeight;
+        /*如果设置 piframe.height后相差4个像素，clientHeight缩小了4个像素，因为IE8 height设置包括border部分，
+        iframeborder默认有值*/
+        console.log("documentElement.clientHeight=",document.documentElement.clientHeight)
+        console.log(" piframe.height=", piframe.height)
+    })
+}else{
+    docbtn.addEventListener('click',function(){
+        console.log("documentElement.clientHeight=",document.documentElement.clientHeight)
+    })
+    topbtn.addEventListener('click',function(){
+        var piframe= parent.document.getElementById('csiframe')
+        piframe.height=document.documentElement.clientHeight;
+        console.log("documentElement.clientHeight=",document.documentElement.clientHeight)
+        console.log("piframe.height=",piframe.height)
+    })
+}
+
+</script>
+</body>
+</html>

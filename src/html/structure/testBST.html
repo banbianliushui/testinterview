@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉树构建与查找</title>
+</head>
+<body>
+<script>
+    /*1.定义节点：左右子树和数值元素
+    * 2.定义二叉树：根节点、插入节点函数，遍历函数*/
+function Node(data,left,right){
+    this.data = data;
+    this.left = left;
+    this.right = right;
+   // this.show = show;
+}
+
+function BST(){
+    this.root = null;
+}
+/*二叉树插入数据（构建树）,如果根节点还未构建节点赋值给根节点，
+如果根节点已经构建，则从根节点开始与输入节点进行比较，在比较前将比较节点赋值给临时根节点，
+如果输入节点小于比较节点则将左子树赋值给下一次要被比较的当前节点，
+如果输入节点大于比较节点则将右子树赋值给下一次要被比较的当前节点，直到被比较节点没有子树然后将输入节点赋值给某树的根节点。*/
+BST.prototype.insert=function(data){
+ var node = new Node(data,null,null);
+ if(this.root==null){
+     this.root = node;
+ }else{
+     var current = this.root;
+     var parentNode ;
+     while(true){
+         parentNode = current;
+         if(data<current.data){
+             current = current.left;
+             if(current==null){
+                 parentNode.left = node;
+                 break;
+             }
+         }else{
+             current = current.right;
+             if(current==null){
+                 parentNode.right = node;
+                 break;
+             }
+         }
+     }
+ }
+
+}
+/*中序遍历：输出顺序左子树->根节点->右子树*/
+BST.prototype.inOrder=function(){
+   if(arguments.length==0){
+       var node =this.root;
+   }else {
+       node = arguments[0];
+   }
+   if(!(node == null)){
+       this.inOrder(node.left);
+       console.log(node.data);
+       this.inOrder(node.right);
+   }
+}
+
+    /*先序遍历：输出顺序根节点->左子树->右子树*/
+    BST.prototype.preOrder=function(){
+        if(arguments.length==0){
+            var node =this.root;
+        }else {
+            node = arguments[0];
+        }
+        if(!(node == null)){
+            console.log(node.data);
+            this.inOrder(node.left);
+            this.inOrder(node.right);
+        }
+    }
+var  bst = new BST();
+bst.insert(44)
+bst.insert(24)
+bst.insert(18)
+bst.insert(56)
+bst.insert(9)
+bst.insert(16)
+bst.inOrder()
+
+
+</script>
+
+</body>
+</html>
