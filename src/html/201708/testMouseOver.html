@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div style="padding:20px;background:red" id="outerid">
+<div style="margin:20px;padding:60px;background:green;" id="inner">
+<div id="innnner" style="height:30px;background:orange"></div>
+</div>
+</div>
+ <div id="c1" style="height:60px;background:red">
+<div id="c2" style="padding:20px; background:blue;"></div>
+</div> 
+<script type="text/javascript">
+
+var outer =document.getElementById("outerid");
+var c1 =document.getElementById("c1");
+c1.addEventListener('click',function(e){
+	
+	console.log("currenttarget",e.currentTarget);
+	console.log("target",e.target);
+})
+outer.addEventListener('mouseover',function(e){
+	
+	console.log("mouseover")
+})
+outer.addEventListener('mouseout',function(e){
+	console.log("mouseout")
+})
+outer.addEventListener('mouseenter',function(e){
+	console.log("mouseenter ")
+})
+outer.addEventListener('mouseleave',function(e){
+	console.log("mouseleave")
+})
+
+//从body->outer (红色未到inner)： mouseover-> mouseenter
+//outer->inner  : mouseout->mouseover
+//inner->innnner:mouseout(第二层上触发target，inner)->mouseover（第三层,innnner）
+//innnner->inner:mouseout(第三层上触发，innnner)->mouseover（第二层,inner）
+//inner->outer :mouseout->mouseover
+//outer-body : mouseout->mouseleave
+//mouseover/mouseout 在子元素上也会触发
+
+</script>
+</body>
+</html>

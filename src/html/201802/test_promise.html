@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+/* var p = new Promise(function(resolve,rejected){
+	setTimeout(function(){
+		console.log('zhixing')
+		resolve("hahha ");
+	},2000)
+}); */
+/* setTimeout(function() {
+	  console.log(1)
+	}, 0);
+	new Promise(function executor(resolve) {
+	  console.log(2);
+	  for( var i=0 ; i<3; i++ ) {
+	    i == 2 && resolve();
+	  }
+	  console.log(3);
+	}).then(function() {
+	  console.log(4);
+	});
+	console.log(5); */
+	console.log('script start');
+
+	setTimeout(function() { 
+	  console.log('setTimeout');
+	}, 0);
+
+	Promise.resolve().then(function() {   
+	  console.log('promise1');
+	}).then(function() { 
+	  console.log('promise2');
+	});
+
+	console.log('script end');
+</script>
+
+</body>
+</html>

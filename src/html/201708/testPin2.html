@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>品 字结构-百分比布局满屏-兼容到IE8(IE7及以下right会换行)，因为 IE7 在解析div（还有span，猜测所有元素都这么计算）是 overflow-x : auto;
+ 时把纵向滚动条的宽＋width: 100% 一起来算的，这当然就会出现滚动条了，</title>
+<style>  
+  /*  这个可以去掉IE6,7的滚动
+               html {
+                   overflow:auto;
+                }
+               
+               这个可去掉IE5.5的滚动
+               body {
+                    overflow:auto;
+               }
+               
+               正确方法: 
+               
+               html {
+                   overflow:auto; 
+                   _overflow-x:hidden;
+                }
+               
+               body {
+                    overflow:auto;
+                    _margin-left:-8px; 
+               }
+               
+ */
+ html,body{  
+    margin:0;  
+    padding:0;  
+    height:100%;  
+    overflow:auto;/*IE7及以下默认显示垂直滚动条，用这个属性可以去除垂直滚动条，IE5还是不行*/
+}  
+div{
+overflow-y : hidden; 
+}
+.header{
+    height: 50%;
+    background: aliceblue;
+   
+}
+.left{
+    height: 50%;
+    background: antiquewhite;
+    width: 50%;
+    float: left;
+   /*  display:block; */
+}
+.right{
+    height: 50%;
+    background: aquamarine;
+    width: 50%;/*IE7及以下不能兼容，会有垂直滚动条出现，width和应小于100%  */
+    float: left;
+   /*  display:block; */
+} 
+</style>  
+</head>
+<body>  
+<!-- 主要原理是用overflow-y : hidden; 这一句来隐藏纵向滚动条，因为 IE7 在解析div是 overflow-x : auto;
+ 时把纵向滚动条的宽＋width: 100% 一起来算的，这当然就会出现滚动条了，
+ 所以只要把纵向滚动条隐藏就解决问题了～ -->
+ <div class="header"></div>  
+<div class="left"></div>  
+<div class="right"></div>
+</html>

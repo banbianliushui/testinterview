@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var User = {
+		  count: 1,
+		  getCount: function() {
+		    return this.count;
+		  }
+		};
+
+console.log(User.getCount());//1
+var func = User.getCount;
+console.log(func());//undefined,未定义
+
+var k=func.bind(User);
+console.log(k());
+
+Function.prototype.bind=Function.prototype.bind||function(context){
+	var self=this;
+	return function(){
+		return self.apply(context,arguments)
+	}
+}
+
+/* 
+function spacify(str){
+	return str.split("").join(" ");
+}
+console.log(spacify("hello world"))
+String.prototype.spacify=function(
+		return this.split("").join(" "))
+ */
+/* function log(str){
+	if(console){
+		console.log(arguments)
+	}
+}	 */	
+/* log("hah","ni ","yingl") */
+/*  function log(str){
+	if(console){
+		console.log.apply(console,arguments);
+	}
+}	
+  */
+/* function log(str){
+	if(console){
+		//var args=[];
+		for(var o in arguments){
+			//args.push("(app)"+arguments[o]);
+			arguments[o]="(app)"+arguments[o]
+		}
+		console.log.apply(console,arguments);
+	}
+}	 */
+
+
+/* function log(){
+  var args = Array.prototype.slice.call(arguments);
+  args.unshift('(app)');
+  console.log.apply(console, args);
+}; */
+ 
+</script>
+
+</body>
+</html>

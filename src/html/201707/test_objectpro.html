@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var object = {
+		 
+		  // catch住不能响应消息的系统信号
+		  __noSuchMethod__: function (name, args) {
+		    alert([name, args]);
+		    if (name == 'test') {
+		      return '.test() method is handled';
+		    }
+		    return delegate[name].apply(this, args);
+		  }
+		 
+		};
+		 
+		var delegate = {
+		  square: function (a) {
+		    return a * a;
+		  }
+		};
+		 
+		alert(object.square(10)); // 100
+		alert(object.test()); // .test() method is handled
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+//原生Promise 只能用new
+var p=new Promise(function(resolve,rejected){
+	setTimeout(function(){
+		console.log('zhixing')
+	//	resolve("hahha ");
+		rejected("错误css");
+	},1000)
+}); 
+p.then(function(result){
+	console.log("succes2s")
+	console.log(result)
+},function(error){
+	console.log("fail2")
+	console.log(error);
+}) 
+/* var p = new Promise(function(resolve,rejected){
+	setTimeout(function(){
+		console.log('zhixing')
+	//	resolve("hahha ");
+		rejected("错误css");
+	},1000)
+}); 
+p.then().then(function(result){
+	console.log("succes2s")
+	console.log(result)
+},function(error){
+	console.log("fail2")
+	console.log(error);
+})  */
+</script>
+
+</body>
+</html>

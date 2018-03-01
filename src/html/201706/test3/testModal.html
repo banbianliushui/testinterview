@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../static/libs/jquery/jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+
+
+//-----------模块模式 ： 基于对象字面量，实现模块的方法,封装公私有方法和变量，向外提供一个公有接口。
+
+	(function(_j){
+		
+		var privateP={};
+		var privateP1=0;
+		var privateFun=function(){
+			
+		}
+		var privateFun1=function(){
+			privateP1++;
+		}
+		return {
+			publicFun :privateFun,
+			getP:function(){
+				return privateP1;
+			}
+		};
+	})(jQuery);
+	
+	//-----模块之间有多个共性，在模块模式内部模块定义附件使用函数包装器，这里书上可能有问题，
+	function library(module){
+		$(function(){
+			if(module.init){//无法进入，可能是调用的时候module().init
+				module.init();
+			}
+		});
+		return module;
+	}
+
+	var myLib = library(function(){
+		var l1=0;
+		 function  showV(){
+			console.log(l1);
+		}
+		return {
+			init : function(){
+				l1=5;
+			},
+			increment:function(){
+				l1++;
+			},
+			getV : function(){			
+				return l1;
+			},
+			showV : showV
+		}
+	})();
+	myLib.increment();
+	myLib.showV();
+//-----------Constructor  构造器模式：使用new+Fun 实例化一个对象--------------
+function Car (name){
+	
+	this.name =name;
+}
+Car.prototype={getName:function(){
+	return this.name;
+}}
+function Bike(type){
+	this.type=type;
+}
+Bike.prototype.getType=function(){
+	return this.type;
+}
+var c1 = new Car("xiaoli");
+console.log(c1);
+var c2 =  new Car("xinxi");
+console.log(c2);
+console.log(c1);
+var b1 = new Bike("永久");
+console.log(b1);
+var b2 = new Bike("凤凰");
+console.log(b2);
+console.log(b1);
+</script>
+
+</body>
+</html>

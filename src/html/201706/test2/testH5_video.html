@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+//http://www.w3school.com.cn/i/movie.ogg
+//http://www.w3school.com.cn/i/movie.mp4
+<p>autoplay="autoplay"</p>
+
+<div  id="myd1" ondrop="drop(event)" ondragover="allowdrag(event)" style="border:2px solid green;width:200px;height:200px;display:inline-block;margin:10px 30px" ></div>
+
+<div  id="myd2" ondrop="drop(event)" ondragover="allowdrag(event)" style="border:2px solid green;width:200px;height:200px;display:inline-block;margin:10px" ></div>
+<img id ="myimg1"ondragstart="drag(event)" alt="" src="http://www.w3school.com.cn/i/eg_dragdrop_w3school.gif">
+
+<p></p>
+
+
+
+<video id="myVideo" height="400" width="400" 
+ loop="loop" muted="muted"
+poster="http://tva4.sinaimg.cn/crop.0.0.180.180.50/69062446jw1e8qgp5bmzyj2050050aa8.jpg"
+preload="preload"
+controls="controls">
+
+<source src ="http://www.w3school.com.cn/i/movie.ogg"  media="mp4"></source>
+<source src ="http://www.w3school.com.cn/i/movie.mp4"  media="mp4"></source>
+</video> 
+ <button onclick="playPause()">播放/暂停</button> 
+  <button onclick="makeBig()">大</button>
+  <button onclick="makeNormal()">中</button>
+  <button onclick="makeSmall()">小</button>
+<script>
+function allowdrag(e){
+	e.preventDefault();
+	
+}
+function drop(e){
+	e.preventDefault();
+	//var divid = e.target.id;
+	var data = document.getElementById(e.dataTransfer.getData("imd"));
+	//var div =document.getElementById(divid);
+	e.target.appendChild(data);
+}
+function drag(ev){
+	//ev.preventDefault();
+    ev.dataTransfer.setData("imd",ev.target.id);
+    ev.dataTransfer.effectAllowed ='copyMove';
+    
+}
+
+
+var myVid = document.getElementById("myVideo");
+function playPause(){
+	if(myVid.paused){
+		myVid.play();
+	}else{
+		myVid.pause();
+	}
+}
+
+function makeBig(){
+	myVid.width=560;
+}
+function makeNormal(){
+	myVid.width=420;
+}
+function makeSmall(){
+	myVid.width=320;
+}
+
+
+console.log(myVid);
+
+//text1=myVid.addTextTrack("caption");
+//text1.addCue(new TextTrackCue("Test text", 01.000, 04.000,"","","",true));
+</script>
+</body>
+</html>

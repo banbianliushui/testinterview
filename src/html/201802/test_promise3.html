@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+/*https://zhuanlan.zhihu.com/p/25178630*/
+var PENDING = 0;
+var FULFILLED =1 ;
+var REJECTED = 2;
+function Promise(fn){ 
+	if( typeof this !=='object'){// new 后this指向新变量对象
+		throw new TypeError("promises must bu constructed via new");
+	}
+	if(typeof fn !=='function'){
+		throw new TypeError("fn must be a function");
+	}
+	var state = PENDING;
+	var value = null;
+	var handlers =[];
+	
+	function doResolve(fn,onFulfilled,onRejected){
+		var done = false; 
+		try{
+			fn(function(value){
+				//用户调用成功函数，传参value
+				if(done) return ;
+				done = true;
+				onFulfilled(value);//用于后续处理传到后面then的对应函数参数中
+			},function(reason){
+				if(done) return;
+				done = true;
+				onRejected(reason); 
+			})
+		}catch(e){
+			if(done) return;
+			done = true;
+			onRejected(e);
+		}
+	}
+
+	function getThen(value){//辅助判断是否是promise对象
+		var t = typeof value;
+		if(value &&(t==='object'||t === 'function')){
+			var then = value.then;
+			if(typeof then === 'function'){
+				return then;
+			}
+		}
+		return null;
+	}
+	function resolve(result){
+		//resolve 用户函数fn处理后调用resolve，由doResolve转接到这里
+		//result 用户回调函数处理后返回的结果
+		try{
+			var then = getThen(result);
+			if(then){//传promise对象时
+                //fn传then.bind(result)，等待promise中的内容处理完
+				doResolve(then.bind(result),resolve,reject);
+				return;
+			}
+			state = FULFILLED;
+			value = result;
+			handlers.forEach(handle);
+			handlers = null;
+		}catch(e){
+			
+		}
+	}
+	function reject(error){
+		state = REJECTED;
+		value = error;
+		handlers.forEach(handle);
+		handlers=null
+	}
+	function handle(handler){
+		if(state === PENDING){
+			handlers.push(handler);
+		}else{
+			if(state === FULFILLED && typeof handler.onFulfilled ==='function'){
+				handler.onFulfilled(value);
+			}
+			if(state === REJECTED && typeof handler.onRejected === 'function'){
+				handler.onRejected(value);
+			}
+		}
+	}
+	this.done = function(onFulfilled,onRejected){
+		setTimeout(function(){//表示异步
+			handle({
+				onFulfilled:onFulfilled,
+				onRejected:onRejected
+			});
+		},0)
+	}
+	
+	this.then = function(onFulfilled,onRejected){
+		var self = this;//promise对象同时也返回一个新promise对象
+        //调用then时先执行传给构造函数的匿名函数，调用前一个promise的done方法，将用户注册在
+        //then方法中的两个参数函数onFulfilled,onRejected 注册到内部统一处理的done函数上。
+        //然后分别放到处理列表中handle
+		return new Promise(function(resolve,reject){
+			
+			var done1= self.done(function(result){
+				if(typeof onFulfilled === 'function' ){
+					try{
+						return resolve(onFulfilled(result));
+					}catch(e){
+						return reject(e);			
+					}
+				}else{//用户then中未传参数
+					return resolve(result);			
+				}
+			},function(error){
+				if(typeof onRejected ==='function'){
+					try{
+						return resolve(onRejected(error));
+					}catch(e){
+						return reject(e);
+					}
+				}else{
+					return reject(error);
+				}
+			});
+			return done1;
+			
+		});
+	}
+	
+	doResolve(fn,resolve,reject);//用于转接处理
+	
+}
+
+
+
+ var p = new Promise(function(resolve,rejected){
+	setTimeout(function(){
+		console.log('zhixing')
+	//	resolve("hahha ");
+		resolve("错误css");
+	},1000)
+}); 
+p.then().then(function(result){
+	console.log("succes2s")
+	console.log(result)
+},function(error){
+	console.log("fail2")
+	console.log(error);
+})  
+</script>
+
+</body>
+</html>

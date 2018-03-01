@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>组织结构树</title>
+<script type="text/javascript" src="jquery-1.12.4.js"></script>
+<style type="text/css">
+
+/* .mind-map-column{
+            height: 160px;
+        }
+        .box{
+            background: #0092ff;
+            width: 160px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            left: 50%;
+            margin-left: -80px;
+        }
+        .box-wrap{
+            margin: 30px auto;
+            position: relative;
+            height: 100px;
+            float: left;
+        }
+        .box-line:before{
+            content: '';
+            width: 1px;
+            background: #ccc;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            bottom: -30px;
+            margin-left: -1px;
+        }
+        .box-line:after{
+            content: '';
+            height: 1px;
+            background: #ccc;
+            position: absolute;
+            top: 130px;
+            left: 25%;
+            width: 50%;
+        }
+        .noborder-top .box-line:before{
+            top: 0;
+        }
+        .noborder-bottom .box-line:before{
+            bottom: 0;
+        }
+        .noborder-bottom .box-line:after{
+            height: 0;
+        } */
+        
+        .mind-map-column{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+    .box{
+        background: #0092ff;
+        width: 200px;
+        height: 100px;
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+    }
+    .box-wrap{
+        margin: 30px auto;
+        height: 100px;
+        width: 0%;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        position: relative;
+    }
+    .box-line:before{
+        content: '';
+        width: 1px;
+        background: #ccc;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        bottom: -30px;
+        margin-left: -1px;
+    }
+    .box-line:after{
+        content: '';
+        height: 1px;
+        background: #ccc;
+        position: absolute;
+        top: 130px;
+        left: 25%;
+        width: 50%;
+    }
+    .mind-map-column:first-child .box-line:before{
+        top: 0;
+    }
+    .mind-map-column:last-child .box-line:before{
+        bottom: 0;
+    }
+    .mind-map-column:last-child .box-line:after{
+        height: 0;
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+        <div class="mind-map-column">
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">1级</div>
+            </div>
+        </div>
+
+        <div class="mind-map-column">
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">2级</div>
+            </div>
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">2级</div>
+            </div>
+        </div>
+
+        <div class="mind-map-column">
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">3级</div>
+            </div>
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">3级</div>
+            </div>
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">3级</div>
+            </div>
+            <div class="box-wrap">
+                <div class="box-line"></div>
+                <div class="box">3级</div>
+            </div>
+            </div>
+        </div>
+  <script type="text/javascript">
+  
+  $(function(){
+      for(var i=0;i < $('.mind-map-column').length;i++){
+          var childNum = $('.mind-map-column').eq(i).find('.box-wrap').length;
+          $('.mind-map-column').eq(i).find('.box-wrap').width(100/childNum+"%");
+      };
+      $('.mind-map-column:first').addClass('noborder-top');
+      $('.mind-map-column:last').addClass('noborder-bottom');
+  });
+  
+  </script>
+</body>
+</html>

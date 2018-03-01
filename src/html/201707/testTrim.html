@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+//摘自高性能js
+String.prototype.trim=function(){
+	
+	return this.replace(/(^\s*)|(\s*$)/g, "")
+}
+String.prototype.trim1=function(){
+	return this.replace(/^\s+/g,'').replace(/\s+$/g,'')
+}
+String.prototype.trim2=function(){
+	
+	return this.replace(/^\s+|\s+$)/g, "")
+}
+String.prototype.trim3=function(){
+	
+	return this.replace(/^\s*([\s\S]*?)|\s*$)/g, "$1")
+}
+String.prototype.trim4=function(){//可能比两个replace都快，[\s\S]*贪婪量词 匹配到最后面然后回溯，速度可能更快
+	
+	return this.replace(/^\s*([\s\S]*\S)?|\s*$)/g, "$1")
+}
+String.prototype.trim5=function(){//不宜用来处理前后大段空白的字符串
+	var start =0,end=this.length-1,
+	ws="\n\r\t\f\x0b\xa0\u680";
+	while(ws.indexOf(this.charAt(start)>-1)){
+		start++;
+	}
+	
+	while(end>start&&ws.indexOf(this.charAt(end)>-1)){
+		end--;
+	}
+	return this.slice(start,end+1);
+}
+
+String.prototype.trim6=function(){//混合,处理长字符串特别快，非正则从字符串末尾方向查找不是字符串总长度影响，受到修建空格的数量的影响
+	var str=this.replace(/^\s+/,'')
+	,end=this.length-1,
+	ws="\s";
+	while(ws.test(this.charAt(end))){
+		end--;
+	}
+	return this.slice(start,end+1);
+}
+var S="  sdfkj d "
+S=S.trim()
+alert("'"+S+"'")
+</script>
+
+</body>
+</html>

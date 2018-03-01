@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>promise</title>
+</head>
+<body>
+<script>
+//用途：异步请求时，获取执行结果后放then里处理。异步编程结果处理
+//  1.一个promise容器: 用户（异步）操作处理的状态；
+
+var PENDING=0;//初始状态，待定，进行中
+var FULFILLED = 1;//完成
+var REJECTED = 2;//拒绝
+/* function Promise(){
+	//存储状态
+	var state = PENDING;
+	//存值 一次成功或拒绝
+	var value =  null;
+	//存成功 &失败处理函数
+	var handlers = [];
+	function resolve(result){
+		try{
+			var then = getThen(result);
+			if(then){
+				doResolve(then.bind(result),resolve,reject);
+				return ;
+			}
+			state = FULFILLED;
+			value = result;
+		}catch(e){
+			reject(e);
+		}
+	}
+	function reject(error){
+		state = REJECTED;
+		value = error;
+	}
+} */
+// 如果'value'是一个promise，则函数返回'then'，否则返回为null  
+function getThen(value){
+	if(result&&(typeof result === 'object'|| typeof result === 'function')){
+		var then = value.then;
+		if (typeof then === 'function'){
+			return then;
+		}
+	}
+	return null;
+}
+//采用潜在错误的解析函数 ，并保证 onfulfilled和 onrejected只完成一次
+//不保证异步
+function doResolve(fn,onFulfilled,onRejected){
+	var done = false;
+	try{
+		fn(function(value){
+			if(done) return ;
+			done = true;
+			onFulfilled(value);
+		},function(reason){
+			if(done) return;
+			done = true;
+			onRejected(reason);
+		})
+	}catch(e){
+		if(done) return ;
+		done =true;
+		onReject(e);
+	}
+}
+function Promise(fn){
+	if(typeof this !=='object'){
+		throw new TypeError('Promises must be constructed via new');
+	}
+	if (typeof fn!=='function'){
+		throw new TypeError('fn must be a function');
+	}
+	//存状态  pending  fulfilled  rejected
+	var state = PENDING;
+	//存值 一次成功或拒绝
+	var value =  null;
+	//存成功 &失败处理函数
+	var handlers = [];
+	function resolve(result){
+		try{
+			var then = getThen(result);
+			if(then){
+				doResolve(then.bind(result),resolve,reject);
+				return ;
+			}
+			state = FULFILLED;
+			value = result;
+		}catch(e){
+			reject(e);
+		}
+	}
+	
+	function reject(error){
+		state = REJECTED;
+		value = error ;
+	}
+	
+	function handle(handle){
+		if(state == PENDING){
+			handlers.push(handler);
+		}else{
+			if(state === FULFILLED&& typeof handler.onFulfilled==='function'){
+				handler.onFulfilled(value);
+			}
+			if(state ===REJECTED && typeof handler.onRejected ==='function'){
+				handler.onRejected(value);
+			}
+		}
+	}
+	this.done = function(onFulfilled,onRejected){
+		setTimeout(function(){
+			handle({
+				onFulfilled:onFulfilled,
+				onRejected:onRejected
+			})
+		},0);
+	}
+	doResolve(fn,resolve,reject);
+	this.then = function(onFulfilled,onRejected){
+		var self = this;
+		return new Promise(function(resolve,reject){
+			return self.done(function(result){
+				if(typeof onFulfilled ==='function'){
+					
+				}
+			})
+		})
+	}
+}
+
+
+new Promise(function(
+		function success(){
+	
+},function fail(){
+	
+}){
+	
+})
+</script>
+
+</body>
+</html>

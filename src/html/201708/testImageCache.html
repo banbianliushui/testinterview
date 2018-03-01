@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- <img alt="" src="/interviewTest/img/lamp.do" id="ts_img">  -->
+
+<a id="refresh">刷新</a>
+<script type="text/javascript">
+
+function loadImage(){
+	var image=new Image();
+
+	image.src = '/interviewTest/img/lamp.do'
+	image.onload = function(){
+		console.log("这里是onload");
+	};
+	return image
+}
+loadImage();
+var refreshbtn=document.getElementById("refresh");
+
+if(refreshbtn.attachEvent){
+	refreshbtn.attachEvent('onclick',function(){
+		location.reload();
+	})
+}else{
+	refreshbtn.addEventListener('click',function(){
+		location.reload();
+	})
+}
+
+</script>
+</body>
+</html>

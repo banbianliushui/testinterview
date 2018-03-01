@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>品 字结构-fixed</title>
+<style>  
+html,body{  
+    margin:0;  
+    padding:0;  
+    height:100%;  
+}  
+div:first-child{  
+    /*position:absolute;    两者二选一，*/  
+    width:100%;  
+    height:calc(100% - 200px);  
+    background:red;  
+}  
+div:nth-child(2){  
+    position:fixed;  
+    width:50%;  
+    height:200px;  
+    background:green;  
+    bottom:0;  
+    left:0;  
+}  
+div:nth-child(3){  
+    position:fixed;  
+    width:50%;  
+    height:200px;  
+    background:yellow;  
+    bottom:0;  
+    right:0;  
+}  
+</style>  
+</head>
+<body>  
+<div></div>  
+<div></div>  
+<div></div>  
+</html>

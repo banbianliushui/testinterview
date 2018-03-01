@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+
+var pubsub = {};
+(function(myObject) {
+    // Storage for topics that can be broadcast
+    // or listened to
+    var topics = {};
+    // An topic identifier
+    var subUid = -1;
+    // Publish or broadcast events of interest
+    // with a specific topic name and arguments
+    // such as the data to pass along
+    myObject.publish = function( topic, args ) {
+        if ( !topics[topic] ) {
+            return false;
+        }
+        var subscribers = topics[topic],
+            len = subscribers ? subscribers.length : 0;
+        while (len--) {
+            subscribers[len].func( topic, args );
+        }
+        return this;
+    };
+    // Subscribe to events of interest
+    // with a specific topic name and a
+    // callback function, to be executed
+    // when the topic/event is observed
+    myObject.subscribe = function( topic, func ) {
+        if (!topics[topic]) {
+            topics[topic] = [];
+        }
+        var token = ( ++subUid ).toString();
+        topics[topic].push({
+            token: token,
+            func: func
+        });
+        return token;
+    };
+    // Unsubscribe from a specific
+    // topic, based on a tokenized reference
+    // to the subscription
+    myObject.unsubscribe = function( token ) {
+        for ( var m in topics ) {
+            if ( topics[m] ) {
+                for ( var i = 0, j = topics[m].length; i < j; i++ ) {
+                    if ( topics[m][i].token === token ) {
+                        topics[m].splice( i, 1 );
+                        return token;
+                    }
+                }
+            }
+        }
+        return this;
+    };
+}( pubsub ));
+
+
+pubsub.publish("sj1","这个是参数");
+pubsub.subscribe('sj1',function(topic,result){
+	console.log("订阅返回",topic,result);
+});
+/* function PubSub() {
+    this.handlers = {};
+  }
+  PubSub.prototype = {
+      // 订阅事件
+      on: function(eventType, handler){
+          var self = this;
+          if(!(eventType in self.handlers)) {
+             self.handlers[eventType] = [];
+          }
+          self.handlers[eventType].push(handler);
+          return this;
+      },
+       // 触发事件(发布事件)
+      emit: function(eventType){
+         var self = this;
+         var handlerArgs = Array.prototype.slice.call(arguments,1);
+         for(var i = 0; i < self.handlers[eventType].length; i++) {
+           self.handlers[eventType][i].apply(self,handlerArgs);
+         }
+         return self;
+      },
+      // 删除订阅事件
+      off: function(eventType, handler){
+          var currentEvent = this.handlers[eventType];
+          var len = 0;
+          if (currentEvent) {
+              len = currentEvent.length;
+              for (var i = len - 1; i >= 0; i--){
+                  if (currentEvent[i] === handler){
+                      currentEvent.splice(i, 1);
+                  }
+              }
+          }
+          return this;
+      }
+  };
+
+  var pubsub = new PubSub();
+  var callback = function(data){
+      console.log(data);
+  };
+
+  //订阅事件A
+  pubsub.on('A', function(data){
+      console.log(1 + data);
+  });
+  pubsub.on('A', function(data){
+      console.log(2 + data);
+  });
+  pubsub.on('A', callback);
+
+  //触发事件A
+  pubsub.emit('A', '我是参数');
+
+  //删除事件A的订阅源callback
+  pubsub.off('A', callback);
+
+  pubsub.emit('A', '我是第二次调用的参数'); */
+/* var Event = {
+	    // 通过on接口监听事件eventName
+	    // 如果事件eventName被触发，则执行callback回调函数
+	    on: function (eventName, callback) {
+	        //你的代码
+	        if(!this.handles){
+	            //this.handles={};
+	            Object.defineProperty(this, "handles", {
+	                value: {},
+	                enumerable: false,
+	                configurable: true,
+	                writable: true
+	            })
+	        }
+	       
+	       if(!this.handles[eventName]){
+	            this.handles[eventName]=[];
+	       }
+	       this.handles[eventName].push(callback);
+	    },
+	    // 触发事件 eventName
+	    emit: function (eventName) {
+	        //你的代码
+	       if(this.handles[arguments[0]]){
+	           for(var i=0;i<this.handles[arguments[0]].length;i++){
+	               this.handles[arguments[0]][i](arguments[1]);
+	           }
+	       }
+	    }
+	}; */
+/* var Event = {
+	    // 通过on接口监听事件eventName
+	    // 如果事件eventName被触发，则执行callback回调函数
+	  
+	    on: function (eventName, callback) {
+	    	if(!this.listeners){
+	    		//this.listeners={};
+	    		Object.defineProperty(this,"listeners",{
+	    			value:{},
+	    			writable:true,//对象属性是否可修改,flase为不可修改，默认值为true
+	    			enumerable:false,//assign函数不复制有这个特性的属性 //对象属性是否可通过for-in循环，flase为不可循环，默认值为true
+	    			configurable:true////能否使用delete、能否需改属性特性、或能否修改访问器属性、，false为不可重新定义，默认值为true
+	    		});
+	    	}
+	    	  
+	        //你的代码
+	        if(!this.listeners[eventName]){
+	        	this.listeners[eventName]=[];
+	        }
+	        this.listeners[eventName].push({callback:callback,self:this});
+	    },
+	    // 触发事件 eventName
+	    emit: function (eventName) {
+	        //你的代码
+	        var self=this;
+	        var args= Array.prototype.slice.call(arguments,1);
+	    	  if(this.listeners[eventName]){
+	          	var events=this.listeners[eventName];
+	          	for(var i =0 ;i<events.length;i++){
+	          		if(self===events[i].self){
+	          			events[i]['callback'](args);
+	          		}
+	          		
+	          	}
+	          }
+	         
+	    }
+	}; */
+
+/* Event.on('test', function (result) {
+    console.log(result);
+});
+Event.on('test', function () {
+    console.log('test');
+});
+Event.emit('test', 'hello world'); // 输出 'hello world' 和 'test'
+// 测试2
+var person1 = {};
+var person2 = {};
+Object.assign(person1, Event);
+Object.assign(person2, Event);
+person1.on('call1', function () {
+    console.log('person1');
+});
+person2.on('call2', function () {
+    console.log('person2');
+});
+person1.emit('call1'); // 输出 'person1'
+person1.emit('call2'); // 没有输出
+person2.emit('call1'); // 没有输出
+person2.emit('call2'); // 输出 'person2' */
+
+</script>
+
+</body>
+</html>

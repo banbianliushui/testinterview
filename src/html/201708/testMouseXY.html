@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="one" style="background:yellow;padding:20px;">
+<div id="two" style="background:gray;padding:30px;height:600px;"></div>
+</div>
+<div id="three" style="border:10px solid red;background:green;">
+</div>
+<script>
+var two = document.getElementById("one");
+var two = document.getElementById("two");
+two.addEventListener('mouseover',function(e){
+
+	two.innerHTML="clientX="+e.clientX+",clientY="+e.clientY
+	+"pageX="+e.pageX+",pageY="+e.pageY
+	+"offsetX="+e.offsetX+",offsetY="+e.offsetY
+	+"layerX="+e.layerX+",layerY="+e.layerY
+	+"screenX="+e.screenX+",screenY="+e.screenY;
+	
+})
+
+
+</script>
+</body>
+</html>

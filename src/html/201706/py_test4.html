@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"src="editor.js"></script>
+<style type="text/css">
+
+.gov-editor{
+height:200px;
+border:1px solid #aaa;
+}
+.tagcls{
+	/* display:none; */
+}
+</style>
+</head>
+<body>
+<div  class="gov-editor">
+</div>
+
+<script type="text/javascript">
+$(function(){$('.gov-editor').govEditor({title:'纠正文档',onSend:function(){
+	var params={}
+	params.html="已发送";
+	params.type="succsess"
+	$.simpleAlert(params)
+	if($("#obc_main").length!=0){
+		$("#obc_main").css("width","100%")
+		$("#obc_main").css("height","100%")
+		$("#obc_main").css("display","block")
+	}
+},messDto:{content:"",title:"",type:"",documentGuId:"",docId:"",documentName:""}});})
+/* if(window.onload){
+	window.onload=function(){
+		$('.gov-editor').govEditor();
+	};
+}else if(document.body.onload){
+	document.body.onload=function(){
+		$('.gov-editor').govEditor();
+	};
+}
+ */
+
+
+
+</script>
+
+</body>
+</html>

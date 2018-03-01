@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+var mySingleton = (function(){
+	
+	var instance;
+	function init(){
+		function privateM(){
+			console.log("private method");
+		}
+		var privateN = Math.random();
+		return {
+			publicM:function(){
+				console.log("public Method");
+			},
+			publicVar:"public property",
+			getRandom:function(){
+				return privateN;
+			},
+			getdyRandom:function(){
+				return Math.random();
+			}
+		}
+	}
+	return {getInstance:function(){
+		if(!instance){
+			instance = init();
+		}
+		return instance;
+	}}
+})();
+
+console.log(mySingleton);
+console.log(mySingleton.getInstance);
+console.log(mySingleton.getInstance());
+console.log(mySingleton.getInstance().getRandom());
+console.log(mySingleton.getInstance().getRandom());
+console.log(mySingleton.getInstance().getdyRandom());
+console.log(mySingleton.getInstance().getdyRandom());
+</script>
+
+</body>
+</html>

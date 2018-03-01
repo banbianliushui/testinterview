@@ -1,0 +1,33 @@
+/* pages/widget/we-cropper/we-cropper.wxss */
+.cropper-wrapper{
+  position: relative;
+  width:100%;
+ height:100%;
+
+}
+.cropper-wrapper canvas{
+  display: none;
+}
+.cropper-wrapper canvas.active{
+  display: block;
+}
+.cropper-buttons.hide{
+  display: none;
+}
+.cropper-buttons{
+  position: absolute;
+  display: flex;
+  display: -webkit-flex;
+
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  flex-direction: colunm;
+  -webkit-flex-direction: colunm;
+  top:0;
+  right:0;
+  left:0;
+  bottom:0;
+
+}

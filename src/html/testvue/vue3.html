@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+<div id="app4">
+<anchored-heading :level="1">Hello world!</anchored-heading>
+</div>
+
+<script>
+//createElement:  context(调用自带),  tag(用户调用传),  data（VNode：...text:'helloworld'）,  children,  normalizationType,  alwaysNormalize
+//VNode:[]
+//	0:VNode
+/*VNode虚拟节点数据结构： children:undefined
+componentInstance:undefined
+componentOptions:undefined
+context:undefined
+data:undefined
+elm:undefined
+functionalContext:undefined
+isCloned:false
+isComment:false
+isOnce:false
+isRootInsert:true
+isStatic:false
+key:undefined
+ns:undefined
+parent:undefined
+raw:false
+tag:undefined
+text:"Hello world!" */
+//createElement 中生产vnode
+//vnode {text:'h1',context:	VueComponent,children:{text:'hellworld',...},...} 
+Vue.component('anchored-heading',{
+	render:function(createElement){
+		//  initRender(vm);
+		//调用renderMixin-> Vue.prototype._render-> initRender(vm)->vm.$createElement
+		return createElement(
+		'h'+this.level,this.$slots.default		
+		)
+	},
+	props:{
+		level:{
+			type:Number,
+			required:true
+		}
+	}
+});
+var app4 =  new Vue({
+	el:"#app4",
+	data:{},//data不能不写
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var a = 10; // 原始值
+ 
+// 但是可以访问方法（就像对象一样）
+//alert(a.toString()); // "10"
+ console.log(a);
+// 此外，我们可以在a上创建一个心属性
+a.test = 100; // 好像是没问题的
+ 
+// 但，[[Get]]方法没有返回该属性的值，返回的却是undefined
+//alert(a.test); // undefined
+ console.log(a.test);
+ console.log(a);
+ console.log(1..toString());
+</script>
+</body>
+</html>

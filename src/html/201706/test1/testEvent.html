@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+#div1{
+	background:#c30f80;
+	padding:40px;
+}
+#div2{
+	background:#2db9b9;
+	padding:40px;
+}
+#div3{
+	background:#70d02c;
+	height:50px;
+}
+</style>
+</head>
+<body>
+<div id="div1">
+<div id="div2">
+<div id="div3"></div>
+ </div>
+
+</div>
+<script>
+
+window.onload=function(){
+	var $div1=document.getElementById("div1");
+	var $div2=document.getElementById("div2");
+	var $div3=document.getElementById("div3");
+	//DOM0级方法指定的事件处理程序 dom元素+事件onclick 　btn.onclick = null; // 删除事件处理程序；
+	/* $div1.onclick=function(){		
+		console.log(this.id);
+	}
+	$div2.onclick=function(){
+		console.log(this.id);
+	}
+	$div3.onclick=function(){
+		console.log(this.id);
+	}  */
+	//DOM2级事件处理程序
+	
+	$div1.addEventListener('click',function(){
+		console.log(this.id+"捕获");
+		},true);//捕获
+	$div1.addEventListener('click',function(){
+			console.log(this.id+"冒泡");
+			},false);//冒泡
+	$div2.addEventListener('click',function(){
+		console.log(this.id+"冒泡");
+		},false);
+	$div2.addEventListener('click',function(){
+		console.log(this.id+"捕获");
+		},true);
+	
+	
+	$div3.addEventListener('click',function(){
+		console.log(this.id+"冒泡");
+		},false);
+	$div3.addEventListener('click',function(){
+		console.log(this.id+"捕获");
+		},true);
+	
+}
+
+</script>
+</body>
+</html>

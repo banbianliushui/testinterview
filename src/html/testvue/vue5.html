@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<input v-focus>
+
+<div id="hook-arguments-example" v-demo:hello.a.b="message"></div>
+<script type="text/javascript">
+Vue.directive('demo',{
+	bind:function(el,binding,vnode){
+		console.log("这里是bind")
+		var s = JSON.stringify;
+		el.innerHTML =
+			'name:' +s(binding.name)+'<br>'+
+			'value:'+s(binding.value)+'<br>'+
+			'expression:'+s(binding.expression)+'<br>'+
+			'argument:'+s(binding.arg)+'<br>'+
+			'modifiers:'+s(binding.modifiers)+'<br>'+
+			'vnode keys:'+Object.keys(vnode).join(',')			
+	},
+	inserted:function(el){
+		console.log("这里是inserted")
+	},
+	update:function(el){
+		console.log("这里是update")
+	}
+	,
+	componentUpdated:function(el){
+		console.log("ComponentUpdated")
+	},
+	unbind:function(el){
+		console.log("unbind")
+	}
+})
+
+var app6=new Vue({
+	el:'#hook-arguments-example',
+	data:{
+		message:'hello!'
+	}
+})
+
+
+
+Vue.directive('focus',{
+	inserted:function(el){
+		el.focus()
+	}
+})
+</script>
+</body>
+</html>

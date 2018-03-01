@@ -1,0 +1,80 @@
+<import src="../widget/we-cropper/we-cropper.wxml"/>
+<view id="container">
+ 
+  <view class="">
+    <view class='tc-rect-bg' id='tc-rect-bg'>
+    
+      <view class="cropper-wrapper">
+        <template is="we-cropper" data="{{...cropperOpt}}"/>
+        <view class="cropper-buttons {{cropperBtnhide}}">
+          <view
+                  class="upload"
+                  bindtap="uploadTap">
+             
+              <image src='https://nymyzp.rmwn.com/mpimages/02%E5%88%87%E5%9B%BE/%E6%B7%BB%E5%8A%A0%E7%85%A7%E7%89%87@2x.png' style='width:72rpx;height:72rpx;'/>
+          </view>
+         <!-- <view
+                  class="getCropperImage"
+                  bindtap="getCropperImage">
+              生成图片
+          </view>
+          -->
+        </view>
+</view>
+    </view>
+  </view>
+  <view class="tc-sel-wrap">
+   <!--<view class="tc-radio-group">
+      <label class="tc-radio-line "  bindtap="radioChange" data-privacy="0" >
+        <image class="tc-radio-icon"  wx:if="{{privacy == 0}}" src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E2%80%98-%E5%89%AF%E6%9C%AC@2x.png">  </image>
+         <image class="tc-radio-icon" wx:else src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E2%80%98@2x.png">  </image>
+        <image  class="tc-opt-img" src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E4%BB%85%E5%A5%BD%E5%8F%8B%E5%8F%AF%E8%A7%81@2x.png"></image>
+      </label>
+      <label class="tc-radio-line " bindtap="radioChange"  data-privacy="1" >
+        <image class="tc-radio-icon" wx:if="{{privacy == 1}}" src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E2%80%98-%E5%89%AF%E6%9C%AC@2x.png">  </image>
+        <image class="tc-radio-icon" wx:else src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E2%80%98@2x.png">  </image>
+        <image   class="tc-opt-img" src="https://nymyzp.rmwn.com/mpimages/006%E5%88%87%E5%9B%BE/%E6%89%80%E6%9C%89%E4%BA%BA%E5%8F%AF%E8%A7%81@2x.png"></image>
+      </label>
+  
+    </view>--> 
+    <view class="tc-photo-bottom "      >
+            
+
+ <view style='text-align:center;'>
+    <view class='tc-make-btnouter'  bindtap="getCropperImage" >
+    <button class="weui-btn getCropperImage">保存</button>  
+    </view>  
+  </view>
+
+        <view  class='tc-shareImage' hidden='true'>
+        <button plain='true'
+data-video_brand="{{wxalddata.video_brand}}"
+data-video_icon="{{wxalddata.video_icon}}"
+data-video_image="{{wxalddata.video_image}}"
+data-video_title="{{wxalddata.video_title}}"
+data-video_play="{{wxalddata.video_play}}"
+data-video_category="{{wxalddata.video_category}}"
+data-video_title_lower="{{wxalddata.video_title_lower}}"
+bindtap="aldminishare"
+data-template_key="721f6f206b5ccf01e8b301c80b455d7b"></button>
+        </view>
+
+    </view>
+    
+  </view>
+</view>
+
+<!--<cover-view class="page tc-simple-modal {{uploadSuccesscls}}">
+  <cover-view class="tc-modal-bgouter">
+    <cover-image  class="tc-modal-bgimg" src="https://nymyzp.rmwn.com/mpimages/%E5%88%86%E4%BA%AB%E7%95%8C%E9%9D%A2_%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F/%E7%BB%84-9@2x.png" mode="aspectFit"></cover-image>
+      <cover-view class='tc-modal-body'>
+          <cover-image  class="tc-usuccess-img" src="https://nymyzp.rmwn.com/mpimages/%E5%88%86%E4%BA%AB%E7%95%8C%E9%9D%A2_%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F/%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F@2x.png"></cover-image>-->
+          <!--<cover-view class='tc-ushare-img'  >
+          <button open-type="share" plain="true"></button>
+          </cover-view>-->  
+  <!--<cover-image  open-type="share" class="tc-ushare-img" src="https://nymyzp.rmwn.com/mpimages/%E5%88%86%E4%BA%AB%E7%95%8C%E9%9D%A2_%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F/%E5%9B%BE%E5%B1%82-67@2x.png" bindtap='onShareAppMessage'></cover-image>
+        <cover-image  class="tc-ushare-text" src="https://nymyzp.rmwn.com/mpimages/%E5%88%86%E4%BA%AB%E7%95%8C%E9%9D%A2_%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F/%E5%88%86%E4%BA%AB%E5%A5%BD%E5%8F%8B@2x.png"></cover-image>
+      </cover-view>
+  </cover-view>    
+</cover-view>-->
+

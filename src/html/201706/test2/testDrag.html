@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+.outer{
+background:#fffccc;
+border:6px solid #b52a23;
+margin:5px;
+padding:15px;
+    word-wrap: break-word;
+        box-sizing: content-box;
+
+}
+.pic{
+width:200px;
+height:200px;
+border:20px solid #46b7b7;
+margin:5px;
+padding:15px;
+    background: #e1edf7;
+}
+.pic1{
+    width: 400px;
+    height: 400px;
+    border: 10px solid #67b746;
+    margin: 5px;
+    padding: 25px;
+    background: #bdde7a;
+}
+.modal{
+width:200px;
+height:200px;
+border:20px solid #46b7b7;
+/* margin:5px; */
+padding:15px;
+    background: #e1edf7;
+    position:fixed;
+        box-sizing: content-box;
+}
+.title{
+padding:5px;
+  background: #bdde7a;
+      box-sizing: content-box;
+}
+</style>
+</head>
+<body>
+<!-- <div class="outer"> -->
+
+	<div class="modal">
+		<div class="title">ekjfkej</div>
+		<div class="content">这里是内容</div>
+	</div>
+<!-- 	<div class="pic1"></div>
+</div> -->
+
+</body>
+<script>
+window.onload=function(){
+	Drag(document.getElementsByClassName("title")[0],document.getElementsByClassName("modal")[0])
+}
+function Drag(focdiv,dragdiv,opt){
+	var option={
+			layerX:0,/*鼠标触发点相对于触发元素的X位置*/
+			fLeft:0,/*父级元素到触发元素的x长度距离（父级元素的左上点和触发元素左上点之间的距离，包括父级元素的margin+border+padding）, x+layerX触发时移动元素到鼠标的距离*/
+			layerY:0,
+			fTop:0,
+			bTop:0,/*触发元素的borderTOP*/
+			bLeft:0			
+	};
+	if(opt){
+		for(var o in opt){
+			option[o]=opt[o];
+		}
+	}
+	var util={
+			isIE:function(){
+				if(((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent
+						.indexOf('Opera') < 0))
+						|| (navigator.userAgent.indexOf('Trident') >= 0)){
+					return true;
+				}
+				else return false;
+			},
+			getCss:function(obj ,attr){
+				//currentStyle
+				
+				return obj.currentStyle?obj.currentStyle[attr]:document.defaultView.getComputedStyle(obj,false)[attr];
+			}
+	};
+	var page={
+			event:function(e){
+				return e||window.event;
+			},
+			
+			pageX:function(e){
+				//获取鼠标在文档页面中的鼠标位置
+				//documentElement chrome 不能获得值检查对应html标签
+				e=this.event(e);
+				var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+				 //表示内容区域的左上角相对于整个元素左上角的位置（包括边框）,获取body元素对象的左边框的宽度。
+				var clientLeft=document.documentElement.clientLeft||document.body.clientLeft;
+			
+				//return e.pageX|| e.clientX+scrollLeft-clientLeft;
+				return e.clientX;
+			},
+			pageY:function(e){
+				e=this.event(e);
+				//documentElement chrome 不能获得值检查对应html标签
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				 //表示内容区域的左上角相对于整个元素左上角的位置（包括边框）,获取body元素对象的上边框的宽度。
+				var clientTop=document.documentElement.clientTop||document.body.clientTop;
+				// return e.pageY|| e.clientY
+				 return  e.clientY;
+			},
+			layerX:function(e){
+				e=this.event(e);
+				//,鼠标相比较于触发事件的元素的位置
+				//offsetX
+			/* 	return e.offsetX ?  ((util.getCss(dragdiv,"marginLeft")!="auto"&&util.getCss(dragdiv,"marginLeft")!="")? 
+						e.offsetX-parseInt(util.getCss(dragdiv,"marginLeft")): e.offsetX ) :  e.layerX; */
+						return  e.offsetX
+			},
+			layerY:function(e){
+				e=this.event(e);
+				return e.offsetY ?  ((util.getCss(focdiv,"marginTop")!="auto"&&util.getCss(focdiv,"marginTop")!="")? 
+						e.offsetY-parseInt(util.getCss(focdiv,"marginLeft")): e.offsetY ) :  e.layerY;
+				//return e.offsetY|| e.layerY;
+			},
+			
+			getouterLeft:function(){
+				var left=0;
+				var mleft=util.getCss(dragdiv,"marginLeft");
+				/* if(mleft!="auto"&&mleft!=""){
+					left+=parseInt(mleft);
+				} */
+				var pleft=util.getCss(dragdiv,"paddingLeft");
+				if(pleft!="auto"&&pleft!=""){
+					left+=parseInt(pleft);
+				}
+				var bleft=util.getCss(dragdiv,"borderLeft");
+				if(bleft!="auto"&&bleft!=""){
+					left+=parseInt(bleft);
+				}
+				return left;
+			},
+			getouterTop:function(){
+				var Top=0;
+				var mtop=util.getCss(dragdiv,"marginTop");
+				/* if(mtop!="auto"&&mtop!=""){
+					Top+=parseInt(mtop);
+				} */
+				var pleft=util.getCss(dragdiv,"paddingTop");
+				if(pleft!="auto"&&pleft!=""){
+					Top+=parseInt(pleft);
+				}
+				var bleft=util.getCss(dragdiv,"borderTop");
+				if(bleft!="auto"&&bleft!=""){
+					Top+=parseInt(bleft);
+				}
+				return Top;
+			}
+	};
+	var x=0;y=0;
+	focdiv.onmousedown=function(e){
+		var e = e||window.event;
+		var option={
+				layerX:0,
+				fLeft:0,
+				layerY:0,
+				fTop:0,
+				bTop:0,/*触发元素的borderTOP*/
+				bLeft:0			
+		};
+		x=page.pageX(e);
+		y=page.pageY(e);
+		var layx=page.layerX(e)+page.getouterLeft();
+		var layy=page.layerY(e)+page.getouterTop(); 
+		
+		if(focdiv.setCapture){
+			focdiv.setCapture();
+		}else if(window.captureEvents){
+			window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+		}
+		
+		//不劫持选择文本事件，有时候标题文本被选中后拖拽， 移动过程中mousemove没有及时触发，
+		//等到移动结束后移动的窗口一次性移动.mouseup也无法触发
+		 if (typeof(focdiv.onselectstart) != "undefined") {        
+		    // IE下禁止元素被选取        
+		    focdiv.onselectstart = new Function("return false");        
+		} else {
+		    // firefox下禁止元素被选取的变通办法        
+		    focdiv.onmousedown = new Function("return false");        
+		    focdiv.onmouseup = new Function("return true");        
+		}  
+		console.log("mouse down pagex=",x,page.pageX(e),"pagey=",y,page.pageY(e),"layerx=","layx=",layx,"layy=",layy)
+		document.onmousemove=function(e){
+			/* var top=0;
+			var left=0;
+			if(dragdiv.style.top!="auto"&&dragdiv.style.top!=""){
+				top=dragdiv.style.top;
+			}
+			if(dragdiv.style.left!="auto"&&dragdiv.style.left!=""){
+				left=dragdiv.style.left;
+			}			
+			 */
+			console.log("mouse movepagex=",x,page.pageX(e),"pagey=",y,page.pageY(e),"layerx=","layx=",layx,"layy=",layy)
+		//dragdiv.style.position="absolute";
+			 var left =(page.pageX(e)-layx);
+			 var top=(page.pageY(e)-layy);
+			 //var p
+			 var outerH=document.body.scrollHeight||document.documentElement.scrollHeight;
+			 var outerW=document.body.scrollWidth||document.documentElement.scrollWidth;
+			 var fH=dragdiv.scrollHeight;
+			 var fW=dragdiv.offsetWidth;
+			 if(left>0-fW/2&&left<outerW-fW/2){				
+				 //left=page.pageX(e)-layx;
+			 }else if(left<0-fW/2){
+				 left=0-fW/2;
+			 }else if(left>outerW-fW/2){
+				 left=outerW-fW/2;
+			 }
+			 if(top>0&&top<outerH-fH){
+				// top=page.pageY(e)-layy;
+			 }else if(top<0){
+				 top=0;
+			 }else if(top>outerH-fH){
+				 top=outerH-fH;
+			 }
+			 console.log("mouse move left=",left,"top=",top);
+			dragdiv.style.left=left+"px";
+			dragdiv.style.top=top+"px";
+		}
+		document.onmouseup=function(e){
+			
+			if(focdiv.releaseCapture){
+				focdiv.releaseCapture();
+			}else if(window.releaseEvents){
+				window.releaseEvents(Event.MOUSEMOVE|Event.MOUSEUP);
+			}
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		
+	}
+}
+
+</script>
+</html>

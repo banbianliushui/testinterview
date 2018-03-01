@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<script>
+
+
+MyPlugin.install = function(Vue,options){
+	Vue.myGlobalMethod=function(){
+		
+	}
+	Vue.directive('my-directive',{
+		bind(el,binding,vnode,oldVnode){
+			
+		}
+	})
+	Vue.mixin({
+		created:function(){
+			
+		}
+	})
+	Vue.prototype.$myMethod = function(options){
+		
+	}
+}
+
+Vue.use(MyPlugin,{someOption:true})
+
+</script>
+
+</body>
+</html>

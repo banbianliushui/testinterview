@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+
+.out{
+	width:100%;
+	height:200px;
+}
+.imgback{
+	background:url(cha.jpg) no-repeat;
+	    height: 100%;
+    background-size: 100% 100%;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='cha.jpg', sizingMethod='scale')\9; 
+    
+}
+.out2{
+	padding-top: 30px;
+    background: #883432;
+    height: 100px;
+}
+
+.prev{
+	margin-left:50px;
+	width: 40px; 
+	height: 40px; 
+	transform: rotate(-45deg); 
+	-o-transform: rotate(-45deg); 
+	-webkit-transform: rotate(-45deg); 
+	-moz-transform: rotate(-45deg); 
+	border-top:3px solid white;
+	border-left:3px solid white;
+	display: inline-block;
+ 	filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.707,M12=0.707,M21=-0.707,M22=0.707,SizingMethod='auto expand');
+
+}
+.next{
+	margin-left:50px;
+	width: 40px; 
+	height: 40px; 
+	transform: rotate(135deg); 
+	-o-transform: rotate(135deg); 
+	-webkit-transform: rotate(135deg); 
+	-moz-transform: rotate(135deg); 
+	border-top:3px solid white;
+	border-left:3px solid white;
+	display: inline-block;
+	filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.707,M12=-0.707,M21=0.707,M22=-0.707,SizingMethod='auto expand');
+}
+</style>
+<body>
+<div class='out'>
+ <div class='imgback'></div>
+ 
+</div>
+<div class='out2'>
+	<div class='prev'></div>
+	<div class='next'></div>
+</div>
+</body>
+</html>

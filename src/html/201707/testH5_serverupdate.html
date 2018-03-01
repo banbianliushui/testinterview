@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+</head>
+<body>
+<h1>获得服务器更新</h1>
+<div id="result"></div>
+<button id="clic">获取时间</button>
+<script>
+$(document).ready(function(){
+	$("#clic").on('click',function(){
+		$.ajax({
+			url:"http://localhost:8080/interviewTest/TMservlet",
+			success:function(data){
+				console.log("-----",data);
+			}
+		})
+	})
+});
+if(typeof(EventSource)!=="undefined")
+{
+	//TMservlet
+	//
+var source=new EventSource("../TMservlet");
+source.onmessage=function(event)
+  {
+  document.getElementById("result").innerHTML+=event.data + "<br />";
+  };
+}
+else
+{
+document.getElementById("result").innerHTML="抱歉，您的浏览器不支持 server-sent 事件 ...";
+} 
+/* if(typeof(EventSource)!=="undefined")
+  {
+	//TMservlet
+	//
+  var source=new EventSource("../TMservlet");
+  source.onmessage=function(event)
+    {
+    document.getElementById("result").innerHTML+=event.data + "<br />";
+    };
+  }
+else
+  {
+  document.getElementById("result").innerHTML="抱歉，您的浏览器不支持 server-sent 事件 ...";
+  } */
+</script>
+
+</body>
+</html>

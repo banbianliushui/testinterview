@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+<style type="text/css">
+
+.pieouter {
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	  z-index: 1; 
+}
+
+.rclip {  clip:rect(0px, 120px,120px, 60px); 
+	
+}
+
+.lclip {  clip:rect(0px, 60px, 120px, 0px);
+	
+}
+
+.pie-c {
+	width: 120px;
+	height: 120px;
+	border: 20px solid #DADADA;
+	border-radius: 50%;
+	position: absolute;
+	
+}
+
+.pie-bg {
+/* 	width: 120px;
+	height: 120px;
+	border: 20px solid #Fe212b;
+	border-radius: 50%;
+	color: #Fe212b;
+	text-align: center;
+	line-height: 80px; */
+	width: 118px;
+    height: 118px;
+    border: 18px solid #Fe212b;
+    border-radius: 50%;
+    color: #Fe212b;
+    text-align: center;
+    line-height: 80px;
+    position: relative;
+    top: 1px;
+    left: 1px;
+        font-size: 0.75rem;
+}
+
+.pieright {
+	clip: rect(0px, 120px, 120px, 60px);
+}
+
+.pieleft {
+	clip: rect(0px, 60px, 120px, 0px);
+}
+
+.pieprogress {
+	position: relative;
+	margin: auto;
+	display: block;
+	width: 120px;
+	    height: 6.5rem;
+}
+.analy-iteminner {
+	text-align: center;
+	/* margin: 0.45rem 0rem 0.35rem 0rem; */
+	padding-top: 0.4rem;
+	padding-bottom: 0.35rem;
+}
+</style>
+</head>
+<div class="analy-iteminner">
+							<div class="pieprogress">
+								<div class="pieouter rclip ">
+									<div class="pie-c pieright"> </div>
+								</div>
+								<div class="pieouter lclip ">
+								<div class="pie-c pieleft"> </div>
+								</div>
+								<div class="pie-bg payrate"></div>
+							</div>
+							<div class='txt-gray1 ' >付款率</div>
+
+						</div>
+<body>
+<script type="text/javascript">
+
+var sumpaymentnum=100;
+var sumtradenum=130;
+
+var deg = 0;
+if (sumtradenum != 0) {
+	deg = (sumpaymentnum / sumtradenum) * 360;
+}
+
+if (deg > 180) {
+	var dde = deg - 180;
+	$(" .pieright").css("-o-transform",
+			"rotate(" + 180 + "deg)");
+	$(" .pieright").css("-moz-transform",
+			"rotate(" + 180 + "deg)");
+	$(" .pieright").css("-webkit-transform",
+			"rotate(" + 180 + "deg)");
+	$(" .pieleft").css("-o-transform",
+			"rotate(" + dde + "deg)");
+	$(" .pieleft").css("-moz-transform",
+			"rotate(" + dde + "deg)");
+	$(" .pieleft").css("-webkit-transform",
+			"rotate(" + dde + "deg)");
+} else {
+	$(" .pieright").css("-o-transform",
+			"rotate(" + deg + "deg)");
+	$(" .pieright").css("-moz-transform",
+			"rotate(" + deg + "deg)");
+	$(" .pieright").css("-webkit-transform",
+			"rotate(" + deg + "deg)");
+	$(" .pieleft").css("-o-transform",
+			"rotate(" + 0 + "deg)");
+	$(" .pieleft").css("-moz-transform",
+			"rotate(" + 0 + "deg)");
+	$(" .pieleft").css("-webkit-transform",
+			"rotate(" + 0 + "deg)");
+}
+
+</script>
+</body>
+</html>

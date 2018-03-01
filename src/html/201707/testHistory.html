@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+a{
+background:red;
+margin:5px 10px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+<a id='goback'>huitui</a>
+<a id='new'>new history</a>
+<a id='refresh'>refresh</a>
+<div id='page'>mu qian wei </div>
+<script type="text/javascript">
+
+
+//存储当前历史记录点
+//存储的方式类似于数组的入栈（Array.push()），在window.history里新增一个历史记录点
+//pushState(data, title[,url])、replaceState(data, this [,url])
+var i=0;
+document.getElementById("new").onclick=function(){
+	i++;
+	var state={
+			title:"eee"+i,
+			url:"",
+			page:"dfdfdf"+i,
+			time:new Date().getTime()
+	}
+	document.getElementById("page").innerHTML=state.page;
+	history.pushState(state,state.title);
+}
+document.getElementById("refresh").addEventListener("click",function(){
+	i++;
+	var state={
+			title:"eeerefresh"+i,
+			url:"",
+			page:"dfdfdfrefresh"+i,
+			time:new Date().getTime()
+	}
+	document.getElementById("page").innerHTML=state.page;
+	history.replaceState(state,state.title);
+})
+document.getElementById("goback").onclick=function(){
+	/* i++;
+	var state={
+			title:"eee"+i,
+			url:"",
+			page:"dfdfdf"+i,
+			time:new Date().getTime()
+	}
+	document.getElementById("page").innerHTML=state.page;
+	history.pushState(state,state.title); */
+	history.back();
+}
+/* history.placeState();
+history.go(-1);
+history.back(); */
+window.addEventListener("popstate",function(){
+	var json=window.history.state;
+	document.getElementById("page").innerHTML=json.page;
+})
+/* history.onpopstate=function(){
+	var json=window.history.state;
+	document.getElementById("page").innerHTML=json.page;
+} */
+
+
+</script>
+
+</body>
+</html>

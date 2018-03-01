@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+
+var re = /a/gi;
+/* re.test("4addaeea");
+console.log(re.lastIndex); */
+var r=new RegExp("a",'g');
+/* r.test("4addaeea");
+console.log(r.lastIndex); */
+var st="da 4sa 7ad";
+var result;
+while ((result = r.exec(st)) != null)  {
+	  document.write(result);
+	  document.write("<br />");
+	  document.write(r.lastIndex);
+	  document.write("<br />");
+	 }
+var str = "Visit W3School, W3School is a place to study web technology."; 
+var patt = new RegExp("W3School","g");
+var result;
+
+while ((result = patt.exec(str)) != null)  {
+  document.write(result);
+  document.write("<br />");
+  document.write(patt.lastIndex);
+  document.write("<br />");
+ }
+ 
+var str="1 plus 2 equal 3";
+var ma=str.match(/\d+/g);
+	document.write(ma)
+</script>
+</body>
+</html>

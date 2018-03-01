@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="jquery-2.0.3.js"></script>
+</head>
+<body>
+<div id="kk" style="padding:10px;background:red;">
+<div id="cc" style="padding:10px;background:orange;">sdfsdf</div></div>
+
+<script type="text/javascript">
+$(function(){
+	$("body").on('click',"#kk",function(){
+		console.log(this)
+		console.log($(this))
+	})
+})
+
+</script>
+
+</body>
+</html>

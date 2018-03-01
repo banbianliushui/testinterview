@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="../static/libs/easyui/themes/gray/easyui.css">
+<script type="text/javascript" src="../static/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="../static/libs/easyui/jquery.easyui.min.js"></script>
+
+<script type="text/javascript" src="../static/libs/easyui-datagridview/datagrid-defaultview.js"></script>
+<script type="text/javascript" src="../static/libs/easyui-datagridview/datagrid-bufferview.js"></script>
+<script type="text/javascript" src="../static/libs/easyui-datagridview/datagrid-groupview.js"></script>
+<script type="text/javascript" src="../static/libs/easyui-datagridview/datagrid-detailview.js"></script>
+<script type="text/javascript" src="../static/libs/easyui-datagridview/datagrid-scrollview.js"></script>
+
+<!-- static/libs/easyui/themes/gray/easyui.css -->
+
+<!-- static/libs/easyui/jquery.easyui.min.js -->
+<!-- static/libs/portal/bootstrap/js/bootstrap-table.js -->
+<!-- <script type="text/javascript" src="datagrid-detailview.js"></script> -->
+<!-- jquery.edatagrid -->
+<style>
+#tb1 div{
+display:inline-block;
+}
+</style>
+</head>
+<body>
+
+
+
+<p>复杂工具栏</p>
+<table id="t2"></table>
+<div id="tb1">
+	<div>
+	<input type="checkbox">
+	<div>
+	<label>排序：</label>
+	<input id='area_com' prompt="面积" class="easyui-combobox" style="width:100px"
+				url="area_combobox_data.json"
+				valueField="value" textField="text"  >
+	<input id='yye_com' prompt="营业额" class="easyui-combobox" style="width:100px"
+	url="area_combobox_data.json"
+	valueField="value" textField="text"  >
+	<input id='tze_com' prompt="投资额" class="easyui-combobox" style="width:100px"
+	url="area_combobox_data.json"
+	valueField="value" textField="text"  >
+	</div>
+	</div>
+	<div>
+	<div>共计<span id="allnum">133</span>个</div>
+	<div><a>地图</a><a>分析</a></div>
+	</div>
+</div>
+<p>table 简单</p>
+<table id = "t1" class="easyui-datagrid" style="width:500px;height:250px;"
+ title="load data" iconCls="icon-save" rownumber="false" pagination="true">
+<!-- <thead>
+<tr><th field="filename" width="">文件名称</th>
+<th field="filetype" width="80">文件类型</th>
+<th field="unit" width="80">发布单位</th>
+<th field="status" width="50">发布状态</th>
+<th field="date" width="120">提交日期</th>
+</thead> -->
+
+</table>
+<script type="text/javascript">
+$(function(){
+	
+	$('#area_com').combobox({
+	   // url:'combobox_data.json',
+	   // valueField:'id',
+	   // textField:'text'
+		onSelect:function(selobj){
+		/* 	$.ajax({type:"post",
+				url:"/marketsystem-war/test_getdata.action",
+				data:{order:"desc"},
+				dataType:"json",
+				success:function(data){
+					$("#t2").datagrid("");
+				},error:function(){
+				
+				}}); */
+				var sort="asc";
+				if(selobj.value&&Number(selobj.value)>1000){
+					sort="desc";
+				}
+			$("#t2").datagrid("load",{order:sort});
+
+			
+		}
+	});
+	$("#t2").datagrid({
+		url:"/marketsystem-war/test_getdata.action",
+		loadMsg:"加载中...",
+		toolbar:"#tb1",
+		loadFilter:function(data){
+			console.log(data);
+			//您可以把原始数据变成标准数据格式。该函数必须返回标准数据对象，含有 'total' 和 'rows' 属性。
+			//return JSON.parse(data);	
+				var pagin=$('#t1').datagrid('getPager')	;
+		var $pagnum=$(pagin[0]).find(".pagination-num");
+		/* $pagnum.parent().prev(); */
+			return {rows:data,total:data.length};	
+		},
+		columns:[[{checkbox:true,width:30,field:'id'},{field:'filename',title:'文件名称',width:100,sortable:true},
+					{field:'filetype',title:'类型',width:80,align:'right',sortable:true},
+					{field:'unit',title:'发布单位',align:'right',sortable:true},
+					{field:'status',title:'发布状态',width:80,sortable:true,
+						formatter:function(val,row,index){
+							if(val=="未发布"){
+								return '<span style="color:#43b3f7;">'+val+'</span>' ;
+							}
+							return val;
+						}},
+					{field:'date',title:'提交日期',width:120,align:'center'},
+					{field:'filepath',title:'操作',formatter:function(val,row,index){
+						return '<a target="_blank" href="'+val+'">'+'查看'+'</a>';
+					}}
+						]	]
+		
+	});
+	
+	$('#t1').datagrid({
+		//url:"datagrid_data.json",
+		url:"/marketsystem-war/test_getdata.action",
+		loadMsg:"加载中...",
+		pagination:true,
+		/* beforePageText:"当前页",
+		afterPageText:"共{}",没用 好像不能直接在datagrid上加
+		displayMsg:"sdfds", */
+		queryParams:{order:"desc"},
+		/* loader {param,success:function(data){},error:function(){}}
+		:function(param){
+			
+		}, */
+		loadFilter:function(data){
+			console.log(data);
+			//您可以把原始数据变成标准数据格式。该函数必须返回标准数据对象，含有 'total' 和 'rows' 属性。
+			//return JSON.parse(data);	
+				var pagin=$('#t1').datagrid('getPager')	;
+		var $pagnum=$(pagin[0]).find(".pagination-num");
+		/* $pagnum.parent().prev(); */
+			return {rows:data,total:data.length};	
+		},
+		columns:[[{field:'filename',title:'文件名称',width:100,sortable:true},
+					{field:'filetype',title:'类型',width:80,align:'right',sortable:true},
+					{field:'unit',title:'发布单位',align:'right',sortable:true},
+					{field:'status',title:'发布状态',width:80,sortable:true,
+						formatter:function(val,row,index){
+							if(val=="未发布"){
+								return '<span style="color:#43b3f7;">'+val+'</span>' ;
+							}
+							return val;
+						}},
+					{field:'date',title:'提交日期',width:120,align:'center'},
+					{field:'filepath',title:'操作',formatter:function(val,row,index){
+						return '<a target="_blank" href="'+val+'">'+'查看'+'</a>';
+					}}
+						]	]
+	});
+
+	
+	
+/* 	$('#t1').datagrid('load',{
+		url:"datagrid_data.json",
+		itemid: $('#itemid').val(),
+		productid: $('#productid').val()
+	}); */
+	//    color: #43b3f7;
+	
+	/*  $('#tt').datagrid({
+		title:'DataGrid -defaultview',
+		width:500,
+		height:250,
+		rownumbers:true,
+		remoteSort:false,
+		nowrap:false,
+		fitColumns:true,
+		url:'datagrid_data.json',
+		columns:[[
+			{field:'filename',title:'文件名称',width:100,sortable:true},
+			{field:'filetype',title:'类型',width:80,align:'right',sortable:true},
+			{field:'unit',title:'发布单位',width:80,align:'right',sortable:true},
+			{field:'status',title:'发布状态',width:80,sortable:true},
+			{field:'date',title:'提交日期',width:120,align:'center'}
+		]] ,
+		view: detailview 
+	});  */
+
+})
+
+</script>
+</body>
+</html>

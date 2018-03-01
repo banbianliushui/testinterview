@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">{{message}}</div>
+<div id="app-2">
+	<span v-bind:title="message1">
+	 鼠标悬停几秒钟查看此处动态绑定的提示信息！
+	</span>
+</div>
+<div id="app-3">
+<p v-if="seen">看到？</p><!-- 当seen属性值为false时，P标签被移除 -->
+</div>
+<div id="app-5">
+<p>{{message}}</p>
+<button v-on:click="reverseMessage">逆转消息</button>
+</div>
+<div id="app-6">
+<p>{{message}}</p>
+<input v-model="message">
+</div>
+<div>
+<ol id="app-7">
+<!-- 创建一个todo-item组件的实例 -->
+<todo-item v-for="item in groceryList"  v-bind:todo="item"  v-bind:ms1="ms"></todo-item>
+<!-- <todo-item v-for="item in friutList"  v-bind:ms1="item"></todo-item> -->
+</ol>
+</div>
+<div id="app-8" v-bind:class="classobj"></div>
+
+<div id="app-9">
+<template v-if="loginType === 'username'">
+  <label>Username</label>
+  <input placeholder="Enter your username">
+</template>
+<template v-else>
+  <label>Email</label>
+  <input placeholder="Enter your email address">
+</template>
+
+</div>
+
+<div id="app-10">
+<span v-for="n in 10">{{n}}</span>
+</div>
+<div id="app-11" >
+<div v-for="item in items" :key="item.id">{{item.text}}</div>
+ <select v-model="selected">
+<option value="abg">ABC</option>
+<option value="ccc">CCC</option>
+</select>
+  <span>Selected: {{ selected }}</span>
+  </div>
+  
+  <div id="app-12">
+  <select v-model="selected">
+  <option v-for="option in options" v-bind:value="option.value">
+    {{ option.text }}
+  </option>
+</select>
+<span>Selected: {{ selected }}</span>
+<input v-model.number="age" type="number">
+</div>
+<div id="app-13">
+  <input v-model="parentMsg">
+  <br>
+  <child v-bind:my-message="parentMsg"></child>
+</div>
+<script type="text/javascript">
+
+Vue.component('child', {
+	  // camelCase in JavaScript
+	  props: ['myMessage'],
+	  template: '<span>{{ myMessage }}</span>'
+	})
+
+var app13= new Vue({
+	el:"#app-13",
+	data:{
+		parentMsg:"eee"/* ,
+		'my-message':"深刻的风景看" */
+		
+	}
+})
+var app12 =new Vue({
+	  
+	el: '#app-12',
+	  data: {
+	    selected: 'A',
+	    age:123,
+	    options: [
+	      { text: 'One', value: 'A' },
+	      { text: 'Two', value: 'B' },
+	      { text: 'Three', value: 'C' }
+	    ]
+	  }
+	})
+
+
+
+var app11 = new Vue({
+	el:"#app-11",
+	data:{
+		selected:"ccc",
+		items:[{id:1,text:"Lindsey"},
+		       {id:3,text:"LSDJK"},
+		       {id:3,text:"LSDJK"}]
+	}
+})
+var app10 = new Vue({
+	el:"#app-10"
+});
+
+
+var app8 = new Vue({
+	el:"#app-8",
+	data:{
+		isActive:true,
+		error:null,
+		classobj:"hahah"
+	},
+	computed:{
+		classobj:function(){
+			return {
+				active:this.isActive&&!this.error,
+				'text-danger':this.error&& this.error.type === 'fatal',
+			}
+		}
+	}
+})
+Vue.component('todo-item',{
+	props:['todo','ms1'],//对应模板中的属性
+	template:'<li>{{ms1}}这是个代办{{todo.text}}</li>'
+});
+var  app7 = new Vue({
+	el:"#app-7",
+	data:{
+		ms:"grocery杂货店",
+		groceryList:[{text:"蔬菜",id:"44"},{text:"水果",id:"54"}],
+		friutList:[{text:"苹果",id:"74"},{text:"香蕉",id:"64"}]
+	}
+});
+//----app6---当input手动清空时，P标签中的内容也为空
+var app6=new Vue({
+	el:"#app-6",
+	data:{
+		message:"还有是的 "
+	}
+})
+
+var app5=new Vue({
+	el:"#app-5",
+	data:{
+		message:"hell 阿胶"
+	},
+	methods:{
+		reverseMessage:function(){
+			this.message = this.message.split('').reverse().join("");
+		}
+	}
+});
+var app3 = new Vue({
+	el:"#app-3",
+	data:{
+		seen:true
+	}
+});
+
+var app2 = new Vue({
+	el:'#app-2',
+	data:{
+		message1:'页面加载于'+new Date()
+	}
+});
+var app = new Vue({
+	el:"#app",
+	data:{
+		message:'heillo vue!'
+	}
+})
+</script>
+</body>
+</html>

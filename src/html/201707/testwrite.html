@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a id='btn'>seaiirie</a>
+<div>ieieiie</div>
+<div id='inner'></div>
+<a id="btn2">anniu</a>
+<script type="text/javascript">
+var a = 10; // 原始值
+
+//但是可以访问方法（就像对象一样）
+alert(a.toString()); // "10"
+
+//此外，我们可以在a上创建一个心属性
+a.test = 100; // 好像是没问题的
+
+//但，[[Get]]方法没有返回该属性的值，返回的却是undefined
+alert(a.test); // undefined
+
+/* function SuperString() {
+	 
+	}
+	 
+	SuperString.prototype = new String("abc");
+	 
+	var foo = new SuperString();
+	 
+	console.log(foo.length); // 3, "abc"的长度
+	 
+	// 尝试掩盖
+	foo.length = 5;
+	console.log(foo.length); // 依然是3
+ */
+/* function A() {
+	  // update newly created object
+	  this.x = 10;
+	  // but return different object
+	  return [1, 2, 3];
+	}
+	 
+	var a = new A();
+	console.log(a.x, a);  */
+
+/* var a = new Number(1);
+var b = new Number(2);
+ 
+alert(a + b); // 3 */
+ 
+// or even so
+ 
+/* var c = {
+  x: 10,
+  y: 20,
+  valueOf: function () {
+    return this.x + this.y;
+  }
+};
+ 
+var d = {
+  x: 30,
+  y: 40,
+  // the same .valueOf
+  // functionality as "с" object has,
+  // borrow it:
+  valueOf: c.valueOf
+};
+ 
+alert(c + d); // 100
+ */
+/* 
+function bar() {
+    alert(x);
+  }
+bar.prototype.x = 10;
+Object.prototype.x = 4;
+bar(); */
+/* function foo() {
+ 
+
+ 
+  function bar() {
+    alert(x);
+  }
+ 
+  bar();
+}
+ 
+Object.prototype.x = 10;
+ 
+foo(); // 20 */
+
+/* var x = 10;
+ 
+function foo() {
+  alert(x);
+}
+ 
+(function () {
+  var x = 20;
+  foo(); // 10, but not 20
+})();
+ *//* var bb = 1;
+function aa(bb){
+	bb=2;
+	alert(bb);
+}
+aa(bb);
+alert(bb); */
+/* document.write("<script>alert('aaa')<"+"/script>"); */
+/* document.write("你好");
+document.getElementById("inner").innerHTML="<div>ddd</div>";
+document.getElementById("btn").onclick=function(){
+	document.write("最后添加","<div>zuihou1</div>");
+}
+document.getElementById("btn2").onclick=function(){
+	window.open("https://www.baidu.com/","自负你还有","width=400,height=500,toolbar=false");
+} */
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+margin:0px;}
+.outer{
+background:#fffccc;
+border:6px solid #b52a23;
+margin:5px;
+padding:15px;
+    word-wrap: break-word;
+    position:relative;
+
+}
+.pic{
+width:200px;
+height:200px;
+border:20px solid #46b7b7;
+margin:5px;
+padding:15px;
+    background: #e1edf7;
+}
+.pic1{
+    width: 400px;
+    height: 400px;
+    border: 10px solid #67b746;
+    margin: 5px;
+    padding: 25px;
+    background: #bdde7a;
+}
+</style>
+</head>
+
+<body>
+<div class="outer">
+
+	<div class="pic"></div>
+	<div class="pic1"></div>
+</div>
+
+<script type="text/javascript">
+
+document.getElementsByClassName("pic")[0].onclick=function(e){
+	e=e||window.event;
+	this.innerHTML=" pageX="+e.pageX+",clientX="+e.clientX+
+	",offsetX="+e.offsetX+",layerX="+e.layerX+",screenX="+e.screenX+" \n"
+	+ "pageY="+e.pageY+",clientY="+e.clientY+
+		",offsetY="+e.offsetY+",layerY="+e.layerY+",screenY="+e.screenY+",body-scrollTop="+document.documentElement.scrollTop;
+	console.log("pic  pageX=",e.pageX,",clientX=",e.clientX,
+		",offsetX=",e.offsetX,",layerX=",e.layerX,",screenX=",e.screenX, 
+		",pageY=",e.pageY,",clientY=",e.clientY,
+		",offsetY=",e.offsetY,",layerX=",e.layerY,",screenY=",e.screenY,",scrollTop=",document.documentElement.scrollTop);
+	
+	if(e&&e.stopPropagation){
+		e.stopPropagation();
+		e.preventDefault();
+	}else{
+		window.event.returnValue = false;
+		window.event.cancelBubble = true;
+	}
+	return false;
+}
+document.getElementsByClassName("outer")[0].onclick=function(e){
+	//当需要取到鼠标点击相对于层的位置信息时，在ie下可以用event.offsetX, evnet.offsetY，在Firefox下是event.layerX, event.layerY。但是firefox下总是有问题，取到的不是相对于层的坐标，而是pageX,pageY。
+	//Google了半天也没有发现什么解决办法，原来在层中要设置position为absolute或者relative。
+	e=e||window.event;
+	this.innerHTML=" pageX="+e.pageX+",clientX="+e.clientX+
+	",offsetX="+e.offsetX+",layerX="+e.layerX+",screenX="+e.screenX+" \n"
+	+ "pageY="+e.pageY+",clientY="+e.clientY+
+		",offsetY="+e.offsetY+",layerY="+e.layerY+",screenY="+e.screenY+", scrollTop="+document.documentElement.scrollTop;
+	console.log("outer  pageX=",e.pageX,",clientX=",e.clientX,
+			",offsetX=",e.offsetX,",layerX=",e.layerX,",screenX=",e.screenX, 
+			",pageY=",e.pageY,",clientY=",e.clientY,
+			",offsetY=",e.offsetY,",layerX=",e.layerY,",screenY=",e.screenY,",scrollTop=",document.documentElement.scrollTop);
+}
+document.getElementsByClassName("pic1")[0].onclick=function(e){
+	e=e||window.event;
+	this.innerHTML=" pageX="+e.pageX+",clientX="+e.clientX+
+	",offsetX="+e.offsetX+",layerX="+e.layerX+",screenX="+e.screenX+" \n"
+	+ "pageY="+e.pageY+",clientY="+e.clientY+
+		",offsetY="+e.offsetY+",layerY="+e.layerY+",screenY="+e.screenY+", scrollTop="+document.documentElement.scrollTop;
+	console.log("pic1  pageX=",e.pageX,",clientX=",e.clientX,
+			",offsetX=",e.offsetX,",layerX=",e.layerX,",screenX=",e.screenX, 
+			",pageY=",e.pageY,",clientY=",e.clientY,
+			",offsetY=",e.offsetY,",layerX=",e.layerY,",screenY=",e.screenY,",scrollTop=",document.documentElement.scrollTop);
+	if(e&&e.stopPropagation){
+		e.stopPropagation();
+		e.preventDefault();
+	}else{
+		window.event.returnValue = false;
+		window.event.cancelBubble = true;
+	}
+	return false;
+}
+</script>
+
+</body>
+</html>

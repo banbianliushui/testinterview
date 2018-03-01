@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function test(x) {  
+    var i = 0;  
+    return function() {  
+        return x[i++];  
+    }  
+}  
+var next = test(['a', 'b', 'c', 'd']);  
+console.log(next());
+console.log(next());
+/* var outFunc = function() {  
+    var out_name = "outFunc";  
+    var out_num = 130;  
+ 
+    var inFunc = function() {  
+        var in_name = "inFunc";  
+        var in_num = 3;  
+ 
+        alert(out_name);  
+        alert(out_num);  
+        alert(in_name);  
+        alert(in_num);  
+    };  
+ 
+    inFunc();  
+    // 调用 inFunc 函数执行的结果是，弹出:outFunc、130、inFunc、3  
+      
+    alert(out_name);  
+    alert(out_num);  
+    alert(in_name);  // 运行时报错 is not defined
+    alert(in_num);   // 运行时报错 is not defined
+};  
+outFunc();   */
+/* Function.prototype.testBind = function (scope) {
+    var fn = this;                                // this 指向的是调用testBind方法的一个函数
+    return function () {
+        return fn.apply(scope, arguments);
+    }
+};
+var foo = {x: "Foo "};
+var i=0;
+var bar = function (str) {
+	console.log(++i);
+    console.log(this.x+(arguments.length===0?'':str));
+}
+ var testBindBar = bar.testBind(foo);     // 绑定 foo
+testBindBar("Bar!");   */
+
+/* Function.prototype.bind = function (oThis) {
+    if (typeof this !== "function") {
+      // closest thing possible to the ECMAScript 5
+      // internal IsCallable function
+      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var aArgs = Array.prototype.slice.call(arguments, 1), 
+        fToBind = this, 
+        fNOP = function () {},
+        fBound = function () {
+        	console.log("ccc");
+        	console.log(this);
+          return fToBind.apply(this instanceof fNOP
+                                 ? this
+                                 : oThis || this,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+  
+  var obj={val:"dddw"};
+  var fun1obj = {
+		  fun1:function (){
+			  console.log("fun1",this.val)
+		  }
+  }
+  function  funo (){
+	  console.log(this.val)
+  };
+ //funo.prototype
+ fun1obj.fun1.bind(obj);  */
+ 
+/*  function Foo(){ 
+	 console.log(this.val);
+	 } 
+ Foo.prototype = new Foo();//JavaScript 原型继承
+ var foo = new Foo(); 
+ Foo.bind(obj); */
+  /* this.x = 9; 
+  var module = {
+    x: 81,
+    getX: function() { 
+    	return this.x;
+	}
+  };
+
+  module.getX(); // 返回 81
+
+  var retrieveX = module.getX;
+  retrieveX(); // 返回 9, 在这种情况下，"this"指向全局作用域
+
+  // 创建一个新函数，将"this"绑定到module对象
+  // 新手可能会被全局的x变量和module里的属性x所迷惑
+  var boundGetX = retrieveX.bind(module);
+  boundGetX(); // 返回 81 */
+/* function Person(name){
+	  this.nickname = name;
+	  this.distractedGreeting = function() {
+	   setTimeout(function(){
+	      console.log("Hello, my name is " + this.nickname);
+	    }, 500); // <-- this line!
+	  }
+	}
+	 
+	var alice = new Person('Alice');
+	alice.distractedGreeting(); */
+/* var myObject = { value: 100 };  
+var foo = function() {  
+    console.log(this);  
+};  
+foo(); // 全局变量 global  
+foo.apply(myObject); // { value: 100 }  
+foo.call(myObject); // { value: 100 }  
+var newFoo = foo.bind(myObject);  
+newFoo(); // { value: 100 }</span>  */
+/* var o={
+	    f: function () {
+	        var self=this;
+	        var fff=function() {
+	        	console.log(this);
+	            console.log(self.value);  //此时 this 指向的是全局作用域 global/window，因此需要使用 self 指向对象o
+	        };
+	        fff();
+	    },
+	    value: "Hello World!"
+	};
+	o.f(); // Hello World!  */
+
+</script>
+
+</body>
+</html>

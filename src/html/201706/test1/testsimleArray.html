@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+
+var o={0:1,2:"dd",length:2};
+var a=[];
+a.push(1);
+a.push("dd");
+for(var k in o){
+	console.log("similararray=",k,o[k])
+}
+for(var k in a){
+	console.log("array=",k,a[k])
+}
+var b=makeArray(o)
+for(var k in b){
+	console.log("makeArray=",k,b[k])
+}
+function makeArray(c){
+	  try
+
+	  {
+
+	       return	  Array.prototype.slice.call(c);
+
+	      } catch(e) {
+
+	          var	  ret = [], i = 0, len = c.length;
+	          for  (; i < len; i++) {
+	              ret[i] = (c[i]);
+	          }
+	          return  ret;
+
+	      }
+}
+</script>
+
+</body>
+</html>

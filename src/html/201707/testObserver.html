@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="addNewObserver">add new observer</button>
+<input id="mainCheckbox" type="checkbox">
+<div id="observerContainers"></div>
+<script type="text/javascript">
+function ObserverList(){
+	this.observerList=[];
+}
+ObserverList.prototype.add=function(obj){
+	return this.observerList.push(obj)
+}
+
+	ObserverList.prototype.count = function(){
+	  return this.observerList.length;
+	};
+	ObserverList.prototype.get = function( index ){
+	  if( index > -1 && index < this.observerList.length ){
+	    return this.observerList[ index ];
+	  }
+	};
+	ObserverList.prototype.indexOf = function( obj, startIndex ){
+	  var i = startIndex;
+	  while( i < this.observerList.length ){
+	    if( this.observerList[i] === obj ){
+	      return i;
+	    }
+	    i++;
+	  }
+	  return -1;
+	};
+	ObserverList.prototype.removeAt = function( index ){
+	  this.observerList.splice( index, 1 );
+	};
+	ObserverList.prototype.removeIndexAt = function( index ){
+		if(index===0){
+			this.observerList.shift();
+		}else if(index===this.observerList.length-1){
+			this.observerList.pop();
+		}
+		 
+	};
+function extend(obj,extension){
+	for(var key in obj){
+		extension[key]=obj[key];
+	}
+}
+
+	function Subject(){
+		this.observers= new ObserverList();
+	}
+	Subject.prototype.addObserver = function(observer){
+		this.observers.add(observer);
+	}
+	Subject.prototype.removeObserver = function(observer){
+		this.observers.removeIndexAt(this.observers.indexOf(observer,0));
+	}
+	Subject.prototype.Notify=function(context){
+		var observercount = this.observers.count();
+		for(var i =0;i<observercount;i++){
+			this.observers.get(i).update(context);
+		}
+	}
+
+	function Observer(){
+		this.update = function(){
+			
+		}
+	}
+var addBtn= document.getElementById("addNewObserver");
+var controlCheckbox =document.getElementById("mainCheckbox");
+var container =document.getElementById("observerContainers");
+
+extend(new Subject(),controlCheckbox);
+controlCheckbox["onclick"]=new Function("controlCheckbox.Notify(controlCheckbox.checked)");
+addBtn["onclick"]=AddNewObserver;
+
+function AddNewObserver (){
+	var check = document.createElement("input");
+	check.type="checkbox";
+	extend(new Observer(),check);
+	check.update=function(value){
+		this.checked=value;
+	}
+	controlCheckbox.addObserver(check);
+	container.appendChild(check);
+}
+</script>
+</body>
+</html>

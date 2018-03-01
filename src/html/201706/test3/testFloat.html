@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.floatleft{
+float:left;
+}
+.clearblock{
+clear:both;
+}
+.clearfix{
+zoom:1;/*兼容ie6,7*/
+}
+.clearfix:after{
+content:"·";
+height:0;
+clear:both;
+    visibility: hidden;
+    display: block;
+}
+.floatouter{
+width:100%;
+/* overflow:hidden; */
+overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="">
+<div class='floatleft'>wejhjwe</div>
+<div class='floatleft'>1111<br>ewuue</div>
+ <div class='clearblock'></div> 
+<!-- <br clear="all"> -->
+</div>
+</body>
+</html>

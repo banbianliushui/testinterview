@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var data = {
+			value : "1",
+			children : [ {
+				"value" : "2"
+			}, {
+				"value" : "3",
+				children : [ {
+					"value" : "8"
+				}, {
+					"value" : "9"
+				}, ]
+			}, {
+				"value" : "4",
+				children : [ {
+					"value" : "5"
+				}, {
+					"value" : "6"
+				}, {
+					"value" : "7"
+				} ]
+			} ]
+		};
+
+		var stackarr = [];
+		stackarr.push(data);
+		while (stackarr.length > 0) {
+			var op = stackarr.shift();
+			console.log(op.value);
+			if (op.children != null) {
+				for ( var o in op.children) {
+					stackarr.push(op.children[o]);
+				}
+			}
+
+		}
+
+		var tree = {
+			value : 1,
+			left : {
+				value : 2,
+				left : {
+					value : 4
+				}
+			},
+			right : {
+				value : 3,
+				left : {
+					value : 5,
+					left : {
+						value : 7
+					},
+					right : {
+						value : 8
+					}
+				},
+				right : {
+					value : 6
+				}
+			}
+		}
+		var preOrder = function(node) {
+			if (node) {
+				console.log(node.value);
+				preOrder(node.left);
+				preOrder(node.right);
+			}
+		}
+		//preOrder(tree);
+		var nopreOrder = function(node){
+			var stack1 =[];
+			stack1.push(node);
+			while(stack1.length>0){				
+				var nd =stack1.shift();	
+				console.log(nd.value);
+				if(nd.right!=null)
+				stack1.unshift(nd.right);
+				if(nd.left!=null)
+				stack1.unshift(nd.left);
+			}
+		}
+		
+		
+		var midOrder = function(node) {
+			if (node) {
+				
+				preOrder(node.left);
+				console.log(node.value);
+				preOrder(node.right);
+			}
+		}
+		//nopreOrder(tree);
+		var nomidOrder = function(nd){
+			var stack1 =[];	
+			//stack1.push(nd);
+			while(stack1.length>0||nd){					
+					if(nd==null){
+						var nd1 =stack1.pop();	
+						console.log(nd1.value);
+						nd=nd1.right;
+					}else	if(nd!=null){				
+							
+							stack1.push(nd);
+							nd=nd.left;
+					}
+			}
+		}
+		nomidOrder(tree);
+	</script>
+
+</body>
+</html>

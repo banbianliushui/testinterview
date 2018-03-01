@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+
+/* var foo = {
+		  x: 10,
+		  y: 20,
+		  getName:function(){
+			  console.log("dd")
+		  }
+		}; */
+var myWorker = new Worker("my_task.js");
+
+myWorker.postMessage("ali");
+//发起 第一步 myWorker.onmessage js加载
+myWorker.onmessage = function (oEvent) {//第三步 postMessage("I\'m working before postMessage(\'ali\').");
+//第六步  postMessage("Hi " + oEvent.data);
+  console.log("Worker said : " + oEvent.data);
+};
+myWorker.onerror=function(){}
+
+
+</script>
+</body>
+</html>

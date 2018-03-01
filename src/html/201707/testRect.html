@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.picture{
+transform:rotate(45deg);
+	width:200px;
+	height:200px;
+	    margin-left: 100px;
+    margin-top: 50px;
+    overflow:hidden;
+}
+
+.picture>img{
+    transform: rotate(-45deg) scale(1.42);
+    max-width: 100%;
+}
+.transtion {padding: 1px;background:yellow;width:100px;
+transition-property: all, padding;
+transition-duration:2s;}
+.transtion:hover{padding:10px;background:blue;}
+img{
+-webkit-clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+transition: 1s clip-path;
+
+}
+img:hover{
+-webkit-clip-path:polygon(0 0,100% 0,100% 100%,0% 100%);
+}
+</style>
+</head>
+<body>
+<!--
+https://img.alicdn.com/imgextra/i2/698679249/TB2FAyvtXXXXXadXpXXXXXXXXXX_!!698679249.jpg
+ <div class='picture'>
+<img alt="" src="//gw.alicdn.com/bao/uploaded/i2/173810354977741774/TB16YbsPXXXXXaUXXXXXXXXXXXX_!!2-pix.png">
+
+
+</div> -->
+<img alt="" src="https://img.alicdn.com/imgextra/i2/698679249/TB2FAyvtXXXXXadXpXXXXXXXXXX_!!698679249.jpg">
+
+<div class="transtion">444</div>
+
+</body>
+</html>

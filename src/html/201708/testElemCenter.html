@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/*  水平居中*/
+.static-h-outer{  
+   background: #d0cece;
+    padding: 5px; 
+    text-align: center;  
+}
+.static-h-elem{
+    background: antiquewhite;
+	display:inline-block;   
+}
+
+.static-h-outer1{  
+    background: #d0cece;
+    padding: 5px; 
+}
+.static-h-elem1{
+    display: block;
+    width: 100px;
+     background: antiquewhite;
+    margin-left: calc(50% - 50px);
+}
+.static-h-outer2{  
+    background: #d0cece;
+    padding: 5px; 
+}
+.static-h-elem2{
+    display: block;
+    width: 100px;
+     background: antiquewhite;
+    margin:auto;
+}
+
+.absolute-h-outer{ 
+	height:100px;
+/* 	position:relative; */
+	background: #d0cece;
+    padding: 5px; 
+}
+.absolute-h-elem{
+	position:absolute;
+	width:200px;
+	background:red;
+	display:block;
+	left:50%;
+	margin-left:-100px;
+
+}
+
+.absolute-h-outer1{ 
+	height:100px;
+	position:relative;
+	background: #d0cece;
+    padding: 5px; 
+}
+.absolute-h-elem1-outer{
+	left:50%;
+}
+.absolute-h-elem1{
+	position:absolute;	
+	background:red;
+	display:block;
+	left:-50%;
+}
+.absolute-h-outer2{ 
+	height:100px;
+	/* position:relative; */
+	background: #d0cece;
+    padding: 5px; 
+}
+.absolute-h-elem2{
+    position: absolute;
+    width: 200px;
+    background: red;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+}
+
+
+.float-h-outer{ height:100px;background: #d0cece;}
+.float-h-elem-outer{
+float: left;
+    left: 50%;
+    position: relative;
+}
+.float-h-elem{
+    float: left;
+    left: -50%;
+    position: relative;
+    background: cornflowerblue;
+}
+
+.float-h-outer1{ height:100px;background: #d0cece;}
+
+
+.float-h-elem1{
+    float: left;
+    width:100px;
+    left: 50%;
+    margin-left:-50px;
+    position: relative;
+    background: cornflowerblue;
+}
+.flex-h-outer{ 
+ 	height: 100px;
+    display: flex;
+    background: #d0cece;
+    justify-content:center;
+}
+
+.flex-h-elem{
+    height: 30px;
+    background: orange;
+
+}
+
+/* 垂直居中 */
+.static-v-outer{
+background: #d0cece;
+    height: 100px;
+   /*  text-align: center; *//* 加这里可以水平居中 */
+    line-height: 100px;
+}
+.static-v-elem{
+    background: antiquewhite;
+	display: inline;
+}
+
+.static-v-outer1{
+	background: #d0cece;
+   /*  height: 100px;
+    line-height:100px; */
+   /*  text-align: center; */
+}
+
+.static-v-elem1{
+    background: antiquewhite;
+	display: inline-block;
+	vertical-align:middle;
+}
+
+.absolute-v-outer{
+background: #d0cece;
+ height:200px;
+position:relative;}
+.absolute-v-elem{
+	position:absolute;
+	width:200px;
+	height:60px;
+	background:red;
+	display:block;
+	/* left:50%;
+	margin-left:-100px; */
+	top:50%;
+	margin-top:-30px;
+}
+
+.absolute-v-outer1{
+    height: 100px;
+    position: relative;
+    background: #d0cece;
+}
+.absolute-v-elem1{
+    position: absolute;
+    background: red;
+    margin: auto auto;
+    top: 0;
+    bottom: 0;
+}
+
+.float-v-outer{ 
+ height: 100px;
+    position: relative;
+    background: #d0cece;
+}
+
+.float-v-elem{
+    float: left;
+    height: 30px;
+    background: green;
+    position: relative;
+    top: calc( 50% - 15px);
+}
+.float-v-outer1{ 
+ height: 100px;
+    position: relative;
+    background: #d0cece;
+}
+.float-v-elem-outer1{
+    float: left;
+  height:30px;
+    position: relative;
+    top: 50%;
+}
+
+.float-v-elem1{
+float: left;
+ height:30px; /*  这里的高度必须确定*/
+background:green;
+
+    position: relative;
+    top: -50%;/*包含块的高度*/
+}
+
+
+.flex-v-outer{ 
+ 	height: 100px;
+    display: flex;
+    background: #d0cece;
+    align-items:center;
+}
+
+.flex-v-elem{
+    height: 30px;
+    background: orange;
+
+}
+.static-hv-outer{
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+     background: #d0cece;
+}
+.static-hv-elem{
+    background: antiquewhite;
+	width: 100px;
+    margin-left: calc(50% - 50px);
+}
+.absolute-hv-outer{ background: #d0cece; height:200px;position:relative;}
+.absolute-hv-elem{
+	position:absolute;
+	width:200px;
+	height:60px;
+	background:red;
+	display:block;
+	left:50%;
+	margin-left:-100px;
+	top:50%;
+	margin-top:-30px;
+}
+
+.absolute-hv-outer1{ background: #d0cece; height:200px;position:relative;}
+.absolute-hv-elem1{
+	position:absolute;
+	width:200px;
+	height:60px;
+	background:red;
+	display:block;
+margin:auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+.float-hv-outer{ background: #d0cece; height:200px;}
+.float-hv-elem-outer{
+    float: left;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+.float-hv-elem{
+    float: left;
+    position: relative;
+    background: green;
+    top: -50%;
+    left: -50%;
+}
+
+.flex-hv-outer1{
+background: #d0cece;
+ display: flex;
+ height:200px;
+}
+.flex-hv-elem1{
+
+ flex: 0 0 auto;
+ /*
+     flex-grow: 0;//有剩余空间不放大
+    flex-shrink: 0;//不缩小
+    flex-basis: auto;//本来项目大小
+ */
+    margin: auto;
+    background:orange;
+}
+
+.flex-hv-outer2{
+    background: #d0cece;
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+.flex-hv-elem2{
+background:orange;
+}
+
+.flex-hv-outer3{
+    background: #d0cece;
+    display: flex;
+    height: 200px;
+}
+
+.flex-hv-elem3-outer{/* 设置垂直方向上居中 */
+    flex: 1 0 auto;
+    align-self: center;
+    text-align: center;
+}
+.flex-hv-elem3{/*水平方向居中  */
+	background:orange;
+    display: inline;
+}
+
+
+ 
+</style>
+
+</head>
+
+
+
+<body style="word-break:break-all;">
+
+<h1>水平居中</h1>
+<h2>1.被布局元素是static</h2>
+
+1.1行级元素，外部容器 text-align: center;,内部元素display：inline-block(IE7及以下不支持，可用inline+zoom代替inline-block,
+
+如：display: inline-block;   zoom: 1; *display: inline; /* IE < 8: 伪造 inline-block */)、inline
+<div  class="static-h-outer"><div class="static-h-elem">static元素</div></div>
+
+1.2外部容器一般static，内部元素定宽，   width: 100px;  margin-left: calc(50% - 50px)（IE8及以下不支持）;
+<div  class="static-h-outer1"><div class="static-h-elem1">static元素</div></div>
+
+1.3块级元素,外部容器一般static,内部元素定宽，内部元素    width: 100px;margin：auto（IE5不支持，IE6未测试）
+<div  class="static-h-outer2"><div class="static-h-elem2">static元素</div></div>
+
+<h2>2.被布局元素是absolute</h2>
+2.1外部容器定高（需给内部元素设置相对坐标系position:relative），内部元素：定宽	
+width:200px;display:block;	left:50%;	margin-left:-100px;
+<div class="absolute-h-outer"><div class="absolute-h-elem">absolute元素</div></div>
+
+2.2外部容器定高（需给内部元素设置相对坐标系position:relative），内部元素：定宽	
+width:200px; margin: 0 auto;   left: 0;    right: 0;（IE7及以下不支持）
+<div class="absolute-h-outer2"><div class="absolute-h-elem2">absolute元素</div></div>
+
+2.3外部容器（需给内部元素设置相对坐标系position:relative），内部元素不定宽.
+这里有问题，absolute元素的left 百分比是相对于外部元素的，由于absolute完全脱离文档，导致外部宽度（取决于它的上级元素内容宽度）
+和absolute元素不同，此处不能用两层嵌套
+<!-- <div class="absolute-h-outer1"><div class="absolute-h-elem1-outer"><div class="absolute-h-elem1">absolute元素</div></div></div>
+ -->
+<h2>3.被布局元素是float</h2>
+3.1宽度不固定的浮动元素，需要外层包裹一个父级浮动元素，左侧50%，float: left;  left: 50%; position: relative（必须，按当前所在位置移动50%）;
+float-h-elem真正浮动元素在父级基础上再按自身宽度往左侧伸出50%。float: left;  left: -50%; position: relative
+注：由于不同于内部absolute元素，两层float可以使外部float获得内部float的宽度大小，外float包裹内float，所以此处可以用这个方法
+<div class="float-h-outer"><div class="float-h-elem-outer"><div class="float-h-elem">float元素</div></div></div>
+
+3.2宽度固定浮动元素
+<div class="float-h-outer1"><div class="float-h-elem1">float元素</div></div>
+
+<h2>4.被布局元素是display:flex</h2>
+4.1 flex容器设置子项水平布局为justify-content:center;
+<div class="flex-h-outer"><div class="flex-h-elem">flex元素</div></div>
+
+
+备注：水平居中主要属性有：1. text-align:center;  2. margin:0 auto 3. position:relative|absolute; left:50%;
+
+<h1>垂直居中</h1>
+<h2>1.被布局元素是static</h2>
+1.1  行级元素垂直居中，单行（）、块级也可以用 height  line-height
+<div  class="static-v-outer"><div class="static-v-elem">static元素</div></div>
+<div>1.2块级元素垂直居中，块级元素转行级元素，外部元素不固定高度，多个子项（可不等高）垂直居中。</div>
+
+行内块级vertical-align:middle;
+// 垂直居中对齐 display:inline|inline-block(转成这个垂直方向上有几个像素的偏移，
+margin负值的大小与上下文的字体和文字大小相关，可用font-size:0来调整；
+http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/) 
+<div>每一行所有的inline元素和inline-block元素会共同形成一个line boxes，这个line box的高度由里面最高的元素决定。所以，即使inline-block属性的列表元素高度异常，
+撑开的是整个line boxes的高度，因而，不会与下一行的列表元素发生错位。</div>
+<div>所以这也是单行里面的垂直居中，外容器需要加line-height</div>
+<div  class="static-v-outer1"><div class="static-v-elem1">static1元素</div><div class="static-v-elem1" style="height:30px;background:green;">static2元素</div></div>
+
+
+<h2>2.被布局元素是absolute</h2>
+2.1 容器固定高度， absolute元素固定高度，top: 50%; margin-top: -30px;height: 60px; 
+<div class="absolute-v-outer"><div class="absolute-v-elem">absolute元素</div></div>
+2.2 有误：此条不能使用，文本没有垂直居中 margin: auto 0;    top: 0;    bottom: 0;
+https://www.zhihu.com/question/19926700
+为甚么垂直方向上不能用margin: auto 0;垂直居中，因为
+<div class="absolute-v-outer1"><div class="absolute-v-elem1">absolute元素</div></div>
+<h2>3.被布局元素是float</h2>
+3.1被布局float元素定高， height: 30px;    position: relative;    top: calc( 50% - 15px);
+<div class="float-v-outer"><div class="float-v-elem">float元素</div></div>
+3.2被布局float元素定高，多嵌套一层 height: 30px;  position: relative; top: 50%;，内部元素position: relative; top: -50%;height: 30px; 
+<div>为什么要定高？如果不设置高度内层元素直接用 top:- 50%;其实top没有定位渲染，高度是不确定的？待查找具体原因</div>
+<div class="float-v-outer1"><div class="float-v-elem-outer1"><div class="float-v-elem1">float元素</div></div></div>
+<h2>4.被布局元素是display:flex</h2>
+4.1 flex容器设置子项垂直布局为 align-items: center;
+<div class="flex-v-outer"><div class="flex-v-elem">flex元素</div></div>
+
+
+<h1>水平且垂直居中</h1>
+<h2>1.被布局元素是static</h2>
+
+ 
+1.1行级元素垂直居中,外部容器 height，line-height，内部static元素：width: 100px;    margin-left: calc(50% - 50px);
+
+<div  class="static-hv-outer"><div class="static-hv-elem">static元素</div></div>
+
+<!-- <div  class="static-hv-outer"><div class="static-hv-elem">static元素</div></div> -->
+
+<h2>2.被布局元素是absolute</h2>
+2.1 外部容器高度固定    height: 200px;，absolute内部布局元素定高定宽：    position: absolute;    width: 200px;    height: 60px;
+    left: 50%;    margin-left: -100px;    top: 50%;
+    margin-top: -30px;
+    <div class="absolute-hv-outer"><div class="absolute-hv-elem">absolute元素</div></div>
+
+2.2外部容器高度固定    height: 200px;，absolute内部布局元素定高定宽：    position: absolute;  width: 200px;  height: 60px;
+margin:auto;    top: 0;    bottom: 0;    left: 0;    right: 0;
+    <div class="absolute-hv-outer1"><div class="absolute-hv-elem1">absolute元素</div></div>
+<h2>3.被布局元素是float</h2>
+3.1多嵌套一层 height:30px;  position: relative; top: 50%;，内部元素height:30px;  position: relative; top: -50%;
+<div> 嵌套层宽度可以不设置，但高度必须设置，否则内层float元素的top设置无效。</div>
+<div class="float-hv-outer"><div class="float-hv-elem-outer"><div class="float-hv-elem">float元素</div></div></div>
+
+
+<h2>4.被布局元素是display:flex</h2>
+4.1内部项样式为 flex-grow: 0;//有剩余空间不放大    flex-shrink: 0;//不缩小    flex-basis: auto;//本来项目大小
+    margin: auto;    
+<div>兼容性：测试通过：54.0.1 (32 位)、chrome59.0.3071.115（正式版本） （64 位）。
+<div>IE Edge、IE10 不兼容，IE 11待验证（IE Edge、IE10 水平居中，但垂直方向未居中）</div></div>
+<div class="flex-hv-outer1"><div class="flex-hv-elem1">flex元素</div></div>
+4.2 flex容器直接设置子项布局，定义了内部项的主轴和交叉轴上的布局样式：      display: flex;    height: 200px;    align-items: center;    justify-content: center;
+<div class="flex-hv-outer2"><div class="flex-hv-elem2">flex元素</div></div>
+
+4.3 子项布局完成垂直居中: flex容器的直接子项实现垂直居中：样式：flex: 1 0 auto;    align-self: center;    text-align: center;
+该子项的内部元素实现水平居中（有外部子项text-align: center;控制），内部元素该成行元素就可以。
+<div class="flex-hv-outer3"><div class="flex-hv-elem3-outer"><div class="flex-hv-elem3">flex元素</div></div></div>
+
+
+</body>
+</html>

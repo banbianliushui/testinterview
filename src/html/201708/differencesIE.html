@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href ="https://www.baidu.com/" id="aclick">测试事件</a>
+<input type="text"  id="iinput">
+<script type="text/javascript">
+var alick=document.getElementById('aclick');
+var iinput = document.getElementById('iinput');
+if(alick.attachEvent){
+	alick.attachEvent('onclick',function(e){
+		// window.event.cancelBubble = true;
+		// window.event.returnValue = false;
+		e.returnValue = false;
+		console.log(e);
+	})
+	iinput.attachEvent('onkeydown',function(e){
+		console.log("onkeydown")
+		console.log(e);
+	})
+	iinput.attachEvent('onkeypress',function(e){
+		console.log("onkeypress")
+		console.log(e);
+	})
+	iinput.attachEvent('onkeyup',function(e){
+		console.log("onkeyup")
+		console.log(e);
+	})
+}else{
+	alick.addEventListener("click",function(e){
+		if(e.srcElement){
+			if(e.srcElement==e.target){
+				console.log("true")
+			}
+		}
+		e.preventDefault();
+		console.log(e);
+	});
+	
+	iinput.addEventListener("keydown",function(e){
+		console.log("keydown")
+		console.log(e);
+		
+	});
+	iinput.addEventListener("keypress",function(e){
+		console.log("keypress")
+		console.log(e);
+	});
+	iinput.addEventListener("keyup",function(e){
+		console.log("keyup")
+		console.log(e);
+	});
+}
+
+</script>
+</body>
+</html>
