@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .modal_container{
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            background-color: rgba(3,3,4,0.5);
+            position: fixed;
+            top:0;
+            left:0;
+        }
+        .modal_box{
+            display: inline-block;
+        }
+        p{
+            height:60px;
+        }
+    </style>
+</head>
+<body>
+<p>放到哈哈哈发</p>
+<p>放到哈哈哈发</p>
+<p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p>
+<p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p><p>放到哈哈哈发</p>
+<div id="modal" class="modal_container">
+    <div  class="modal_box">
+        <div class="modal_title">尺寸动态可变图片</div>
+        <a href="javascript:" id="Close" class="close">关闭</a>
+        <div class="modal_body">
+            <img src="//img.hb.aicdn.com/a90c72a1201471224718ad9e2f6068e50c456c3c30052-Z0JUC4_fw658" class="image" />
+        </div>
+    </div>
+</div>
+<script>
+    /*阻止页面滚动https://segmentfault.com/q/1010000000523273*/
+
+    function disable_scroll() {
+        if (window.addEventListener) {
+            window.addEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = wheel;
+        document.onkeydown = keydown;
+    }
+
+    function enable_scroll() {
+        if (window.removeEventListener) {
+            window.removeEventListener('DOMMouseScroll', wheel, false);
+        }
+        window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+    }
+
+    function wheel(e) {
+        preventDefault(e);
+    }
+    var keys = [37, 38, 39, 40];
+
+    function preventDefault(e) {
+        e = e || window.event;
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+    }
+
+    function keydown(e) {
+        for (var i = keys.length; i--;) {
+            if (e.keyCode === keys[i]) {
+                preventDefault(e);
+                return;
+            }
+        }
+    }
+    disable_scroll()
+</script>
+</body>
+</html>

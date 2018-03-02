@@ -2,163 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4842e8f1-29ac-4540-b6f3-5faa158d08e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/companyaddress1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/t001.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/t002.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/t003.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/t004.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/lamp.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/img/invitation.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/editor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/py_test4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/baiduMap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/bmap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/bootstrap-table.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/bootstrap-table.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/jquery-1.12.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/jquery-1.9.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/strecthbimg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testArrayUnique.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testBootStrapTable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testClone.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testEvent.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testInlineBlock.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testdragDiv.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testdragDiv2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testmap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test1/testsimleArray.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/Copy of testDrag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/jquery-2.0.3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/jquery-3.1.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/mobile/qn-sdk-mobile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/mobile/sm-extend.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/mobile/sm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/mobile/test_sm.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testAjax.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testBind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testBorderImg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testBrower.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testCSS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testClientX.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testDrag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testForin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testH5_video.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testHtml.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testIndexDB.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testJqAjax.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testLoad.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testReady.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testTrim.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/test_Prop_Attr.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testajax.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testlog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test2/testwordAimg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/area_combobox_data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/datagrid_data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/distrct_data.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/markPagin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/my_task.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/rightauto.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testClosure.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testEasyUITable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testFloat.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testH5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testMain.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testMargin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testModal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testObserver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testPage1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testPage2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testPage3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testProto.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testSingleton.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testSvg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testbg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testcombo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test3/testwebworks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test_promise.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201706/test_promise2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/Copy of testDrag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/frame_a.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/frame_b.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/jquery-3.1.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testArrSort.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testBind.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testBorderRadius.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testBrower.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testCSScenter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testCircle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testClientX.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testDate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testDrag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testH5_serverupdate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testHistory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testIndexDB.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testLinearGrad.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testObject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testObserver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testPie.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testRect.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testRegexp.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testTrim.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/test_CSS3font.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/test_objectpro.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testcircle1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testroundCircle.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testwordAimg.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201707/testwrite.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/differencesIE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/domready.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/jquery-1.12.4.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/jquery-2.0.3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/jquery.carousel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/test.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testCache.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testElemCenter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testImageCache.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testJQ.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testJq1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testJsonp.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testMouseOver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testMouseXY.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testOrgTree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testPin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testPin2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testPin3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testPin4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201708/testdoScroll.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/NewFile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_stack.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/canvas.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/hello.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/msgIframe.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/testMessage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue-intrduce.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue-intro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue-intro_2_12.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue-keepalive.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue6.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/vue_18_1_20.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/doPhoto.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/doPhoto.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/doPhoto.wxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/we-cropper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/we-cropper.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/we-cropper.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/we-cropper.wxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/testvue/we-cropper/we-cropper.wxss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/css/test_modal.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_10.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_5.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_9.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise3.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -173,62 +31,114 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_promise.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_promise.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-469">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_promise2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-403">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_promise2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_promise3.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_promise3.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="102" column="27" lean-forward="true" selection-start-line="102" selection-start-column="27" selection-end-line="102" selection-end-column="27" />
+            <state relative-caret-position="217">
+              <caret line="109" column="38" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_promise4.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise4.html">
+      <file leaf-file-name="test_promise_8.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_8.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="291">
+              <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_9.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_9.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_10.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_10.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="567">
+              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_vm_vh.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_modal.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_modal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_3.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_3.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_5.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_5.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_6.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_6.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_7.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_7.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -281,7 +191,22 @@
         <option value="$PROJECT_DIR$/src/html/html/test1/jquery-1.12.4.js" />
         <option value="$PROJECT_DIR$/src/html/201706/test_promise.html" />
         <option value="$PROJECT_DIR$/src/html/201802/test_promise4.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_1.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise.js" />
         <option value="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_3.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_4.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_1.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_2.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_5.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_6.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_7.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_8.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_9.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_10.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/css/test_modal.html" />
       </list>
     </option>
   </component>
@@ -319,7 +244,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -412,13 +336,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="201706" />
+              <option name="myItemId" value="201802" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -456,8 +385,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.server.js">
-    <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
+  <component name="RunManager" selected="JavaScript Debug.test_modal.html">
+    <configuration default="false" name="test_promise_8.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_8.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_promise_9.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_9.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_promise_10.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_10.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_vm_vh.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/testInterviews/src/html/201802/css/test_vm_vh.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_modal.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/testInterviews/src/html/201802/css/test_modal.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -526,12 +467,20 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.test_promise_8.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.test_promise_9.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.test_promise_10.js" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.test_vm_vh.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.test_modal.html" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.test_modal.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.test_vm_vh.html" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.test_promise_10.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.test_promise_9.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.test_promise_8.js" />
       </list>
     </recent_temporary>
   </component>
@@ -566,12 +515,13 @@
       <workItem from="1508503529531" duration="591000" />
       <workItem from="1508853941399" duration="1358000" />
       <workItem from="1509265342164" duration="1289000" />
-      <workItem from="1519824711548" duration="5300000" />
+      <workItem from="1519824711548" duration="5874000" />
+      <workItem from="1519908517558" duration="11002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103544000" />
+    <option name="totallyTimeSpent" value="115120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -580,12 +530,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21156661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46603477" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12954186" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -614,103 +564,72 @@
           <line>14</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>6</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>4</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>10</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_7.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_7.js</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/html/testPin4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testPin5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testPin3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testTriangle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1580">
-          <caret line="79" column="1" lean-forward="false" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testPin4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="15" lean-forward="false" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testPin5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="3" lean-forward="false" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testPin3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/testTriangle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="79" column="1" lean-forward="false" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201709/testreverseString.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1958">
-          <caret line="89" column="26" lean-forward="false" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201709/testStorage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2266">
-          <caret line="103" column="12" lean-forward="false" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201709/testEvent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201709/testHandleElem.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="44" column="9" lean-forward="false" selection-start-line="36" selection-start-column="2" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201709/testiframe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201709/testCreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -839,9 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#44#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -881,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1914">
           <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4206">
           <caret line="11010" column="4" lean-forward="false" selection-start-line="11010" selection-start-column="4" selection-end-line="11010" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,9 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <marker date="1519344410014" expanded="true" signature="239624:239633" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -955,29 +863,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11748">
           <caret line="534" column="2" lean-forward="false" selection-start-line="534" selection-start-column="2" selection-end-line="534" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-469">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-403">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -985,7 +884,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -999,10 +898,138 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="109" column="38" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_9.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_10.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="102" column="27" lean-forward="true" selection-start-line="102" selection-start-column="27" selection-end-line="102" selection-end-column="27" />
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
           <folding />
         </state>
       </provider>
