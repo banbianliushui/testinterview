@@ -1,0 +1,70 @@
+
+jquery: 2.0.3
+--------------------------------------------------------------------------------
+Deferred
+一个工厂函数，这个函数返回一个链式实用对象，用返回对象方法来在回调队列中注册多个回调， 调用回调队列，
+传递任何同步或异步函数的成功或失败状态。
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+CallBacks
+'once':
+    回调函数列表只回调一次，如果没有附加“memory”模式，则一次回调后list,memory,stack都为undefined，之后什么都不能做
+    list：存放回调函数列表。
+    初始化化时stack触发函数fire的传参列表赋值为false，表示这个列表只被触发一次，没有必要再缓存fire传的参数
+
+    firing标志是否正在处理回调函数列表，
+'memory'
+    如果已经fire过一次处理了list，则add注册新的回调函数时，会回调回调列表中本次添加的函数，参数是上一次缓存的参数。
+    如果是第一次fire（此时fire之前add时memory都为undefined不会自动fire()），则直接回调列表中所有已经添加的函数。
+'unique'
+    同一个注册函数只能在列表中加一次
+'stopOnFalse'
+    执行回调函数列表中的函数时如果遇到返回值为false 后面的函数不再执行，memory=false。
+     如果还附加了memory模式，阻止此后再用add注册回调函数时触发fire，就是新增的函数不再自动回调。
+    如果列表处理结束stack不为空时，继续调用fire，此时如果列表中所有函数都没有返回false，之前的memory=false是不是失效了？
+
+
+
+fireWith：
+    回调函数列表存在，且未被触发过或者stack不为false或undefined ，如果firing=true 回调列表中的函数正在被处理（回调）
+    ，则将本次触发参数先存入stack。等list中从firingIndex到firingLength-1正在被“锁定”处理回调的处理完成，
+    下面还会从stack取出再一次fire触发处理，此时一般从列表开头0开始里面的函数都回调一遍，如果是memory模式且add新函数，
+    则把这个新增的处理函数的下标作为从函数列表中开始回调的初始位置，add后直接fire一次fire( memory ) 传的是上一次的参数。
+
+add :
+    如果传入的参数是函数（如果是数组或类数组则递归到取得函数值子项），如果unique 为true（unique：同一个处理函数最多在list列表中加一次）
+    且已经在列表中加过了就不再加，其他情况可以重复添加同一个处理函数。
+    如果firing=true回调列表正在进行回调处理，可以赋值firingLength = list.length，
+    让处理新加的函数也在未循环完接着处理，此处是不是一般不太可能出现，待查 webworker多个共享处理？
+    如果memory有值，则直接触发本次添加的回调函数，参数就是上一次缓存的值memory。
+fire ：
+    传参第一个是处理list中回调函数的上下文，第二参数是self.fire传入的给回调函数调用的参数。
+    memory 如果这个list是“momery”模式，则将data缓存为memory最近的用于回调的参数供add时调用。
+    标记 fired = true; 回调列表被回调过，
+    firingIndex赋值接下来要处理的list中函数项的开始位置（如果是memory模式，且add的时候fire回调从本次新加的函数开始，
+    其他情况从0开始）。
+    循环回调函数列表list来回调用户注册函数。处理过程中如果遇到某个函数的返回结果是false且用户使用了“stopOnFalse”模式，
+    则列表中后面的函数不再调用，同时memory =false ，即使假如还要“momery”模式，阻止此后再用add注册回调函数时触发fire。
+    stack :memory、unique、stopOnFalse模式会进入此分支，stack不是undefined或false（为once时）都会先进这里，
+    disable或lock后 list = stack = memory = undefined;之后触发就失效了
+
+lock：
+    锁住当前list状态，stack=undefined 以后fire调用列表中的函数后不再存待触发的参数列表，
+    如果memory 为false（stopOnFalse且函数返回false时）直接调用disabled（）。即如果stopOnFalse且函数返回false时，
+    列表全部清空，调用fire不会再回调列表，add也不能再注册回调函数了。固化了这个列表处理过的状态，以后什么操作都不能做了。
+
+
+关键点：
+    1.memory 模式，之前add 和fire过再次add，会主动调用fire 函数处理本次新增函数，即传入上一次缓存的memory参数并回调新增的函数。
+    2.unique模式：   同一个注册函数只能在列表中加一次
+    3.once模式： 回调函数列表只回调一次，如果没有附加“memory”模式，则一次回调后list,memory,stack都为undefined，之后什么都不能做
+    4.stopOnFalse模式：执行回调函数列表中的函数时如果遇到返回值为false 后面的函数不再执行，memory=false。
+        如果还附加了memory模式，阻止此后再用add注册回调函数时触发fire,就是新增的函数不再自动回调。
+     如果列表处理结束stack不为空时，继续调用fire，此时如果列表中所有函数都没有返回false，之前的memory=false是不是失效了？
+
+
+问题：
+为什么要使用firing,fire中的处理不是同步进行的吗？
