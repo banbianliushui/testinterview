@@ -7,11 +7,12 @@
 <body>
 <script type="text/javascript">
 /*https://zhuanlan.zhihu.com/p/25178630*/
+/*https://www.promisejs.org/implementing/*/
 var PENDING = 0;
 var FULFILLED =1 ;
 var REJECTED = 2;
-function Promise(fn){ //fn一般是包含异步处理的函数
-	if( typeof this !=='object'){// new 后this指向新变量对象
+function Promise(fn){
+	if( typeof this !=='object'){
 		throw new TypeError("promises must bu constructed via new");
 	}
 	if(typeof fn !=='function'){
@@ -25,10 +26,10 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 		var done = false; 
 		try{
 			fn(function(value){
-				//用户调用成功函数，传参value
+
 				if(done) return ;
 				done = true;
-				onFulfilled(value);//用于后续处理传到后面then的对应函数参数中
+				onFulfilled(value);
 			},function(reason){
 				if(done) return;
 				done = true;
@@ -41,7 +42,7 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 		}
 	}
 
-	function getThen(value){//辅助判断是否是promise对象
+	function getThen(value){
 		var t = typeof value;
 		if(value &&(t==='object'||t === 'function')){
 			var then = value.then;
@@ -52,12 +53,10 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 		return null;
 	}
 	function resolve(result){
-		//resolve 用户函数fn处理后调用resolve，由doResolve转接到这里
-		//result 用户回调函数处理后返回的结果
+
 		try{
 			var then = getThen(result);
-			if(then){//传promise对象时
-                //将then函数绑定到用户调用解决时传的promise对象上
+			if(then){//then.bind(result) 这里为什么？
 				doResolve(then.bind(result),resolve,reject);
 				return;
 			}
@@ -87,7 +86,7 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 			}
 		}
 	}
-	this.done = function(onFulfilled,onRejected){//将内部处理函数存入操作列表
+	this.done = function(onFulfilled,onRejected){//将处理函数存入操作列表
 		setTimeout(function(){//表示异步
 			handle({
 				onFulfilled:onFulfilled,
@@ -97,10 +96,7 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 	}
 	
 	this.then = function(onFulfilled,onRejected){
-		var self = this;//promise对象同时也返回一个新promise对象
-        //调用then时先执行传给构造函数的匿名函数，调用前一个promise的done方法，将用户注册在
-        //then方法中的两个参数函数onFulfilled,onRejected 注册到内部统一处理的done函数上。
-        //然后分别放到处理列表中handle
+		var self = this;
 		return new Promise(function(resolve,reject){
 			
 			var done1= self.done(function(result){
@@ -110,7 +106,7 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 					}catch(e){
 						return reject(e);			
 					}
-				}else{//用户then中未传参数
+				}else{
 					return resolve(result);			
 				}
 			},function(error){
@@ -129,30 +125,9 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 		});
 	}
 
-    //fn用于转接处理，resolve在fn处理成功时调用，处理出错时调用reject。
-    //而处理结束时决定回调resolve还是reject由用户fn 传的两个参数决定，
-    //如果用户调用fn中的第一个参数则promise内部会调用resolve方法，
-    //保证只进行一次状态改变(done=true)然后返回处理结果，供后续then获取
 	doResolve(fn,resolve,reject);
-	
 }
 
-
-
-/* var p = new Promise(function(resolve,rejected){
-	setTimeout(function(){
-		console.log('zhixing')
-	//	resolve("hahha ");
-		resolve("错误css");
-	},1000)
-}); 
-p.then().then(function(result){
-	console.log("succes2s")
-	console.log(result)
-},function(error){
-	console.log("fail2")
-	console.log(error);
-})*/
 
     var p1 = new Promise(function(resolve,reject){
         setTimeout(function(){
@@ -164,14 +139,12 @@ p.then().then(function(result){
                 setTimeout(function(){res()},200)
             });
             return p2;
-        },function(){
+    },function(){
 
-        }).then(function(){},function(){
+    }).then(function(){},function(){
 
-        })
+    })
 
-    // 每new一个promise都会执行doResolve。
-    //p1.then(onFulfilled,onRejected),onFulfilled完成函数中返回的是一个promise，则
 </script>
 
 </body>
