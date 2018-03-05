@@ -2,10 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4842e8f1-29ac-4540-b6f3-5faa158d08e0" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/testFlex.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise3.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise4.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise4.html" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/css/test_modal.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_10.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_5.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/html/201802/test_promise_9.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/html/201802/test_promise3.html" afterPath="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,42 +37,141 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_promise.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise.html">
+      <file leaf-file-name="test_promise3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="270">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+=======
+            <state relative-caret-position="217">
+              <caret line="109" column="38" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="38" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="test_promise3.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3753">
               <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding />
+=======
+      <file leaf-file-name="test_promise_8.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_8.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test_promise_9.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_9.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="test_promise3_1.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3_1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-135">
               <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+=======
+      <file leaf-file-name="test_promise_10.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_10.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="567">
+              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_vm_vh.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_promise4.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise4.html">
+      <file leaf-file-name="test_modal.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_modal.html">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_3.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_3.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_5.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_5.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_6.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_6.js">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1134">
               <caret line="42" column="62" lean-forward="false" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
+=======
+            <state relative-caret-position="79">
+              <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_promise_7.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_7.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,9 +223,29 @@
         <option value="$PROJECT_DIR$/src/html/testvue/testrouter.html" />
         <option value="$PROJECT_DIR$/src/html/html/test1/jquery-1.12.4.js" />
         <option value="$PROJECT_DIR$/src/html/201706/test_promise.html" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
         <option value="$PROJECT_DIR$/src/html/201802/test_promise4.html" />
         <option value="$PROJECT_DIR$/src/html/201802/test_promise3_1.html" />
+=======
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise4.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_1.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise3.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_3.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_4.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_1.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_2.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_5.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_6.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_7.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_8.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_9.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/test_promise_10.js" />
+        <option value="$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html" />
+        <option value="$PROJECT_DIR$/src/html/201802/css/test_modal.html" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
       </list>
     </option>
   </component>
@@ -146,6 +283,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -184,6 +322,112 @@
           <select />
         </subPane>
       </pane>
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testvue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="201802" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testInterviews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="201802" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,6 +465,7 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Node.js.server.js">
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
@@ -229,6 +474,23 @@
       <tasks />
       <arguments />
       <envs />
+=======
+  <component name="RunManager" selected="JavaScript Debug.test_modal.html">
+    <configuration default="false" name="test_promise_8.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_8.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_promise_9.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_9.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_promise_10.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="test_promise_10.js" working-dir="$PROJECT_DIR$/src/html/201802">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_vm_vh.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/testInterviews/src/html/201802/css/test_vm_vh.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="test_modal.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/testInterviews/src/html/201802/css/test_modal.html">
+      <method />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
@@ -287,10 +549,24 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$" />
+=======
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.test_promise_8.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.test_promise_9.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.test_promise_10.js" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.test_vm_vh.html" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.test_modal.html" />
+    </list>
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.test_modal.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.test_vm_vh.html" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.test_promise_10.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.test_promise_9.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.test_promise_8.js" />
       </list>
     </recent_temporary>
   </component>
@@ -325,15 +601,24 @@
       <workItem from="1508503529531" duration="591000" />
       <workItem from="1508853941399" duration="1358000" />
       <workItem from="1509265342164" duration="1289000" />
+<<<<<<< HEAD
       <workItem from="1519824711548" duration="5300000" />
       <workItem from="1519868220636" duration="9469000" />
       <workItem from="1519954229767" duration="599000" />
       <workItem from="1520212069630" duration="635000" />
+=======
+      <workItem from="1519824711548" duration="5874000" />
+      <workItem from="1519908517558" duration="11002000" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="114247000" />
+=======
+    <option name="totallyTimeSpent" value="115120000" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
   </component>
   <component name="ToolWindowManager">
     <frame x="240" y="148" width="1499" height="983" extended-state="1" />
@@ -341,12 +626,12 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3405552" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46603477" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12954186" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -364,11 +649,88 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+<<<<<<< HEAD
       <option name="time" value="17" />
+=======
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server.js</url>
+          <line>14</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_2.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>6</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>4</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_3.js</url>
+          <line>10</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_7.js</url>
+          <line>5</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/html/201802/test_promise_7.js</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="30" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/html/testPin3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -446,6 +808,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
     <entry file="file://$PROJECT_DIR$/src/html/201709/testCreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -665,6 +1029,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201706/test_promise.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="270">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
@@ -675,6 +1040,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
         </state>
       </provider>
     </entry>
@@ -694,6 +1064,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-609">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -701,6 +1072,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise2.html">
       <provider selected="true" editor-type-id="text-editor">
+=======
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -714,18 +1087,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3753">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+        <state relative-caret-position="133">
+          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="3753">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+=======
+        <state relative-caret-position="217">
+          <caret line="109" column="38" lean-forward="false" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="38" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise3_1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-135">
           <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_9.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/test_promise_10.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_vm_vh.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/html/201802/css/test_modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="63" column="29" lean-forward="true" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
+>>>>>>> eb95c3fe8efb0b6b0c8464a4667a0b4e188074e7
           <folding />
         </state>
       </provider>

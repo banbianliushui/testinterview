@@ -24,6 +24,9 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 	function doResolve(fn,onFulfilled,onRejected){
 		var done = false; 
 		try{
+            //此处的fn 是用户传入的带简单参数的函数(如例子中的带参数success,fail的函数)
+            // 或 then中return的promise对象的then函数（由getThen处理）
+            //
 			fn(function(value){
 				//用户调用成功函数，传参value
 				if(done) return ;
@@ -87,8 +90,10 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 			}
 		}
 	}
-	this.done = function(onFulfilled,onRejected){//将内部处理函数存入操作列表
-		setTimeout(function(){//表示异步
+
+	this.done = function(onFulfilled,onRejected){
+		setTimeout(function(){//表示异步调用处理函数
+
 			handle({
 				onFulfilled:onFulfilled,
 				onRejected:onRejected
@@ -98,9 +103,7 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 	
 	this.then = function(onFulfilled,onRejected){
 		var self = this;//promise对象同时也返回一个新promise对象
-        //调用then时先执行传给构造函数的匿名函数，调用前一个promise的done方法，将用户注册在
-        //then方法中的两个参数函数onFulfilled,onRejected 注册到内部统一处理的done函数上。
-        //然后分别放到处理列表中handle
+
 		return new Promise(function(resolve,reject){
 			
 			var done1= self.done(function(result){
@@ -139,16 +142,29 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 
 
 
-/* var p = new Promise(function(resolve,rejected){
+/*
+ var p = new Promise(function(success,fail){
+
 	setTimeout(function(){
-		console.log('zhixing')
+		console.log('第一个异步')
 	//	resolve("hahha ");
-		resolve("错误css");
-	},1000)
+        success("第一处");
+	},2000)
 }); 
-p.then().then(function(result){
-	console.log("succes2s")
-	console.log(result)
+p.then(function (value) {
+    console.log("第一处返回值",value)
+    return new Promise(function(success,fail){
+        setTimeout(function(){
+            console.log('第二个异步')
+            //	resolve("hahha ");
+            success("第二处");
+        },1000)
+    })
+},function () {
+    
+}).then(function(result){
+	console.log("succes2")
+	console.log("第二处返回值",result)
 },function(error){
 	console.log("fail2")
 	console.log(error);
