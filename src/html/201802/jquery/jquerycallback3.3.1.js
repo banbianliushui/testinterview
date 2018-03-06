@@ -400,18 +400,20 @@ jQuery.extend( {
 
                                         // Only substitute handlers pass on context
                                         // and multiple values (non-spec behavior)
+                                        //只有替代处理程序传递上下文和多个值（非规范行为）
                                         if ( handler !== Identity ) {
                                             that = undefined;
                                             args = [ returned ];
                                         }
 
-                                        // Process the value(s)
+                                        // Process the value(s) 处理值
                                         // Default process is resolve
                                         ( special || deferred.resolveWith )( that, args );
                                     }
                                 },
 
                                 // Only normal processors (resolve) catch and reject exceptions
+                                //只有正常的处理器processors（resolve）捕获并拒绝异常
                                 process = special ?
                                     mightThrow :
                                     function() {
@@ -427,10 +429,12 @@ jQuery.extend( {
                                             // Support: Promises/A+ section 2.3.3.3.4.1
                                             // https://promisesaplus.com/#point-61
                                             // Ignore post-resolution exceptions
+                                            //忽略 post-resolution  后的异常
                                             if ( depth + 1 >= maxDepth ) {
 
                                                 // Only substitute handlers pass on context
                                                 // and multiple values (non-spec behavior)
+                                                //只有替代处理程序传递上下文和多个值（非规范行为）
                                                 if ( handler !== Thrower ) {
                                                     that = undefined;
                                                     args = [ e ];
@@ -445,12 +449,14 @@ jQuery.extend( {
                             // https://promisesaplus.com/#point-57
                             // Re-resolve promises immediately to dodge false rejection from
                             // subsequent errors
+                            //立即重新Re-resolve promises，以避免后续错误的错误rejection
                             if ( depth ) {
                                 process();
                             } else {
 
                                 // Call an optional hook to record the stack, in case of exception
                                 // since it's otherwise lost when execution goes async
+                                //回调一个可选的钩子记录堆栈，以防异常当执行异步时它会丢失
                                 if ( jQuery.Deferred.getStackHook ) {
                                     process.stackTrace = jQuery.Deferred.getStackHook();
                                 }
@@ -510,7 +516,7 @@ jQuery.extend( {
             var list = tuple[ 2 ],
                 stateString = tuple[ 5 ];
 
-            // promise.progress = list.add
+            // promise.progress = list.add  此处是list的add操作,add返回的是callbacks的self，对回调列表list的操作接口
             // promise.done = list.add
             // promise.fail = list.add
             promise[ tuple[ 1 ] ] = list.add;
