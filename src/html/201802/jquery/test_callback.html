@@ -8,8 +8,21 @@
 </head>
 <body>
 <script type="text/javascript">
+var wait = function(){
+    var dtd = $.Deferred();
+    var tasks = function(){
+        alert("执行完毕！");
+        dtd.resolve();
+    };
+    setTimeout(tasks,5000);
+    return dtd.promise();
+}
+$.when(wait())
+    .done(function(){alert("哈哈")})
+    .fail(function(){alert("出错了")});
 
-    var obj1 ={
+
+    /*var obj1 ={
         val1:"12",
         fn1:function(){
             console.log("obj1",this)
@@ -26,7 +39,7 @@
     obj2.fn2();
 
     obj2.fn2=obj1.fn1;
-    obj2.fn2()
+    obj2.fn2()*/
 
    /* var obj ={value:8};
     function recufun(value,tag){
