@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../201708/jquery-2.0.3.js"></script>
+
+    <script src="selpane.js"></script>
+    <link href ="selpane.css" rel="stylesheet"type="text/css">
+</head>
+<body>
+<div class="searchpanel sel-pane open" data-comp="sel-pane">
+    <!-- area:category=catering|market -->
+    <div class="sel-groups">
+
+
+        <div class="sel-line sel-single" id="category_mycount0" limitation="" type="category" typeval="网点类别">
+            <span class="sel-label">网点类别：</span>
+            <ul class="search_line  mk-clearfix ">
+
+
+                <li class="left"><a class="mkbtn-select active" value="retail">零售商业</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="trade">商贸综合</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="catering">住宿餐饮</a></li>
+
+
+                <li class="left"><a class="mkbtn-select" value="function">功能类</a></li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="sel-line sel-single" id="year_mycount1" limitation="" type="year" typeval="按年度">
+            <span class="sel-label">按年度：</span>
+            <ul class="search_line  mk-clearfix ">
+
+
+                <li class="left"><a class="mkbtn-select" value="2019">2019年</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="2018">2018年</a></li>
+
+                <li class="left"><a class="mkbtn-select active" value="2017">2017年</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="2016">2016年</a></li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="sel-line sel-single" id="quarter_category_catering_retail_trade_mycount2" limitation="category=catering|retail|trade" type="quarter" typeval="按季度">
+            <span class="sel-label">按季度：</span>
+            <ul class="search_line  mk-clearfix ">
+
+
+                <li class="left"><a class="mkbtn-select" value="1">第一季度</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="2">第二季度</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="3">第三季度</a></li>
+
+                <li class="left"><a class="mkbtn-select active" value="4">第四季度</a></li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="sel-line sel-single  asy-secondary" id="region_mycount3" limitation="" type="region" typeval="按地区">
+            <span class="sel-label">按地区：</span>
+            <ul class="search_line  mk-clearfix ">
+
+
+                <li class="left"><a class="mkbtn-select active" value="">全省</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330100">杭州市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330200">宁波市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330300">温州市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330400">嘉兴市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330500">湖州市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330600">绍兴市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330700">金华市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330800">衢州市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="330900">舟山市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="331000">台州市</a></li>
+
+                <li class="left"><a class="mkbtn-select" value="331100">丽水市</a></li>
+
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+
+    $(function() {
+
+        $(".sel-pane").selpane({
+            onHoverItemClick: function (e, $panel, seldata, allseldata, isSelbtn) {//isSelbtn 是二级框中的btn
+                var $that = this;
+                if (seldata['type'] == 'region' && !isSelbtn && (!seldata['value'] == "" && trimRegionCode(seldata['value']).length < 6)) {
+                    //results 待查数据 这里的数据是根据hover时更新的，测试数据不准确。
+                    var results = [{"value": "330100", "text": "全市"}, {
+                        "id": "330102",
+                        "sortno": "330102",
+                        "text": "上城区",
+                        "name": "上城区",
+                        "value": "330102",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330103",
+                        "sortno": "330103",
+                        "text": "下城区",
+                        "name": "下城区",
+                        "value": "330103",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330104",
+                        "sortno": "330104",
+                        "text": "江干区",
+                        "name": "江干区",
+                        "value": "330104",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330105",
+                        "sortno": "330105",
+                        "text": "拱墅区",
+                        "name": "拱墅区",
+                        "value": "330105",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330106",
+                        "sortno": "330106",
+                        "text": "西湖区",
+                        "name": "西湖区",
+                        "value": "330106",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330108",
+                        "sortno": "330108",
+                        "text": "滨江区",
+                        "name": "滨江区",
+                        "value": "330108",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330109",
+                        "sortno": "330109",
+                        "text": "萧山区",
+                        "name": "萧山区",
+                        "value": "330109",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330110",
+                        "sortno": "330110",
+                        "text": "余杭区",
+                        "name": "余杭区",
+                        "value": "330110",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330122",
+                        "sortno": "330122",
+                        "text": "桐庐县",
+                        "name": "桐庐县",
+                        "value": "330122",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330127",
+                        "sortno": "330127",
+                        "text": "淳安县",
+                        "name": "淳安县",
+                        "value": "330127",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330182",
+                        "sortno": "330182",
+                        "text": "建德市",
+                        "name": "建德市",
+                        "value": "330182",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330183",
+                        "sortno": "330183",
+                        "text": "富阳区",
+                        "name": "富阳区",
+                        "value": "330183",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330185",
+                        "sortno": "330185",
+                        "text": "临安市",
+                        "name": "临安市",
+                        "value": "330185",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }, {
+                        "id": "330186",
+                        "sortno": "330186",
+                        "text": "其它区",
+                        "name": "其它区",
+                        "value": "330186",
+                        "isleaf": "true",
+                        "parentid": "330100",
+                        "type": "4"
+                    }];
+                    var param = {
+                        type: seldata['type'],
+                        e: $that,
+                        data: results
+                    }
+                    $panel.selpane("loadSecondaryData", param);
+                }
+            },
+            onSelItemClick: function (e, seldata, allseldata, isSelbtn) {
+                var $that = this;
+                //
+
+            }
+        });
+
+    });
+
+    var trimRegionCode = function(code) {
+        var codes = code.split("");
+        var newcode = [];
+        var isremove = true;
+        for (var i = codes.length - 1; i >= 0; i--) {
+            if (codes[i] == '0' && isremove) {
+
+            } else {
+                isremove = false;
+                newcode.unshift(codes[i]);
+            }
+        }
+        if (newcode.length % 2 != 0) {
+            newcode[newcode.length] = "0";
+        }
+        return newcode.join("");
+
+    }
+</script>
+</body>
+</html>

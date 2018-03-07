@@ -3,23 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!--    <script src="../../201708/jquery-2.0.3.js"></script>-->
-    <script src="./jquery-3.3.1.js"></script>
+ <script src="../../201708/jquery-2.0.3.js"></script>
+  <!--  <script src="./jquery-3.3.1.js"></script>-->
 </head>
 <body>
 <script type="text/javascript">
 var wait = function(){
     var dtd = $.Deferred();
+    dtd.notify()
     var tasks = function(){
         alert("执行完毕！");
         dtd.resolve();
     };
-    setTimeout(tasks,5000);
+    //setTimeout(tasks,5000);
+    tasks();
     return dtd.promise();
 }
-$.when(wait())
-    .done(function(){alert("哈哈")})
-    .fail(function(){alert("出错了")});
+
+
+$.when(wait()).then(function(){
+    alert("成功")
+    /*var df1 = $.Deferred();
+    var tasks1 = function(){
+        alert("执行完毕！");
+        df1.resolve();
+    };
+    setTimeout(tasks1,2000);
+    return df1;*/
+},function(){
+    alert("出错了")
+},function(){
+    alert("进行中")
+}).then(function(value){
+    console.log("value=",value)
+    alert("成功2")
+  /*  var df1 = $.Deferred();
+    var tasks1 = function(){
+        alert("执行完毕！");
+        df1.resolve();
+    };
+    setTimeout(tasks1,2000);
+    return df1;*/
+},function(){
+    alert("出错了2")
+},function(){
+    alert("进行中2")
+});/*.progress(function () {
+
+    alert("在进行中")
+}).done(function(){alert("哈哈")})
+    .fail(function(){alert("出错了")});*/
 
 
     /*var obj1 ={
@@ -73,11 +106,11 @@ $.when(wait())
     * */
 
     //测试Deferred
-   jQuery.Deferred(function(){
+ /*  jQuery.Deferred(function(){
        console.log("哈哈")
    }).then(function(){
 
-   })
+   })*/
 </script>
 
 </body>

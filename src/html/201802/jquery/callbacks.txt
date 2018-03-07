@@ -23,9 +23,10 @@ jQuery.Deferred=function(func){
         state:function
         always:function
         catch:function
-        /*pipe:function*/
+        /*pipe :function*/
         then:function
         promise:function
+        /*done | fail | progress */
      };//后面each中还加了progress、done、fail三个函数，分别给这三个状态的callbacks新增回调函数用的
 
      var deferred={};
@@ -33,6 +34,7 @@ jQuery.Deferred=function(func){
 		promise.pipe = promise.then;
 
       // Add list-specific methods
+      //
         jQuery.each( tuples, function( i, tuple ) {
             var list = tuple[ 2 ],//callbacks
                 stateString = tuple[ 3 ];
@@ -80,6 +82,15 @@ jQuery.when=function(){
 
 //
 -----
+
+Deferred=function(func){}
+    关键点：
+        1.promise[ done | fail | progress ] = list.add  用于向对应类别的tuple[ 2 ]上添加回调函数（订阅者）,用户注册回调函数的入口
+        2.给处理完成的两种状态resolved和rejected添加函数到callbacks列表中，resolved 状态时给resolve对应的回调列表加其他两个类型的reject_list的disable处理函数和progress_list.lock.
+                    //表示完成状态时reject_list回调列表清空不能再处理，progress_list，锁住 stack=undefined，
+        3.deferred[ resolve | reject | notify ] = function() 用户手动触发回调发布完成状态的方法
+
+-----------
 promise.promise(obj)
     将promise对象上的方法合并到obj传参上，如果obj为null则直接返回promise变量
 
@@ -92,10 +103,83 @@ promise.pipe()
 
 
 
-------promise.then()
+------
+    promise.then()
+
+        then: function( /* fnDone, fnFail, fnProgress */ ) {
+                    var fns = arguments;
+                    return jQuery.Deferred(function( newDefer ) {
+                        jQuery.each( tuples, function( i, tuple ) {
+                            var action = tuple[ 0 ],// resolve | reject | notify
+                                fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
+                            // deferred[ done | fail | progress ] for forwarding actions to newDefer
+                            deferred[ tuple[1] ](function() {
+                                var returned = fn && fn.apply( this, arguments );//this 上一次的deferred就是调dfd.resolve的dfd,arguments时上一次的deferred延迟对象调用resolve等操作时传的参数
+                                if ( returned && jQuery.isFunction( returned.promise ) ) {//返回的是deferred对象或promise？
+                                    returned.promise()
+                                        .done( newDefer.resolve )
+                                        .fail( newDefer.reject )
+                                        .progress( newDefer.notify );
+                                } else {//
+                                    newDefer[ action + "With" ]( this === promise ? newDefer.promise() : this, fn ? [ returned ] : arguments );
+                                }
+                            });
+                        });
+                        fns = null;
+                    }).promise();
+                },
+    用then会间接将上传入参数函数添加到上一个defer对象三种状态对应的callbacks列表队列中，同时还根据函数考虑
+    内部新建一个newDefer延迟对象，传一个能立即执行的函数，将传入fnDone, fnFail, fnProgress方法使用
+    上一次创建的deferred延迟对象的done | fail | progress 方法添加这三个参数函数到就的延迟对象的三种状态对应的callbacks列表中。
+    如果参数函数执行后返回的是延迟对象或promise对象则在返回对象上添加callbacks
+    否则触发 newDefer[ action + "With" ]
+    返回新的newDefer延迟对象的promse接口
 
 
+测试一：
+var wait = function(){
+    var dtd = $.Deferred();
+    dtd.notify()
+    var tasks = function(){
+        alert("执行完毕！");
+        dtd.resolve();
+    };
+    setTimeout(tasks,5000);
+    return dtd.promise();
+}
 
+
+var wait = function(){
+    var dtd = $.Deferred();
+    dtd.notify()
+    var tasks = function(){
+        alert("执行完毕！");
+        dtd.resolve();
+    };
+ //   setTimeout(tasks,5000);
+ tasks();
+    return dtd.promise();
+}
+
+$.when(wait()).then(function(){
+    alert("成功")
+},function(){
+    alert("出错了")
+},function(){
+    alert("进行中")
+}).then(function(value){
+    console.log("value=",value)
+    alert("成功2")
+},function(){
+    alert("出错了2")
+},function(){
+    alert("进行中2")
+});
+
+进行中-> 进行中2->执行完毕！->成功->成功2
+
+不用settimeout时
+执行完毕！->成功 ->进行中 ->成功2
 
 -------------------------------------------------------------------------------------------------------
 CallBacks
