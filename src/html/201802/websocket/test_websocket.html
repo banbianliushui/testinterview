@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea id="showtext" style="height:150px;width: 250px" value=""></textarea>
+</br>
+<input type="text" id="my1">
+</br>
+<button id="send">发送</button>
+
+<script>
+
+    var i =  (Math.random()*100+14).toFixed(0);
+    var name ='丁一'+i;
+    var textarr =[];
+    var ws = new WebSocket("ws://127.0.0.1:3000");
+    ws.onopen=function(evt){
+
+    }
+    document.getElementById("send").addEventListener('click',function(){
+
+
+        var text=  document.getElementById("my1").value;
+
+        if(text!="")
+            var data ={name:name,msg:text};
+        ws.send(JSON.stringify(data));
+        document.getElementById("my1").value="";
+    })
+    ws.onmessage = function(evt){
+       // ws.close();
+        var data = evt.data;
+      var text=  document.getElementById("showtext").value;
+        text +=data+"\n";
+        document.getElementById("showtext").value=text;
+    }
+    ws.onclose = function(evt){
+        console.log("Connection closed.");
+    }
+</script>
+</body>
+</html>
