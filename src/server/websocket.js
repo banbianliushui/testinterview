@@ -30,10 +30,7 @@ wss.on('connection',function connection(ws){
         console.log('received:%s',message);
         var user = JSON.parse(message);
         this.user = user;
-
-
-
-           if(user.msg!=undefined){
+        if(user.msg!=undefined){
                wss.broadcast(1,user)
            }
           /*  if(client != ws && client.readyState === webSocket.OPEN){

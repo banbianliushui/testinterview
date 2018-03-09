@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function ClassA(sColor) {
+        this.color = sColor;
+        console.log('classA')
+
+    }
+
+    ClassA.prototype.sayColor = function () {
+        alert(this.color);
+    };
+
+    function ClassB(sColor, sName) {
+        ClassA.call(this, sColor);
+        this.name = sName;
+    }
+
+    ClassB.prototype = new ClassA();
+
+    ClassB.prototype.sayName = function () {
+        alert(this.name);
+    };
+
+    var b = new ClassB('blue','大王')
+
+
+    /*寄生组合继承*/
+    function Cat(name){
+        Animal.call(this);
+        this.name = name || 'Tom';
+    }
+    (function(){
+        // 创建一个没有实例方法的类
+        var Super = function(){};
+        Super.prototype = Animal.prototype;
+        //将实例作为子类的原型
+        Cat.prototype = new Super();
+    })();
+
+    // Test Code
+    var cat = new Cat();
+    console.log(cat.name);
+    console.log(cat.sleep());
+    console.log(cat instanceof Animal); // true
+    console.log(cat instanceof Cat); //true
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+vue
+     components  -> { 'my-comp': child}
+            template  -> '<div> <table> <tr  is="my-row"></tr></table> <my-comp></my-comp></div>'
+            methods
+            props
+            data -> function
+
+
+
+
+
+
+1.自定义组件时，组件直接放在dom文档，可能会受限制，但放在字符串模板不会有限制
+<script type="text/x-template">
+JavaScript 内联模板字符串
+.vue 组件
+2.自定义组件时 data必须是函数。
+如果不是函数的话组件实例共享了同一个 data 对象，因此递增一个 counter 会影响所有组件！这就错了。
+我们可以通过为每个组件返回全新的数据对象来修复这个问题
+3.在Vue中，父子组件的关系是 prop向下传递，事件向上传递。
+4.组件实例的作用域时孤立的，不能在子组件的模板内直接引用父组件的数据。
+    子组件声明
+        Vue.component('child', {
+          // 声明 props
+          props: ['myMessage'],
+          // 就像 data 一样，prop 也可以在模板中使用
+          // 同样也可以在 vm 实例中通过 this.message 来使用
+          template: '<span>{{ myMessage }}</span>'
+        })
+    属性静态传入
+        <child my-message='hello'></child>
+    动态绑定
+        <child v-bind:my-message='pmsg'></child>
+
+        new Vue({
+          el: '#prop-example-2',
+          data: {
+            pmsg: 'Message from parent'
+          }
+        })
+    动态绑定prop整个对象
+        <todo-item v-bind="todo"></todo-item>
+4.不应该在子组件内部改变 prop
+    Prop 作为初始值传入后，子组件想把它当作局部数据来用；
+
+    Prop 作为原始数据传入，由子组件处理成其它数据输出。
+
+    定义一个局部变量，并用 prop 的值初始化它：
+
+    props: ['initialCounter'],
+    data: function () {
+      return { counter: this.initialCounter }
+    }
+
+    注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。
+5. 校验
+prop 会在组件实例创建之前进行校验，所以在 default 或 validator 函数里，诸如 data、computed 或 methods 等实例属性还无法使用。
+
+父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译
+
+var child = {
+template: '<div>A custom component!</div>'
+}

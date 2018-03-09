@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script>
+
+    const router = new VueRouter({
+        routes:[
+            {path:'/a',redirect:'/b'},
+            {path:'/b',template:'<div>这里是b</div>'}
+        ]
+    })
+    new Vue(router).$mount('#app')
+</script>
+</body>
+</html>

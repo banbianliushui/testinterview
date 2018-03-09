@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <p>
+        <!-- 使用 router-link 组件来导航. -->
+        <!-- 通过传入 `to` 属性指定链接. -->
+        <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+        <!--<router-link to="/user/foo">  Go to Foo</router-link>
+        <router-link to="/user/bar"> Go to Bar</router-link>-->
+        <router-link :to="{name:'user',params:{userId:82}}">User</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+<script>
+    var UserProfile ={
+        template:`<div>jianjie</div>`
+    }
+    var UserPosts={
+        template:`<div>成功</div>`
+    }
+    const User = {
+        template:`<div>
+                    <button @click="tolinkme"> 编程式路由</button>
+                    <h2>Usr {{$route.params.id}}</h2>
+                    <router-view></router-view>
+                    </div>`,
+        methods:{
+            tolinkme :function(){
+               // const userId = 123
+               this.$router.push({ name: 'user', params: { userId: 123 }})
+                //this.$router.push({path:'/user/11/profile'});
+               // this.$router.push({name:'user',params:{userId}})
+               // this.$router.push({path:`/user/${userId}`});
+               // this.$router.push({name:'user',params:{userId}});
+            }
+        }
+
+    }
+    const router = new VueRouter({
+        routes:[
+            {path:'/user/:userId',
+
+                name:'user',
+                component:User,
+            children:[{
+            path:'profile',
+                component:UserProfile
+            },
+                {
+                    path:'posts',
+                    component:UserPosts
+                }
+            ]}
+        ]
+    });
+   /* new Vue(router).$mount('#app')*/
+    new Vue({
+        router
+
+    }).$mount('#app');
+</script>
+
+</body>
+</html>
