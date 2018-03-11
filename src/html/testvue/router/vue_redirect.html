@@ -9,17 +9,19 @@
 </head>
 <body>
 <div id="app">
+    转向
+
     <router-view></router-view>
 </div>
 <script>
 
     const router = new VueRouter({
         routes:[
-            {path:'/a',redirect:'/b'},
+           /* {path:'/a',redirect:'/b'},*/
             {path:'/b',template:'<div>这里是b</div>'}
         ]
     })
-    new Vue(router).$mount('#app')
+    const app =  new Vue({router}).$mount('#app')
 </script>
 </body>
 </html>

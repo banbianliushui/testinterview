@@ -5,7 +5,14 @@
     <title>Title</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -14,37 +21,194 @@
         <!-- 使用 router-link 组件来导航. -->
         <!-- 通过传入 `to` 属性指定链接. -->
         <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-        <router-link to="/user/foo">  Go to Foo</router-link>
-        <router-link to="/user/bar"> Go to Bar</router-link>
+        <router-link to="/foo">  Go to Foo</router-link>
+        <router-link to="/bar"> Go to Bar</router-link>
+        <router-link to="/post"> Go to Post</router-link>
     </p>
     <!-- 路由出口 -->
-    <!-- 路由匹配到的组件将渲染在这里 -->
+    <!-- 路由匹配到的组件将渲染在这里 --> <!--:name="transitionName"-->
+    <transition  name="fade" mode="out-in">
     <router-view></router-view>
+   </transition>
 </div>
 <script>
-const  Foo = {template:'<div>fooo</div>'}
-const Bar = {template:'<div>bar</div>'}
+
+const  Foo = {template:'<div style="background-color:red;"><p>Fooooo</p><p>啊哈哈哈哈哈</p><p>啊哈哈哈哈哈</p></div>',
+
+            beforeRouteUpdate(to,from,next){
+            //当前路由被改变，但是该组件被复用时调用
+            //无需传递回调，this已可用
+            this.name = to.params.name;
+            //  console.log(arguments)
+            console.log("Component Foo beforeRouteUpdate")
+            next()
+
+        },
+        beforeRouteEnter(to,from,next){
+            //不能访问this，导航确认前被调用，新组件还没有创建
+            //支持给 next 传递回调的唯一守卫
+            // console.log(arguments)
+            console.log("Component Foo beforeRouteEnter")
+            next(vm =>{
+                // 通过 `vm` 访问组件实例，
+                // 在导航被确认，dom更新后，执行回调,并把组件实例作为回调方法的参数
+                console.log("Foo beforeRouterEnter next callback")
+            })
+        },
+        beforeRouteLeave(to,from,next){
+            // 第一步，从失活组件调用离开守卫
+            //无需传递回调，this已可用
+            console.log("Component Foo beforeRouteLeave")
+            const  answer = window.confirm('确认离开？');
+            if(answer){
+                next()
+            }else{
+                next(false)
+            }
+            console.log(arguments)
+        },
+        watch :{
+            '$route'(to, from){
+                //
+                console.log("Foo Component watch $route")
+            }
+        }
+        }
+const Bar = {
+        template:'<div>bar</div>',
+        beforeRouteUpdate(to,from,next){
+            //当前路由被改变，但是该组件被复用时调用
+            //无需传递回调，this已可用
+            this.name = to.params.name;
+            //  console.log(arguments)
+            console.log("Bar Component beforeRouteUpdate")
+            next()
+
+        },
+        beforeRouteEnter(to,from,next){
+            //不能访问this，导航确认前被调用，新组件还没有创建
+            //支持给 next 传递回调的唯一守卫
+            // console.log(arguments)
+            console.log("Bar Component beforeRouteEnter")
+            next(vm =>{
+                // 通过 `vm` 访问组件实例，
+                // 在导航被确认，dom更新后，执行回调,并把组件实例作为回调方法的参数
+                console.log("Bar beforeRouterEnter next callback")
+            })
+        },
+        beforeRouteLeave(to,from,next){
+            // 第一步，从失活组件调用离开守卫
+            //无需传递回调，this已可用
+            console.log("Bar Component beforeRouteLeave")
+            const  answer = window.confirm('确认离开？');
+            if(answer){
+                next()
+            }else{
+                next(false)
+            }
+            console.log(arguments)
+        },
+        watch :{
+            '$route'(to, from){
+                //
+                console.log("Bar Component watch $route")
+            }
+        }
+    }
 /*
 const User = {template:'<div>user {{$route.params.id}}</div>'}
 */
 const User = {
     template: `<div>User {{ $route.params.id }}</div>`,
-    beforeRouteUpdate(to ,from,next){
+    beforeRouteUpdate(to,from,next){
+        //当前路由被改变，但是该组件被复用时调用
+        //无需传递回调，this已可用
+        this.name = to.params.name;
+      //  console.log(arguments)
+        console.log("Component beforeRouteUpdate")
+        next()
 
+    },
+    beforeRouteEnter(to,from,next){
+        //不能访问this，导航确认前被调用，新组件还没有创建
+        //支持给 next 传递回调的唯一守卫
+       // console.log(arguments)
+        console.log("Component beforeRouteEnter")
+        next(vm =>{
+            // 通过 `vm` 访问组件实例，
+            // 在导航被确认，dom更新后，执行回调,并把组件实例作为回调方法的参数
+            console.log("beforeRouterEnter next callback")
+        })
+    },
+    beforeRouteLeave(to,from,next){
+        // 第一步，从失活组件调用离开守卫
+        //无需传递回调，this已可用
+        console.log("Component beforeRouteLeave")
+        const  answer = window.confirm('确认离开？');
+        if(answer){
+            next()
+        }else{
+            next(false)
+        }
+        console.log(arguments)
     },
     watch :{
         '$route'(to, from){
             //
+            console.log("Component watch $route")
         }
     }
 }
 
 const routes =[
-   /* {path:'/foo',component:Foo},*/
-    {path:'/user/:id',component:User}
+   {path:'/foo',component:Foo,
+       beforeEnter :(to,from,next)=>{
+           console.log("Foo Route beforeEnter")
+           // console.log(arguments)
+           next();
+       }},
+    {path:'/bar',component:Bar,
+        beforeEnter :(to,from,next)=>{
+            console.log("Bar Route beforeEnter")
+            // console.log(arguments)
+            next();
+        }},
+    {
+        path:'/user/:id',component:User,
+        beforeEnter :(to,from,next)=>{
+            console.log("User Route beforeEnter")
+           // console.log(arguments)
+            next();
+        }
+    },{
+      path:'/post',component:Post,
+        beforeEnter:(to,from,next) =>{
+            console.log("Post Route beforeEnter")
+          next();
+        }
+    }
     ];
 const router = new VueRouter({
     routes
+})
+router.beforeEach((to,from,next) => {
+    //
+   // console.log(to,from,next)
+    console.log("global router beforeEach")
+    next()
+})
+router.beforeResolve(function(to,from,next){
+    //所有组件内守卫和异步路由组件被解析之后
+   // console.log(arguments)
+    console.log("global router beforeResolve")
+    next();
+})
+router.afterEach(function(to,from){//不接受next，不改变导航本身
+   // console.log(arguments)
+    console.log("global router afterEach")
+})
+router.onError(function(){
+
 })
 /*const router = new VueRouter({
     routes: [

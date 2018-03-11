@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <!-- 使用 router-link 组件来导航. -->
+        <!-- 通过传入 `to` 属性指定链接. -->
+        <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <!--  <router-link to="/foo">  Go to Foo</router-link>-->
+       <!-- <router-link to="/bar"> Go to Bar</router-link>
+        <router-link to="/post"> Go to Post</router-link>-->
+    </p>
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 --> <!--:name="transitionName"-->
+    <transition  name="fade" mode="out-in">
+    <router-view></router-view>
+   </transition>
+</div>
+<script>
+    const Post ={
+        template:` <div class="post">
+        <div class="loading" v-if="loading">
+            Loading
+        </div>
+        <div v-if="error" class="error">
+            {{error}}
+        </div>
+        <div v-for="item in post" class="content">
+            <h2>{{item.title}}</h2>
+            <p v-html="item.body"></p>
+        </div>
+    </div>`,
+        data (){
+            return {
+                loading:false,
+                post:null,
+                error:null
+            }
+        },
+        created(){
+            this.fetchData()
+        },
+        beforeRouteUpdate(to,from,next){
+            //当前路由被改变，但是该组件被复用时调用
+            //无需传递回调，this已可用
+            this.name = to.params.name;
+            //  console.log(arguments)
+            console.log("Post Component beforeRouteUpdate")
+            next()
+
+        },
+        beforeRouteEnter(to,from,next){
+            //不能访问this，导航确认前被调用，新组件还没有创建
+            //支持给 next 传递回调的唯一守卫
+            // console.log(arguments)
+            console.log("Post Component beforeRouteEnter")
+            next(vm =>{
+                // 通过 `vm` 访问组件实例，
+                // 在导航被确认，dom更新后，执行回调,并把组件实例作为回调方法的参数
+                console.log("Post beforeRouterEnter next callback")
+            })
+            /*getPost(to.params.id, (err, post) => {
+                next(vm => vm.setData(err, post))
+            })*/
+        },
+        beforeRouteLeave(to,from,next){
+            // 第一步，从失活组件调用离开守卫
+            //无需传递回调，this已可用
+            console.log("Post Component beforeRouteLeave")
+            const  answer = window.confirm('确认离开？');
+            if(answer){
+                next()
+            }else{
+                next(false)
+            }
+            console.log(arguments)
+        },
+        watch :{
+            '$route'(to, from){
+                //
+                this.fetchData();
+                console.log("Post Component watch $route")
+            }
+        },
+        methods:{
+            fetchData(){
+                this.error = this.post = null;
+                this.loading = true;
+                var that = this;
+                setTimeout(function(){
+                    that.loading = false;
+                    that.post =[{title:'js 原理',body:"<div>这里是对象</div>"},
+                        {title:'js 秘密',body:'你所不知道的js'}]
+                },2000)
+            }
+        }
+    }
+
+    const routes =[
+           {
+               path:'/post',component:Post,
+               beforeEnter :(to,from,next)=>{
+                   console.log("Foo Route beforeEnter")
+                   // console.log(arguments)
+                   next();
+               }
+           }
+    ];
+    const router = new VueRouter({
+        mode:'history',
+
+        routes,
+        scrollBehavior(to, from,savedPosition){
+            if(savedPosition){
+                return savedPosition;
+            }else{
+                const position ={}
+                if(to.hash){
+                    position.selector = to.hash
+                }
+                if(to.matched.some(m => m.meta.scrollToTop)){
+                    position.x=0;
+                    position.y=0;
+                }
+                return position;
+            }
+
+        }
+
+    })
+    router.beforeEach((to,from,next) => {
+        //
+       // console.log(to,from,next)
+        console.log("global router beforeEach")
+        next()
+    })
+    router.beforeResolve(function(to,from,next){
+        //所有组件内守卫和异步路由组件被解析之后
+       // console.log(arguments)
+        console.log("global router beforeResolve")
+        next();
+    })
+    router.afterEach(function(to,from){//不接受next，不改变导航本身
+       // console.log(arguments)
+        console.log("global router afterEach")
+    })
+    router.onError(function(){
+
+    })
+
+    const app = new Vue({
+        router
+    }).$mount('#app');
+
+</script>
+
+</body>
+</html>

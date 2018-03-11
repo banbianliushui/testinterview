@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button> 第一页</button>
+<button> 第二页</button>
+<button id="back">退回</button>
+<button id="go">前进</button>
+<script>
+    document.getElementById("back").addEventListener('click',function(e){
+        e.stopPropagation();
+        history.back()
+    })
+
+    document.getElementById("go").addEventListener('click',function(e){
+        e.stopPropagation();
+        history.go(1)
+    })
+    window.onpopstate = function(event){
+        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    }
+
+    document.addEventListener('click',function(){
+        var n=( Math.random()*10).toFixed(0)
+       if( n%3 == 0){
+
+           history.replaceState({page:3},'',"#p=3")
+           console.log("replaceState #p3")
+       }else  if( n%2 == 0){
+           history.pushState({page:1},'',"#p=1")
+           console.log("pushState #p1")
+       }else{
+           history.pushState({page:2},'',"#p=2")
+           console.log("pushState #p2")
+       }
+
+    })
+    window.onhashchange=function(event){
+        console.log(event)
+    }
+
+</script>
+</body>
+</html>

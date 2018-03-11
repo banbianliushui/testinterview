@@ -1,0 +1,61 @@
+
+https://router.vuejs.org/zh-cn/api/options.html#routes
+
+
+1.
+window.addEventListener(supportsPushState ? 'popstate' : 'hashchange', function ()
+
+    hashchange事件:当url的片段标识符更改时（），将触发hashchenge事件（#符号后面的url部分包括#,变化话时触发）
+    popstate事件：当活动历时记录条目更改时，触发popstate事件。如果被激活的历史记录条目是通过history.pushState()
+        的调用创建，或受到对history.replaceState()的调用的影响，popstate事件的state属性包含历史提哦啊吗的状态对象的副本。
+        注：history.pushState()或history.replaceState()不会触发popstate事件。只有在浏览器做出动作时，才触发该事件，如
+        点击退回或前进按钮,enter好像不可以，待查原因出处
+        退回或前进之后，即更改后触发该事件
+        标签页 前进退回这里可能有缓存，之前的push操作在刷新和强制刷新后还保留，chrome。前进后退的
+        缓存，清理缓存好像清理不了，需要重新打开一个浏览器，chrome这样，不确定是否自动定时清理，什么算法不明
+
+
+    https://developer.mozilla.org/zh-CN/docs/Web/Events/popstate
+    https://www.cnblogs.com/xcsn/p/4517581.html
+
+ 2.使用props将组件和路由解耦
+    如果props为true，route.params被设置为组件属性
+
+ 3. vue-router模式
+        默认hash模式，使用url的hash模拟一个完整url，当url改变时，url不会重新加载。
+
+        history，使用window.pushState.注： 这种模式需要后台配置支持，否则用户访问这种模式的url
+        （如： http://oursite.com/user/id ），可能返回404。在服务端增加一个覆盖所有情况的候选资源，
+        如果URL匹配不到任何静态资源，则返回同一个index.html页面，这个页面就是app依赖的页面，
+        （然后前端路由定向到相应组件）。由于这样做之后服务器不再返回404错误页面，因为所有路径
+        都会返回index.html文件，这时应该在vue应用里面覆盖所有路由情况，然后再给出一个404页面。
+
+4.权限验证路由
+    auth.loggedIn  待查具体写法
+
+    https://router.vuejs.org/zh-cn/advanced/meta.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

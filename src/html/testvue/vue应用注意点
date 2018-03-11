@@ -1,0 +1,20 @@
+
+1.路由使用history模式时
+    服务端需要配置一个覆盖所有url返回一个app依赖的index.html页面，这种情况服务端不再返回404错误。
+    所以前端路由需要配置一个nofound组件，前端覆盖所有路由*,指定404页面。
+
+2.路由守卫函数next参数必须调
+    全局守卫函数 beforeEach
+    路由独享守卫 beforeEnter(to, from, next)
+    组件内守卫   beforeRouteEnter
+                 beforeRouteUpdate (2.2 新增)
+                 beforeRouteLeave
+
+
+    全局后置钩子（无需next）afterEach
+
+ 3.挂载根节点
+    el
+    render:h => h('')
+    template
+    $mount('#app')
