@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试xmlhttprequest 重定向</title>
+</head>
+<body>
+测试内容
+<script>
+    var client = new XMLHttpRequest();
+    client.onreadystatechange=function(){
+        //
+        console.log("状态码："+this.status)
+
+        console.log(this);
+    }
+    client.onabort=function(){
+
+    }
+    client.onload = function(){
+
+    }
+    client.onerror = function(){
+
+    }
+    client.onprogress=function(){
+
+    }
+    client.open('GET','hha.html');
+    client.setRequestHeader('X-Test','one');
+    client.send();
+</script>
+</body>
+</html>

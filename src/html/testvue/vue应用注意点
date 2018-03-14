@@ -18,3 +18,100 @@
     render:h => h('')
     template
     $mount('#app')
+
+ 4.
+state :
+        const store = new Vuex.Store({
+          state: {
+            count: 0
+          },
+          mutations: {
+            increment (state) {
+              state.count++
+            }
+          }
+        })
+        组件中读取state：
+        由于 Vuex 的状态存储是响应式的，从 store 实例中读取状态最简单的方法就是在计算属性中返回某个状态：
+         computed: {
+            count () {
+              return this.$store.state.count
+            }
+          }
+          辅助函数mapState生成计算属性：
+           computed: mapState({
+              // 箭头函数可使代码更简练
+              count: state => state.count,
+getter：
+        多个组件中读取state：
+        const store = new Vuex.Store({
+          state: {
+            todos: [
+              { id: 1, text: '...', done: true },
+              { id: 2, text: '...', done: false }
+            ]
+          },
+          getters: {
+            doneTodos: state => {
+              return state.todos.filter(todo => todo.done)
+            }
+          }
+        })
+         组件中使用store中的计算属性直接getters：
+         computed: {
+           doneTodosCount () {
+             return this.$store.getters.doneTodosCount
+           }
+         }
+         mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性：
+          computed: {
+           // 使用对象展开运算符将 getter 混入 computed 对象中
+             ...mapGetters([
+               'doneTodosCount',
+ mutation:
+     const store = new Vuex.Store({
+       state: {
+         count: 1
+       },
+       mutations: {
+         increment (state) {
+           // 变更状态
+           state.count++
+         }
+       }
+     })
+    vm.$store.commit()提交mutation
+    组件中提交mutation：
+    或使用mapMutations将组建中的methods映射为store.commit,需从根节点诸如
+    methods: {
+     ...mapMutations([
+       'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+action：提交的是mutation，不是直接变更状态，可以包含异步操作。
+        Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，但不是store实例本身。
+        分发action：store.dispatch('increment')
+        actions: {
+          checkout ({ commit, state }, products) {
+
+          }
+
+        组件中分发action
+         methods: {
+            ...mapActions([
+              'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+
+
+        store中的 state、getter对应组件中的computed，辅助函数分别是mapState和mapGetters,
+        mutation和action对应组件中的methods，辅助函数分别是mapMutations和mapActions
+
+
+
+
+
+
+
+
+
+
+
+

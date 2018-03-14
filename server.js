@@ -12,7 +12,16 @@ const server =http.createServer((req,res)=>{
     var urlquery=url.parse(req.url);
     if(pathobj.ext=='.html'){//__dirname+
         fs.readFile(path.resolve(__dirname,"./src","./"+req.url),(err,data) => {
-            if(err) throw err;
+           /* if(err) throw err;*/
+        if(err)  {
+            //res.setHeader('Content-Type', 'text/html');
+           // res.writeHead(301, {'Location': 'http://itbilu.com/'});
+            res.writeHead(302, {
+                'Location':'/html/404.html' });
+            res.end();
+            return ;
+        }
+
             res.end(data)
         })
     } else if(true){//urlquery.query = callbackfun=JsonpBack&_=1506616245034  下次在解析
