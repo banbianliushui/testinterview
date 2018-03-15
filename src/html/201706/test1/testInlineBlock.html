@@ -32,6 +32,9 @@ border:0px;
 </head>
 
 <body>
+<!--外层使用line-height 继承到内部容器，如果内部容器是inline-block，且设置了font-size大小，则有可能内部容器会溢出外部容器，
+  和inline-block 布局有关，如使用vertical-align: middle; 不溢出 默认vertical-align: baseline会溢出;
+-->
 <div class="header">
 <div class="outer">
 <a class="inna"><img alt="" src="/sunproperty-war/pc/core/assets/logo.png"></a>

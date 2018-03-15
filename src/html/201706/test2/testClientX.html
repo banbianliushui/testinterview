@@ -10,7 +10,7 @@ margin:0px;}
 background:#fffccc;
 border:6px solid #b52a23;
 margin:5px;
-padding:15px;
+padding:16px;
     word-wrap: break-word;
     position:relative;
 
@@ -42,13 +42,34 @@ padding:15px;
 </div>
 
 <script type="text/javascript">
-
+    /*
+        * e.clientX/e.clientY
+        *		鼠标相对于浏览器窗口可视区域的X,Y坐标，可视区域不包括工具栏和滚动条。IE和标准时间都定义。
+        * e.pageX/e.pageY
+        * 	鼠标相对于整个文档（x，y）坐标而不是相对于窗口坐标，非标准属性，大多数支持，IE不支持
+        * e.offsetX/e.offsetY
+        * 	鼠标相对于事件源元素（srcElement）的X,Y坐标，规定了事件对象与目标节点的内填充边（padding edge）在x轴
+        * 	方向上的偏移量。如果鼠标在事件源border上，可以为负数。
+        * e.screenX/e.screenY
+        * 	鼠标相对于用户显示器屏幕左上角的X,Y坐标。
+        * e.layerX/e.layerY
+        * 	当前层的坐标，这个属性考虑页面滚动，返回一个相对于整个文档的值
+        * 	鼠标相比较于当前坐标系的位置,即如果触发元素没有设置绝对定位或相对定位,以页面为参考点,
+        * 	如果有,将改变参考坐标系,从触发元素盒子模型的border区域的左上角为参考点
+        *
+        * HTMLElement.offsetLeft
+        * 	HTMLElement.offsetLeft 是一个只读属性，返回当前元素左上角（border）相对于HTMLElement.offsetParent 节点的左边界（从padding开始计算）偏移的像素值。
+        *  触发元素的margin-left和父元素的+padding-left之间
+        *
+        *
+        *
+        * */
 document.getElementsByClassName("pic")[0].onclick=function(e){
 	e=e||window.event;
-	this.innerHTML=" pageX="+e.pageX+",clientX="+e.clientX+
+	this.innerHTML="pageX="+e.pageX+",clientX="+e.clientX+
 	",offsetX="+e.offsetX+",layerX="+e.layerX+",screenX="+e.screenX+" \n"
 	+ "pageY="+e.pageY+",clientY="+e.clientY+
-		",offsetY="+e.offsetY+",layerY="+e.layerY+",screenY="+e.screenY+",body-scrollTop="+document.documentElement.scrollTop;
+		",offsetY="+e.offsetY+",layerY="+e.layerY+",screenY="+e.screenY+",offsetLeft="+this.offsetLeft+",body-scrollTop="+document.documentElement.scrollTop;
 	console.log("pic  pageX=",e.pageX,",clientX=",e.clientX,
 		",offsetX=",e.offsetX,",layerX=",e.layerX,",screenX=",e.screenX, 
 		",pageY=",e.pageY,",clientY=",e.clientY,

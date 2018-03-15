@@ -56,6 +56,7 @@ function deepClone1(obj){
 	//对象属性值为undefined的属性被过滤了 ；如果对象属性值是 函数的话，返回为undedined 如 skill:undefined
 	return JSON.parse(JSON.stringify(obj));
 }
+//Object.prototype.toString.call(null) "[object Null]"
 function deepClone2(obj){
 	var o;
 	if(Object.prototype.toString.call(obj).slice(8,-1)==="Object"){
@@ -73,6 +74,8 @@ function deepClone2(obj){
 	}
 	return o;
 }
+
+
 function test(){
 	var testobj={a:1,
             skill:function(){

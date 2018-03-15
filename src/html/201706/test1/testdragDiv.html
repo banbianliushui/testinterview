@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>拖拽</title>
 <style type="text/css">
 * {
 	margin: 0;
@@ -23,6 +23,19 @@
 <body>
 	<div class="div"></div>
 	<script type="text/javascript">
+		/*
+		* e.clientX/e.clientY
+		*
+		* e.pageX/e.pageY
+		* e.offsetX/e.offsetY
+		* e.screenX/e.screenY
+		*
+		* HTMLElement.offsetLeft
+		* 	HTMLElement.offsetLeft 是一个只读属性，返回当前元素左上角相对于HTMLElement.offsetParent 节点的左边界偏移的像素值。
+		*
+		*
+		*
+		* */
 		var div = document.getElementsByTagName('div')[0];
 		var zIndex = 6;
 		drag(div);
@@ -30,10 +43,10 @@
 			alert("ok");
 		};
 		function drag(oDrag) {
-			var disX = dixY = 0;
+			var disX = disY = 0;
 			oDrag.onmousedown = function(event) {
 				var event = event || window.event;
-				disX = event.clientX - this.offsetLeft;
+				disX = event.clientX - this.offsetLeft;//事件源元素相对于
 				disY = event.clientY - this.offsetTop;
 				var oTemp = this.cloneNode(true);
 				document.body.appendChild(oTemp);
@@ -75,7 +88,7 @@
 					//当你不在需要继续获得鼠标消息就要应该调用ReleaseCapture
 					//取消捕获范围 .releaseCapture window.captureEvents(Event.MOUSEMOVE|Event.MOUSEUP); 
 					oDrag.releaseCapture && oDrag.releaseCapture();
-					SetCapture
+
 					//函数功能：该函数在属于当前线程的指定窗口里设置鼠标捕获。
 					//一旦窗口捕获了鼠标，所有鼠标输入都针对该窗口，无论光标是否在窗口的边界内。  
 					//意思是说，只要设置了SetCapture,所有鼠标的操作都会在调用该函数的窗口处捕捉到，
