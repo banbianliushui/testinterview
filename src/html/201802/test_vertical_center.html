@@ -136,25 +136,61 @@
             /*height:200px;*/
             background: orange;
         }
+        #box9{
+            width:400px;
+            height:300px;
+            background: #ddd;
+           line-height:300px;
+            text-align: center;
+        }
+        #child9{
+            background: orange;
+        }
+
+        #box10{
+           /* width:400px;
+            height:500px;*/
+            background: #ddd;
+          /*  line-height:300px;
+            text-align: center;*/
+        }
+        #child10{
+            vertical-align: middle;
+        }
+        #box11{
+            background: #ddd;
+            display: table-cell;
+        }
+        #child11{
+            vertical-align: middle;
+        }
+        p{
+            font-size:12px;
+        }
     </style>
 </head>
 <body>
 <!--1. 使用绝对定位和负外边距对块级元素进行垂直居中-->
-<div>1. 使用绝对定位和负外边距对块级元素进行垂直居中</div>
+<h2>1. 使用绝对定位和负外边距对块级元素进行垂直居中</h2>
 <p>缺点必须直到居中块级元素尺寸</p>
 <div id="box1">
     <div id="child1">我是测试DIV</div>
 </div>
 
 
-<div>2. 使用绝对定位和transform</div>
-<p>不用事先确定被定位的容器高度，使用transform的2d变换，垂直方向上平移，移动相对于元素本身长宽做参考</p>
+<h2>2. 使用绝对定位和transform</h2>
+<p>不用事先确定被定位的容器高度，使用transform的2d变换，垂直方向上平移，移动相对于元素本身长宽做参考
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+</p>
 <div id="box2">
     <div id="child2">我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV</div>
 </div>
 
 
-<div>3. 使用绝对定位和百分比</div>
+<h2>3. 使用绝对定位和百分比</h2>
 <p>当margin/padding取形式为百分比的值时，它们都是以父元素的width为参照物的！
 适合外部容器宽高相同，left+margin-left
     padding 和 margin 是根据包含块的宽度(content-box , width+padding)计算的 (https://www.w3.org/TR/css3-box/#the-padding)
@@ -177,7 +213,7 @@
     <div id="child3">我是测试DIV</div>
 </div>
 
-<div>4. 使用绝对定位和margin：auto</div>
+<h2>4. 使用绝对定位和margin：auto</h2>
 <p>top/bottom 设置值相同，left/right 设置值相同，计算规则如下：
 
 </p>
@@ -185,30 +221,44 @@
     'left' + 'margin-left' + 'border-left-width' + 'padding-left' + 'width' + 'padding-right' + 'border-right-width' + 'margin-right' + 'right' = 包含块宽度
     如果“left”，“width”和“right”中的所有三个都是“auto”：首先将'margin-left'和'margin-right'的任何'auto'值设置为0.然后，如果'direction'建立静态位置包含块（establishing the static-position containing block）元素的属性为“ltr”，设置“left”为static 位置(将left设置到普通流位置？)，并应用下面的规则号3;否则，将“right”设置为静态位置，然后应用规则编号1。
     如果'margin-left' 和'margin-right' 是'auto',在额外约束是两个margin获得相等的值。
-    如果“left”，“width”和“right”三者都不是“auto”：如果“margin-left”和“margin-right”均为“auto”，则在额外的约束下解决方程式，即两个margins获得相等的值，除非这会使它们为负值，在这种情况下，当包含块的方向为'ltr'（'rtl'）时，将'margin-left'（'margin-right'）设置为零并求解'margin-right'（'margin-left'）。如果“margin-left”或“margin-right”之一是“auto”，求解该值的方程式。如果值被过度约束，忽略'left'的值（如果包含块的'direction'属性为'rtl'）或'right'（在“direction”为“ltr”的情况下），并求这个值。
-    否则，将'margin-left'和'margin-right'的'auto'值设置为0，并选择适用的以下六条规则之一。
-    1.'left'和'width'是'auto'，'right'不是'auto'，那么宽度是收缩到自适应大小（shrink-to-fit，文本内容大小？）的，然后解决'左'（左边自动根据width缩过去）
-    2.'left'和'right'是'auto'，'width'不是'auto'，那么如果它的静态位置包含块（static-position containing block）元素的'direction'属性'ltr'，设置为”left” 为静态位置(static position)(?就是把他放在包含块的左边？), 否则将“right”设置为静态位置。 然后解决'左'（如果'方向是'rtl'）或'右'（如果'direction'是'ltr'）。
-    3.'width'和'right'是'auto'，'left'不是'auto'，那么宽度收缩到自适应（shrink-to-fit ）。（左侧设置好，“right”就自动解决了） 然后解决“right”。
-    4.'left'是'auto'，'width'和'right'不是'auto'，然后解决'left'
-    5.'width'是'auto'，'left'和'right'不是'auto'，然后解决'width'
-    6.'right'是'auto'，'left'和'width'不是'auto'，然后解决'right'
-
 </p>
+    <p>
+        如果“left”，“width”和“right”三者都不是“auto”：如果“margin-left”和“margin-right”均为“auto”，则在额外的约束下解决方程式，即两个margins获得相等的值，除非这会使它们为负值，在这种情况下，当包含块的方向为'ltr'（'rtl'）时，将'margin-left'（'margin-right'）设置为零并求解'margin-right'（'margin-left'）。如果“margin-left”或“margin-right”之一是“auto”，求解该值的方程式。如果值被过度约束，忽略'left'的值（如果包含块的'direction'属性为'rtl'）或'right'（在“direction”为“ltr”的情况下），并求这个值。
+        否则，将'margin-left'和'margin-right'的'auto'值设置为0，并选择适用的以下六条规则之一。
+    </p>
+    <ul>
+    <li> 1.'left'和'width'是'auto'，'right'不是'auto'，那么宽度是收缩到自适应大小（shrink-to-fit，文本内容大小？）的，然后解决'左'（左边自动根据width缩过去）
+    </li>
+    <li>
+        2.'left'和'right'是'auto'，'width'不是'auto'，那么如果它的静态位置包含块（static-position containing block）元素的'direction'属性'ltr'，设置为”left” 为静态位置(static position)(?就是把他放在包含块的左边？), 否则将“right”设置为静态位置。 然后解决'左'（如果'方向是'rtl'）或'右'（如果'direction'是'ltr'）。
+    </li>
+    <li>
+        3.'width'和'right'是'auto'，'left'不是'auto'，那么宽度收缩到自适应（shrink-to-fit ）。（左侧设置好，“right”就自动解决了） 然后解决“right”。
+    </li>
+    <li>
+        4.'left'是'auto'，'width'和'right'不是'auto'，然后解决'left'    </li>
+    <li>
+        5.'width'是'auto'，'left'和'right'不是'auto'，然后解决'width'    </li>
+    <li>
+        6.'right'是'auto'，'left'和'width'不是'auto'，然后解决'right'    </li>
+</ul>
+
+
+
 <div id="box4">
     <div id="child4">我是测试DIV</div>
 </div>
 
-<div>5. padding</div>
+<h2>5. padding</h2>
 <p>
 
 </p>
 <div id="box5">
     <div id="child5">我是测试DIV</div>
 </div>
-<div>
+<h2>
 6.设置基准
-</div>
+</h2>
 <p>
     基准的高度设置为父容器的50%，基准元素的底边就是父容器的中分线；
     需要居中的子容器，设置高度且上移自身高度的一半（margin-top : - 一半）
@@ -218,9 +268,9 @@
     <div id="child6">我是测试DIV</div>
 </div>
 
-<div>
+<h2>
     7.flex布局,主轴水平
-</div>
+</h2>
 <p>
     元素可以通过设置display:flex;将其指定为flex布局的容器，指定好了容器之后再为其添加align-items属性，该属性定义项目在交叉轴（这里是纵向轴）上的对齐方式，可能的取值有五个，分别如下：
     　　flex-start:：交叉轴的起点对齐；
@@ -232,9 +282,9 @@
 <div id="box7">
     <div id="child7">我是测试DIV</div>
 </div>
-<div>
-    7.flex布局,主轴垂直
-</div>
+<h2>
+    8.flex布局,主轴垂直
+</h2>
 <p>
     这种方式也是首先给父元素设置display:flex，设置好之后改变主轴的方向flex-direction: column，该属性可能的取值有四个，分别如下：
     　　row（该值为默认值）：主轴为水平方向，起点在左端；
@@ -251,6 +301,55 @@
 <div id="box8">
     <div id="child8">我是测试DIV</div>
 </div>
-https://www.cnblogs.com/zhouhuan/p/vertical_center.html
+
+<h2>
+    9.line-height对单行文本垂直居中
+</h2>
+<p>
+    注意：line-height百分比是基于当前字体尺寸的百分比行间距。所以这里的百分比并不是相对于父元素尺寸而言，而是相对于字体尺寸来讲的。
+</p>
+<div id="box9">
+    <div id="child9">我是测试DIV</div>
+</div>
+
+<h2>
+    10.使用vertical-align + inline(显，隐)
+</h2>
+<p>
+
+    vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
+    大部分取值是相对于父元素来说的：
+    box10里面的文本和图片会形成一个匿名行框。，图片在这个匿名行框中垂直居中.如果父容器使用了line-height，
+    行框的高度就是指定高度，否则使用默认一行撑起的高度
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align
+</p>
+<!--<div id="box10">
+    <img  id="child10" src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320">
+   &lt;!&ndash; <div id="child10">我是测试DIV</div>&ndash;&gt;
+</div>-->
+
+<div id="box10" >An <img  id="child10"  src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320" alt="link" width="32" height="32" /> image with
+    <span style="    vertical-align: middle;">a default</span><span style="vertical-align: text-bottom"> a default</span> alignment. 图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片</div>
+
+<h2>
+    11.使用vertical-align + table-cell
+</h2>
+<p>
+
+    vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。
+    大部分取值是相对于父元素来说的：
+    box10里面的文本和图片会形成一个匿名行框。，图片在这个匿名行框中垂直居中.如果父容器使用了line-height，
+    行框的高度就是指定高度，否则使用默认一行撑起的高度
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align
+</p>
+<!--<div id="box10">
+    <img  id="child10" src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320">
+   &lt;!&ndash; <div id="child10">我是测试DIV</div>&ndash;&gt;
+</div>-->
+
+<div id="box11" >An <img  id="child11"  src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320" alt="link" width="32" height="32" /> image with
+    <span style="    vertical-align: middle;">a default</span><span style="vertical-align: text-bottom"> a default</span> alignment. 图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片</div>
+
+参考：https://www.cnblogs.com/zhouhuan/p/vertical_center.html
 </body>
 </html>
