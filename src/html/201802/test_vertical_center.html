@@ -78,6 +78,64 @@
             right: 0;
 
         }
+
+        #box5 {
+
+            background: #ddd;
+            position: relative;
+            padding: 100px 50px;
+        }
+        #child5 {
+           /* width:150px;
+            height:200px;*/
+            background: orange;
+        }
+
+        #box6 {
+
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+        }
+        #base6{
+            height: 50%;
+            background: #AF9BD3;
+        }
+        #child6 {
+            height: 100px;
+            background: rgba(131, 224, 245, 0.6);
+            line-height: 50px;/*可省*/
+            margin-top: -50px;/*高度的一半*/
+        }
+
+        #box7 {
+            width:400px;
+            height:300px;
+            background: #ddd;
+            display:flex ;
+            align-items:center;
+            justify-content: center;
+        }
+        #child7 {
+             width:150px;
+            /*height:200px;*/
+            background: orange;
+        }
+
+        #box8 {
+            width:400px;
+            height:300px;
+            background: #ddd;
+            display:flex ;
+            align-items:center;
+            justify-content: center;
+            flex-direction:column;
+        }
+        #child8{
+            width:150px;
+            /*height:200px;*/
+            background: orange;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +178,9 @@
 </div>
 
 <div>4. 使用绝对定位和margin：auto</div>
+<p>top/bottom 设置值相同，left/right 设置值相同，计算规则如下：
+
+</p>
 <p>
     'left' + 'margin-left' + 'border-left-width' + 'padding-left' + 'width' + 'padding-right' + 'border-right-width' + 'margin-right' + 'right' = 包含块宽度
     如果“left”，“width”和“right”中的所有三个都是“auto”：首先将'margin-left'和'margin-right'的任何'auto'值设置为0.然后，如果'direction'建立静态位置包含块（establishing the static-position containing block）元素的属性为“ltr”，设置“left”为static 位置(将left设置到普通流位置？)，并应用下面的规则号3;否则，将“right”设置为静态位置，然后应用规则编号1。
@@ -137,5 +198,59 @@
 <div id="box4">
     <div id="child4">我是测试DIV</div>
 </div>
+
+<div>5. padding</div>
+<p>
+
+</p>
+<div id="box5">
+    <div id="child5">我是测试DIV</div>
+</div>
+<div>
+6.设置基准
+</div>
+<p>
+    基准的高度设置为父容器的50%，基准元素的底边就是父容器的中分线；
+    需要居中的子容器，设置高度且上移自身高度的一半（margin-top : - 一半）
+</p>
+<div id="box6">
+    <div id="base6"></div>
+    <div id="child6">我是测试DIV</div>
+</div>
+
+<div>
+    7.flex布局,主轴水平
+</div>
+<p>
+    元素可以通过设置display:flex;将其指定为flex布局的容器，指定好了容器之后再为其添加align-items属性，该属性定义项目在交叉轴（这里是纵向轴）上的对齐方式，可能的取值有五个，分别如下：
+    　　flex-start:：交叉轴的起点对齐；
+    　　flex-end：交叉轴的终点对齐；
+    　　center：交叉轴的中点对齐；
+    　　baseline：项目第一行文字的基线对齐；
+    　　stretch（该值是默认值）：如果项目没有设置高度或者设为了auto，那么将占满整个容器的高度。
+</p>
+<div id="box7">
+    <div id="child7">我是测试DIV</div>
+</div>
+<div>
+    7.flex布局,主轴垂直
+</div>
+<p>
+    这种方式也是首先给父元素设置display:flex，设置好之后改变主轴的方向flex-direction: column，该属性可能的取值有四个，分别如下：
+    　　row（该值为默认值）：主轴为水平方向，起点在左端；
+    　　row-reverse：主轴为水平方向，起点在右端；
+    　　column：主轴为垂直方向，起点在上沿；
+    　　column-reverse：主轴为垂直方向，起点在下沿。
+    　　
+    　　justify-content属性定义了项目在主轴上的对齐方式，可能的取值有五个，分别如下（不过具体的对齐方式与主轴的方向有关，以下的值都是假设主轴为从左到右的）：
+    　　flex-start（该值是默认值）：左对齐；
+    　　flex-end：右对齐；
+    　　center：居中对齐；
+    　　space-between：两端对齐，各个项目之间的间隔均相等；
+    　　space-around：各个项目两侧的间隔相等。
+<div id="box8">
+    <div id="child8">我是测试DIV</div>
+</div>
+https://www.cnblogs.com/zhouhuan/p/vertical_center.html
 </body>
 </html>
