@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文本溢出处理(单行、多行)</title>
+<style type="text/css">
+#MyDIV
+{
+overflow:hidden;
+text-overflow:ellipsis;
+    white-space: nowrap;/*单行溢出，文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+}
+/*-webkit-line-clamp 是一个 不规范的属性（unsupported WebKit property），它没有出现在 CSS 规范草案中。
+
+限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他外来的WebKit属性。常见结合属性：
+
+display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+-webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+text-overflow，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
+http://www.css88.com/webkit/-webkit-line-clamp/
+*/
+#mulifont{
+    margin-top:30px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:3;/*块元素显示的文本的行数。*/
+    -webkit-box-orient:vertical;
+}
+#muliafter{
+    margin-top:30px;
+    overflow:hidden;
+    line-height:20px;
+    height:40px;/*定高*/
+    position: relative;
+}
+#muliafter:after{
+    content:'...';
+    position: absolute;
+    right: 0;
+    background: -webkit-linear-gradient(left, transparent, #fff 55%);
+       background: -o-linear-gradient(right, transparent, #fff 55%);
+       background: -moz-linear-gradient(right, transparent, #fff 55%);
+       background: linear-gradient(to right, transparent, #fff 55%);
+/*    background: white;*/
+    bottom: 0;
+}
+/*https://www.cnblogs.com/zuojiayi/p/7110505.html*/
+</style>
+</head>
+<body>
+<div id="MyDIV">Shanghai is the largest city by population in the People's Republic of China (PRC) and the largest city proper by population in the world. It is one of the four province-level municipalities of the PRC, with a total population of over 23 million as of 2010. It is a global city, with influence in commerce, culture, finance, media, fashion, technology, and transport. 
+It is a major financial center and the busiest container port in the world. </div>
+
+<div id="mulifont">Shanghai is the largest city by population in the People's Republic of China (PRC) and the largest city proper by population in the world. It is one of the four province-level municipalities of the PRC, with a total population of over 23 million as of 2010. It is a global city, with influence in commerce, culture, finance, media, fashion, technology, and transport.
+    It is a major financial center and the busiest container port in the world. </div>
+
+
+<div id="muliafter">Shanghai is the largest city by population in the People's Republic of China (PRC) and the largest city proper by population in the world. It is one of the four province-level municipalities of the PRC, with a total population of over 23 million as of 2010. It is a global city, with influence in commerce, culture, finance, media, fashion, technology, and transport.
+    It is a major financial center and the busiest container port in the world. </div>
+</body>
+</html>

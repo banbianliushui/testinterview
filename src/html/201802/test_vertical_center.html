@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直居中</title>
+    <style>
+
+        #box1 {
+            width: 400px;
+            height: 300px;
+            background: #ddd;
+            position: relative;
+        }
+        #child1 {
+            width: 150px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -75px;
+            /*line-height: 100px;// 可以使内部容器文本居中*/
+        }
+
+        #box2 {
+            width: 400px;
+            height: 300px;
+            background: #ddd;
+            position: relative;
+        }
+        #child2 {
+           /* width: 150px;
+            height: 100px;*/
+            background: orange;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+           /* margin: -50px 0 0 0;
+            line-height: 100px;*/
+        }
+
+        #box3 {
+            width: 200px;
+            height: 400px;
+            background: #ddd;
+            position: relative;
+            padding: 50px;
+        }
+        #child3 {
+            width: 40%;
+            height: 30%;
+            background: orange;
+            position: absolute;
+            margin-top: -25%;
+            margin-left: -20%;
+            top: 50%;
+            left: 50%;
+
+        }
+
+        #box4 {
+            width: 400px;
+            height: 300px;
+            background: #ddd;
+            position: relative;
+        }
+        #child4 {
+            width:150px;
+            height:200px;
+          /*  height: 20%;*/
+            background: orange;
+            position: absolute;
+            top:0;
+            bottom:0;
+            margin:auto;
+            left: 0;
+            right: 0;
+
+        }
+    </style>
+</head>
+<body>
+<!--1. 使用绝对定位和负外边距对块级元素进行垂直居中-->
+<div>1. 使用绝对定位和负外边距对块级元素进行垂直居中</div>
+<p>缺点必须直到居中块级元素尺寸</p>
+<div id="box1">
+    <div id="child1">我是测试DIV</div>
+</div>
+
+
+<div>2. 使用绝对定位和transform</div>
+<p>不用事先确定被定位的容器高度，使用transform的2d变换，垂直方向上平移，移动相对于元素本身长宽做参考</p>
+<div id="box2">
+    <div id="child2">我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV我是测试DIV</div>
+</div>
+
+
+<div>3. 使用绝对定位和百分比</div>
+<p>当margin/padding取形式为百分比的值时，它们都是以父元素的width为参照物的！
+适合外部容器宽高相同，left+margin-left
+    padding 和 margin 是根据包含块的宽度(content-box , width+padding)计算的 (https://www.w3.org/TR/css3-box/#the-padding)
+    and https://www.w3.org/TR/CSS2/box.html#box-model )。
+    top的百分比值是按离其最近的有定位属性的祖先元素(包含块)的（内容高+padding）值来计算的，与border无关。
+
+    width和height 相对于有定位祖先元素的（ width+padding-left/right   ， height+padingtop +padding-bottom）
+    （pHeight-cHeight）/2 = top(+%,相对于有定位祖先元素的内容高+padding -> content-box)
+    + margin-top( -%，相对于定位祖先元素的宽，相对于width+paddingleft+padding+right再乘以百分比)
+    =margin-bottom(容器上半部分（top+margin-top）计算好了这里自动计算无需设置)；
+
+   如果外部定位容器大小改变了， margin-top需要根据外框大小计算，margin-left 是内部容器width百分比的一半。
+
+</p>
+<p>
+    Note that in a horizontal flow, percentages on ‘margin-top’ and ‘margin-bottom’ are relative to the width of the containing block, not the height (and in vertical flow, ‘margin-left’ and ‘margin-right’ are relative to the height, not the width).
+    Note that percentages on ‘padding-top’ and ‘padding-bottom’ are relative to the width of the containing block, not the height (at least in a horizontal flow; in a vertical flow they are relative to the height).
+    https://segmentfault.com/a/1190000004231995</p>
+<div id="box3">
+    <div id="child3">我是测试DIV</div>
+</div>
+
+<div>4. 使用绝对定位和margin：auto</div>
+<p>
+    'left' + 'margin-left' + 'border-left-width' + 'padding-left' + 'width' + 'padding-right' + 'border-right-width' + 'margin-right' + 'right' = 包含块宽度
+    如果“left”，“width”和“right”中的所有三个都是“auto”：首先将'margin-left'和'margin-right'的任何'auto'值设置为0.然后，如果'direction'建立静态位置包含块（establishing the static-position containing block）元素的属性为“ltr”，设置“left”为static 位置(将left设置到普通流位置？)，并应用下面的规则号3;否则，将“right”设置为静态位置，然后应用规则编号1。
+    如果'margin-left' 和'margin-right' 是'auto',在额外约束是两个margin获得相等的值。
+    如果“left”，“width”和“right”三者都不是“auto”：如果“margin-left”和“margin-right”均为“auto”，则在额外的约束下解决方程式，即两个margins获得相等的值，除非这会使它们为负值，在这种情况下，当包含块的方向为'ltr'（'rtl'）时，将'margin-left'（'margin-right'）设置为零并求解'margin-right'（'margin-left'）。如果“margin-left”或“margin-right”之一是“auto”，求解该值的方程式。如果值被过度约束，忽略'left'的值（如果包含块的'direction'属性为'rtl'）或'right'（在“direction”为“ltr”的情况下），并求这个值。
+    否则，将'margin-left'和'margin-right'的'auto'值设置为0，并选择适用的以下六条规则之一。
+    1.'left'和'width'是'auto'，'right'不是'auto'，那么宽度是收缩到自适应大小（shrink-to-fit，文本内容大小？）的，然后解决'左'（左边自动根据width缩过去）
+    2.'left'和'right'是'auto'，'width'不是'auto'，那么如果它的静态位置包含块（static-position containing block）元素的'direction'属性'ltr'，设置为”left” 为静态位置(static position)(?就是把他放在包含块的左边？), 否则将“right”设置为静态位置。 然后解决'左'（如果'方向是'rtl'）或'右'（如果'direction'是'ltr'）。
+    3.'width'和'right'是'auto'，'left'不是'auto'，那么宽度收缩到自适应（shrink-to-fit ）。（左侧设置好，“right”就自动解决了） 然后解决“right”。
+    4.'left'是'auto'，'width'和'right'不是'auto'，然后解决'left'
+    5.'width'是'auto'，'left'和'right'不是'auto'，然后解决'width'
+    6.'right'是'auto'，'left'和'width'不是'auto'，然后解决'right'
+
+</p>
+<div id="box4">
+    <div id="child4">我是测试DIV</div>
+</div>
+</body>
+</html>

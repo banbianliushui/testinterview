@@ -113,6 +113,7 @@ testBindBar("Bar!");   */
   // 新手可能会被全局的x变量和module里的属性x所迷惑
   var boundGetX = retrieveX.bind(module);
   boundGetX(); // 返回 81 */
+
 /* function Person(name){
 	  this.nickname = name;
 	  this.distractedGreeting = function() {
@@ -124,6 +125,7 @@ testBindBar("Bar!");   */
 	 
 	var alice = new Person('Alice');
 	alice.distractedGreeting(); */
+
 /* var myObject = { value: 100 };  
 var foo = function() {  
     console.log(this);  
@@ -132,7 +134,7 @@ foo(); // 全局变量 global
 foo.apply(myObject); // { value: 100 }  
 foo.call(myObject); // { value: 100 }  
 var newFoo = foo.bind(myObject);  
-newFoo(); // { value: 100 }</span>  */
+newFoo(); // { value: 100 }  */
 /* var o={
 	    f: function () {
 	        var self=this;

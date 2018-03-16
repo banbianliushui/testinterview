@@ -14,7 +14,7 @@ var object = {
 		    if (name == 'test') {
 		      return '.test() method is handled';
 		    }
-		    return delegate[name].apply(this, args);
+		    return delegate[name].apply(this, [args]);
 		  }
 		 
 		};
@@ -25,7 +25,7 @@ var object = {
 		  }
 		};
 		 
-		alert(object.square(10)); // 100
+		alert(object.__noSuchMethod__('square',10)); // 100
 		alert(object.test()); // .test() method is handled
 
 
