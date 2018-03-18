@@ -1,0 +1,14 @@
+1.http请求
+http://blog.csdn.net/oneqinglong/article/details/72025776
+
+2.字符串、字符集、编码
+iconv-lite
+PHP的字符串不是真正的“字符”串，而是“字节”串。在nodejs里（以及在java、C#等现代语言中），
+字符串是真的unicode字符串（内部通常以utf-16编码保存），所以不存在gbk字符串或utf8字符串这样的东西。
+你可以认为php中的所谓字符串等价于nodejs的Buffer，尽管使用上有一些不同。
+nodejs中的字符串都是unicode的字符集，以utf-16编码保存，utf-16属于unicode的一种。
+
+nodejs中使用iconv转换来的buffer，或者任意buffer，其实是为了解决nodejs不支持非unicode字符集的一种手段，
+比如我们保存2进制或者GBK编码的字符集时，原始的数据保存在Buffer 类的实例中，Buffer 类似于一个整数数组，
+不同之处在于它和在V8内存堆之外分配的 一段内存数据相对应。
+https://www.zhihu.com/question/26121387
