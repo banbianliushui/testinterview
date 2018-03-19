@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二叉搜索树--参考算法导论</title>
+</head>
+<body>
+<!--https://www.cnblogs.com/SHERO-Vae/p/5800363.html-->
+<p>
+    结点：包含属性left（左孩子）、right(右孩子)、p(双亲结点)、key(关键字).
+
+</p>
+<p>
+    二叉搜索树。对于任何结点x，其中左子树的关键字最大不超过x.key，其右子树中的关键字最小不低于
+    x.key.大部分搜索树操作的最坏运行时间与树的高度成正比。
+
+</p>
+<p>
+    二叉搜索树中的关键字总是以满足二叉搜索树的性质的方式来存储：
+    <i>
+        设x是二叉搜索树的一个结点。如果y是x左子树中的一个结点，那么y.key<=x.key,
+        如果y是x右子树中的一个结点，那么y.key>=x.key.
+    </i>
+</p>
+<script>
+    function Node(key,left,right){
+        this.key = key;
+        this.left = left;
+        this.right = right;
+    }
+
+    function BST(){
+        this.root = null;
+    }
+    BST.prototype.insert = function(key){
+       var node =  new Node(key,null,null);
+       if(this.root == null){
+           this.root = node;
+       }else{
+           var currentNode = this.root;
+           var parentNode = currentNode;
+           while(true){
+               parentNode = currentNode;
+               if(key<currentNode.key){
+                   currentNode = currentNode.left;
+                   if(currentNode==null){
+                       parentNode.left = node
+                       break;
+                   }
+               }else{
+                   currentNode = currentNode.right;
+                   if(currentNode==null){
+                       parentNode.right = node
+                       break;
+                   }
+               }
+           }
+       }
+    }
+
+    //中序递归
+    BST.prototype.inOrder = function(node){
+        if(arguments.length==0){
+            var node =this.root;
+        }else {
+            node = arguments[0];
+        }
+        if(node==null){
+           return ;
+        }
+        this.inOrder(node.left);
+        console.log(node.key);
+        this.inOrder(node.right);
+    }
+
+    /*中序迭代：输出结构 左孩子 -> 根 -> 右孩子
+     将所有左子树先放入栈，当左子树为空时，
+    * 从栈中取上一层保存的节点（空树的父结点），输出该结点关键字（
+    * 此时这个结点不是一棵子树的根就是叶子节点，其左子树为null，所以此时轮到它输出），
+    * 然后检查该结点的右子树。如之前输出的结点是叶子节点，即其右子树为空，继续出栈拿该结点的父结点；
+    * 如果之前输出的结点是根结点，则其右子树，重复一开始的子树的入栈和出栈操作，
+    * 找到最左的左子树按左孩子-根-右孩子输出。
+    * */
+    BST.prototype.inOrderInteration = function(){
+        var stack =[];//先进后出
+        var node = this.root;
+        while(node!=null||stack.length>0){
+            if(node!= null){
+                stack.push(node);
+                node = node.left;
+            }else{
+               node =  stack.pop();
+               console.log(node.key);
+                node = node.right;
+            }
+        }
+    }
+
+    //先序递归
+    BST.prototype.preOrder = function(node){
+        if(arguments.length==0){
+            var node =this.root;
+        }else {
+            node = arguments[0];
+        }
+        if(node==null){
+            return ;
+        }
+        console.log(node.key);
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+    }
+
+    /**
+     * 先序迭代： 根 -> 左孩子->右孩子
+     * 从根开始，先入栈的是结点的右孩子，结点（为根）直接输出，因孩子的顺序是左->右，
+     * 迭代查找结点的左子树，有则作为根直接输出，同时如果该结点有右子树则入栈，这样迭代到
+     * 根和左孩子都输出完毕，然后进行出栈（之前存的某结点的右子树），然后再重复上面输出和入栈步骤
+     * */
+    BST.prototype.preOrderInteration = function(){
+        var stack =[];//先进后出
+        var node = this.root;
+        while(node!=null||stack.length>0){
+            if(node!= null){
+                console.log(node.key);
+                if(node.right!=null)
+                stack.push(node.right);
+                node = node.left;
+            }else{
+                node =  stack.pop();
+            }
+        }
+    }
+
+    //后序递归
+    BST.prototype.postOrder = function(node){
+        if(arguments.length==0){
+            var node =this.root;
+        }else {
+            node = arguments[0];
+        }
+        if(node==null){
+            return ;
+        }
+
+        this.postOrder(node.left);
+        this.postOrder(node.right);
+        console.log(node.key);
+    }
+
+    //后序迭代： 左孩子 ->右孩子 -> 根
+    /*
+    *   将根
+    * */
+    BST.prototype.postOrderInteration = function(){
+        var stack =[];//先进后出
+        var node = this.root;
+        var checkedNode ;
+        while(node!=null||stack.length>0){
+            if( node.left!= null&&checkedNode!=node.left){
+                stack.push(node);
+                node = node.left;
+            }else{
+
+                if(node.right!=null&&checkedNode!=node.right){
+                    stack.push(node);
+                    node =  node.right;
+                }else{
+                   // node =  stack.pop();
+                    checkedNode = node;
+                    console.log(node.key);
+                    node =  stack.pop();
+
+                   // node = null;
+                   // node =  node.right;
+                }
+
+            }
+        }
+    }
+   var tree =  new BST();
+    tree.insert(8);
+    tree.insert(12);
+    tree.insert(5);
+    tree.insert(9);
+    tree.insert(3);
+    tree.insert(2);
+    tree.insert(6);
+    //tree.inOrder(tree.root);
+   // tree.inOrderInteration();
+  //  tree.preOrder();
+    tree.postOrder()
+console.log("--------------分界线-----------------")
+  //  tree.postOrderInteration();
+ //   tree.preOrderInteration();
+</script>
+</body>
+</html>
