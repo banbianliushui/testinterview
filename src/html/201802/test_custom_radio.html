@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>radio样式覆盖</title>
+    <style>
+     /*   input{
+            clip:rect(1px,1px,1px,1px);
+        }*/
+      div{
+          background: url('checked.png');
+          width:34px;
+          height: 34px;
+          display: inline-block;
+      }
+        input{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 34px;
+            height: 34px;
+           opacity: 0;
+            filter: alpha(opacity: 0);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+<input type="radio">
+</div>
+    哈哈哈
+</body>
+</html>

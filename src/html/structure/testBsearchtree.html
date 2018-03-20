@@ -150,34 +150,146 @@
 
     //后序迭代： 左孩子 ->右孩子 -> 根
     /*
-    *   将根
+    *   根是最后遍历的，先将根放入栈，然后将右子树放入栈，再放左孩子。
+    *   从栈顶元素接着检查是否满足输出条件，如果不满足继续按先放右后放左入栈。
+    *
     * */
     BST.prototype.postOrderInteration = function(){
         var stack =[];//先进后出
-        var node = this.root;
-        var checkedNode ;
-        while(node!=null||stack.length>0){
-            if( node.left!= null&&checkedNode!=node.left){
-                stack.push(node);
-                node = node.left;
+        var node ;
+        var checkedNode=null ;
+        stack.push(this.root);
+        while(stack.length>0){
+               node = stack[stack.length-1];
+
+            if((node.left==null&&node.right==null)||(checkedNode!=null&&(checkedNode == node.left
+                    ||  checkedNode == node.right ))){
+                console.log(node.key);
+                checkedNode = node;
+                stack.pop();
             }else{
+                if(node.right != null){
+                    stack.push( node.right)
+                }
+                 if(node.left != null){
+                     stack.push( node.left)
+                 }
+            }
+        }
+    }
 
-                if(node.right!=null&&checkedNode!=node.right){
-                    stack.push(node);
-                    node =  node.right;
+    /*查找节点*/
+    BST.prototype.search = function(key){
+        var node = this.root;
+        while(node != null){
+            if(key<node.key){
+                node = node.left;
+            }else if(key == node.key) {
+                return node;
+            }else{
+                node = node.right;
+            }
+        }
+
+    }
+
+    BST.prototype.searchParent = function(key){
+        var node = this.root;
+        var pnode = null;
+        while(node != null){
+            if(key<node.key){
+                pnode = node;
+                node = node.left;
+            }else if(key == node.key) {
+                return pnode;
+            }else{
+                pnode = node;
+                node = node.right;
+            }
+        }
+
+    }
+
+    BST.prototype.searchSuccessor = function(key){
+
+
+    }
+    /*
+    * 删除树中指定结点
+    * 1.没有左右子结点，直接删除
+    * 2.只有左子结点或右子结点，只要替代被删除节点的位置就可以。
+    * 3.既有左子结点又有右子结点，先找被删除结点的后继结点（右子树中最左的左结点），
+    *  被删结点的左子树将构建这个结点的左子树，同时根据被删结点的右子树和
+    *  该结点的右子树一起构建它本身的右子树（被删除结点的右子树大于该结点的右子树，因为该结点是被删除结点的左子树，
+    *  所以被删除结点的右子树作为后继结点的右子树，同时后继结点的右子树作为后继结点父节点的左子树。
+    *  ）。
+    *
+    * */
+    BST.prototype.delete = function(key){
+
+        var node = this.root;
+        var pnode = null;
+        var isleft = -1;
+        while(node != null){
+            if(key<node.key){
+                pnode = node;
+                node = node.left;
+                isleft=1;
+            }else if(key == node.key) {
+               break;
+            }else{
+                pnode = node;
+                node = node.right;
+                isleft=0;
+            }
+        }
+
+
+        if(node!=null){
+
+            if(node.left == null&&node.right == null){
+                if(isleft==1){
+                    pnode.left = null;
+                }else if(isleft == 0){
+                    pnode.right = null;
+                }
+            }else if(node.left == null){
+                if(isleft==1){
+                    pnode.left = node.right;
+                }else if(isleft == 0){
+                    pnode.right = node.right;
+                }
+            }else if(node.right == null){
+                if(isleft==1){
+                    pnode.left = node.left;
+                }else if(isleft == 0){
+                    pnode.right = node.left;
+                }
+            }else{
+                //查后继结点
+                var succnode = node.right;
+                var succpnode= null;
+                while(succnode!=null&&succnode.left!=null){
+                    succpnode = succnode;
+                    succnode =succnode.left;
+                }
+                if(succpnode!=null){//后继结点不是要删除结点的直接右结点，右子树需要构造
+                    succpnode.left=succnode.right;
+                    succnode.right =   node.right;
+                    succnode.left = node.left;
+                }
+
+                if(isleft==1){//是父节点的左子树
+                    pnode.left = succnode;
                 }else{
-                   // node =  stack.pop();
-                    checkedNode = node;
-                    console.log(node.key);
-                    node =  stack.pop();
-
-                   // node = null;
-                   // node =  node.right;
+                    pnode.right = succnode;
                 }
 
             }
         }
     }
+
+    /*测试：*/
    var tree =  new BST();
     tree.insert(8);
     tree.insert(12);
@@ -185,14 +297,20 @@
     tree.insert(9);
     tree.insert(3);
     tree.insert(2);
+    tree.insert(7);
     tree.insert(6);
     //tree.inOrder(tree.root);
    // tree.inOrderInteration();
   //  tree.preOrder();
-    tree.postOrder()
+   // tree.postOrder()
 console.log("--------------分界线-----------------")
   //  tree.postOrderInteration();
  //   tree.preOrderInteration();
+ //   tree.postOrderInteration();
+
+    tree.delete(5)
+console.log(tree.root)
+
 </script>
 </body>
 </html>
