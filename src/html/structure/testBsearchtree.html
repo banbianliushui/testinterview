@@ -190,7 +190,7 @@
                 node = node.right;
             }
         }
-
+        return null;
     }
 
     BST.prototype.searchParent = function(key){
@@ -214,6 +214,8 @@
 
 
     }
+
+
     /*
     * 删除树中指定结点
     * 1.没有左右子结点，直接删除
@@ -289,6 +291,47 @@
         }
     }
 
+
+    BST.prototype.getsmallest = function(cnode){
+        var node = this.root;
+        if(cnode!=null){
+            node = cnode;
+        }
+        while(node!=null&&node.left !=null){
+            node = node.left;
+        }
+        return node ;
+    }
+
+    BST.prototype.remove = function(data){
+        this.root = this.removeNode(this.root,data)
+    }
+    /*js 数据结构与算法*/
+    BST.prototype.removeNode = function(node,data){
+
+        if(node == null){ return null;}
+        if(data == node.key ){
+            if(node.left == null && node.right== null){//没有子节点的节点
+                return null;
+            }
+            if(node.left == null){//删除没有左节点的节点
+                return node.right;
+            }
+            if(node.right == null){//删除没有右节点的节点
+                return node.left;
+            }
+            var tempNode = this.getsmallest(node.right);//找最小后继
+            node.key = tempNode.key;
+            node.right = this.removeNode(node.right,tempNode.key);
+            return node ;
+        }else if(data<node.key){
+            node.left = this.removeNode(node.left,data);
+            return node;
+        }else{
+            node.right = this.removeNode(node.right,data);
+            return node;
+        }
+    }
     /*测试：*/
    var tree =  new BST();
     tree.insert(8);
@@ -307,8 +350,9 @@ console.log("--------------分界线-----------------")
   //  tree.postOrderInteration();
  //   tree.preOrderInteration();
  //   tree.postOrderInteration();
-
-    tree.delete(5)
+    console.log(tree.root)
+    tree.remove(5)
+    //tree.delete(5)
 console.log(tree.root)
 
 </script>

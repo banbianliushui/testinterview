@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+/*发布订阅模式
+* publish/sub模式主题事件通道介于希望接收通知的订阅者和激活事件的对象发布者之间。该事件系统允许定义
+ *   应用程序的特定事件，这些事件可以传递自定义参数，自定义参数包含订阅者所需的值。
+ *
+ *
+ *
+* 优点：pub/sub中从订阅者中解耦发布者，减少了观察者和目标之间的紧密耦合
+* 缺点：由于解耦，有时不能保证应用程序特定部分按照期望运行，如订阅者需要输出一下应用程序处理有关的错误
+*   。如果订阅者执行日志崩溃，由于系统解耦，发布者不会看到。（原通知操作可以通知每一个观察者）
+*      订阅者无视彼此存在，并对变换发布者产生的成本视而不见（如切换事件类型触发事件回调处理）。订阅者和发布者之间是动态关系，难以跟踪。
+*
+* */
+    var Events = function(){
+        var listeners = {};//
+        var _this = this;
+        var listen  = function(type,fn){
+            var arr =  listeners[type] == null ? listeners[type]=[]: listeners[type] ;
+            arr.push(fn);
+        }
+        var one = function(type,fn){
+
+        }
+
+        var remove = function(type,fn){
+            if(fn == null){
+                listeners[type] =null;
+                delete listeners[type];
+            }else{
+                var arr =  listeners[type];
+                for(var i =0;i< arr.length;i++){
+                    if(arr[i] == fn){
+                        arr.splice(i,1)
+                    }
+                }
+            }
+
+        }
+        var trigger = function(type,data){
+            var arr =  listeners[type] == null ? listeners[type]=[]: listeners[type] ;
+            if(arr.length>0){
+                for(var i =0;i<arr.length;i++){
+                    if(arr[i].call(_this,data) ==false){
+                        break;
+                    }
+                }
+            }
+        }
+        return {
+            listen:listen,
+            remove:remove,
+            trigger:trigger
+        }
+    }
+
+    var testEv = Events();
+    var handle = function(){
+        console.log("play!")
+    }
+    testEv.listen('play',handle); // 目标是事件，如play事件， handle 观察者
+    testEv.trigger('play')//
+</script>
+</body>
+</html>

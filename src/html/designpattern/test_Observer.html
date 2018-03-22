@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者模式</title>
+</head>
+<body>
+<script>
+    /*
+    * 观察者模式： 一个对象（subject）维持一系列依赖于观察者的对象，将有关状态的任何变更自动通知给他们。
+    *
+    * Subject（目标）：维护一系列观察者（有一个维护观察者对象的列表），目标对象有函数用于添加和删除观察者。（类似事件监听中，维护回调函数的对象）
+    * Observer（观察者）：为目标状态发生变化时能获得通知的对象提供一个更新接口。（观察者可通过callback，
+    *               如观察者可以是某类型的事件及callback为注册事件时的处理函数）
+    * ConcreteSubject（具体目标）：状态发生改变时，向Observer发出通知，存储ConcreteObserver的状态。
+    *                   被观察者观察的具体实现，包含基本属性状态和操作。
+    * ConcreteObserver（具体观察者）：存储一个指向ConcreteSubject的引用，实现Observer的更新接口，以使自身状态与
+    *                   目标状态保持一致。观察者的具体实现，得到通知后将完成一些具体的业务逻辑处理
+    *
+    * 目标和观察者是基类，目标提供维护观察者的一系列方法，观察者提供更新接口。具体观察者的和具体目标继承各自
+    * 的基类，然后具体观察者把自己注册到具体目标里，在具体的目标发送变化时，调度观察者更新方法。
+    *
+    * 观察者模式和发布/订阅模式区别
+    *   调度中心,即主题/事件通道（发布订阅模式）。虽然两种模式都存在订阅者和发布者（具体观察者可认为是订阅者，具体目标可认为是发布者）。
+    *   但观察者模式是有具体目标调度，而发布/订阅模式是由调度中心统一调度。所以观察者模式的订阅者和发布者
+    *   之间存在依赖，而发布/订阅模式则不会。
+    *   Observer要求接收到主题通知的观察者必须订阅内容改变的事件（notify直接调用update）。
+    *   publish/sub模式主题事件通道介于希望接收通知的订阅者和激活事件的对象发布者之间。该事件系统允许定义
+    *   应用程序的特定事件，这些事件可以传递自定义参数，自定义参数包含订阅者所需的值。
+    *
+    *
+    *   pub/sub中从订阅者中解耦发布者
+    *
+    *
+    *   https://www.cnblogs.com/lovesong/p/5272752.html
+    * */
+    function ObserverList (){
+        this.observerlist = [];
+    }
+
+    ObserverList.prototype.count = function(){
+        return this.observerlist.length;
+    }
+    ObserverList.prototype.get = function(index){
+        return this.observerlist[index];
+    }
+    ObserverList.prototype.add = function (obj) {
+        this.observerlist.push(obj)
+    }
+    ObserverList.prototype.removeIndexAt = function(index){
+       if(index<this.observerlist.length&&index>=0){
+           this.observerlist.splice(index,1)
+       }
+    }
+    ObserverList.prototype.remove = function(obj){
+        var len = this.observerList.length;
+        for(var i =0 ;i<len;i++){
+            if(this.observerList[i]==obj){
+                this.observerList.splice(i,1);
+                break;
+            }
+        }
+    }
+    function extend(obj,extension){//obj 目标,extension 具体目标 等，后者是被扩展的
+        for(var key in obj){
+            extension[key] = obj[key];
+        }
+    }
+
+
+    function Subject(){
+        this.observers = new ObserverList();
+
+    }
+
+    Subject.prototype.addObserver = function(observer){
+        this.observers.add(observer);
+    }
+    Subject.prototype.removeObserver = function(observer ){
+        this.observers.remove(observer);
+    }
+    Subject.prototype.notify = function (){
+        var len = this.observers.count();
+        for(var i=0;i<len;i++){
+            this.observers.get(i).update(arguments);
+        }
+    }
+
+    function Observer (name,age){
+        this.name = name;
+        this.age=age;
+    }
+    Observer.prototype.update = function(){
+        console.log(this.name+"  "+this.age)
+    }
+
+
+    var concreteobserver = new Observer("某仙",100);
+    var extendobserver1 =   new Observer("小睡仙",88);
+    var otherinfo = {
+        place:'蓬莱仙岛',
+        attr:'睡觉'
+    }
+    extend(otherinfo,extendobserver1);
+    extendobserver1.update = function(){
+        var result = "" ;
+        for(var k  in this ){
+            if(typeof this[k] != "function"){
+                result += this[k]+" ";
+            }
+        }
+        console.log(result);
+    }
+    var concreteSubject = new Subject();
+    concreteSubject.addObserver(concreteobserver);
+    concreteSubject.addObserver(extendobserver1);
+    concreteSubject.notify();
+
+    // 具体目标和具体观察者都可以继承 对应的目标Subject和观察者Observer
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造器模式</title>
+</head>
+<body>
+<script>
+    /*
+    * js 不支持类的概念（es6 有class 语法糖），但支持与对象一起用的特殊constructor （构造器）函数。
+    * 通过在构造器前面加 new 关键字，类似 使用构造器实例化对象，并且对象成员有该函数定义。构造函数内的关键字
+    * this引用新创建的对象。
+    * 新对象具有构造器原型的所有属性。
+    * */
+    function Car ( model,year){
+        this.model = model;
+        this.year = year;
+    }
+    Car,prototype.toString = function(){
+        return this.model +" made in "+this.year
+    }
+    var c = new Car("ford car",1994);
+
+</script>
+
+</body>
+</html>

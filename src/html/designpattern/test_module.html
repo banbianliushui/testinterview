@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>《js设计模式》--- module模式</title>
+</head>
+<body>
+<script>
+    /*
+    * 实现模块方法：
+    * 1.对象字面量  ：
+    * 2.module 模式
+    * 3.AMD模式
+    * 4.CommonJS
+    * 5.ECMAScript Harmony
+    * */
+    /*
+    * 对象字面量： 一个对象被描述为一组包含在大括号中，以逗号分隔的 键值对。可以组织和封装代码    *
+    * */
+
+
+    /*
+     * module 模式 ： 使用闭包封装“私有”状态和组织，提供一种混合公有和私有方法和变量的方式，防止泄露
+     * 至全局作用域，避免和其他开发人员的接口冲突。通过该模式返回公有API，其他维持在私有闭包里。
+     *  优点：封装，支持私有数据，公有部分能接触私有部分
+     *  缺点：不能为私有方法打补丁，不能轻易扩展私有方法，无法为私有成员创建自动化单元测试。
+     * */
+    //自包含（能独立执行）模块实现module
+    var testModule = (function(){
+        var counter = 0;//私有变量，私有方法
+        return {
+            incremCounter : function(){
+                return ++counter;
+            }
+        }
+    })();
+    testModule.incremCounter();
+
+</script>
+
+</body>
+</html>

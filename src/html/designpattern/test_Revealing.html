@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>揭示模式</title>
+</head>
+<body>
+
+<!---->
+<script>
+    /*在私有范围内简单定义所有的函数，并返回一个匿名对象，它拥有指向私有函数的指针。
+    * 缺点;如果一个私有函数引用一个公有函数，在打补丁时，公有函数不能被覆盖，公有函数不能随便改会影响私有。
+    *
+    * 揭示模式所有公有直接指向私有
+    * 一般模块模式公有可能指向私有函数，公有函数包含一些操作。
+    * */
+    var myrmodule = function(){
+        var privatename = "char"
+        function privateFun(){
+            console.log("name",privatename)
+        }
+        function publicGetName(){
+            privateFun();
+        }
+        return {
+            getName : publicGetName()
+        }
+    }
+</script>
+</body>
+</html>

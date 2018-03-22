@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+</head>
+<body>
+<script>
+    /*
+    * singleton模式，在该实例不存在的情况下，可以通过一个方法创建一个类来实现创建类的新实例；
+    * 如果实例已经存在，它会返回该对象的引用，可推迟初始化。
+    *
+    * */
+
+    var singleton = (function(){
+        function Singleton() {
+
+        }
+        var instance ;//实例持有者
+        return {
+            getInstance : function(){
+                 if(instance == null){
+                     instance = new Singleton();
+                 }
+                 return instance;
+            }
+        }
+    })();
+</script>
+
+</body>
+</html>
