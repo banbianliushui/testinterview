@@ -13,12 +13,86 @@
 * 而不是单个节点，则文档会充当中介者。更高级别的对象承担了向订阅者通知有关交互事件的责任，而不是绑定到单个节点的事件。
 *
 *
+* 意图：用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
+
+ 主要解决：对象与对象之间存在大量的关联关系，这样势必会导致系统的结构变得很复杂，同时若一个对象发生改变，我们也需要跟踪与之相关联的对象，同时做出相应的处理。
+
+ 何时使用：多个类相互耦合，形成了网状结构。
+
+ 如何解决：将上述网状结构分离为星型结构。
+ http://www.runoob.com/design-pattern/mediator-pattern.html
+ MVC框架中，C（Controller）就是一个中介者，它的作用就是把M(Model,业务逻辑)和V(View,视图)隔离开，协同M和V工作，
+ M运行结果和V代表的视图交互，减少M和V的依赖关系。MVC框架已经非常流行，这也是中中介者模式的优点的一个体现
+*https://blog.csdn.net/hfreeman2008/article/details/52159694
+* 角色介绍
+ Mediator–抽象中介者角色
+ 抽象中介者角色定义统一的接口，用于各同事角色之间的通信。
+
+ Concrete Mediator–具体中介者角色
+ 具体中介者角色，通过协调各同事角色实现协作行为，因此它必须依赖于各个同事角色。
+
+ Colleague–同事角色
+ 每一个同事角色都知道中介者角色，而且与其它的同事角色通信的时候，一定要通过中介者角色来协作。
+ 每个同事类的行为分为二种：一种是同事本身的行为，这种行为叫做自发行为(Self-Method);
+ 第二种是必须依赖中介者才能完成的行为，叫做依赖行为(Dep-Method)。
+ 缺点
+ 中介者会膨胀得很大，而且逻辑复杂，原本N个对象直接的相互依赖关系转换为中介者和同事类的依赖关系，
+ 同事类越多，中介者的逻辑就越复杂。
 * */
+ var mediator = (function(){
+     //存储可被广播或监听的topic
+     var topics = {};
+     var subscribe = function(topic,fn){
+         if(!topics[topic]){
+             topics[topic] = [];
+         }
+         topics[topic].push({context:this,callback:fn});
+         return this;
+     }
+     var publish = function(topic){
+         var args;
+         if(!topics[topic]){
+             return false;
+         }
+         args = Array.prototype.slice.call(arguments,1)
+         var topichandles = topics[topic];
+         for(var i = 0;i<topichandles.length;i++){
+             topichandles[i].callback.apply(topichandles[i].context,args)
+         }
+     }
 
+     return {
+         publish : publish,
+         subscribe:subscribe,
+         installTo:function(obj){
+             //中介者实例 初始化
+             obj.publish = publish;
+             obj.subscribe = subscribe;
+         }
+     }
+ })();
 
-
-
+  /*  mediator.subscribe("gain",function(val){
+        console.log(val)
+    })
+    mediator.publish('gain','哈哈哈')*/
+    var instant = {
+        name:'大兵'
+    };
+    mediator.installTo(instant);
+    instant.subscribe('sendmsg',function(value){//处理是showmsg
+        console.log("第二个："+this.name+"___"+value)
+    })
+    var instant1 = {
+        name:'大雁',
+        age:5
+    };
+    mediator.installTo(instant1);
+    instant1.subscribe('sendmsg',function(value){
+        console.log("第三个："+this.name+"___"+value+"___"+this.age)
+    })
+instant.publish('sendmsg','呵呵呵')
 </script>
 
-</body>
+</body>;
 </html>
