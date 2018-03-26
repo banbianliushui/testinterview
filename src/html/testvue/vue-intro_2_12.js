@@ -2,6 +2,10 @@
  * Vue.js v2.5.13
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
+ * 可参考网址：
+ *
+ *
+ * https://github.com/liutao/vue2.0-source/
  */
 (function (global, factory) {
 	//根据当前环境中用的ADM或COMMONJS格式的模块规范或者未用模块管理规范，将Vue（函数）对象返回给对应变量属性（或全局变量），
@@ -3820,7 +3824,24 @@ function stateMixin (Vue) {
   };
 }
 
-/*  */
+/*
+ *
+  * var vm = new Vue({
+		el: '#app',
+		data: {
+			message: '第一个vue实例'
+		},
+		components: {
+			child: {
+				template: "<div>{{a}}</div>",
+				inject: ['a']
+			}
+		},
+		provide: {
+			a: 'a'
+		}
+	})
+  * */
 
 function initProvide (vm) {
   var provide = vm.$options.provide;
@@ -4687,20 +4708,23 @@ function renderMixin (Vue) {
     if (vm._isMounted) {
       // if the parent didn't update, the slot nodes will be the ones from
       // last render. They need to be cloned to ensure "freshness" for this render.
+        // 如果父节点没有更新，插槽slot节点将是最后渲染的节点。他们需要被克隆，以确保这个渲染的“新鲜度”。
       for (var key in vm.$slots) {
         var slot = vm.$slots[key];
         // _rendered is a flag added by renderSlot, but may not be present
         // if the slot is passed from manually written render functions
+          //  _rendered 是由renderSlot渲染插槽添加的一个标志，但是如果slot是手动编写的render函数传递的，则该标志可能不会出现，
         if (slot._rendered || (slot[0] && slot[0].elm)) {
-          vm.$slots[key] = cloneVNodes(slot, true /* deep */);
+          vm.$slots[key] = cloneVNodes(slot, true /* deep */);//复制插槽虚拟节点
         }
       }
     }
-
+    //scopedSlots作用域插槽，父组件中可以把子组件渲染过来
     vm.$scopedSlots = (_parentVnode && _parentVnode.data.scopedSlots) || emptyObject;
 
     // set parent vnode. this allows render functions to have access
     // to the data on the placeholder node.
+      //设置父vnode。 这允许渲染函数访问占位符节点上的数据。
     vm.$vnode = _parentVnode;
     // render self
     var vnode;

@@ -1,0 +1,76 @@
+https://github.com/liutao/vue2.0-source/
+
+1. Vue构造函数开始
+    function Vue (options) {
+      if (process.env.NODE_ENV !== 'production' &&
+        !(this instanceof Vue)) {
+        warn('Vue is a constructor and should be called with the `new` keyword')
+      }
+      this._init(options)
+    }
+2. _init 初始化
+    2.1 性能分析
+    2.2 vm添加唯一_uid ,标注vm._isVue(监听对象变化时用于过滤vm)
+    2.3  合并options
+      2.3.1 内部组件初始化 initInternalComponent（如果options中存在_isComponent时需要进行这一步）
+      2.3.2 生成vm的$options
+            从vm的构造器上解析options然后合并传入的options
+    2.4 初始化代理
+        2.4.1 开发环境通过 initProxy(vm)初始化
+        2.4.2 发布环境使用 vm._renderProxy = vm
+    2.5 暴露self
+         vm._self = vm
+
+    2.6 initLifecycle(vm)
+            主要给vm对象添加$parent、$root、$children，$refs,_watcher等属性，以及一些其它的生命周期相关的标识。
+            options.abstract用于判断是否是抽象组件，组件的父子关系建立会跳过抽象组件（如keep-alive/transition等）
+
+    2.7 initEvents(vm)
+            vm.$options._parentListener是父组件中绑定在自定义标签上的事件，供子组件处理。
+            updateComponentListeners
+
+    2.8 initRender(vm)
+            给vm添加虚拟dom、solt等相关属性和方法，vm._c -> createElement(vm,a,b,c,d,false) 内部使用创建dom
+            vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true) 外部用户使用
+    2.9 callHook(vm, 'beforeCreate')
+            初始化生命周期、事件和渲染函数后beforeCreate钩子回调
+
+    2.10 initInjections(vm)和initProvide(vm) // resolve injections before data/props
+            将父组件_provided中定义的值，通过inject注入到子组件，且这些属性不会被观察。否则
+    2.11 initState(vm)
+           props、methods、data、computed、watch，从这里开始就涉及到了Observer、Dep和Watcher
+    2.12 initProvide(vm) // resolve provide after data/props
+
+    2.13 callHook(vm, 'created')
+
+3.$mount
+    if (vm.$options.el) {
+      vm.$mount(vm.$options.el);
+    }
+    通过mount = Vue.prototype.$mount保存之前定义的$mount方法，然后重写。
+     query(id) 查dom ->document.querySelector(el);
+     //装上组件：vm vue虚拟节点，el 被装载的dom节点（id），hydrating
+    3.1 function mountComponent (  vm,  el,  hydrating)
+        //如果vm的选项对象中没有render渲染方法（手动设置？），则将创建一个空的Vue节点的函数赋值给渲染方法以供使用。
+
+
+    3.2 回调 beforeMount 方法
+        callHook(vm, 'beforeMount');
+
+    3.3 更新vue节点组件
+        vm._update(vnode, hydrating);
+         Vue.prototype._render
+
+
+
+
+
+
+
+
+
+
+
+
+
+

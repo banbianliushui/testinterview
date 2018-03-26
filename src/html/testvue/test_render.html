@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+
+<div id ='app'>
+<anchored-heading :level="level">
+<!--<slot>升水</slot>-->
+    '一则头条'
+</anchored-heading>
+</div>
+<script>
+    Vue.component('anchored-heading',{
+        render:function(createElement){
+            return createElement(
+                'h'+this.level,
+                this.$slots.default
+            )
+        },
+        props:{
+            level:{
+                type:Number,
+                require:true
+            }
+        }
+
+    })
+
+    var vue =new Vue({
+       el:'#app',
+        data:{
+           level:1
+        }
+    })
+
+</script>
+
+</body>
+</html>
