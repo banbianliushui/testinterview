@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,ul{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+            display: inline-block;
+           /* margin-right: -5px;*/
+            color: #3d4245;
+            width: 30%;
+            display: inline-block;
+            height: 39px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 39px;
+            position: relative;
+        }
+        .outer{
+           /* height: 40px;*/
+            background: #fff;
+            border-bottom: solid 1px #ccc;
+            width: 100%;
+            z-index: 100;
+            position: relative;
+        }
+
+        ul{
+            padding-right:50px;
+        }
+        .right{
+           /* float:right;
+            width:50px;
+            height: 39px;
+            background: darkslategray;*/
+            float: right;
+            width: 50px;
+            height: 39px;
+            text-align: left;
+            border-left: 1px solid #dbdbdb;
+            margin-left: -1px;
+            position: relative;
+        }
+        .li1{
+            width:40%;
+            background: orchid;
+            display: inline-block;
+            height: 39px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 39px;
+            position: relative;
+        }
+        .li2{
+          /*  width:30%;*/
+            background: green;
+        }
+        .li3{
+           /* width:30%;*/
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+
+<div class="outer"
+>
+    <div class="right"></div>
+    <ul>
+        <li class="li1">第一个</li>
+        <li class="li2">第二个</li>
+        <li class="li3">第三个</li>
+    </ul>
+</div>
+</body>
+</html>

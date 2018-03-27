@@ -6,5 +6,86 @@
 </head>
 <body>
 
+<!---->
+<script>
+    /*
+    * 组合模式： 又叫部分整体模式，用于把一组相似的对象当作一个单一的对象。 - 结构型模式
+    * 意图：将对象组合成树形结构以表示“部分-整体”的层次结构。
+    *关键代码：树枝内部组合该接口，并且含有内部属性 List，里面放 Component。
+     组合模式实现的最关键的地方是——简单对象和复合对象必须实现相同的接口。
+     这就是组合模式能够将组合对象和简单对象进行一致处理的原因。
+
+     应用实例： 1、算术表达式包括操作数、操作符和另一个操作数，其中，另一个操作符也可以是操作树、操作符和另一个操作数。
+      2、在 JAVA AWT 和 SWING 中，对于 Button 和 Checkbox 是树叶，Container 是树枝。
+
+     优点： 1、高层模块调用简单。 2、节点自由增加。
+     缺点：在使用组合模式时，其叶子和树枝的声明都是实现类，而不是接口，违反了依赖倒置原则。
+     使用场景：部分、整体场景，如树形菜单，文件、文件夹的管理。
+
+     组合部件（Component）：它是一个抽象角色，为要组合的对象提供统一的接口。
+     叶子（Leaf）：在组合中表示子节点对象，叶子节点不能有子节点。
+     合成部件（Composite）：定义有枝节点的行为，用来存储部件，
+                实现在Component接口中的有关操作，如增加（Add）和删除（Remove）。
+
+     https://www.cnblogs.com/snaildev/p/7647190.html
+     https://github.com/tcorral/Design-Patterns-in-Javascript
+     注意事项：定义时为具体类。
+    * */
+
+    function MenuComponent(name,description,price){
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+    MenuComponent.prototype.getName=function() {
+        return this.name;
+    }
+    MenuComponent.prototype.getDescription=function() {
+        return this.description;
+    }
+    MenuComponent.prototype.getPrice=function() {
+        return this.price;
+    }
+    MenuComponent.prototype.add=function(menu) {
+        if(!this.children){
+            this.children=[]
+        }
+        this.children.push(menu)
+    }
+    MenuComponent.prototype.remove=function(menu) {
+        if(!this.children){
+            return ;
+        }
+        var len = this.children.length;
+       for(var i = 0 ;i<len;i++){
+           if(this.children[i] == menu){
+               this.children.splice(i,1);
+           }
+       }
+    }
+
+
+   var mainmenu =  new MenuComponent('主食','主食可多种选择米、面')
+    var ricemenuitem =  new MenuComponent('米饭','')
+    var noodlemenuitem =  new MenuComponent('面食','')
+
+    var rice1menuitem1 =  new MenuComponent('米饭','五常大米',2)
+    var rice1menuitem2 =  new MenuComponent('米饭','红花有机米',2)
+
+    var noodlemenuitem1 =  new MenuComponent('臊子面','西安臊子面',22)
+    var noodlemenuitem2 =  new MenuComponent('盖浇面','正宗盖浇面',18)
+/*    var submenu =  new MenuComponent('菜','')
+    var porkmenuitem =  new MenuComponent('尖椒肉丝','尖椒肉丝',2)
+    var menuitem =  new MenuComponent('臊子面','西安臊子面',2)*/
+    ricemenuitem.add(rice1menuitem1)
+    ricemenuitem.add(rice1menuitem2)
+    noodlemenuitem.add(noodlemenuitem1)
+    noodlemenuitem.add(noodlemenuitem2)
+    mainmenu.add(ricemenuitem)
+    mainmenu.add(noodlemenuitem)
+
+    console.log(mainmenu)
+
+</script>
 </body>
 </html>

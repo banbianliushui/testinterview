@@ -10,28 +10,136 @@
     http://www.runoob.com/design-pattern/builder-pattern.html
 
     * 建造者Builder模式使用多个简单的对象一步一步构建成一个复杂对象。 - 创建型模式
+    *       该模式使我们能够通过指定对象的类型和内容就可以创建复杂的对象，而无需显示创建或表示该对象。
     *   意图：将一个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示。
     *   主要解决：在软件系统中，一个复杂对象的创建工作，通常由各个部分的子对象用一定的算法构成；
     *           由于需求的变化，这个复杂对象的各个部分经常面临着剧烈变化，将他们组合在一起的算法相对稳定。
     *    何时使用：一些基本部件不会变，而其组合经常变化的时候
-    *    关键代码：建造者，创建和提供实例；管理者，管理建造出来的实例的依赖关系。
+    *    关键代码：建造者，创建和提供实例，布局构造和产品装配；指导者，管理建造出来的实例的依赖关系，整体的构建算法,(规范制造流程)。
     *       实例：1、肯德基套餐，基本的可乐、汉堡、薯条、鸡块不变，套餐经常变。2.java中StringBuilder和StringBuffer。
     *               在线程安全上，StringBuilder是线程不安全的，而StringBuffer是线程安全的。　　如果一个StringBuffer对象在字符串缓冲区被多个线程使用时，StringBuffer中很多方法可以带有synchronized关键字，所以可以保证线程是安全的，但StringBuilder的方法则没有该关键字，所以不能保证线程安全，有可能会出现一些错误的操作。所以如果要进行的操作是多线程的，那么就要使用StringBuffer，但是在单线程的情况下，还是建议使用速度比较快的StringBuilder
-    *     优点：1、独立易扩展，2、便于控制细节风险
+    *           3.jquery中$()方法实现了这个模式，因为它提供了多种方法来动态创建新jquery（和dom）对象。通过
+    *               为元素、部分标记和内容传递完整的标记。
+    *               $('<div>哈哈哈</div>') 、 $('<p />').attr({}).text('hai ') 单个标记有专门的判断方式（rsingleTag.exec(selector)）
+    *               然后使用document.createElement()创建dom元素然后封装为jquery对象。
+     *    优点：1、独立易扩展，2、便于控制细节风险
     *     缺点：1、产品必须有共同点，范围有限制。2、如内部变化复杂，会有很多的建造类。
-    *     使用场景：1、需要生成的对象具有复杂的内部结构。2、需要生成的对象
+    *     使用场景：1、需要生成的对象具有复杂的内部结构。2、需要生成的对象内部属性本身互相依赖。
+    *
+    *     工厂类模式提供的是创建单个类的模式，而建造者模式则是将各种产品集中起来进行管理，
+    *     用来创建复合对象，所谓复合对象就是指某个类具有不同的属性，其实建造者模式就是前面抽象工厂模式和最后的Test结合起来得到的。
+    *      总体上，建造者模式仅仅只比工厂模式多了一个“导演类”的角色。
+    *      在建造者模式的类图中，假如把这个导演类看做是最终调用的客户端，那么图中剩余的部分就可以看作是一个简单的工厂模式了。
+    *      与工厂模式相比，建造者模式一般用来创建更为复杂的对象，因为对象的创建过程更为复杂，
+    *      因此将对象的创建过程独立出来组成一个新的类——导演类。也就是说，工厂模式是将对象的全部创建过程封装在工厂类中，
+    *      由工厂类向客户端提供最终的产品；而建造者模式中，建造者类一般只提供产品类中各个组件的建造，
+    *      而将具体建造过程交付给导演类。由导演类负责将各个组件按照特定的规则组建为产品，然后将组建好的产品交付给客户端。
+
+    *      https://www.jianshu.com/p/f3cf42416dff
+     *      https://www.cnblogs.com/kangsir/p/6653233.html
+    *  建造者模式主要用于“分步骤构建一个复杂的对象”，在这其中“分步骤”是一个稳定的算法，
+    *  而复杂对象的各个部分则经常变化，其优点是：建造者模式的“加工工艺”是暴露的，
+    *  这样使得建造者模式更加灵活，并且建造者模式解耦了组装过程和创建具体部件，
+    *  使得我们不用去关心每个部件是如何组装的。
+    *
+    *导演者角色是与客户端打交道的角色。导演者将客户端创建产品的请求划分为对各个零件的建造请求
+    * ，再将这些请求委派给具体建造者角色。具体建造者角色是做具体建造工作的，但是却不为客户端所知。
+    *    builder   为创建product对象的各个部件指定抽象接口
+    *    director   选取部分组件来组装
+    *                   Director（调用具体建造者来创建复杂对象的各个部分，在指导者中不涉及具体产品的信息，
+    *                   只负责保证对象各部分完整创建或按某种顺序创建） 构造一个使用builer接口的对象
+    *    concretebuilder  具体组装者，实现builder接口以构造和装配该产品的各个部件，定义并明确它所创建的表示，
+    *                       并提供检索产品的接口。
+    *    product    表示被构造的复杂对象。concretebuilder创建该产品的内部表示并定义它的装配过程，包含地沟油组成部件的类，
+                       *    以及将这些部件装配成最终产品的接口。
     *
     *
-    *
+    * 抽象工厂模式（Abtract Factory）解决“系列对象”的需求变化，Builder模式解决“对象部分”的需求变化，
+    * 建造者模式常和组合模式（Composite Pattern）结合使用。
+    * http://www.cnblogs.com/feipeng/archive/2007/03/12/671932.html
     * */
 
 
+    function Meal(){//product
+        this.staplefood='';
+        this.drink='';
+
+    }
+    Meal.prototype.setstaplefood=function(content,pack){//内容 + 包装 -》 构成组件或部件
+        this.staplefood="wrap "+content+' with '+pack;
+    }
+    Meal.prototype.setdrink=function(content,pack){
+        this.drink=content+' with '+pack;
+    }
+
+     function Director(){// director 指挥者 construct
+
+        this.getMealPackage1=function(){//套餐1
+            var conbuilder1 = new ConcreteBuilder1();//具体建造者 下面进行建造流程
+            conbuilder1.makedrink();// 建造顺序
+            conbuilder1.makestaplefood();// 建造顺序
+            //
+            var meal = conbuilder1.getMeal();//然后返回建造结果
+
+            return meal;
+         }
+
+         this.getMealPackage2=function(){//套餐2
+             var conbuilder2 = new ConcreteBuilder2();
+             conbuilder2.makedrink();
+             conbuilder2.makestaplefood();
+             var meal = conbuilder2.getMeal();
+             return meal;
+         }
+     }
+    function Builder(){
+
+    }
+    Builder.prototype.makestaplefood =function(){
+
+    }
+    Builder.prototype.makedrink = function(){
+    }
+
+    Builder.prototype.getMeal = function(){
+
+    }
+    function ConcreteBuilder1(){//人气明星餐建造者，创建实例  buildpart创建部件
+        var meal = new Meal();
+        this.makestaplefood = function () {
+            meal.setstaplefood('Spicy chicken burger','box')
+        }
+        this.makedrink = function () {
+           meal.setdrink('coco','bottle')
+        }
+        this.getMeal = function () {
+            return meal
+        }
 
 
+    }
+    ConcreteBuilder1.prototype = Object.create( Builder.prototype);//继承
 
 
+    function ConcreteBuilder2(){//
+        var meal = new Meal();
+        this.makestaplefood = function () {
+            meal.setstaplefood('New Orleans Roasted ','box')
+        }
+        this.makedrink = function () {
+          meal.setdrink('Orange juice','bottle')
+        }
+        this.getMeal = function () {
+            return meal
+        }
+    }
+    ConcreteBuilder2.prototype = Object.create( Builder.prototype);//继承
 
 
+    var director = new Director();
+    var meal1 = director.getMealPackage1();
+        console.log('套餐内容是：',meal1)
+    //var prop = Object.getOwnPropertyNames(meal1);
 
 </script>
 </body>

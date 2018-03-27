@@ -5,6 +5,56 @@
     <title>享元模式</title>
 </head>
 <body>
+<script>
+    /*
+    * 享元：减少创建对象的数量，以减少内存占用和提高性能
+    *       享元模式尝试重用现有的同类对象，如果未找到匹配的对象，则创建新对象。
+    *       意图：运用共享技术有效地支持大量细粒度的对象。
+    *   关键代码：用 HashMap 存储这些对象
+    *   使用场景： 1、系统有大量相似对象。 2、需要缓冲池的场景。
+    *注意事项： 1、注意划分外部状态和内部状态，否则可能会引起线程安全问题。 2、这些类必须有一个工厂对象加以控制。
+    * Flyweight中有两个重要概念--内部状态intrinsic和外部状态extrinsic之分，内部状态就是在对象里通过内部方法管理，而外部信息可以在通过外部删除或者保存。
+
+     说白点,就是先捏一个的原始模型，然后随着不同场合和环境,再产生各具特征的具体模型，很显然,在这里需要产生不同的新对象，所以Flyweight模式中常出现Factory模式，Flyweight的内部状态是用来共享的，Flyweight factory负责维护一个Flyweight pool(模式池)来存放内部状态的对象。
+    *
+    * */
+
+    function Book(IBSN,title,name,author){
+
+        this.IBSN = IBSN;
+        this.name = name;
+        this.author = author;
+        this.title = title;
+    }
+    var BookFactory =(function BookFactory(){//一个基本工厂，用来检查之前是否创建该book的对象，如果有就返回，没有就重新创建并存储以便后面可以继续访问
+        var existingBooks = {};
+        return {
+            createBook : function(IBSN,title,name,author){
+
+                if(! existingBooks[IBSN]){
+                    existingBooks[IBSN] =  new Book(IBSN,title,name,author);
+                }
+                return  existingBooks[IBSN]
+            }
+        }
+    })
+
+    var BookRecordManager =(function(IBSN,title,name,author){
+        return {
+            addBookRecord :function(){//添加借书记录
+               var book = BookFactory.createBook(IBSN,title,name,author);
+               var  bookRecordDatabase={
+                    checkoutDate: 'xxxx-xx-xx',
+                    dueReturnDate: 'xxxx-xx-xx',
+                    book: book
+               };
+               //...更新数据库
+            }
+            /*......省略*/
+        }
+    })
+
+</script>
 
 </body>
 </html>

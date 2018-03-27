@@ -5,6 +5,23 @@
     <title>原型模式</title>
 </head>
 <body>
+<script>
+    /*
+    * 原型模式：通过克隆方式创建对象的模式   --  创建型模式
+    *       该模式实现一个原型接口用于创建当前对象的克隆
+    *       待完善
+    * */
+
+    // 因为不是构造函数，所以不用大写
+    var someCar = {
+        drive: function () { },
+        name: '马自达 3'
+    };
+
+    // 使用Object.create创建一个新车x
+    var anotherCar = Object.create(someCar);
+    anotherCar.name = '丰田佳美';
+</script>
 
 </body>
 </html>

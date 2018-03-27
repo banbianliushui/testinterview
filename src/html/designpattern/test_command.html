@@ -5,6 +5,62 @@
     <title>命令模式</title>
 </head>
 <body>
+<script>
+    /*
+    * 命令模式：请求以命令的形式包裹在对象中，并传给调用对象。调用对象寻找可以处理该命令的合适的对象，
+    *       并把该命令传给相应的对象，该对象执行命令。
+    *       将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，
+    *       对请 求排队或者记录请求日志，可以提供命令的撤销和恢复功能。
+    * 关键代码：定义三个角色：1、received 真正的命令执行对象 2、Command 3、invoker 使用命令对象的入口
+    *           Receiver接受者角色：该角色就是干活的角色，命令传递到这里是应该被执行的
+             Command命令角色：需要执行的所有命令都在这里声明
+             Invoker调用者角色：接收到命令，并执行命令
+    *
+    *
+    *
+      https://www.cnblogs.com/f-zhao/p/6203208.html
+    *
+    * */
+    function Receiver() {
+
+    }
+    Receiver.prototype.dothings= function(){//
+        //执行命令
+        console.log('正在执行命令')
+    }
+    function Invoker(command){//调用命令
+            this.command = command
+    }
+    Invoker.prototype.setCommand = function(command){
+        this.command = command
+    }
+    Invoker.prototype.action = function(){
+        this.command.execute();
+    }
+
+
+    function Command(receiver){
+        this.receiver = receiver;
+    }
+    Command.prototype.setReceiver = function(receiver){
+        this.receiver = receiver;
+    }
+    Command.prototype.execute = function(){//命令执行，命令接受者需要执行操作
+        this.receiver.dothings();
+    }
+    function extend(obj,extend) {
+        for(var o  in obj ){
+            extend[o] = obj[o]
+        }
+        return extend;
+    }
+
+    var concetereceiver1 = {};
+    concetereceiver1=  extend(new Receiver(),concetereceiver1) ;
+   var command1 = new Command(concetereceiver1)
+   var invoker = new Invoker(command1)
+    invoker.action();
+</script>
 
 </body>
 </html>
