@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式优先级</title>
+</head>
+<!--!important > style(内联) > Id(权重100) > class(权重10) > 标签（权重1） 同类别的样式，后面的会覆盖前面的。-->
+<style>
+    .blue{
+        color:blue;
+    }
+    .red{
+        color:red;
+    }
+</style>
+<body>
+!important > style(内联) > Id(权重100) > class(权重10) > 标签（权重1） 同类别的样式，后面的会覆盖前面的。
+<div class="red blue"> 哈哈哈</div>
+<title>新的标题啊</title>
+</body>
+</html>
