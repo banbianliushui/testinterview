@@ -8730,7 +8730,8 @@ Vue$3.nextTick(function () {
 
 /*  */
 
-var defaultTagRE = /\{\{((?:.|\n)+?)\}\}/g;
+//(?:exp)	匹配exp,不捕获匹配的文本，也不给此分组分配组号   +? 一个或多个
+var defaultTagRE = /\{\{((?:.|\n)+?)\}\}/g; //匹配.或者换行  -> {{name.n}}
 var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
 
 var buildRegex = cached(function (delimiters) {
@@ -8746,7 +8747,7 @@ function parseText (
   delimiters
 ) {
   var tagRE = delimiters ? buildRegex(delimiters) : defaultTagRE;
-  if (!tagRE.test(text)) {
+  if (!tagRE.test(text)) {//检查文本中的插值是否有分隔符
     return
   }
   var tokens = [];
