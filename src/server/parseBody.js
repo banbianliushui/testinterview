@@ -25,11 +25,24 @@ var parseMultipare = function(req,res,handle){
     if(hasBody(req)){
         if(mime(req) ==='multipart/form-data'){
             var form = new formidable.IncomingForm();
-                form.parse(req,function(err,fields,files){
+           // form.uploadDir='./temp';//缓存地址
+            form.multiples=true;//设置为多文件上传
+            form.keepExtensions=true;//是否包含文件后缀
+            var filelists=[];
+            //文件都将保存在files数组中
+            form.on('file', function (filed,file) {
+                if(file.size>0){
+                    filelists.push([filed,file]);
+                }
+
+            })
+            form.parse(req,function(err,fields,files){
                     req.body = fields;
-                    req.files=files;
-                    handle(req,res);
-                })
+                    req.files= filelists.length>1? filelists:filelists[0];
+                    /*https://blog.csdn.net/zhang_wang_lina/article/details/52818055*/
+                //files.uuu[k]里保存着用户所上传的文件
+                handle(req,res);
+            })
 
         }
     }else {handle(req,res)}

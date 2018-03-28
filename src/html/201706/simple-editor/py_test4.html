@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript"src="editor_outer.js"></script>
+    <script
+            src="http://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+<script type="text/javascript"src="editor.js"></script>
 <style type="text/css">
 
 .gov-editor{
-height:200px;
+min-height:200px;
 border:1px solid #aaa;
 }
 .tagcls{
@@ -21,16 +24,18 @@ border:1px solid #aaa;
 </div>
 
 <script type="text/javascript">
-$(function(){$('.gov-editor').govEditor({title:'纠正文档',onSend:function(){
+$(function(){
+    $('.gov-editor').govEditor({title:'纠正文档',
+        onSend:function(){
 	var params={}
 	params.html="已发送";
 	params.type="succsess"
-	$.simpleAlert(params)
-	if($("#obc_main").length!=0){
+
+/*	if($("#obc_main").length!=0){
 		$("#obc_main").css("width","100%")
 		$("#obc_main").css("height","100%")
 		$("#obc_main").css("display","block")
-	}
+	}*/
 },messDto:{content:"",title:"",type:"",documentGuId:"",docId:"",documentName:""}});})
 /* if(window.onload){
 	window.onload=function(){

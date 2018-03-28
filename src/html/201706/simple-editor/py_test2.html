@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+<style>
+.fileinput-wrap{
+}
+.imgs-content{
+}
+.img-wrap{
+	    position: relative;
+    display: inline-block;
+       width: 70px;
+    height: 90px;
+    margin: 0px 6px;
+    border: 1px solid white;
+    overflow: hidden;
+}
+.img-previmg{
+    display: block;
+    width: 100px;
+    height: 120px;
+    }
+.img-wrap .close{
+	position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #cdc5b9;
+    color: white;
+    cursor: pointer;
+    padding: 0px 1px;
+    display: inline-block;
+    font-size:14px;
+}
+.filebtn{
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    padding: 7px 16px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    left: 391px;
+    top: 64px;
+}
+.filebtn input{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+<form action="/topware-govdocsearch/web/dw/doc/correct"  method='post' enctype='multipart/form-data' >
+
+
+<div  class='upimgcontent' style="margin:0px auto;width:990px;">
+
+<div class="fileinput-wrap">
+<input type="file" name="files" id="doc0" imgid="img0" style="width:100px;"
+ onchange="javascript:setImagePreviews()" />
+</div>
+
+ <div id="dd" style="width:990px;"></div> 
+
+</div>
+<button type="submit">提交</button>
+</form>
+<script>
+
+ var magId=0;
+function setImagePreviews(){
+	var docobj=document.getElementById("doc"+magId);
+	var dd=document.getElementById("dd");
+	var fileList=docobj.files;
+	
+	for( var i=0;i<fileList.length;i++){
+		magId++;
+
+		$(dd).append("<div class='img-wrap' imgid='img"+(magId-1)+"'><img id='img"+(magId-1)+"'/><span class=' closeimg"+(magId-1)+" close'>×</span></div>");
+		$(".fileinput-wrap [imgid=img"+(magId-1)+"]")[0].style.position="absolute";
+		$(".fileinput-wrap [imgid=img"+(magId-1)+"]")[0].style.left="-10000px";		
+		$(".fileinput-wrap").append('<input type="file" name="files" id="doc'+magId+'" imgid="img'+magId+'" style="width:100px;"	 onchange="javascript:setImagePreviews()" />');
+		
+		$(".closeimg"+(magId-1)).on("click",function(e){
+			var id=$(this).parents(".img-wrap").attr("imgid");
+			$(this).parent().remove();
+			$(".fileinput-wrap input[imgid="+id+"]").remove();
+		})
+		var imgObjPreview=document.getElementById("img"+(magId-1));
+		if(docobj.files&&docobj.files[i]){
+			imgObjPreview.style.display="block";
+			imgObjPreview.style.width="100px";
+			imgObjPreview.style.height="120px";
+			imgObjPreview.src=window.URL.createObjectURL(docobj.files[i]);
+		}else{
+			//IE
+			docobj.select();
+			var imgsrc=document.selection.createRange().text;
+			var localImageId=document.getElementById("img"+(magId-1));
+			localImageId.style.width="100px";
+			localImageId.style.height="120px";
+			try{
+				localIamgeId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localIamgeId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src=imgsrc;
+			}catch(e){
+				alert("上传图片出错")
+				return false;
+			}
+			imgObjPreview.style.display="none";
+			document.selection.empty();
+		}
+		
+	}
+	return true;
+} 
+
+
+</script>
+</body>
+</html>

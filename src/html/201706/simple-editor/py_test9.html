@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<div id='editorcontainer'>
+<div class='editor' contentEditable='true' ></div>
+<div class='toolbar'>
+<a class='uploadimage'>插入图片<input type='file'  class='uploadimageinput'></a>
+
+</div>
+</div>
+<script>
+
+$(function(){
+	var cursor = 4; // 光标位置  
+	
+	$('.uploadimageinput').on('change',function(){
+		var url='http://localhost:8080/testjs/fwb/p1.jpg';
+		var imghtml='<img src="'+url+'">';
+		var $tag=$(".tagcls")[0];
+		
+		
+		 var textRange = document.body.createTextRange();
+         textRange.moveToElementText($tag);
+         textRange.collapse(false);
+         textRange.select();
+         var range = document.selection.createRange();
+	     range.pasteHTML( imghtml ); 
+	})
+	
+	
+	$('.editor').on('click',function(e){
+		console.log("editclickor-");
+		$('.tagcls').remove();
+		var taghtml="<span class='tagcls'></span>";
+		var sel=document.selection;
+		 var originalRange = sel.createRange();
+       originalRange.collapse(true);
+       var range = sel.createRange();
+       range.pasteHTML( taghtml ); 
+	})
+	$('.editor').on('keyup',function(e){
+		console.log("editorkeyup-");
+		$('.tagcls').remove();
+		var taghtml="<span class='tagcls'></span>";
+		var sel=document.selection;
+		 var originalRange = sel.createRange();
+       originalRange.collapse(true);
+       var range = sel.createRange();
+       range.pasteHTML( taghtml ); 
+	})
+	$('.editor').on('focus',function(e){
+		console.log("focus-");
+	
+		/* $(document).on('selectionchange',function(e){
+			var $activeelem=$(e.currentTarget.activeElement);
+			if( $activeelem.hasClass('editor')||$activeelem.parents('.editor')){
+				  var range = document.selection.createRange();
+		            var srcele = range.parentElement();//获取到当前元素
+		         var copy = document.body.createTextRange();
+		            copy.moveToElementText(srcele);
+
+		            for (cursor = 0; copy.compareEndPoints("StartToStart", range) < 0; cursor++) {
+		                copy.moveStart("character", 1);//改变光标位置，实际上我们是在记录cursor的数量.
+		            }
+			 }
+		}) */
+		
+	})
+
+	//<input type='file' >
+})
+</script>
+</body>
+</html>

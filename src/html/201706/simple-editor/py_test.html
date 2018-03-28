@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script
+            src="http://code.jquery.com/jquery-1.12.4.js"
+            integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+            crossorigin="anonymous"></script>
+<style>
+.fileinput-wrap{
+}
+.imgs-content{
+}
+.img-wrap{
+	    position: relative;
+    display: inline-block;
+       width: 70px;
+    height: 90px;
+    margin: 0px 6px;
+    border: 1px solid white;
+    overflow: hidden;
+}
+.img-previmg{
+    display: block;
+    width: 100px;
+    height: 120px;
+    }
+.img-wrap .close{
+	position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #cdc5b9;
+    color: white;
+    cursor: pointer;
+    padding: 0px 1px;
+    display: inline-block;
+    font-size:14px;
+}
+.filebtn{
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    padding: 7px 16px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    left: 391px;
+    top: 64px;
+}
+.filebtn input{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+<form action="/upload"  method='post' enctype='multipart/form-data' >
+
+
+<div  class='upimgcontent' style="margin:0px auto;width:990px;">
+
+<!-- <div class="fileinput-wrap">
+<input type="file" name="files" id="doc0" imgid="img0" style="width:100px;"
+ onchange="javascript:setImagePreviews()" />
+</div>
+
+ <div id="dd" style="width:990px;"></div> -->
+
+</div>
+<button type="submit">提交</button>
+</form>
+<script>
+
+(function($){
+	
+	function multiPicUpload(elem,options){
+		//var t=new Date().getTime();
+		this.imagId=1;
+		this.pureid=new Date().getTime();
+		this.$elem=elem;
+		for(var k in options){
+			this[k]=options[k];
+		}
+		this.init();
+		
+		
+	}
+	
+	multiPicUpload.prototype.init=function(){
+		
+		var numid=this.pureid+""+this.imagId;
+		var html='<div class="fileinput-wrap">'
+		+'<a class="filebtn '+this.fileBtnCls+'">'+this.fileBtnText+'<input type="file" name="files[]" id="doc'
+            +numid+'" imgid="img'+numid+'" style="width:100px;"'
+		+' /></a>'+'</div>'+' <div class="imgs-content" ></div>';
+		
+		this.$elem.append(html);
+		this.bind();
+	}
+	
+	multiPicUpload.prototype.bind = function(){
+		this.$uploadinputs=$('.fileinput-wrap input');
+		this.$uploadimgs=$('.imgs-content .img-wrap');
+		var that=this;
+		var numid=this.pureid+""+this.imagId;
+		var prenumid=this.pureid+""+(this.imagId-1);
+		$("#doc"+numid).on("change",function(e){
+			that.setImagePreviews();
+		})
+		$(".closeimg"+prenumid).on("click",function(e){
+			var id=$(this).parents(".img-wrap").attr("imgid");
+			$(this).parent().remove();
+			$(".fileinput-wrap input[imgid="+numid+"]").remove();
+		})
+	}
+	
+	multiPicUpload.prototype.setImagePreviews=function(){
+		var that = this;
+		var numid=this.pureid+""+this.imagId;
+		var docobj=document.getElementById("doc"+numid);
+		var $imgscontent=$(".imgs-content");
+		var that=this;
+		var fileList=docobj.files;
+		for( var i=0;i<fileList.length;i++){
+			this.imagId++;
+			var numid=this.pureid+""+this.imagId;
+			var prenumid=this.pureid+""+(this.imagId-1);
+			$imgscontent.append("<div class='img-wrap' imgid='img"+prenumid+"'><img class='upload-item-img'id='img"+prenumid+"'/><span class=' closeimg"+prenumid+" close'>×</span></div>");
+			$(".fileinput-wrap [imgid=img"+prenumid+"]").parent()[0].style.position="absolute";
+			$(".fileinput-wrap [imgid=img"+prenumid+"]").parent()[0].style.left="-10000px";
+			//$(".fileinput-wrap [imgid=img"+(magId-1)+"]").addClass('hasdata');
+			$(".fileinput-wrap").append('<a class="filebtn '+this.fileBtnCls+'">'+this.fileBtnText+'<input type="file" name="files[]" id="doc'+numid+'" imgid="img'+numid+'" style="width:100px;"	  /></a>');
+			this.bind();			
+			var imgObjPreview=document.getElementById("img"+prenumid);
+			if(docobj.files&&docobj.files[i]){
+				imgObjPreview.style.display="block";
+				imgObjPreview.style.width=that.picItemWidth;
+				imgObjPreview.style.height=that.picItemHeight;
+				//imgObjPreview.style.height="100%";
+				imgObjPreview.src=window.URL.createObjectURL(docobj.files[i]);
+			}else{
+				//IE
+				docobj.select();
+				var imgsrc=document.selection.createRange().text;
+				var localImageId=document.getElementById("img"+prenumid);
+				localImageId.style.width=that.picItemWidth;
+				localImageId.style.height=that.picItemHeight;
+				try{
+					localIamgeId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					localIamgeId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src=imgsrc;
+				}catch(e){
+					alert("上传图片出错")
+					return false;
+				}
+				imgObjPreview.style.display="none";
+				document.selection.empty();
+			}
+			
+		}
+		return true;
+	}
+	multiPicUpload.DEFAULTS={
+			//parentId:"",
+			picItemWidth:"70px",
+			picItemHeight:"90px",
+			fileBtnText:"上传图片",
+			fileBtnCls : "",
+			
+	};
+	function Plugin(option){
+		
+		return this.each(function(){
+			var $this=$(this);
+			var $data=$this.data('gov.multipicupload');
+			var options=$.extend({},multiPicUpload.DEFAULTS,option);
+			if(!$data){
+				$this.data('gov.multipicupload',new multiPicUpload($this,options));
+			}
+			
+			
+		});
+		
+	}
+	$.fn.multiPicUpload=Plugin;//生成时调用这个
+	$.fn.multiPicUpload.constructor=multiPicUpload;//类
+	
+})(jQuery);
+
+$(".upimgcontent").multiPicUpload({});
+/*
+ https://blog.csdn.net/yangzhihello/article/details/23851369
+ var magId=0;
+function setImagePreviews(){
+	var docobj=document.getElementById("doc"+magId);
+	var dd=document.getElementById("dd");
+	//dd.innerHTML="";//imgid
+	var fileList=docobj.files;
+	
+	for( var i=0;i<fileList.length;i++){
+		magId++;
+
+		$(dd).append("<div class='img-wrap' imgid='img"+(magId-1)+"'><img id='img"+(magId-1)+"'/><span class=' closeimg"+(magId-1)+" close'>×</span></div>");
+		$(".fileinput-wrap [imgid=img"+(magId-1)+"]")[0].style.position="absolute";
+		$(".fileinput-wrap [imgid=img"+(magId-1)+"]")[0].style.left="-10000px";
+		//$(".fileinput-wrap [imgid=img"+(magId-1)+"]").addClass('hasdata');
+		$(".fileinput-wrap").append('<input type="file" name="files" id="doc'+magId+'" imgid="img'+magId+'" style="width:100px;"	 onchange="javascript:setImagePreviews()" />');
+		
+		$(".closeimg"+(magId-1)).on("click",function(e){
+			var id=$(this).parents(".img-wrap").attr("imgid");
+			$(this).parent().remove();
+			$(".fileinput-wrap input[imgid="+id+"]").remove();
+		})
+		var imgObjPreview=document.getElementById("img"+(magId-1));
+		if(docobj.files&&docobj.files[i]){
+			imgObjPreview.style.display="block";
+			imgObjPreview.style.width="100px";
+			imgObjPreview.style.height="120px";
+			imgObjPreview.src=window.URL.createObjectURL(docobj.files[i]);
+		}else{
+			//IE
+			docobj.select();
+			var imgsrc=document.selection.createRange().text;
+			var localImageId=document.getElementById("img"+(magId-1));
+			localImageId.style.width="100px";
+			localImageId.style.height="120px";
+ //图片异常的捕捉，防止用户修改后缀来伪造图片
+			try{
+				localIamgeId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+				localIamgeId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src=imgsrc;
+			}catch(e){
+				alert("上传图片出错")
+				return false;
+			}
+			imgObjPreview.style.display="none";
+			document.selection.empty();
+		}
+		
+	}
+	return true;
+}
+
+ https://blog.csdn.net/sinat_34803353/article/details/53251564
+*/
+
+
+</script>
+</body>
+</html>

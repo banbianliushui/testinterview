@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<!DOCTYPE html>
+<style>
+div {width:600px;border:1px solid red;}
+</style>
+<div contenteditable="true" id="editor">
+ 金樽清酒斗十千，玉盘珍馐<p id='ppp'> 值万&nbsp;钱&nbsp;。</p><br/>
+  停杯投箸不<span class='tagcls'></span>&nbsp;能食，拔剑四顾心茫然&nbsp;。<br/>
+  欲渡黄河冰塞川，将登太行雪满山。<br/>
+  闲来垂钓碧溪上，忽复乘舟梦日边。<br/>
+  行路难！行路难！多歧路，今安在？<br/>
+  长风破浪会有时，直挂云帆济沧海。<br/>
+</div>
+<script>
+//变量初始化
+var range,editor;
+range=document.selection.createRange();
+editor=document.getElementById("ppp");
+//选中editor内的所有文字
+range.moveToElementText(editor);
+//抛弃选区的结束位置
+range.collapse();
+//把当前选区的结束位置向后移动16个字符
+range.moveEnd("character",0);
+//在界面上选中这个选区
+range.select();
+</script>
+</body>
+</html>

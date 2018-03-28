@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<div id='editorcontainer'>
+<div class='editor' contentEditable='true' >aaadff&nbsp;ff&nbsp;
+&nbsp;<span class='tagcls'>g</span>订单</div>
+<div class='toolbar'>
+<a class='uploadimage'>插入图片<input type='file'  class='uploadimageinput'></a>
+<a class='clear'>清理</a>
+</div>
+</div>
+<script>
+$(function(){
+	/* \s用来匹配空格
+	\\s用来匹配字符串中的空格 */
+	$('.clear').on('click',function(e){
+		var $tag=$('.tagcls');
+		var $parent=$tag.parent();
+		var outhtml=$parent[0].outerHTML;
+		//\s?<span class="tagcls"></span>
+		//outhtml.replace(/(\s?<span class="tagcls"><\/span>)/g,'<span class="tagcls"></span>')
+	/* 	var i=outhtml.toLowerCase().indexOf('<span class=tagcls>g</span>');
+		$parent[0].outerHTML=outhtml.substr(0,i-7)+outhtml.substr(i); */
+		
+		
+		$parent[0].outerHTML=outhtml.replace(/&nbsp;<span class=tagcls>g<\/span>/gi,"Excel")
+		//$parent[0].outerHTML.replace(new RegExp('nbsp;<span class=tagcls></span>',"i"), '<span class="tagcls"></span>');
+		//outhtml.replace(new RegExp('\s{1}<span class="tagcls"><\/span>'), '<span class="tagcls"><\/span>');
+	})
+	
+	
+})
+</script>
+</body>
+</html>

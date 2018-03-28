@@ -1,0 +1,156 @@
+<html>
+<head>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<script language="JavaScript">
+
+
+
+
+
+
+
+var cursor = 0; // 光标位置  
+var saveSelection=0;
+var saveRange=0;
+$('body').on('focus','#editdiv',function(){
+	//	$(document).one('selectionchange',function(e){
+			console.log("onselectionchange");
+			var $sobj=$(this);
+			if($sobj.hasClass('goveditor-content')||$sobj.parents('.goveditor-content').length>0){
+				if(window.getSelection){
+					saveSelection=window.getSelection();
+					saveRange=window.getSelection().getRangeAt(0)
+				}else if(document.selection){
+					
+					saveSelection=document.selection;//.createRange()
+					saveRange=document.selection.createRange();
+					var	range=saveRange;
+					var srcele = range.parentElement();//获取到当前元素
+					var copy = document.body.createTextRange();
+					copy.moveToElementText(srcele);
+					for (cursor = 0; copy.compareEndPoints("StartToStart", range) < 0; cursor++) {
+					 copy.moveStart("character", 1);//改变光标位置，实际上我们是在记录cursor的数量.
+					}
+				}
+			}
+
+//		})
+
+	})
+
+/* document.onselectionchange = function () {
+	var range = document.selection.createRange();
+	var srcele = range.parentElement();//获取到当前元素
+	var copy = document.body.createTextRange();
+	copy.moveToElementText(srcele);
+	for (cursor = 0; copy.compareEndPoints("StartToStart", range) < 0; cursor++) {
+	 copy.moveStart("character", 1);//改变光标位置，实际上我们是在记录cursor的数量.
+	}
+} */
+/* function moveEnd(obj) {
+	lyTXT1.focus();
+	var r = document.selection.createRange();
+	//因为这里死从当前光标开始移动的(好像文本框的是从0算起.)所以我们需要拿到当前光标位置，然后就可以计算出要移动多少位了，这样就可以把光标移动到想要的位置了
+	r.moveStart('character', lyTXT1.innerText.length - cursor);
+	r.collapse(true);
+	r.select();
+	} */
+function insertHtmlAtCaret(html) {
+	var sel, range;
+	if (window.getSelection) {
+	// IE9 and non-IE
+		sel = window.getSelection();
+		if (sel.getRangeAt && sel.rangeCount) {
+		range = sel.getRangeAt(0);
+		range.deleteContents();
+		// Range.createContextualFragment() would be useful here but is
+		// non-standard and not supported in all browsers (IE9, for one)
+		var el = document.createElement("div");
+		el.innerHTML = html;
+		var frag = document.createDocumentFragment(), node, lastNode;
+		while ( (node = el.firstChild) ) {
+		lastNode = frag.appendChild(node);
+		}
+		range.insertNode(frag);
+		// Preserve the selection
+		if (lastNode) {
+		range = range.cloneRange();
+		range.setStartAfter(lastNode);
+		range.collapse(true);
+		sel.removeAllRanges();
+		sel.addRange(range);
+		}
+		}
+	} else if (document.selection && document.selection.type != "Control") {
+		// IE < 9
+		document.selection.createRange().pasteHTML(html);
+	}
+	}
+
+	var insert_image =function(){
+		var html="<form id='imguploadform' method='post' enctype='multipart/form-data'>" +
+		"<input class='imgbtn-input' type='file' accept='image/jpg,image/jpeg,image/png,image/gif,image/bmp' >" +
+		"<button  id='imgupload'>确定</button>" +
+		
+		"</form>" ;
+		$(".goveditor").append(html);
+		$("#imgupload").on('click',function(e){
+			console.log("imgupload");
+			$('#imguploadform').remove();
+			var imgs=[{guid:'1',src:'http://localhost:8080/topware-govdocsearch/1479806352654'},
+			          {guid:'2',src:'http://localhost:8080/topware-govdocsearch/1479806352658'}				,
+				 {guid:'3',src:'http://localhost:8080/topware-govdocsearch/1479806352757'}				
+			    ];
+			var k=Math.floor(Math.random()*3);
+			var im=imgs[k];
+			var html="<img  style='width:40px;height:30px;' src='"+im.src+"' imgid='"+im.guid+"'>";
+			
+			insertHtmlAtCaret(html);
+			return;
+			//var $editor=$(that.$elem).data('govEditor');
+			
+			if(saveSelection!=null){
+				if(window.getSelection){
+					
+					  var sel = that.saveSelection;
+			            if( sel.getRangeAt && sel.rangeCount )
+			            {
+			                var range = sel.getRangeAt(0);	
+			                var $imgnode=$(html)[0];				             
+			                    range.deleteContents();
+			                    range.insertNode($imgnode);
+			                if( $imgnode )
+			                {
+			                    range = range.cloneRange();
+			                    range.setStartAfter($imgnode);
+			                    range.collapse(true);
+			                    sel.removeAllRanges();
+			                    sel.addRange(range);
+			                  //  that.saveSelection=window.getSelection();
+			                }
+			            }
+					
+				}else if(document.selection){
+					//saveRange.collapse(true);
+					//saveRange.select();
+					saveRange.pasteHTML(html);
+//					that.saveSelection=document.selection;
+//					that.saveRange=document.selection.createRange();
+//					that.saveRange.collapse(true);
+//					that.saveRange.select();
+				}
+			}
+			
+		});
+	}
+</script>
+<div  class="goveditor">
+<div  id="editdiv" contenteditable='true' class='goveditor-content'>Highlight a part of this text, then click button below</div>
+<textarea id='editarea' style="display:none"></textarea>
+<input id="myB" type="button" value="Click me" onclick="insert_image();">
+</div>
+</body>
+</html>

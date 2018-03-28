@@ -1,0 +1,104 @@
+<html>
+<head>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<script language="JavaScript">
+var saveSelection=null;
+var saveRange=null;
+
+$('body').on('focus','#editdiv',function(){
+		//	$(document).one('selectionchange',function(e){
+				console.log("onselectionchange");
+				var $sobj=$(this);
+				if($sobj.hasClass('goveditor-content')||$sobj.parents('.goveditor-content').length>0){
+					if(window.getSelection){
+						saveSelection=window.getSelection();
+						saveRange=window.getSelection().getRangeAt(0)
+					}else if(document.selection){
+						saveSelection=document.selection;//.createRange()
+						saveRange=document.selection.createRange();
+					}
+				}
+
+	//		})
+
+		})
+
+
+function test() {
+ if (document.selection && document.selection.createRange) {
+	 
+	 var html="<img src='http://localhost:8080/topware-govdocsearch/1479806352757' style='width:50px;height:20px;'>"
+		 saveRange.select();
+	 	saveRange.pasteHTML( html );
+		// document.execCommand('InsertImage', false, 'http://localhost:8080/topware-govdocsearch/1479806352658');
+		//document.selection.createRange()
+		 
+		//saveRange.collapse(true);
+		 saveSelection=document.selection;//.createRange()
+			saveRange=document.selection.createRange();
+			saveRange.collapse(true);
+			saveRange.select();
+		return;
+	 
+	 
+	var  textRange = document.selection.createRange();
+	 textRange.select();
+	 textRange.pasteHTML( html );
+	 //textRange.text = html;
+     textRange.collapse(true);
+     textRange.select();
+	 return;
+	 saveSelection.select();
+	 var containerNode=document.getElementById('editdiv');
+	
+	 var sel = document.selection;
+     if( sel.type != 'Control' )
+     {
+         var originalRange = sel.createRange();
+         originalRange.collapse(true);
+         var range = sel.createRange();
+         range.pasteHTML( html );
+  /*        if( isOrContainsNode(containerNode, range.parentElement()) )
+             range.pasteHTML( html );
+         else // simply append to Editor
+         { */
+          /*    var textRange = document.body.createTextRange();
+             textRange.moveToElementText(containerNode);
+             textRange.collapse(false);
+             textRange.select();
+             textRange.pasteHTML( html ); */
+         //}
+         // Preserve the selection
+         range = sel.createRange();
+         range.setEndPoint('StartToEnd', originalRange);
+         range.select();
+     }
+	 
+	 //document.getElementById('').focus(); 
+    /*   var myRange = document.selection.createRange();
+     // myRange.collapse(true);
+    //  var m = myRange.pasteHTML('<iframe width=100 height=100 src="http://localhost/t2.htm"></iframe>');
+     // document.execCommand('InsertImage', false, 'http://localhost:8080/topware-govdocsearch/1479806352658');
+      execCommand('insertHTML', html, true) */
+ }
+ else if (window.getSelection) {
+      var selection = window.getSelection();
+  var range = window.getSelection().getRangeAt(0);
+    range.deleteContents();
+  var newP = document.createElement('iframe');
+  newP.src="http://localhost/t2.htm";
+  newP.width="100"; 
+  newP.height="100";  
+range.insertNode(newP);
+ }
+}
+
+</script>
+<div  id="editdiv" contenteditable='true' class='goveditor-content'>Highlight a part of this text, then click button below</div>
+<textarea id='editarea' style="display:none"></textarea>
+<input id="myB" type="button" value="Click me" onclick="test();">
+</body>
+</html>

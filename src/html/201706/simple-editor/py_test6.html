@@ -1,0 +1,178 @@
+<html>
+<head>
+ <script type="text/javascript"src="/topware-govdocsearch/core/core_js/jquery-1.11.3.min.js"></script> 
+
+</head>
+<body>
+<script language="JavaScript">
+var saveSelection=null;
+var saveRange=null;
+
+$('body').on('focus','#editdiv',function(){
+		//	$(document).one('selectionchange',function(e){
+				console.log("onselectionchange");
+				var $sobj=$(this);
+				if($sobj.hasClass('goveditor-content')||$sobj.parents('.goveditor-content').length>0){
+					if(window.getSelection){
+						saveSelection=window.getSelection();
+						saveRange=window.getSelection().getRangeAt(0)
+					}else if(document.selection){
+						 var sel = document.selection;
+						 var containerNode=$(".goveditor-content")[0];
+				            if( sel.type == 'Text' )
+				            {
+				                var range = document.selection.createRange();
+				                var textrange = document.body.createTextRange();
+				                textrange.moveToElementText(containerNode);
+				                textrange.setEndPoint('EndToStart', range);
+				               // return range.htmlText.length == 0;
+				            }
+
+						saveSelection=document.selection;//.createRange()
+						saveRange=document.selection.createRange();
+					}
+				}
+
+	//		})
+
+		})
+
+var insert_image =function(){
+		var html="<form id='imguploadform' method='post' enctype='multipart/form-data'>" +
+		"<input class='imgbtn-input' type='file' accept='image/jpg,image/jpeg,image/png,image/gif,image/bmp' >" +
+		"<button  id='imgupload'>È·¶¨</button>" +
+		
+		"</form>" ;
+		$(".goveditor").append(html);
+		$("#imgupload").on('click',function(e){
+			console.log("imgupload");
+			$('#imguploadform').remove();
+			var imgs=[{guid:'1',src:'http://localhost:8080/topware-govdocsearch/1479806352654'},
+			          {guid:'2',src:'http://localhost:8080/topware-govdocsearch/1479806352658'}				,
+				 {guid:'3',src:'http://localhost:8080/topware-govdocsearch/1479806352757'}				
+			    ];
+			var k=Math.floor(Math.random()*3);
+			var im=imgs[k];
+			var html="<img  style='width:40px;height:30px;' src='"+im.src+"' imgid='"+im.guid+"'>";
+			
+			//var $editor=$(that.$elem).data('govEditor');
+			
+			if(saveSelection!=null){
+				if(window.getSelection){
+					
+					  var sel = that.saveSelection;
+			            if( sel.getRangeAt && sel.rangeCount )
+			            {
+			                var range = sel.getRangeAt(0);	
+			                var $imgnode=$(html)[0];				             
+			                    range.deleteContents();
+			                    range.insertNode($imgnode);
+			                if( $imgnode )
+			                {
+			                    range = range.cloneRange();
+			                    range.setStartAfter($imgnode);
+			                    range.collapse(true);
+			                    sel.removeAllRanges();
+			                    sel.addRange(range);
+			                  //  that.saveSelection=window.getSelection();
+			                }
+			            }
+					
+				}else if(document.selection){
+					//saveRange.collapse(true);
+					//saveRange.select();
+					//$('#editdiv').focus();
+					saveRange.pasteHTML(html);
+//					that.saveSelection=document.selection;
+//					that.saveRange=document.selection.createRange();
+//					that.saveRange.collapse(true);
+//					that.saveRange.select();
+				}
+			}
+			
+		});
+	}
+function test() {
+ if (document.selection ) {
+	 
+	 var html="<img src='http://localhost:8080/topware-govdocsearch/1479806352757' style='width:50px;height:20px;'>"
+		 
+	 
+	 
+		 insert_image();
+	 
+	 return;
+	 
+	 saveRange.select();
+	 	saveRange.pasteHTML( html );
+		// document.execCommand('InsertImage', false, 'http://localhost:8080/topware-govdocsearch/1479806352658');
+		//document.selection.createRange()
+		 
+		//saveRange.collapse(true);
+		 saveSelection=document.selection;//.createRange()
+			saveRange=document.selection.createRange();
+			saveRange.collapse(true);
+			saveRange.select();
+		return;
+	 
+	 
+	var  textRange = document.selection.createRange();
+	 textRange.select();
+	 textRange.pasteHTML( html );
+	 //textRange.text = html;
+     textRange.collapse(true);
+     textRange.select();
+	 return;
+	 saveSelection.select();
+	 var containerNode=document.getElementById('editdiv');
+	
+	 var sel = document.selection;
+     if( sel.type != 'Control' )
+     {
+         var originalRange = sel.createRange();
+         originalRange.collapse(true);
+         var range = sel.createRange();
+         range.pasteHTML( html );
+  /*        if( isOrContainsNode(containerNode, range.parentElement()) )
+             range.pasteHTML( html );
+         else // simply append to Editor
+         { */
+          /*    var textRange = document.body.createTextRange();
+             textRange.moveToElementText(containerNode);
+             textRange.collapse(false);
+             textRange.select();
+             textRange.pasteHTML( html ); */
+         //}
+         // Preserve the selection
+         range = sel.createRange();
+         range.setEndPoint('StartToEnd', originalRange);
+         range.select();
+     }
+	 
+	 //document.getElementById('').focus(); 
+    /*   var myRange = document.selection.createRange();
+     // myRange.collapse(true);
+    //  var m = myRange.pasteHTML('<iframe width=100 height=100 src="http://localhost/t2.htm"></iframe>');
+     // document.execCommand('InsertImage', false, 'http://localhost:8080/topware-govdocsearch/1479806352658');
+      execCommand('insertHTML', html, true) */
+ }
+ else if (window.getSelection) {
+      var selection = window.getSelection();
+  var range = window.getSelection().getRangeAt(0);
+    range.deleteContents();
+  var newP = document.createElement('iframe');
+  newP.src="http://localhost/t2.htm";
+  newP.width="100"; 
+  newP.height="100";  
+range.insertNode(newP);
+ }
+}
+
+</script>
+<div  class="goveditor">
+<div  id="editdiv" contenteditable='true' class='goveditor-content'>Highlight a part of this text, then click button below</div>
+<textarea id='editarea' style="display:none"></textarea>
+<input id="myB" type="button" value="Click me" onclick="test();">
+</div>
+</body>
+</html>

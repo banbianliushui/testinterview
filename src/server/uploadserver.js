@@ -18,21 +18,14 @@ http.createServer(function(req,res){
         if(req.files){
             var rd = Math.random();
             var destination = '../html/201802/uploads/'+rd+'/'
-            // mkdirs(destination, function(){
-            //
-            // })
+
             fs.mkdir(destination, function(err){
                 if(err){
 
                 }
                 else{
-                    if(Object.prototype.toString( req.files)=='[object Object]'){
+                    if(Object.prototype.toString.call( req.files)=='[object Object]'){
                         var file = req.files.file;
-                        /* fs.copyFile(file.path, destination+file.name, (err) => {
-                         if (err) throw err;
-                         console.log('source.txt was copied to destination.txt');
-                         });*/
-
                         fs.readFile(file.path,(err,data) => {
                             if(err)  {
                                 res.end();
@@ -41,13 +34,41 @@ http.createServer(function(req,res){
                             fs.writeFile( destination+file.name,data, (err) => {
                                 if (err) throw err;
                                 console.log('The file has been saved!');
+                                res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+                                res.end("成功")
                             });
-                           // res.setHeader('charset', 'utf8');
-                           // res.setEncoding('utf-8');
+                        })
+
+                    }else  if(Object.prototype.toString.call( req.files)=='[object Array]'){
+                            var len = req.files.length;
+                            var files = req.files;
+                            var promisearr =[];
+                                for(var i =0 ;i<len;i++){
+                                    let file = files[i];
+                                    var promis = new Promise((resolve,reject) =>{
+                                        fs.readFile(file[1].path,(err,data) => {
+                                            if(err)  {
+                                                reject(); throw err;
+                                            }
+                                            fs.writeFile( destination+file[1].name,data, (err) => {
+                                                if (err) { reject(); throw err;}
+
+                                                resolve()
+                                                console.log('The file has been saved!');
+                                            });
+                                        })
+                                    })
+                                    promisearr.push(promis);
+                                }
+                        Promise.all(promisearr).then(function(values){
                             res.setHeader('Content-Type', 'text/plain; charset=utf-8')
                             res.end("成功")
+                        },function(){
+                            res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+                            res.end("失败")
+                        }).catch(function(err){
+                            console.log(err)
                         })
-                    }else  if(Object.prototype.toString( req.files)=='[object Array]'){
 
                     }
                 }
@@ -55,7 +76,7 @@ http.createServer(function(req,res){
 
 
 
-        } else  if(pathobj.ext=='.html'){//__dirname+
+        } else  if(pathobj.ext=='.html'||pathobj.ext=='.js'||pathobj.ext=='.css'){
             fs.readFile(path.resolve(__dirname,"../","./"+req.url),(err,data) => {
                 /* if(err) throw err;*/
                 if(err)  {

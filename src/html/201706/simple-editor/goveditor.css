@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+.editor_tagcls{
+	display:none;
+}
+.goveditor-content{
+	height:180px;
+	margin-bottom: 10px;
+    border: 1px solid #eee;
+}
+.imgbtn{
+	position: relative;
+	overflow: hidden;
+}
+a.imgbtn{
+	background: #ffffff;
+    color: black;
+    border: 1px solid #eee;
+}
+#g_uploadimgform{
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+}
+input.imgbtn-input{
+    /* display: inline-block;
+    width: 150px; */
+    filter:alpha(opacity=0);
+    opacity:0;
+    font-size: 50px;
+    cursor:pointer;
+        padding-top: 50px;
+}
+.menu-group{
+	display: inline-block;
+}
+.menu-group a{
+float: right;
+    width: 150px;
+    height: 38px;
+    background: #3c7ac3;
+    color: #fff;
+    text-align: center;
+    margin-left: 36px;
+    line-height: 38px;
+    cursor:pointer;
+}
