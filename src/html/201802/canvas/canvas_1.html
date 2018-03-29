@@ -91,19 +91,25 @@
             array: []
         };
 
-        function colorValue(min) {
+        function colorValue(min) {//rgb 颜色值随机生成
             return Math.floor(Math.random() * 255 + min);
         }
 
-        function createColorStyle(r,g,b) {
+        function createColorStyle(r,g,b) {//
             return 'rgba(' + r + ',' + g + ',' + b + ', 0.8)';
         }
 
+        /*comp1,颜色值1
+         weight1,占比
+          comp2, 颜色值2
+          weight2
+        *
+        * */
         function mixComponents(comp1, weight1, comp2, weight2) {
             return (comp1 * weight1 + comp2 * weight2) / (weight1 + weight2);
         }
 
-        function averageColorStyles(dot1, dot2) {
+        function averageColorStyles(dot1, dot2) {//求两个点颜色
             var color1 = dot1.color,
                 color2 = dot2.color;
 

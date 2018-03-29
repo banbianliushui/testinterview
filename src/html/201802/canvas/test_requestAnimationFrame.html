@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+           /* background: rebeccapurple;*/
+            width: 100px;
+            height: 20px;
+            border:1px solid #41b883;
+        }
+    </style>
+</head>
+<body>
+<div id="animate"></div>
+<script>
+    var start = null ;
+    var ele = document.getElementById('animate')
+    ele.style.position = 'absolute';
+    function step(timestamp){
+        console.log("timestamp1 =",timestamp)
+        if(!start) start = timestamp;
+
+        var progress = timestamp - start ;
+        ele.style.left = Math.min(progress/10,500)+'px';
+        if(progress <5000){
+           window.requestAnimationFrame(step);
+            window.requestAnimationFrame(color);
+        }else{
+
+        }
+    }
+    var time = 0;
+    function timeout(){
+        console.log("settimeout="+time )
+        time++;
+        if(time<1000){
+            setTimeout(function(){
+                timeout();
+            },30)
+        }
+    }
+    setTimeout(function(){
+        timeout()
+    },30)
+    function color(timestamp) {
+        console.log("timestamp2 =",timestamp)
+       var rad =  Math.random()*10;
+       if(rad>7){
+           ele.style.backgroundColor='red';
+       }/*else if(rad>5){
+           ele.style.backgroundColor='green';
+       }*/else{
+           ele.style.backgroundColor='green';
+       }
+    }
+
+    var frame =window.requestAnimationFrame(step);//只能传一个函数
+    window.requestAnimationFrame(color);
+    /*https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>details标签</h2>
+<p> &lt;details&gt;标签用于描述文档或文档某个部分的细节。
+  与 &lt;summary&gt;标签 配合使用可以为 details 定义标题。标题是可见的，用户点击标题时，会显示出 details。
+    open="open"定义在 HTML 页面上 details 应该是可见的。
+</p>
+<details>
+    <summary>Copyright 2011.</summary>
+    <p>All pages and graphics on this web site are the property of W3School.</p>
+</details>
+
+
+<h2>datalist标签</h2>
+<p>
+    &lt;datalist&gt; 标签定义选项列表。与 input 元素配合使用该元素，来定义 input 可能的值。
+        datalist 及其选项不会被显示出来，它仅仅是合法的输入值列表。用 input 元素的 list 属性来绑定 datalist。
+        输入内容在下拉列表自动匹配显示，小三角只有当表单获取到焦点时才会显示。
+</p>
+
+<input id="myCar" list="cars" />
+<datalist id="cars">
+    <option value="BMW">
+    <option value="Ford">
+    <option value="Volvo">
+</datalist>
+
+<h2>figure标签</h2>
+<p>
+    figure用于定义独立的流内容（图像、图表、照片。代码等等）。表示内容的一个自包含单元。
+    figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。
+   </p>
+<p> 使用&lt;figcaption&gt;元素为figure添加标题或语义</p>
+<figure>
+    <h1>PRC</h1>
+    <p>The People's Republic of China was born in 1949...</p>
+</figure>
+<figure>
+    <figcaption>PRC</figcaption>
+    <p>The People's Republic of China was born in 1949...</p>
+</figure>
+<figure> <img src="//img.hb.aicdn.com/2eafaf791a8ab52eca2165eb4825d830785f230119bc2-65166t_sq320" alt="Group photo of dogs">
+    <figcaption>
+        <h2>P橡皮章</h2> <p>青花瓷系列橡皮章</p>
+    </figcaption>
+</figure>
+
+<h2>progress标签</h2>
+<p>
+    progress进度
+    注：设置背景为进度条当前value对应的长度
+</p>
+<progress value="22" max="100"></progress>
+<progress></progress>
+
+<h2>ruby标签</h2>
+<p>ruby标签定义ruby注释（中文拼音或字符），在东亚使用，显示的东亚字符的发音。
+和&lt;rt&gt; 、&lt;rp&gt;一起使用。ruby 元素由一个或多个字符（需要一个解释/发音）和一个提供该信息的 rt 元素组成，还包括可选的 rp 元素，定义当浏览器不支持 "ruby" 元素时显示的内容。 </p>
+<p>支持 "ruby" 元素的浏览器不会显示 "rp" 元素的内容。 但是加了rp显示拼音不在文字头部，<span style="color:red;">问题待查</span></p>
+<ruby>
+    哈
+     <rt><rp>(</rp>ha<rp>)</rp></rt>
+</ruby>
+<ruby>
+    好<rt>hao</rt>
+</ruby>
+
+
+
+<div></div>
+<command>var  cc = 0</command>
+</body>
+</html>
