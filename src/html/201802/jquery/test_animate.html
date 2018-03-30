@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../201708/jquery-2.0.3.js"></script>
+</head>
+<body>
+<p>哈哈哈哈</p>
+
+<button id="animate">animate</button>
+<button id="in">fadeIn</button><button id="out">fadeOut</button>
+<button id="to">fadeTo</button>
+
+<button id="slidedown">slidedown</button><button id="slideup">slideup</button>
+<button id="slidetoggle">slidetoggle</button>
+<script>
+    $("#animate").click(function(){
+        //属性值可以逐渐改变的可以创建动画效果。，只有数值型可以创建动画
+        //注释：使用 "+=" 或 "-=" 来创建相对动画（relative animations）。
+        //$(selector).animate(styles,speed,easing,callback)
+        // speed 速度 ,easing 速度函数，callback 动画执行完后回调函数
+        $("p").animate({left:'300px'},'1500','swing',function(){
+
+        });
+    })
+
+    $("p").animate({left:'300px'},'1500','swing',function(){
+
+    });
+  /*  $("#slidedown").click(function(){
+        //slideDown()，slideUp()：只会改变元素的高度。
+        //如果一个元素的display属性为none，当调用slideDown() 方法时，这个元素将由上至下延伸显示。
+        $("p").slideDown("slow");
+    })
+    $("#slideup").click(function(){
+        //slideDown()，slideUp()：只会改变元素的高度。
+        //元素由下至上缩短至隐藏
+        $("p").slideUp("slow");
+    })
+    $("#slidetoggle").click(function(){
+        //通过高度变化来切换匹配元素的可见性
+        $("p").slideToggle("slow",function(){
+            console.log('done')
+        });
+    })
+    $("#in").click(function(){// display:none -> display:block，中间 opacity 从0->1
+        $("p").fadeIn("slow");
+    })
+    $("#out").click(function(){//display:block -> display:none，中间 opacity 从1->0
+        $("p").fadeOut("slow");
+    })
+    /!*把不透明度以渐近的方式调整到指定的值(0 – 1 之间)。并在动画完成后可选地触发一个回调函数。*!/
+    $("#to").click(function(){
+        //只调整透明度，消失
+        $("p").fadeTo("fast", 0, function(){
+            /!*alert("Animation Done."); *!/
+        });
+    })*/
+
+
+
+</script>
+
+</body>
+</html>

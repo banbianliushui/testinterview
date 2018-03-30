@@ -186,7 +186,7 @@ CallBacks
 'once':
     回调函数列表只回调一次，如果没有附加“memory”模式，则一次回调后list,memory,stack都为undefined，之后什么都不能做
     list：存放回调函数列表。
-    初始化化时stack触发函数fire的传参列表赋值为false，表示这个列表只被触发一次，没有必要再缓存fire传的参数
+    初始化时stack触发函数fire的传参列表赋值为false，表示这个列表只被触发一次，没有必要再缓存fire传的参数
 
     firing标志是否正在处理回调函数列表，
 'memory'
@@ -198,7 +198,15 @@ CallBacks
     执行回调函数列表中的函数时如果遇到返回值为false 后面的函数不再执行，memory=false。
      如果还附加了memory模式，阻止此后再用add注册回调函数时触发fire，就是新增的函数不再自动回调。
     如果列表处理结束stack不为空时，继续调用fire，此时如果列表中所有函数都没有返回false，之前的memory=false是不是失效了？
-
+'once memory':
+    // Stack of fire calls for repeatable lists
+    stack = !options.once && [],  stack被初始为false，如果多次add还未触发过，则触发的时候参数就是当前那个；
+        如果触发过一次，然后再add时，memory中缓存的都是第一次触发时传的参数，add一次fire一次且触发时携带memory缓存的参数。
+     else if ( memory ) {
+        list = [];
+    }
+    	每次列表被迭代调用过后list会被清空，如果fireWith 触发过了，则不会再触发了，调用fireWith 没用了，
+    	但是每次add的时候还能自动内部fire,参数是第一次触发时传入的。
 
 
 fireWith：

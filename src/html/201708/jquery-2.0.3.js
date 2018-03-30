@@ -113,7 +113,7 @@ jQuery.fn = jQuery.prototype = {
 				match = [ null, selector, null ];
 
 			} else {
-				match = rquickExpr.exec( selector );//match[Ô´×Ö·û´®,tag±êÇ©×Ö·û´®,#id×Ö·û´®]
+				match = rquickExpr.exec( selector );//match[Ô´ï¿½Ö·ï¿½ï¿½ï¿½,tagï¿½ï¿½Ç©ï¿½Ö·ï¿½ï¿½ï¿½,#idï¿½Ö·ï¿½ï¿½ï¿½]
 			}
 
 			// Match html or make sure no context is specified for #id
@@ -993,7 +993,7 @@ var i,
 	rnative = /^[^{]+\{\s*\[native \w/,
 
 	// Easily-parseable/retrievable ID or TAG or CLASS selectors
-	rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,//(?:exp)±íÊ¾·Ç²¶»ñĞÔ·Ö×é£¬Ëü²»»á´æÔÚÆ¥Åä³É¹¦ºóµÄ·Ö×éÀï
+	rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,//(?:exp)ï¿½ï¿½Ê¾ï¿½Ç²ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½é£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½É¹ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	rinputs = /^(?:input|select|textarea|button)$/i,
 	rheader = /^h\d$/i,
@@ -8493,7 +8493,7 @@ jQuery.speed = function( speed, easing, fn ) {
 	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
 		opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
 
-	// normalize opt.queue - true/undefined/null -> "fx"
+	// normalize opt.queue - true/undefined/null -> "fx"  è§„èŒƒåŒ– opt.queue ï¼Œ.queue == "fx"è¡¨ç¤ºè¿˜æ²¡å­˜ä¸œè¥¿
 	if ( opt.queue == null || opt.queue === true ) {
 		opt.queue = "fx";
 	}
@@ -8502,11 +8502,11 @@ jQuery.speed = function( speed, easing, fn ) {
 	opt.old = opt.complete;
 
 	opt.complete = function() {
-		if ( jQuery.isFunction( opt.old ) ) {
+		if ( jQuery.isFunction( opt.old ) ) {//å¦‚æœç”¨æˆ·æœ‰æ³¨å†ŒåŠ¨ç”»ç»“æŸå‡½æ•°
 			opt.old.call( this );
 		}
 
-		if ( opt.queue ) {
+		if ( opt.queue ) {//thisè¯¥jqueryå¯¹è±¡ä¸Šå­˜å‚¨queueï¼Œå¦‚æœåŠ¨ç”»é˜Ÿåˆ—é‡Œè¿˜æœ‰æ•°æ®åˆ™ï¼Œç»§ç»­å–æ•°æ®
 			jQuery.dequeue( this, opt.queue );
 		}
 	};
