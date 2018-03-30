@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>品字布局-absolute</title>
+    <style>
+        html,body{
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+        .top{
+            height: 50%;
+            width:50%;
+            margin:auto;
+            background:cadetblue;
+        }
+        .main{
+            position:relative;
+            height:50%;
+            width: 100%;
+        }
+        .left{
+            height:100%;
+            width:50%;
+            background: chocolate;
+            position:absolute;
+            left:0;
+        }
+        .right{
+            height: 100%;
+            width:50%;
+            background: rebeccapurple;
+            position:absolute;
+            right: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="top"></div>
+    <div class="main">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+
+</body>
+</html>

@@ -21,7 +21,8 @@ div:nth-child(2){
     height:200px;  
     background:green;  
     bottom:0;  
-    left:0;  
+    left:0;
+    box-sizing:border-box;/*如果由设置padding、border需要用border-box模型，默认盒模型会溢出*/
 }  
 div:nth-child(3){  
     position:fixed;  
@@ -29,7 +30,8 @@ div:nth-child(3){
     height:200px;  
     background:yellow;  
     bottom:0;  
-    right:0;  
+    right:0;
+    box-sizing:border-box;
 }  
 </style>  
 </head>
