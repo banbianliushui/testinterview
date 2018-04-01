@@ -4,15 +4,14 @@
 var path = require('path')
 var http = require('http')
 var fs = require('fs')
-var path = require('path');
 var  url = require('url');
 const server =http.createServer((req,res)=>{
-   console.log("dirname="+__dirname)
+
     var pathobj=path.parse( req.url);
     var urlquery=url.parse(req.url);
     if(pathobj.ext=='.html'){//__dirname+
         fs.readFile(path.resolve(__dirname,"./src","./"+req.url),(err,data) => {
-           /* if(err) throw err;*/
+
         if(err)  {
             //res.setHeader('Content-Type', 'text/html');
            // res.writeHead(301, {'Location': 'http://itbilu.com/'});

@@ -146,3 +146,25 @@ action：提交的是mutation，不是直接变更状态，可以包含异步操
     [_c('currency-input',
     {model:{value:(price),callback:function ($$v) {price=$$v},expression:"price"}})],1)}
     })
+
+
+    12. 服务端返回页面内的bundle.js用根路径， 前台 router 根据url 请求 数据，待查
+
+
+    13.Webpack 将多个文件输出到多个目录
+    https://blog.csdn.net/hline123/article/details/78161190
+
+   https://blog.csdn.net/shengyuhang/article/details/51313178
+    entry = {
+        "button": "demo/button/index.jsx"),
+        "grid": "demo/grid/index.jsx")
+    },
+    output: {
+        path:  'dist/js',
+        filename: "[name].js",
+        chunkFilename: "[name].js"
+    },
+    plugins: [
+        new CommonsChunkPlugin("common.js", ["button", "grid"])
+    ]
+    output中的[name]对应于entry中的key值，因此生成后的文件名是button.js和grid.js。

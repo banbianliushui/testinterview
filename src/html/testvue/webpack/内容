@@ -1,0 +1,51 @@
+3.在引入文件里面添加需要的css
+
+require('../less/app.less');
+require('./bower_components/bootstrap-select/dist/css/bootstrap-select.min.css');
+require('./bower_components/fancybox/source/jquery.fancybox.css');
+
+http://www.jb51.net/article/116762.htm
+2.用webpack把我们的业务模块分开打包
+https://blog.csdn.net/github_26672553/article/details/52269158
+
+
+1.抽取css单独打包
+    extract-text-webpack-plugin
+    抽离css样式，防止将样式打包在js中引起页面样式加载错乱。
+    module.exports = {
+      module: {
+        rules: [
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: "css-loader"
+            })
+          }
+        ]
+      },
+      plugins: [
+        new ExtractTextPlugin("styles.css"),
+      ]
+    }
+
+       use:指需要什么样的loader去编译文件,这里由于源文件是.css所以选择css-loader
+       fallback:编译后用什么loader来提取css文件
+       publicfile:用来覆盖项目路径,生成该css文件的文件路径
+        module: {
+          loaders: [
+           {
+           test: /\.css$/,
+            loader: ExtractTextPlugin.extract("style-loader","css-loader")
+          },
+           {
+           test: /\.scss$/,
+            loader: "style!css!sass"
+          },
+           {
+           test: /\.less$/,
+            loader: "style!css!less"
+          },
+         ]
+        },
+    https://www.cnblogs.com/zhongxia/p/5834089.html
