@@ -167,12 +167,54 @@
         p{
             font-size:12px;
         }
+        #box12{/*仅用于定义一个高度大于浮动元素的父容器，要使浮动元素的父容器获得高度，可以生成BCF上下文处理*/
+           /* height: 200px;*/
+            background: #d0cece;
+
+            /*以下样式可以用于页面水平居中*/
+            /*background: #d0cece;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;*/
+        }
+        #floatouter12{
+            float: left;
+            left: 50%;
+           /* top: 50%;*/
+           /* width: 200px;*/
+          /* height: 83px;*//*如果不设置与floatelem元素一致的高度，floatelem的top没有效果*/
+            position: relative;
+            background: beige;
+        }
+        #floatelem{
+           /* float: left;*/
+            left: -50%;/*和包含块宽度有关，自身内容宽度*/
+            position: relative;
+            background: orange;
+          /*  top: -50%;*/
+            /*包含块的高度如果不确定的百分比无法获得*/
+        }
     </style>
 </head>
 <body>
 <!--1. 使用绝对定位和负外边距对块级元素进行垂直居中-->
 <h2>1. 使用绝对定位和负外边距对块级元素进行垂直居中</h2>
-<p>缺点必须直到居中块级元素尺寸</p>
+<p>
+    CSS left属性定义了定位元素的左外边距边界与其包含块左边界之间的偏移，非定位元素设置此属性无效。
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/left
+    left的效果取决于元素的position属性：
+
+    当position设置为absolute或fixed时，left属性指定了定位元素左外边距边界与其包含块左边界之间的偏移。
+    当position设置为relative时，left属性指定了元素的左边界离开其正常位置的偏移。
+    当position设置为sticky时，如果元素在viewport里面，left属性的效果和position为relative等同；如果元素在viewport外面，left属性的效果和position为fixed等同。
+    当position设置为static时，left属性无效
+    left百分比代表元素包含块的宽度的百分比。
+    如果单独对盒子对象设置left，是无效的，需要同时设置position:relative或者position:absolute。
+    top:代表元素包含块的高度的百分比
+</p>
+<p>缺点必须知道居中块级元素尺寸</p>
 <div id="box1">
     <div id="child1">我是测试DIV</div>
 </div>
@@ -349,6 +391,30 @@
 
 <div id="box11" >An <img  id="child11"  src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320" alt="link" width="32" height="32" /> image with
     <span style="    vertical-align: middle;">a default</span><span style="vertical-align: text-bottom"> a default</span> alignment. 图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片</div>
+
+<h2>
+    12. float 水平居中
+</h2>
+<p>
+    宽度不固定的元素，外层容器浮动，内层元素可以浮动也可以不浮动，浮动容器需设置为：左侧50%，float: left; left: 50%; position: relative（必须，按当前所在位置移动50%）;
+    内层元素在父级基础上再按自身宽度往左侧伸出50%。 left: -50%; position: relative 。注：由于不同于内部absolute元素，
+  外部float获得内部内层元素（可以加float）的宽度大小，外float包裹（可以加float）内层元素，所以此处可以用这个方法。
+</p>
+<p>
+    包含块的高度如果不确定，百分比无法获得。
+    ps:适合水平居中，不适合高度也不固定的浮动元素进行垂直居中
+</p>
+<div class="" id="box12">
+    <div class="" id="floatouter12">
+    <div class="" id="floatelem">float元素float元素<br>float元素<br>
+        float元素<br>
+        float元素<br>
+    </div>
+    </div>
+    <br clear="all">
+</div>
+
+
 
 参考：https://www.cnblogs.com/zhouhuan/p/vertical_center.html
 </body>
