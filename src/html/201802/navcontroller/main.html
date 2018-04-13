@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../201708/jquery-2.0.3.js"></script>
+    <script src="controller.js"></script>
+    <script src="pubsub.js"></script>
+    <script src="p1.js"></script>
+    <script src="p2.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+        #p1,#p2{
+            display: none;
+        }
+        #p1.active,#p2.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a ahref="p1" moduleid="p1" linkto="p1">第一个页面</a></li>
+    <li><a ahref="p2" moduleid="p2" linkto="p2">第二页面</a></li>
+</ul>
+<div id="container">
+    <div id="p1" ></div>
+    <div id="p2" ></div>
+</div>
+
+<script>
+
+    pubsub.register('init','p2',p2.beforeload);
+    pubsub.register('init','p1',p1.beforeload);
+</script>
+</body>
+</html>
