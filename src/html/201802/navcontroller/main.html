@@ -29,11 +29,15 @@
     <div id="p1" ></div>
     <div id="p2" ></div>
 </div>
+<button id="clear"></button>
 
 <script>
 
     pubsub.register('init','p2',p2.beforeload);
     pubsub.register('init','p1',p1.beforeload);
+    $('#clear').on('click',function () {
+        pubsub.clear('init','p1',p1.beforeload)
+    })
 </script>
 </body>
 </html>

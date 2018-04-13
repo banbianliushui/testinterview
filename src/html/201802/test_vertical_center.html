@@ -160,9 +160,11 @@
         #box11{
             background: #ddd;
             display: table-cell;
+            vertical-align: middle;
+            height: 200px;/*可以用绝对布局用视窗宽高来设置*/
         }
         #child11{
-            vertical-align: middle;
+            background: orange;
         }
         p{
             font-size:12px;
@@ -170,7 +172,10 @@
         #box12{/*仅用于定义一个高度大于浮动元素的父容器，要使浮动元素的父容器获得高度，可以生成BCF上下文处理*/
            /* height: 200px;*/
             background: #d0cece;
-
+            display: table-cell;
+            vertical-align: middle;
+            height: 250px;
+            width: 400px;
             /*以下样式可以用于页面水平居中*/
             /*background: #d0cece;
             position: fixed;
@@ -196,11 +201,61 @@
           /*  top: -50%;*/
             /*包含块的高度如果不确定的百分比无法获得*/
         }
+
+        #box13{
+            background: #d0cece;
+            display: table-cell;
+            vertical-align: middle;
+            height: 250px;
+            width: 400px;
+            text-align: center;
+            font-size: 0;
+        }
+        #floatouter13{
+           display:inline-block;
+            background: beige;
+            font-size: 14px;
+        }
+        #floatelem13{
+            float: left;
+            background: orange;
+        }
+        #box14{
+            background: #d0cece;
+            height: 250px;
+            width: 400px;
+        }
+        #floatouter14{
+            float: left;
+            left: 50%;
+            top: 50%;
+            position: relative;
+            background: beige;
+        }
+        #floatelem14{
+            float: left;
+            background: orange;
+            transform: translate(-50%,-50%);
+        }
+        #box15{
+            background: #d0cece;
+            height: 250px;
+            width: 400px;
+            display: flex;
+            flex-direction: row;
+            flex-flow: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        #floatelem15{
+            float: left;
+            background: orange;
+        }
     </style>
 </head>
 <body>
 <!--1. 使用绝对定位和负外边距对块级元素进行垂直居中-->
-<h2>1. 使用绝对定位和负外边距对块级元素进行垂直居中</h2>
+<h2>1. 使用绝对定位和负外边距margin对块级元素进行垂直居中</h2>
 <p>
     CSS left属性定义了定位元素的左外边距边界与其包含块左边界之间的偏移，非定位元素设置此属性无效。
     https://developer.mozilla.org/zh-CN/docs/Web/CSS/left
@@ -233,23 +288,31 @@
 
 
 <h2>3. 使用绝对定位和百分比</h2>
-<p>当margin/padding取形式为百分比的值时，它们都是以父元素的width为参照物的！
+<p>当margin/padding取形式为百分比的值时，它们都是以父元素的width（内容width+padding，不包括border）为参照物的！
 适合外部容器宽高相同，left+margin-left
-    padding 和 margin 是根据包含块的宽度(content-box , width+padding)计算的 (https://www.w3.org/TR/css3-box/#the-padding)
+    padding 和 margin 是根据包含块的宽度(content-box , <strong>width(设置的宽度，content-width)+padding)</strong>
+    计算的 (https://www.w3.org/TR/css3-box/#the-padding)
     and https://www.w3.org/TR/CSS2/box.html#box-model )。
-    top的百分比值是按离其最近的有定位属性的祖先元素(包含块)的（内容高+padding）值来计算的，与border无关。
+    margin-top/margin-left = (父元素的content-width +padding-left+padding-right) * %
 
-    width和height 相对于有定位祖先元素的（ width+padding-left/right   ， height+padingtop +padding-bottom）
-    （pHeight-cHeight）/2 = top(+%,相对于有定位祖先元素的内容高+padding -> content-box)
-    + margin-top( -%，相对于定位祖先元素的宽，相对于width+paddingleft+padding+right再乘以百分比)
+    top的百分比值是按离其最近的有定位属性的祖先元素(包含块)的（内容高content-width+padding被用来作为计算百分比的参照，
+    如果box-sizing:border-box,content-width+padding+border = width元素设置的值，如果是content-box,content-width = width元素设置的值）
+    值来计算的，与border无关。
+
+    width和height 百分比 相对于有定位祖先元素的（<strong> width（content-width）+padding-left/right </strong>  ， height+padingtop +padding-bottom）宽高。
+    （pHeight-cHeight）/2 = top(+%,相对于有定位祖先元素的内容高+padding)
+    + margin-top( -%，相对于定位祖先元素的宽，相对于内容width+paddingleft+paddingright再乘以百分比，
+    如果需要垂直居中，这里百分比结果需凑成其本身高度的一半)
     =margin-bottom(容器上半部分（top+margin-top）计算好了这里自动计算无需设置)；
 
-   如果外部定位容器大小改变了， margin-top需要根据外框大小计算，margin-left 是内部容器width百分比的一半。
+   如果外部定位容器大小改变了， margin-top需要根据外框大小重新计算，同时使得margin-left百分比设置后 是内部容器width百分比的一半。
 
 </p>
 <p>
-    Note that in a horizontal flow, percentages on ‘margin-top’ and ‘margin-bottom’ are relative to the width of the containing block, not the height (and in vertical flow, ‘margin-left’ and ‘margin-right’ are relative to the height, not the width).
-    Note that percentages on ‘padding-top’ and ‘padding-bottom’ are relative to the width of the containing block, not the height (at least in a horizontal flow; in a vertical flow they are relative to the height).
+    Note that in a horizontal flow, percentages on ‘margin-top’ and ‘margin-bottom’ are relative to the width of the containing block,
+    not the height (and in vertical flow, ‘margin-left’ and ‘margin-right’ are relative to the height, not the width).
+    Note that percentages on ‘padding-top’ and ‘padding-bottom’ are relative to the width of the containing block,
+    not the height (at least in a horizontal flow; in a vertical flow they are relative to the height).
     https://segmentfault.com/a/1190000004231995</p>
 <div id="box3">
     <div id="child3">我是测试DIV</div>
@@ -389,20 +452,30 @@
    &lt;!&ndash; <div id="child10">我是测试DIV</div>&ndash;&gt;
 </div>-->
 
-<div id="box11" >An <img  id="child11"  src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320" alt="link" width="32" height="32" /> image with
-    <span style="    vertical-align: middle;">a default</span><span style="vertical-align: text-bottom"> a default</span> alignment. 图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片</div>
+<div id="box11" ><div id="child11">An <img    src="//img.hb.aicdn.com/3d8fa34d0898f52c16fa2bc0a874f1c21ab880c9c308-xKvgJS_sq320" alt="link" width="32" height="32" /> image with
+    <span style="    vertical-align: middle;">a default</span><span style="vertical-align: text-bottom"> a default</span> alignment.
+    图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片图片</div></div>
 
 <h2>
-    12. float 水平居中
+    12. float元素水平垂直居中 (最外层容器 (vertical-align:middle,display:table-cell) + 包裹浮动元素的容器（float:left,
+    display;relative,left:50% + 浮动元素 float:left, relative,left:-50%） )
 </h2>
 <p>
-    宽度不固定的元素，外层容器浮动，内层元素可以浮动也可以不浮动，浮动容器需设置为：左侧50%，float: left; left: 50%; position: relative（必须，按当前所在位置移动50%）;
-    内层元素在父级基础上再按自身宽度往左侧伸出50%。 left: -50%; position: relative 。注：由于不同于内部absolute元素，
-  外部float获得内部内层元素（可以加float）的宽度大小，外float包裹（可以加float）内层元素，所以此处可以用这个方法。
+    垂直居中float元素，外层包裹容器独立BCF，根据float元素宽高使得外层包裹容器获得宽高。最外层容器和包裹浮动容器需要使包裹容器
+    实现基本的水平和垂直居中。
 </p>
 <p>
-    包含块的高度如果不确定，百分比无法获得。
-    ps:适合水平居中，不适合高度也不固定的浮动元素进行垂直居中
+    宽度不固定的元素，包裹浮动元素的容器，内层元素可以浮动也可以不浮动，浮动容器需设置为：左侧50%，float: left; left: 50%;
+    position: relative（必须，按当前所在位置移动50%）;
+    内层元素在父级基础上再按自身宽度往左侧伸出50%。 left: -50%; position: relative 。注：由于不同于内部absolute元素，
+  外部float获得内部内层元素（可以加float）的宽度大小，外float包裹（可以加float）内层元素，所以此处可以用这个方法。
+    内层元素相对于父元素定位.
+</p>
+<p>
+    <strong>包含块的高度如果不确定，top百分比无法获得，不能垂直居中，</strong>
+    但是可以在box最外层布局容器中使用display:table-cell 和 vertical-align :middle
+    使得元素垂直居中.
+    <strong>如果只需水平居中则无需设置 display: table-cell;  vertical-align: middle</strong>
 </p>
 <div class="" id="box12">
     <div class="" id="floatouter12">
@@ -411,9 +484,83 @@
         float元素<br>
     </div>
     </div>
-    <br clear="all">
+
 </div>
 
+<h2>
+    13. float元素水平垂直居中 (最外层容器 (vertical-align:middle,display:table-cell,text-align:center) + 包裹浮动元素的容器（display:inline-block)
+    + 浮动元素 float:left） )
+</h2>
+<p>
+    垂直居中float元素，外层包裹容器独立BCF，根据float元素宽高使得外层包裹容器获得宽高。最外层容器和包裹浮动容器需要使包裹容器
+    实现基本的水平和垂直居中。
+</p>
+<p>
+    宽度不固定且浮动的元素，浮动元素的父容器需设置为：display:inline-block，最外层容器text-align:center可以使得
+    浮动元素父容器水平居中（inline-block 文本居中），如果仅需要浮动元素中的文本居中，则可以不需要中间层容器（inline-block）。
+</p>
+<p>
+    最外层布局容器中使用display:table-cell ， vertical-align :middle
+    text-align:center，使得 中间容器水平垂直居中，然后里面的float元素也水平垂直居中。
+    <strong>如果只需水平居中则无需设置 display: table-cell;  vertical-align: middle</strong>
+</p>
+<div class="" id="box13">
+    <div class="" id="floatouter13">
+        <div class="" id="floatelem13">
+            float元素float元素<br>float元素<br>
+            float元素<br>
+            float元素<br>
+        </div>
+    </div>
+
+</div>
+
+<h2>
+    14. float元素水平垂直居中 (包裹浮动元素 ( float:left,left: 50%; top: 50%; position: relative;)+浮动元素 float:left;    transform: translate(-50%,-50%);） )
+</h2>
+<p>
+    浮动元素的父元素，左上角在整个容器的中心，浮动元素使用transform按它自身宽高的一半来定位元素的中心点就是整个容器的中心点
+</p>
+<div class="" id="box14">
+    <div id="floatouter14">
+        <div class="" id="floatelem14">
+            float元素float元素<br>float元素<br>
+            float元素<br>
+            float元素<br>
+        </div>
+    </div>
+
+</div>
+
+<h2>
+    15. float元素水平垂直居中 (最外层容器 (flex)+浮动元素 float:left） )
+</h2>
+<p>
+    display: flex;
+    flex-direction: row;
+    flex-flow: nowrap;
+    justify-content: center;
+    align-items: center;
+</p>
+<div class="" id="box15">
+        <div class="" id="floatelem15">
+            float元素float元素<br>float元素<br>
+            float元素<br>
+            float元素<br>
+        </div>
+</div>
+
+
+<p>
+    <strong>总结：</strong>
+    <ul>
+    <li>垂直居中未知宽高元素方法： transform 属性向元素应用 2D 或 3D 转换中translate水平垂直平移；flex弹性布局；table-cell</li>
+    <li>垂直居中已知宽高元素方法： position:absolute,fixed</li>
+    </ul>
+
+
+</p>
+<br clear="all">
 
 
 参考：https://www.cnblogs.com/zhouhuan/p/vertical_center.html

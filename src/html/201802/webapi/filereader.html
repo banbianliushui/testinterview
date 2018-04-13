@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript " src="../../201708/jquery-1.12.4.js"></script>
+</head>
+<body>
+<input type='file' name='upload'  id="imginput" accept="image/*" value="上传" >
+<img src="" id="noticeimg">
+<script>
+    $("#imginput").change(
+        function(e) {
+            var image = e.currentTarget.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var imgbase = '';
+                var d = new Date();
+                var imgdate = d.getTime();
+                var imgsrcdata = this.result;
+                var imgname = new Date().getTime();
+                $("#noticeimg").attr("src", imgsrcdata);
+            }
+            reader.readAsDataURL(image);
+        });
+</script>
+</body>
+</html>

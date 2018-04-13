@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*  function F(){
+        window.addEventListener('load',this.fresh)
+    }
+    F.prototype.fresh= function(){
+        console.log(this);//window
+    }
+   var f = new F();*/
+
+    var obj = {
+        a:10,
+        fresh:function () {
+            console.log(this)
+        }
+    }
+    function F(){
+        window.addEventListener('load',obj.fresh)//有GetValue操作，返回不是引用，直接是函数对象
+    }
+   /* F.prototype.fresh= function(){
+        console.log(this);//window
+    }*/
+    var f = new F();
+
+</script>
+
+</body>
+</html>

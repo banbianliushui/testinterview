@@ -1,6 +1,3 @@
-
-
-
 function Pubsub (){
     this.moduleControllMap={};
 }
@@ -32,8 +29,6 @@ Pubsub.prototype.register = function(topic,module,callback){
         }
         this.moduleControllMap[module][topic].push(callback);
     }
-
-
 }
 
 Pubsub.prototype.notify = function(topic,params,module){
@@ -54,7 +49,32 @@ Pubsub.prototype.notify = function(topic,params,module){
 
 }
 
-Pubsub.prototype.clear = function(topic,module){
+Pubsub.prototype.clear = function(topic,module,fn){
+    if(typeof module == "function"){
+        fn = module;
+        module = null;
+    }
+    var topics =this.moduleControllMap;
+    if(module!=null){
+        topics =this.moduleControllMap[module];
+    }
+    if(topics!=null){
+
+       var  topiclist = topics[topic]
+        if(topiclist!=null&&fn!=null){
+            for(var i = 0;i<topiclist.length;i++){
+                if(topiclist[i] === fn){
+                    topiclist.splice(i,1);
+                    if(topiclist.length==0){
+                         topics[topic] = null ;
+                    }
+                }
+            }
+        }else if(topiclist!=null&&fn==null){
+             topics[topic]=null ;
+        }
+    }
+
 
 }
 

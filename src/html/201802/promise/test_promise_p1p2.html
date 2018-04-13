@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var p1 = new Promise(function (resolve,reject) {
+        var error = new Error('fail');
+        setTimeout(()=>{
+            console.log("p1");
+            reject(error);
+    },3000)
+    })
+    var p2 = new Promise(function (resolve,reject) {
+        setTimeout(()=>{
+            console.log("3")
+            resolve(p1)
+        },1000)
+    })
+    p2.then(result =>(
+        console.log("then success",result)
+    ),function(result){
+        console.log("then fail",result)
+    });
+    p2.catch(error =>(
+        console.log(error)
+    ))
+</script>
+</body>
+</html>
