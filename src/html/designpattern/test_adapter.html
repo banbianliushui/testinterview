@@ -5,6 +5,83 @@
     <title>适配器模式</title>
 </head>
 <body>
+<!---->
+<script>
+    /*
+    http://www.runoob.com/design-pattern/adapter-pattern.html
+    * 适配器模式
+    * 意图：将一个类的接口转换成客户希望的另一个接口。使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。
+    * 何时使用：1.系统需要使用现有的类，而此类的接口不符合系统的需要。2、想要建立一个可以重复使用的类，用于
+    *       与一些彼此之间没有太大关联的一些类，包括一些可能在将来引进的类一起工作，这些源类不一定有一致的接口。
+    *       3、通过 接口转换，将一个类插入另一个类系中。需要一个统一的输出接口，而输入端的类型不可预知。
+    * 关键代码： 适配器继承或依赖已有的对象，实现想要的目标接口。
+    * 实例： 1、美国电器 110V，中国 220V，就要有一个适配器将 110V 转化为 220V。 2、在 LINUX 上运行 WINDOWS 程序。
+    * 3、JAVA 中的 jdbc。
+    * 优点： 1、任何两个没有关联的类一起运行。2、提高类复用。3、增加类透明度 4、灵活性好。
+    * 缺点： 1、过多使用适配器会让系统非常零乱，不易整体把握
+    *
+    * https://blog.csdn.net/zxt0601/article/details/52848004
+    * https://www.cnblogs.com/TomXu/archive/2012/04/11/2435452.html
+    * */
+    /*现有接口和想要接口不匹配*/
 
+    function Voltage110(){
+        this.volume = 110;
+    }
+
+    Voltage110.prototype.out = function(){
+        return this.volume
+    }
+    function Voltage220(){
+        this.volume = 220;
+    }
+    Voltage220.prototype.out = function(){
+        return this.volume;
+    }
+    function Adapter(invol,outvol){
+        this.involtage = invol;//输入电压
+        this.outvoltage= outvol;
+    }
+    Adapter.prototype.setOutVoltage= function(volume){//设置输出电压
+        this.outvolume = volume;
+    }
+    Adapter.prototype.VoltageChange= function(){
+        var outvolume;
+       if( this.involtage.volume==110&&this.outvoltage.volume==220){//110转220的转换头,
+           console.log("适配器开始适配电压，输入电压为："+this.involtage.volume);
+            outvolume=   this.involtage.volume/110 * this.outvoltage.volume;//表示电压转换器中转换工作。。。
+           console.log("适配完成，输出电压为："+outvolume);
+
+       }else{//其他
+
+       }
+        return outvolume;
+    }
+
+
+    function USAVoltage( ) {
+        Voltage110.call(this);
+    }
+
+    function Mobile (){
+         this.voltage = new  Voltage220();
+    }
+
+    Mobile.prototype.charge1=function(){//直接充电
+        console.log("正在输入电："+this.volume);
+        return this.volume;
+    }
+
+    Mobile.prototype.charge = function(){//加适配器充电
+        var adapter= new Adapter(new USAVoltage(),this.voltage);
+        var volum= adapter.VoltageChange();
+        console.log("经适配器转换后，现正在输入电："+volum);
+        return   volum;
+    }
+
+    var mobile=new Mobile();
+    mobile.charge();
+
+</script>
 </body>
 </html>
