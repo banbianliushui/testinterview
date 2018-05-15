@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function src (){
+
+        var i = 9;
+        var ob = {
+            kk:12,
+            f1:function(){
+                console.log(this);
+                console.log(i)
+            }
+        }
+        var u = function(){
+            console.log(i)
+        }
+        return ob;
+    }
+
+    src().f1()
+
+</script>
+
+</body>
+</html>

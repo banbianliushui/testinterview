@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    .transtion{
+
+        transition-property: left;
+        transition-delay: 0s;
+        transition-duration: 1s;
+        left:300px;
+       /* position:absolute;*/
+    }
+    .animation{
+        animation-name: move;
+        animation-delay: 0s;
+        animation-duration: 1s;
+
+    }
+    @keyframes move{
+        0%{
+            left:0px;
+        }
+        100%{
+            left:300px
+        }
+    }
+
+
+    /* transition属性动画结合transform变化属性，实现元素移动一段距离的动画 */
+    .transitonDiv-hover {
+        transition: all 1s ease-in-out;
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+
+        transform: translateX(300px);
+        -ms-transform: translateX(300px);
+        -moz-transform: translateX(300px);
+        -webkit-transform: translateX(300px);
+        -o-transform: translateX(300px);
+    }
+
+    /* 通过animation属性，实现逐帧动画 */
+    .animationDiv-hover {
+        animation: animName 1s ease-in-out;
+        -webkit-animation: animName 1s ease-in-out;
+        -moz-animation: animName 1s ease-in-out;
+        -o-animation: animName 1s ease-in-out;
+        animation-fill-mode:forwards;
+    }
+
+    /* 定义关键帧 */
+    @keyframes animName {
+        0% {
+            transform: translateX(0px);
+        }
+       /* 30% {
+            transform: translateX(100px);
+        }
+        60% {
+            transform: translateX(200px);
+        }*/
+        100% {
+            transform: translateX(300px);
+        }
+    }
+
+    .item-container{
+        position: relative;
+        height: 300px;
+    }
+    li{
+        list-style: none;
+        width: 320px;
+        height:200px;
+    }
+    .item1{
+        position: absolute;
+        animation-name:animitem1 ;
+        animation-iteration-count: 10;
+        animation-timing-function: linear;
+       /* animation-delay: 1s;*/
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    .item2{
+        position: absolute;
+        animation-name:animitem2 ;
+        animation-iteration-count: 10;
+        animation-timing-function: linear;
+       /* animation-delay: 3s;*/
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    .item3{
+        position: absolute;
+        animation-name:animitem3 ;
+        animation-iteration-count: 10;
+        animation-timing-function: linear;
+       /* animation-delay: 5s;*/
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+
+    /* 定义关键帧 */
+    @keyframes animitem1 {
+        0% {
+           /* transform: translateX(0px);*/
+            width: 400px;
+            height:240px;
+            left:60px;
+            top:10px;
+            z-index: 5;
+        }
+         50% {
+
+             width: 320px;
+             height:200px;
+             left:0px;
+             top:20px;
+             z-index: 2;
+         }
+
+        100% {
+            width: 320px;
+            height:200px;
+            left:220px;
+            top:20px;
+            z-index: 4;
+        }
+    }
+
+
+    @keyframes animitem2 {
+        0% {
+            width: 320px;
+            height:200px;
+            left:220px;
+            top:20px;
+            z-index: 4;
+        }
+        50% {
+
+            width: 400px;
+            height:240px;
+            left:60px;
+            top:10px;
+            z-index: 5;
+        }
+
+        100% {
+            width: 320px;
+            height:200px;
+            left:0px;
+            top:20px;
+            z-index: 2;
+        }
+    }
+
+    @keyframes animitem3 {
+        0% {
+
+            width: 320px;
+            height:200px;
+            left:0px;
+            top:20px;
+            z-index: 2;
+        }
+        50% {
+            width: 320px;
+            height:200px;
+            left:220px;
+            top:20px;
+            z-index: 4;
+
+        }
+
+        100% {
+            width: 400px;
+            height:240px;
+            left:60px;
+            top:10px;
+            z-index: 5;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="" class="animation">哈哈</div>
+<div id="transitonDiv" style="width:40px;height:40px;background-color:red;"></div>
+<div id="animationDiv" style="width:40px;height:40px;background-color:green;"></div>
+
+<button id="tran">transition</button><button id="ani">animation</button>
+
+<div class="item-container" >
+
+    <ul >
+        <li class="poster-item item1" style="" >
+            <img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/2.jpg" width="100%" height="100%"></li>
+        <li class="poster-item item2" style=""  >
+            <img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/3.jpg" width="100%" height="100%"></li>
+        <li class="poster-item item3" style="">
+            <img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/5.jpg" width="100%" height="100%"></li>
+    </ul>
+
+
+</div>
+<script>
+     document.getElementById('tran').onclick=function(){
+         document.getElementById('transitonDiv').className = 'transitonDiv-hover';
+   }
+
+     document.getElementById('ani').onclick=function(){
+         document.getElementById('animationDiv').className = 'animationDiv-hover';
+     }
+</script>
+作者：shirley5lijuejin
+链接：https://juejin.im/post/5ace1b306fb9a028c71ed009
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</body>
+</html>

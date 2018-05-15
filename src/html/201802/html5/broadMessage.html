@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!---->
+
+<a target="_blank" href="broadcasthtml1.html">新标签</a>
+<button id="sent">发送</button>
+<div id="content"></div>
+<iframe src="broadcastiframe1.html"></iframe>
+<script>
+    /*
+    *BroadcastChannel.name
+    * BroadcastChannel.onmessage
+    * BroadcastChannel.onmessageerror
+    * BroadcastChannel.postMessage()
+    * BroadcastChannel.close()
+    * */
+
+    var bc = new BroadcastChannel('test_channel');
+
+    bc.onmessage = function (ev) { console.log(ev);
+        document.getElementById('content').innerHTML=ev.data
+    }
+    document.getElementById('sent').onclick=function(){
+        bc.postMessage(new Date().getTime()+'主页面消息.');
+    }
+
+  //  bc.close()
+
+    /*https://html.spec.whatwg.org/multipage/web-messaging.html#broadcastchannel*/
+</script>
+
+</body>
+</html>

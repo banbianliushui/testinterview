@@ -8,6 +8,7 @@
 const webSocket = require('ws');
 const wss = new webSocket.Server({port:3000});
 
+/*聊天室、聊天人、聊天信息，*/
 //广播到所有人
 wss.broadcast = function broadcast(tag,ws){
     wss.clients.forEach(function each(client){

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    /*    .grid{
+            display:grid;
+            grid-template-columns: 100px 100px 100px 100px;
+            grid-column-gap: 20px;
+        }*/
+
+  /*      .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-column-gap: 20px;
+        }*/
+    body {
+        padding: 3em;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1em;
+    }
+
+    .grid-item {
+        background-color: orange;
+    }
+
+    img {
+        display: block;
+        width: 300px;
+    }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="grid-item">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526128291936&di=6f240d73c799f771950c2a123b8634cc&imgtype=0&src=http%3A%2F%2Fwww.dabaoku.com%2Fsucaidatu%2Fzhonghua%2Ffengjingyouhua%2F09289.jpg" alt="">  </div>  <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+</div>
+<!--<div class="grid">
+    <div style="background: rebeccapurple;">第一个</div>
+    <div style="background: gold;">第二个</div>
+    <div style="background: green;">第三个</div>
+    <div style="background: yellowgreen;">第四个</div>
+</div>-->
+</body>
+</html>

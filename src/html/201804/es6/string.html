@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="war"></div>
+<script>
+var name ="大白";
+var age = 12;
+var id = 1;
+var war = document.getElementById("war");
+function tagFunc(){
+    var strarr = arguments[0];
+    var raws = Array.prototype.slice.call(arguments,1);
+    var str = "";
+   for(var i in strarr){
+       str+=strarr[i];
+       if(i<raws.length){
+           str+= raws[i];
+       }
+    }
+    console.log(arguments);
+    return str;
+}
+war.innerHTML=tagFunc`
+${id}<h1>哈哈</h1> ${name} 哈哈哈哈 ${age} 哈哈哈
+
+哈哈哈${name}-${name}${age}-${name}
+    `;
+</script>
+</body>
+</html>

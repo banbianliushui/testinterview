@@ -39,9 +39,8 @@
 				that.refresh();
 			}			
 		})
-		
-		
 	}
+
 	Carousel.prototype.loadImage=function(url, callback) {
 		 var img = new Image(); //创建一个Image对象，实现图片的预下载
 		 img.src = url;		 
@@ -82,12 +81,12 @@
 			this.$items.removeClass("active");
 			$(next).addClass("active");
 			this.$indicators.removeClass("active");
-			var inum=this.$indicators.length;
+		/*	var inum=this.$indicators.length;
 			var lowi=Number(pos)-Math.floor(indors/2);
-			var highi=Number(pos)+Math.floor(indors/2);
+			var highi=Number(pos)+Math.floor(indors/2);*/
 			this.$indicators.each(function(){
 				var nowto=Number($(this).attr("data-slide-to"));
-				if(	Number(pos)==0){
+				/*if(	Number(pos)==0){
 					if(nowto<indors){
 						$(this).removeClass("hidden");
 					}else{
@@ -122,7 +121,7 @@
 					//$(this).addClass("hidden");
 				}else if(lowi<0&&highi>inum){
 					
-				}
+				}*/
 				if(nowto==pos){	
 					$(this).addClass("active");
 					
@@ -234,7 +233,7 @@
 	}
 	//轮播默认参数
 	Carousel.DEFAULTS={
-			maxIndicators:9
+			maxIndicators:4
 	}
 	
 	$.fn.carousel = Plugin;
@@ -245,6 +244,7 @@
 		return this.each(function(){			
 			var $this = $(this);
 			var data = $this.data("sun.carousel");
+
 			var options = $.extend({},Carousel.DEFAULTS,$this.data(),typeof option == "object"&&option);
 			
 			if(!data){

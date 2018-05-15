@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*http://www.bslxx.com/a/mianshiti/tiku/2018/0414/1931.html*/
+    var cityData = [
+        {
+            id: 1,
+            name: '广东省',
+            children: [
+                {
+                    id: 11,
+                    name: '深圳',
+                    children: [
+                        {
+                            id: 111,
+                            name: '宝安',
+                            children: [
+                                {
+                                    id: 1111,
+                                    name: '西乡',
+                                    children:[
+                                        {
+                                            id: 11111,
+                                            name: '坪洲',
+                                            children:[]
+                                        },
+                                        {
+                                            id: 11112,
+                                            name: '灵芝',
+                                            children:[]
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: 1112,
+                                    name: '南山',
+                                    children:[
+                                        {
+                                            id: 11121,
+                                            name: '科技园',
+                                            children:[]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: 112,
+                            name: '福田',
+                            children: []
+                        }
+                    ]
+                },
+                {
+                    id: 12,
+                    name: '广州',
+                    children: [
+                        {
+                            id: 122,
+                            name: '白云区',
+                            children: [
+                                {
+                                    id: 1222,
+                                    name: '白云区',
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            id: 122,
+                            name: '珠海区',
+                            children: []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 2,
+            name: '湖南省',
+            children: []
+        }
+    ];
+
+ function getName1(data,id,result){
+     if(result===undefined){
+         result = null;
+     }
+     for (var i = 0;i<data.length;i++){
+         var d = data[i];
+         if(d.id == id){
+             result = d.name;
+             break;
+         }else{
+             result =  getName1(d.children,id,result)
+         }
+     }
+
+     return result;
+ }
+    var name1 = getName1(cityData,1222)
+    console.log(name1)
+    function getName2(data,id){
+         var stack = [];
+         for(var i = 0 ;i<data.length;i++){
+             stack.push(data[i])
+         }
+         while(stack.length){
+             var d = stack.shift();
+             if(d.id==id){
+                 return d.name
+             }else{
+               stack =   stack.concat(d.children)
+             }
+        }
+    }
+    var name2 = getName2(cityData,1222)
+    console.log(name2)
+    function getName3(data,id){
+        var datastring = JSON.stringify(data);
+        var reg= new RegExp(`"id":${id},"name":"([^\\x00-\\xff]+)",`)
+        var name =     datastring.match(reg)
+        return name ;
+    }
+console.log(getName3(cityData,1222));
+</script>
+</body>
+</html>

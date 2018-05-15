@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <!-- <script src="../../201708/jquery-1.12.4"></script>-->
+</head>
+<body>
+<button id="in">发送</button>
+<script>
+/*$.ajax({
+    url:'http://127.0.0.1:1337',
+    data:"id=1",
+    success:function(){
+
+    },
+    error:function(){}
+})*/
+/*https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest*/
+document.getElementById('in').onclick=function(){
+    var xhr = new XMLHttpRequest();
+    var url='http://127.0.0.1:1337';
+    xhr.onreadystatechange=function(){
+        console.log("onreadystatechange");
+    }
+    xhr.onload=function(){
+        console.log("onload");
+    };
+    xhr.onprogress=function(){
+        console.log("onprogress");
+    };
+    xhr.onabort=function(){
+        console.log("onabort");
+    };
+    xhr.ontimeout=function(){
+        console.log("ontimeout");
+    };
+    xhr.onloadend=function(){
+        console.log("onloadend");
+    }
+    xhr.onerror = function(){
+        console.log("onerror");
+    }
+    xhr.onloadstart=function(){
+        console.log("onloadstart");
+    }
+
+    xhr.open('get',url);
+    xhr.setRequestHeader('X-PATH','gag');
+    xhr.setRequestHeader('Content-Type','text/plain');
+    xhr.withCredentials = true;
+    xhr.send('测试');
+}
+
+
+</script>
+</body>
+</html>

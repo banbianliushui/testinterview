@@ -108,7 +108,7 @@ function Drag(focdiv,dragdiv,opt){
 				return e||window.event;
 			},
 			
-			pageX:function(e){
+			pageX:function(e){ //视窗clientX位置
 				//获取鼠标在文档页面中的鼠标位置
 				//documentElement chrome 不能获得值检查对应html标签
 				e=this.event(e);

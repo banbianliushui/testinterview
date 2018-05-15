@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class MyClass{
+        [Symbol.hasInstance](foo){
+            console.log(foo)
+            return foo instanceof Array
+                ;
+        }
+    }
+
+    var  o = new MyClass();
+    console.log(o instanceof Object)
+</script>
+</body>
+</html>

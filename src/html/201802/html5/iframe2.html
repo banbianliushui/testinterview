@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="message"></div>
+
+<script>
+    var eleBox = document.querySelector("#message");
+    var messageHandle = function(e) {
+        eleBox.innerHTML = '接受到的信息是：' + e.data;
+    };
+    window.addEventListener('load',function(){
+        if(window.MessageChannel){
+            var mc = new MessageChannel();
+            window.parent.postMessage('iframe2加载完成','http://127.0.0.1:63342',[mc.port1]);
+            mc.port2.addEventListener('message',messageHandle,false);
+            mc.port2.start();
+        }else{
+            eleBox.innerHTML="不支持"
+        }
+    })
+
+
+</script>
+</body>
+</html>

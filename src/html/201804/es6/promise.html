@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+
+    Promise.prototype.finally = function(callback){
+        let P = this.constructor;
+        return this.then(value => P.resolve(callback()).then(()=>value),
+            reason => P.resolve(callback()).then(() => {throw reason})
+        )
+    }
+
+    function ftest () {
+        console.log("关闭。。。")
+    }
+
+    var p1 = new Promise(function(resolve,reject){
+        resolve("3")
+    })
+    p1.then().finally(ftest).then(function(){
+        console.log(arguments)
+    })
+
+    var p = new Promise(function(resolve,reject){
+       resolve(x+"ok");
+      /*  setTimeout(function(){
+            resolve("ok");
+        },10)*/
+
+       /* try{*/
+          /*  setTimeout(function(){
+                throw new Error('test2')//不能被promise捕获
+            },0)*/
+       /* }catch(e){
+
+        }*/
+      //  throw new Error('test')//可以被捕获
+        /**/
+    })
+
+    p.then(function(){
+        console.log(arguments)
+    },function(){
+        console.log(arguments)
+
+
+    }).catch(function(){
+       // console.log(arguments)
+    })/*.done(function(){
+        console.log(arguments)
+    },function(){
+        console.log(arguments)
+    })*/
+</script>
+
+</body>
+</html>

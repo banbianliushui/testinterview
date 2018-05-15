@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="form">
+    <input type="type">
+    <button type="submit">确定</button>
+</form>
+<script>
+    var port ;
+    var eleForm = document.getElementById('form');
+    eleForm.onsubmit=function(){
+        var message = document.querySelector("input").value;
+        if(port == undefined){
+            alert('信息发送失败，目前没有可用端口！');
+        }else{
+            port.postMessage(message)
+        }
+
+       return  false;
+    }
+    window.addEventListener('load',function(){
+        window.addEventListener('message',function(evt){
+            if(evt.origin=='http://127.0.0.1:63342'){//获取对方端口
+                port = evt.ports[0];
+            }
+        })
+       // window.parent.postMessage
+        window.parent.postMessage('ifram1加载完毕','http://127.0.0.1:63342')
+    },false)
+
+/*http://www.zhangxinxu.com/study/201202/web-messing-channel-messaging-two-iframe.html*/
+</script>
+</body>
+</html>

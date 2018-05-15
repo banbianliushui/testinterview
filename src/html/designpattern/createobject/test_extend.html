@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+<script>
+
+    /*
+    * 原型链
+    *   基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法。
+    *   原型链：构造函数有原型对象，原型对象也是简单对象有他自己的原型，原型的原型就构成了原型链。
+    *   实现本质重写原型对象。
+    *
+    *   缺点：
+    *   1.包含引用类型值的原型属性会被所有实例共享（）。
+    *   原来父类中的实例属性会变成子类中的原型属性，在父类中时独享，在子类中就变成了共享了。
+    *   2 .没有办法在不影响所有对象实例的情况下给超类型的构造函数传递参数。
+    *
+    * */
+
+    function Parent(){
+        this.name = 'hid'
+    }
+    Parent.prototype.sayName=function () {
+        console.log(this.name)
+    }
+    function Children(){
+        this.name = '小的'
+    }
+
+    Children.prototype = new Parent();//父类中的私有属性name也被继承了
+    var c = new Children();
+    c.sayName()
+    console.log(c)
+/*
+*   借用构造函数
+ *   基本思想：在子类型构造函数的内部调用超类型的构造函数，使用apply或call
+ *
+ *   缺点：方法都在构造函数中定义，没法函数复用，超类型的原型中定义的方法对子类型不可见
+ *
+* */
+    function Parent(name){
+        this.colors=['red'];
+        this.name = name
+    }
+    function Child(name) {
+        Parent.call(this,name)
+    }
+
+    var ch = new Child()
+    ch.colors.push('blue')
+    var ch1 = new Child("大雨")
+    ch1.colors.push('yellow')
+    console.log(ch)
+    console.log(ch1)
+/*
+* 组合继承
+*   结合原型链和借用构造函数
+*   基本思路：使用原型链实现对原型属性和方法的继承，通过借用构造函数实现对实例属性的继承。
+*   缺点：调用两次构造函数
+* */
+    function Parent(name){
+        this.colors=['rend'];
+        this.name=name;
+    }
+    Parent.prototype.sayName = function(){
+        console.log(this.name+" parent")
+    }
+    function Child(name){
+        Parent.call(this,name);
+    }
+    Child.prototype = new Parent();
+    Child.prototype.constructor = Child;
+    var c1 = new Child('大白')
+    c1.sayName();
+    var c2= new Child('大鼻')
+    c2.sayName();
+    console.log(c1)
+    console.log(c2)
+
+    /*
+    * 原型式继承
+    * 基本思想：借助原型可以基于已有的对象创建新对象，同时不必创建自定义类型
+    *   引用类型值属性会被共享。
+    * create 执行一次浅复制
+    *
+    * */
+    function create(proto){
+        function F(){}
+        F.prototype = proto;
+        return new F();
+    }
+    var p = {
+        name:'对对对',
+        friends:['大白']
+    }
+
+    var np = create(p);
+    np.friends.push('小迪');
+
+    console.log(np)
+    console.log(p)
+
+    /*
+     * 寄生式继承
+     * 基本思想：与工厂模式类似，创建一个仅用于封装继承过程的函数，该函数内部以某种方式来增强对象，然后返回对象
+     *
+     *
+     * */
+    function creatAn(original){
+       var o = create(original);//通过调用函数创建一个新对象
+       o.getname = function(){
+           console.log("get")
+       }
+       return o;
+    }
+    var original ={
+        name:'大熊',
+        colors:['ddd']
+    }
+
+    var ano =creatAn(original)
+    console.log(ano)
+
+    /*
+    * 继承组合式
+    *   解决组合式中两次调用构造函数，一次是在创建子类原型，一次是子类构造函数内部
+    *   基本思想：通过借用构造函数来继承属性，通过原型链混合形式继承方法。
+    *   不必为了指定子类型的原型而调用超类型的构造函数，我们所需的是超类型的原型副本。
+    *   本质上，寄生式继承来继承超类型的原型，然后将结果指定给子类型
+    *
+    * */
+
+    function inhertProto(child,parent){
+       var proto = create(parent.prototype)//创建对象
+        proto.constructor = child;//增强对象
+        child.prototype = proto;//指定对象
+    }
+    function Parent(name){
+        this.colors=['rend'];
+        this.name=name;
+    }
+    Parent.prototype.sayName = function(){
+        console.log(this.name+" parent")
+    }
+    function Child(name){
+        Parent.call(this,name);
+    }
+
+    inhertProto(Child,Parent);
+    var c1 = new Child('大白')
+    c1.sayName();
+    var c2= new Child('大鼻')
+    c2.sayName();
+    console.log(c1)
+    console.log(c2)
+
+    /*
+    *
+    * ES6继承
+    * */
+
+    class Parent1{
+        constructor(name){
+            this.name = name
+        }
+        sayName(){
+            console.log(this.name)
+        }
+    }
+
+    class ChildP1 extends Parent1{
+        constructor(name,age){
+            super(name)//初始化父类的this然后返回给子类使用
+            this.age = age;
+        }
+    }
+
+    class Child1 extends ChildP1{
+        constructor(name,age,year){
+            super(name,age)//初始化父类的this然后返回给子类使用
+            this.year = year;
+        }
+    }
+
+    var ch =new Child1('大型',12,2018);
+    ch.sayName()
+    console.log(ch)
+
+</script>
+
+</body>
+</html>

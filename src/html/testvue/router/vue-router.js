@@ -670,16 +670,26 @@
     var PATH_REGEXP = new RegExp([
         // Match escaped characters that would otherwise appear in future matches.
         // This allows the user to escape special characters that won't transform.
+        //匹配将在未来匹配中出现的转义字符。 这允许用户转义不会转换的特殊字符。
         '(\\\\.)',
         // Match Express-style parameters and un-named parameters with a prefix
         // and optional suffixes. Matches appear as:
-        //
+        //使用前缀和可选后缀匹配快捷式参数和未命名参数。 匹配显示为：
         // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
         // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
         // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
         '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
     ].join('|'), 'g');
-
+    // . 匹配除换行符以外的任意字符
+    //(?:exp)	匹配exp,不捕获匹配的文本，也不给此分组分配组号
+    //(exp)	匹配exp,并捕获文本到自动命名的组里
+    //[^x]	匹配除了x以外的任意字符
+    // ([\\/.])  匹配斜杠或点，前面两个反斜杠匹配一个反斜杠作为后面斜杠的转义表示
+    // (\\\\.)  匹配'\.'   var c = PATH_REGEXP1.exec('\\.')  不能直接写反斜杠，两个反斜杠转义后表示一个反斜杠，所以正则式中需要四个反斜杠
+    // \\:(\\w+) 匹配':login' 并捕获 login
+    // [^\\\\()]  匹配非反斜杠 和括号部分
+    //测试 var PATH_REGEXP = new RegExp('(\\\\.)|([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))','g')
+   // PATH_REGEXP.exec('/route(\\d+)')
     /**
      * Parse a string for the raw tokens.
      *
@@ -695,14 +705,14 @@
         var defaultDelimiter = options && options.delimiter || '/';
         var res;
 
-        while ((res = PATH_REGEXP.exec(str)) != null) {
-            var m = res[0];
+        while ((res = PATH_REGEXP.exec(str)) != null) {//有用户自定义匹配路径的
+            var m = res[0];//匹配到的路径内容
             var escaped = res[1];
             var offset = res.index;
             path += str.slice(index, offset);
             index = offset + m.length;
 
-            // Ignore already escaped sequences.
+            // Ignore already escaped sequences. 忽略已经转义的序列
             if (escaped) {
                 path += escaped[1];
                 continue
@@ -1590,7 +1600,7 @@
     }
 
     function saveScrollPosition () {
-        var key = getStateKey();
+        var key = getStateKey();//获取状态_key
         if (key) {
             positionStore[key] = {
                 x: window.pageXOffset,
@@ -2015,7 +2025,7 @@
                 // respect <base> tag
                 var baseEl = document.querySelector('base');
                 base = (baseEl && baseEl.getAttribute('href')) || '/';
-                // strip full URL origin
+                // strip full URL origin 剥离完整的URL来源
                 base = base.replace(/^https?:\/\/[^\/]+/, '');
             } else {
                 base = '/';
@@ -2220,7 +2230,7 @@
         return HTML5History;
     }(History));
 
-    function getLocation (base) {
+    function getLocation (base) {//如果有base路径，则去掉地址栏中和base重复的部分，然后返回base路径后面的部分。
         var path = window.location.pathname;
         if (base && path.indexOf(base) === 0) {
             path = path.slice(base.length);

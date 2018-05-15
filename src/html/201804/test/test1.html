@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+-->
+<script>
+    // destructuringArray( [1,[2,4],3], "[a,[b],c]" );
+    // result
+    // { a:1, b:2, c:3 }
+    const targetArray = [1, [2, 3], 4];
+    const formater = "[a, [b], c]";
+    const formaterArray = ['a', ['b'], 'c'];
+
+    const destructuringArray = (values, keys) => {
+        try {
+            const obj = {};
+            if (typeof keys === 'string') {
+                keys = JSON.parse(keys.replace(/\w+/g, '"$&"'));
+            }
+
+            const iterate = (values, keys) =>
+                keys.forEach((key, i) => {
+                    if(Array.isArray(key)) iterate(values[i], key)
+                    else obj[key] = values[i]
+                })
+
+            iterate(values, keys)
+
+            return obj;
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
+   var o = destructuringArray(targetArray, formater)
+    console.log(o)
+
+
+    //在处理的时候不让再触发
+    const yourFunction = function(func, threshold) {
+        let timeOut;
+        return function() {
+            if (!timeOut) {
+                timeOut = setTimeout(() => {
+                    timeOut = null;
+                    func.apply(this, arguments)
+                }, threshold)
+            }
+        }
+    }
+
+    const triggerSearch = yourFunction((val) => {
+        const {
+            onSearch
+        } = this.props
+        onSearch(val)
+    }, 300)
+    triggerSearch(searchText)
+
+   /* const yourFunction = function(func, threshold) {
+        // 请实现
+        var count = 0;
+        return function (){
+            count++;
+            if(count<threshold){
+                func.call(this,arguments);
+            }
+
+        }
+    }
+    const triggerSearch = yourFunction((val) => {
+        const {
+            onSearch
+        } = this.props
+        onSearch(val)
+    }, 300)
+    triggerSearch(searchText)*/
+   /* destructuringArray( [1,[2,4],3], "[a,[b],c]" );
+    function destructuringArray(arr,str){
+      var obj =   changeCode([1,[2,4],3], "[a,[b],c]" )
+        console.log(obj);
+    }
+    function changeCode(arr,str1,resoult){
+       if(resoult==null){
+           result = {};
+       }
+        var len = arr.length;
+        for(var i = 0;i<len;i++){
+            var o = arr[i];
+            var lconindex = str1.indexOf("[");
+            var rindex = str1.indexOf("]");
+            if(rindex<lconindex){
+                return;
+            }
+
+            if(Object.prototype.toString(o)=='[object Array]'){
+                changeCode(o,str1,result)
+            }else{
+                str1 = str1.substring(lconindex+1);
+                var cindex = str1.indexOf(",");
+                rindex = str1.indexOf("]");
+                var cheindex = cindex;
+                if(rindex<cindex){
+                    cheindex = rindex;
+                }
+                var code = str1.substring(0,cheindex);
+                str1 = str1.substring(cindex+1);
+                result[code]= o;
+            }
+        }
+
+        return result;
+    }
+    function subString(str){
+
+    }*/
+</script>
+</body>
+</html>

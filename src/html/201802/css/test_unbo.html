@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <li><img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/2.jpg" width="500" height="200"/></li>
+            <li><img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/3.jpg" width="500" height="200"/></li>
+            <li><img src="http://www.jq22.com/demo/jQuery-lbt-caroursel20160927/image/5.jpg" width="500" height="200"/></li>
+
+        </ul>
+        <ol>
+            <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script>
+    //1 获取元素
+    var box = document.getElementById("box");
+    var screenBox = box.children[0];//可视区域
+    var imgWid = screenBox.offsetWidth;//图片宽度
+    var ul = screenBox.children[0];//运动的列表
+    var ol = screenBox.children[1];//底部操作的小方块
+    var arrBox = box.children[1];//箭头的父盒子
+    var arrLeft = arrBox.children[0];
+    var arrRight = arrBox.children[1];
+    var num = 0;        //用来记录每次鼠标点击图片运动的张数
+    var ulLis = ul.children;
+    var timer = null;
+    var olLi;
+    //根据初始图片张数动态创建小方块
+    for(var i = 0;  i < ulLis.length; i++){
+        olLi = document.createElement('li');
+        olLi.innerHTML = i+1;
+        ol.appendChild(olLi);
+    }
+
+    //    获取每个每个小方块并给它们添加点击事件
+    var olLis = ol.children;
+    olLis[0].className = 'current'; //初始化给第一个方块改背景颜色；
+    for(var i = 0; i < olLis.length; i++){
+
+        olLis[i].index = i;     //给每个方块设置一个自定义索引,等会用来计算ul移到的距离；
+
+        olLis[i].onclick = function(){
+
+            if(num == ulLis.length - 1){  //当图片运动到最后假的一张时，
+//                                            此时小方块在1位置上 ，要是再点1图片会退回去，所以这里我们点1时让图片快速抽回
+                ul.style.left = '0px';
+            }
+
+            for(var i = 0; i < olLis.length; i++){
+
+                olLis[i].className = '';  //清空所有小方块类名
+            }
+            this.className = 'current'; //当前点击的小方块改变背景
+            animate(ul,  -this.index * imgWid);
+            num = this.index; //让左右箭头点击和小方块相对应；
+        }
+    }
+
+    //        克隆第一张图添加到ul作为最后一张来实现无缝滚动
+    var firstPic = ul.children[0].cloneNode(true);
+    ul.appendChild(firstPic);
+
+    //    右箭头点击控制图片滚动
+    arrRight.onclick = function(){
+
+        if(num == ulLis.length - 1){    //当图片跑到假的那张后，再点击时，ul快速抽回到第一张实现无缝滚动
+            num = 0;
+            ul.style.left = '0px';
+        }
+        num++                   //每点击一次，就记录一次；
+        animate(ul,-num * imgWid);  //调用运动函数让图片运动
+
+        for(var i = 0; i < olLis.length; i++){
+            olLis[i].className = '';        //右箭头点击时，让小方块的背景也跟着相应运动；
+        }
+
+        if(num == ulLis.length - 1){
+            olLis[0].className = 'current'; //当图片运动到最后一张时，由于小方块比图片个数少一个，所以我们让它从0开始
+        }
+        olLis[num].className = 'current';
+    }
+
+
+    //    左箭头点击控制图片滚动
+    arrLeft.onclick = function(){
+
+        if(num == 0){    //当图片跑到假的那张后，再点击时，ul快速抽回到第一张实现无缝滚动
+            num = ulLis.length - 1;
+            ul.style.left = -num * imgWid +  'px';  //快速抽回到最后一张
+        }
+        num--;                  //减减后再运动 依然是第五张图片；
+        animate(ul,-num * imgWid);  //调用运动函数让图片运动
+
+        for(var i = 0; i < olLis.length; i++){
+            olLis[i].className = '';        //左箭头点击时，让小方块的背景也跟着相应运动；
+        }
+        olLis[num].className = 'current';
+    }
+
+
+    //    鼠标移入移出盒子控制箭头的显示和影藏
+    box.onmouseover = function(){
+        arrBox.style.display = 'block';
+    }
+    box.onmouseout = function(){
+        arrBox.style.display = 'none';
+    }
+    //简单的缓动animate
+    function animate(tag, target) {
+        clearInterval(tag.timer);//放止加速
+        tag.timer = setInterval(function () {
+            var leader = tag.offsetLeft;
+            var step = (target - leader) / 10;
+            //设置取整，保证元素可以进行运动
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            tag.style.left = leader + "px";
+            if (leader == target) {//清除定时器
+                clearInterval(tag.timer);
+            }
+        }, 20);
+    }
+
+</script>
+</body>
+</html>

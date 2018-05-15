@@ -3291,6 +3291,7 @@ var uid$2 = 0;
  * options：监听选项，例如计算属性监听选项
  * isRenderWatcher 是否是渲染监听器：如mountComponent
  */
+/*Water*/
 var Watcher = function Watcher (
   vm,
   expOrFn,
@@ -9076,7 +9077,7 @@ function parseHTML (html, options) {
 
   // Clean up any remaining tags
   parseEndTag();
-
+/*循环匹配的时候需要删除头部已经匹配过的内容，*/
   function advance (n) {
     index += n;
     html = html.substring(n);//stringObject.substring(start,stop)

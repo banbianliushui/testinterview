@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+
+
+
+    function thunkify(fn){
+
+        return function (){
+            var args = Array.prototype.slice.call(arguments);
+            var ctx = this;
+            return function (callback){//新增回调函数检查机制
+                var called =false;
+                var innercallback = function(){
+                    if(called){
+                        return;
+                    }
+                    called = true;
+                    callback.apply(null,arguments)
+                }
+                args.push(innercallback);
+                try{
+                    fn.apply(ctx,args)
+                }catch(e){
+                    callback(e)
+                }
+            }
+        }
+    }
+
+    var Thunk = function(fn){
+        return function(){
+            var args = Array.prototype.slice.call(arguments);
+            return function (callback) {
+                args.push(callback);
+                fn.apply(this,args)
+            }
+        }
+    }
+
+
+
+
+    function  add(x,y,callback) {
+        console.log(x+y);
+        if(callback)
+        callback(x+y)
+        return x+y;
+    }
+
+
+
+    var Thunk2 = function(fn){
+        return function(){
+            var args = Array.prototype.slice.call(arguments);
+            var sum =0;
+            return function (callback) {
+                args.push(callback);
+                fn.apply(this,args);
+            }
+        }
+    }
+    function  add2(x,y,callback) {
+        console.log(x+y);
+        if(callback)
+            callback(x+y)
+        return x+y;
+    }
+
+ /*   Thunk(add)(1,3)(function(value){
+
+        console.log("value="+value)
+    })*/
+    function run (fn){
+        var gen = fn();
+        function next(/*err,*/data){
+            console.log("控制：",data)
+            var result = gen.next(data);
+            if(result.done){
+                return;
+            }
+            result.value(next);//add2中的callback，next的data就是 add2中callback传递的
+        }
+        next();
+    }
+
+    var gen = function * (){
+        var r1 = yield Thunk2(add2)(1,3);
+        var r2 = yield Thunk2(add2)(3,3);
+    }
+    run(gen);
+    function spawn(genF) {//自动执行器 返回的是promise
+
+        return new Promise(function (resolve,reject) {
+            var gen = genF();//生成器指针
+            function step(nextF){
+                try{
+                    var next = nextF();
+                }catch(e){
+                    return reject(e)
+                }
+                if(next.done){
+                    return resolve(next.value)
+                }
+                Promise.resolve(next.value).then(function(v){
+                    step(function(){ return gen.next(v)})
+                },function(e){
+                    step(function(){return gen.throw(e)})
+                })
+
+            }
+
+            step(function(){
+                return gen.next(undefined)//初始不传入值
+            })
+        })
+    }
+
+
+    function  add3(x,y,callback) {
+        console.log(x+y);
+        if(callback)
+            callback(x+y)
+        return x+y;
+    }
+    var asyfn = async function fn(args){
+        var a1=  await  add3(1,2)
+        console.log("async 第一次返回",a1)
+        var a2=  await  add3(4,2)
+        console.log("async 第二次返回",a2)
+    }
+
+    asyfn();
+
+    function fn1(args){
+        return spawn(function * (){
+            var a1 =  yield add3(8,8)
+            console.log("spawn 第一次返回",a1)
+            var a2= yield add3(9,9)
+
+            console.log("spawn 第二次返回",a2)
+        })
+    }
+    fn1();
+
+</script>
+</body>
+</html>

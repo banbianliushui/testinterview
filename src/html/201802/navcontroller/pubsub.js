@@ -27,6 +27,24 @@ Pubsub.prototype.register = function(topic,module,callback){
             };
             this.moduleControllMap[module][topic]=[]
         }
+        if(topic=='beforerouter'){
+            function _call(){
+                callback(next);
+                function next(){
+                    var args = Object.prototype.slice(arguments);
+                    if(args.length>=1){
+                        if(args[0]){
+                            // 跳转
+                        }else{
+
+                        }
+                    }else{
+
+                    }
+                }
+            }
+
+        }
         this.moduleControllMap[module][topic].push(callback);
     }
 }
@@ -43,10 +61,7 @@ Pubsub.prototype.notify = function(topic,params,module){
        for(var i =0 ;i<topics.length;i++){
            topics[i](params);
         }
-
     }
-
-
 }
 
 Pubsub.prototype.clear = function(topic,module,fn){
@@ -59,7 +74,6 @@ Pubsub.prototype.clear = function(topic,module,fn){
         topics =this.moduleControllMap[module];
     }
     if(topics!=null){
-
        var  topiclist = topics[topic]
         if(topiclist!=null&&fn!=null){
             for(var i = 0;i<topiclist.length;i++){
@@ -74,8 +88,6 @@ Pubsub.prototype.clear = function(topic,module,fn){
              topics[topic]=null ;
         }
     }
-
-
 }
 
 var pubsub = new Pubsub();

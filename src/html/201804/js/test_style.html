@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function getStyle(elem,style) {
+        var view =elem.ownerDocument&&elem.ownerDocument.defaultView?elem.ownerDocument.defaultView:window;
+        view.getComputedStyle? view.getComputedStyle(elem,null).getPropertyValue(style):
+            elem.currentStyle?elem.currentStyle[style]:null;
+    }
+
+/*    注：则不能直接使用getComputedStyle(element, null).float，而应该是cssFloat与styleFloat。*/
+</script>
+
+</body>
+</html>

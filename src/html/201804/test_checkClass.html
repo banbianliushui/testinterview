@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型检测</title>
+</head>
+<body>
+<script>
+    /*
+    * 1.instanceof 操作符存在多个全局作用域（向一个页面包含多个frame）。
+    * 必须是与Array构造函数在同一个全局作用域内，如果value在另一个frame中定义的数组，那就是返回false
+    * 2.检测某个对象是原生的还是开发人员自定义那区分
+    *
+    * */
+    var value =[]
+    var isarray = value  instanceof Array;
+
+    /*
+    * 任何值调用Object原生的toString方法都返回[object NativeConstructorName]格式的字符串，
+    * 每个类内部都有[[Class]]属性，指定上述字符串中的构造函数名
+    *
+    * 假设Object.prototype.toString 未被修改过
+    * */
+
+    Object.prototype.toString.call(value)
+</script>
+
+</body>
+</html>

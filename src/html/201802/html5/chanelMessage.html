@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe src ="iframe1.html" ></iframe>
+<iframe src ="iframe2.html" ></iframe>
+<script>
+    /*http://www.zhangxinxu.com/wordpress/2012/02/html5-web-messaging-cross-document-messaging-channel-messaging/*/
+window.addEventListener('message',function(evt){
+    if(evt.origin =='127.0.0.1:63342'){
+        if(evt.ports.length>0){
+            window.frames[0].postMessage("端口打开",'http://127.0.0.1:63342',evt.ports)
+        }
+    }
+})
+
+</script>
+
+
+</body>
+</html>

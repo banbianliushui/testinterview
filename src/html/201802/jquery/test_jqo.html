@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../201708/jquery-2.0.3.js"></script>
+</head>
+<body>
+<script>
+   /* var a={};
+    $.Deferred(function (defered) {
+        setTimeout(function(){
+            defered.resolve({success:'成功'})
+        },3000)
+        defered.notify({f:'进行中国'})
+    }).then(function(data){
+        console.log('成功',data)
+    },function(){
+        console.log('识别')
+    },function(){
+        console.log('正在进行中')
+    })*/
+    /*和all类似*/
+    var d1 = $.Deferred(function (defer) {
+        setTimeout(function(){
+            defer.resolve({s:'哈哈'})
+        },3000)
+    })
+    var d2 = $.Deferred(function (defer) {
+        setTimeout(function(){
+            defer.resolve({s:'第二个'})
+        },2000)
+    })
+    $.when(d1,d2).done(function(a1,  a2){
+
+        console.log(a1,a2)
+    });
+   /* $(document).ready(function(){
+
+        var a = {};
+       /!* $.fn.textfun= function(opt){
+            console.log(opt)
+            console.log(this);
+        }
+        $(a).textfun({
+            name:'hhh'
+        });*!/
+
+        console.log($(a))
+    })*/
+</script>
+</body>
+</html>

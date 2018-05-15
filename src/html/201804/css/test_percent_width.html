@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内外边距百分比-行内元素</title>
+    <style>
+        .block{
+            background: chocolate;
+        }
+        .block-outer{
+            width: 120px;
+            height: 100px;
+            background: tan;
+            padding: 20px;
+            border: 10px solid green;
+            box-sizing: border-box;
+        }
+        .m-block-outer{
+            width: 120px;
+            height: 100px;
+            background: tan;
+            padding: 20px;
+            border: 10px solid green;
+            box-sizing: border-box;
+        }
+        .m-in1{
+            width: 20px;
+            margin:20%;
+            background: #c10b23;
+            height: 10px;
+        }
+        .m-inline-i{
+            color:orange;
+            background: royalblue;
+            margin: 50%;
+        }
+
+        .m-line-img{
+            height: 20px;
+            margin: 5%;
+        }
+        .p-block-outer{
+            width: 120px;
+            height: 100px;
+            background: tan;
+            padding: 20px;
+            border: 10px solid green;
+            box-sizing: border-box;
+        }
+        .p-in1{
+            width: 20px;
+            padding:20%;
+            background: #c10b23;
+            height: 10px;
+        }
+        .p-inline-i{
+            color:orange;
+            background: royalblue;
+            padding: 5%;
+        }
+
+        .p-line-img{
+            height: 20px;
+            padding: 5%;
+        }
+
+        .pos-block{
+            position: relative;
+            position: relative;
+            padding: 10px;
+            border: 10px solid green
+        }
+        .pos-block-outer{
+            width: 120px;
+            height: 100px;
+            background: tan;
+            padding: 20px;
+            border: 10px solid green;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .pos-in1{
+            width: 20px;
+            background: #c10b23;
+            height: 10px;
+            top:10%;
+            left:10%;
+            position:absolute;
+
+        }
+        .pos-inline-i{
+            color:orange;
+            background: royalblue;
+
+            top:10%;
+            left:10%;
+            position:absolute;
+        }
+
+        .pos-line-img{
+            height: 20px;
+            top:10%;
+            left:10%;
+            position:absolute;
+        }
+        p{
+            font-size: 12px;
+        }
+
+        #outer {
+            position: relative;
+            color: red
+        }
+        #inner {
+            position: absolute;
+            top: 200px; left: -100px;
+            height: 130px; width: 130px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+标准模型：元素的宽度定义为从左到右内边界（内边距和内容的交界处）距离，content-width
+IE模型：content-width+padding+border
+
+包含块：一个元素布局上下文。
+可见元素框
+width
+<h2>宽度高度百分比</h2>
+块元素: 宽高分别相对于包含块的百分比，是盒模型中content-box内容区宽高来计算百分比，即如果是border-box
+内部宽度的百分比计算值 = (外部width - (padding + border)) * a%
+<div class="block-outer">
+    <div  style="width: 50%;height: 60%;background: orchid;"></div>
+</div>
+
+行内元素-非替换： 行内元素随内容自动扩大width，设置宽度无效，设置line-height有效
+<div class="block">
+    哈哈哈哈哈哈<span style="color:orange;background: royalblue">哈哈哈哈哈哈</span>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+行内元素-替换：宽度可以设置百分比，如果包含块是自动撑高则设置百分比无效（但可以指定高度），如果包含块有指定高度则替换元素可以设置百分比宽度
+<div  class="block">
+    哈哈哈哈哈哈<img src ='//img.hb.aicdn.com/481e753a4881ae392e760b1cde925ffbb181b7dd22d99-lIBgmo_fw236' style='height:20px'>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+
+
+<h2>margin百分比</h2>
+<p>上下左右外边距都是相对于包含块的宽度计算</p>
+<p>块元素: 盒模型中content-box内容区宽高来计算百分比，即如果是border-box
+内部宽度的百分比计算值 = (外部width - (padding + border)) * a%；如果是content-box就是父容器的width为参考。
+</p>
+<div class="m-block-outer">
+    <div  class="m-in1"></div>
+</div>
+
+<p>
+行内元素-非替换： 只有左右margin有效果,上下和padding不一样，测试选取元素的时候也无法观察到上下margin
+    可能这两个根本没做处理，选取元素可以展示到border部分
+</p>
+<div  class="block">
+    哈哈哈哈哈哈<span class="m-inline-i">哈哈哈哈哈哈</span>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+<p>行内元素-替换：margin有效果
+</p>
+<div  class="block">
+    哈哈哈哈哈哈<img class ="m-line-img"src ='//img.hb.aicdn.com/481e753a4881ae392e760b1cde925ffbb181b7dd22d99-lIBgmo_fw236'>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+
+<h2>padding百分比</h2>
+<p>上下左右内边距都是相对于包含块的宽度计算</p>
+<p>块元素: 盒模型中content-box内容区宽高来计算百分比，即如果是border-box
+    内部宽度的百分比计算值 = (外部width - (外部padding + 外部border)) * a%；如果是content-box就是父容器的width为参考。
+</p>
+<div class="p-block-outer">
+    <div  class="p-in1"></div>
+</div>
+
+<p>
+    行内元素-非替换： 左右padding有效果（布局效果），上下padding只有显示效果，不影响其他行的布局。
+</p>
+<div  class="block">
+    哈哈哈哈哈哈<span class="p-inline-i">哈哈哈哈哈哈</span>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+<p>行内元素-替换：padding有效果
+</p>
+<div  class="block">
+    哈哈哈哈哈哈<img class ="p-line-img"src ='//img.hb.aicdn.com/481e753a4881ae392e760b1cde925ffbb181b7dd22d99-lIBgmo_fw236'>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+
+
+<h2>top,left,right,bottom百分比</h2>
+<p>CSS框模型：左外边界-> 左外边距-> 左边框->左内边距->左内边界 ->内容区->右内边距->....</p>
+<p>下面说的左边界指左边框的右边</p>
+<p>position:absolute,,移动在边框内移动，计算百分比的参照也是边界内的容器宽高(padding+contentheight)</p>
+<p>position:relative,计算百分比的参照是content内容区宽高,相对于它自身所在位置移动</p>
+
+<p>相对包含块最近边的偏移，top,bottom相对于包含块的高度(padding+contentheight)计算,left,right相对于包含块的宽度（padding+content宽度，和上面不同，待找依据）计算</p>
+<p>left描述了定位元素的左外边距（margin-left）边界在其包含块左边界（border-left）右边（正值）有多远</p>
+<p>注： 测试chrome left:0,top:0;是相对于包含块border内部开始计算的，如果为负数就覆盖border</p>
+<p>块元素:
+
+</p>
+<div class="pos-block-outer">
+    <div  class="pos-in1"></div>
+</div>
+
+<p>
+    行内元素-非替换：
+</p>
+<p>position:absolute,,移动在边框内移动，计算百分比的参照也是边界内的容器宽高</p>
+<p>top,bottom相对于包含块的高度(padding+contentheight)计算,left,right相对于包含块的宽度（padding+content宽度)</p>
+<p>position:relative,计算百分比的参照是content内容区宽高</p>
+<div  class="block pos-block">
+    哈哈哈哈哈哈<span class="pos-inline-i">哈哈哈哈哈哈</span>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+<p>行内元素-替换：
+</p>
+<p>position:absolute,,移动在边框内移动，计算百分比的参照也是边界内的容器宽高</p>
+<p>top,bottom相对于包含块的高度(padding+contentheight)计算,left,right相对于包含块的宽度（padding+content宽度)</p>
+<p>position:relative,计算百分比的参照是content内容区宽高</p>
+<div  class="block pos-block">
+    哈哈哈哈哈哈<img class ="pos-line-img"src ='//img.hb.aicdn.com/481e753a4881ae392e760b1cde925ffbb181b7dd22d99-lIBgmo_fw236'>
+    哈哈哈哈哈哈过过过过过过过过过过过过过过过过过哈哈哈哈哈哈
+</div>
+
+
+</body>
+</html>

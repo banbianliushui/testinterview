@@ -20,14 +20,15 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 	var state = PENDING;
 	var value = null;
 	var handlers =[];
-	
+
+	//这个fn 可能是用户new promise（fn）传进来的，也可能是用户调用resolve传入的promise
 	function doResolve(fn,onFulfilled,onRejected){
 		var done = false; 
 		try{
             //此处的fn 是用户传入的带简单参数的函数(如例子中的带参数success,fail的函数)
             // 或 then中return的promise对象的then函数（由getThen处理）
             //
-			fn(function(value){
+			fn(function(value){//就是 fn(resolve,reject)
 				//用户调用成功函数，传参value
 				if(done) return ;
 				done = true;
@@ -58,9 +59,10 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 		//resolve 用户函数fn处理后调用resolve，由doResolve转接到这里
 		//result 用户回调函数处理后返回的结果
 		try{
-			var then = getThen(result);
+			var then = getThen(result);//用户resolve中传入的值，如果是promise的话
 			if(then){//传promise对象时
-                //将then函数绑定到用户调用解决时传的promise对象上
+                //将then函数绑定到用户调用解决时传的promise对象上，立即执行
+                //then.bind(result) 创建一个promise里面的this.done中this绑定result promise对象
 				doResolve(then.bind(result),resolve,reject);
 				return;
 			}
@@ -100,12 +102,15 @@ function Promise(fn){ //fn一般是包含异步处理的函数
 			});
 		},0)
 	}
-	
+	//将用户添加的then中的两个处理函数存到handle处理列表中，
+    //添加了then，promise内部自动创建一个新的promise，在它内立即调用done函数将用户注册的两个函数加入handle列表中。
+    //只是这两个函数不是直接加入到handle，他需要将上一个promise返回的result传递给onFulfilled完成函数，
+    //然后取注册的onFulfilled函数的返回值调用新创建的promise的resolve，
 	this.then = function(onFulfilled,onRejected){
 		var self = this;//promise对象同时也返回一个新promise对象
 
 		return new Promise(function(resolve,reject){
-			
+
 			var done1= self.done(function(result){
 				if(typeof onFulfilled === 'function' ){
 					try{
@@ -172,14 +177,23 @@ p.then(function (value) {
 
     var p1 = new Promise(function(resolve,reject){
         setTimeout(function(){
-            resolve("11")
+           /* resolve(new Promise(function(res,rej){
+                setTimeout(function(){
+                    res(1)
+                })
+            }))*/
+           resolve(1)
+
+            throw new Error("错啦")
+
         },100)
     })
     p1.then(function(){
-            var p2=new Promise(function(res,rej){
+         /*   var p2=new Promise(function(res,rej){
                 setTimeout(function(){res()},200)
             });
-            return p2;
+            return p2;*/
+         return 3
         },function(){
 
         }).then(function(){},function(){

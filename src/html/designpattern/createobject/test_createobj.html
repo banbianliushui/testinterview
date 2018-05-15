@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象的方法（不包含继承）</title>
+</head>
+<body>
+<script>
+    /*
+    * 工厂模式：抽象了创建对象的具体过程，用函数来封装创建对象的细节，提供一个特定接口供对象创建。
+    * 优点：
+    * 工厂模式虽然解决了创建多个相似对象的问题
+    * （注：和直接创建对象相比，如果是相同属性的对象代码需要重复创建），
+    * 缺点：
+    * 没有解决对象识别问题。
+    * */
+     function createPerson(name,age) {
+         var o = new Object();
+         o.name=name;
+         o.age = age;
+         o.sayName = function(){
+             console.log(this.name);
+         }
+         return o;
+     }
+
+     var p1 = createPerson("mike",33);
+     p1.sayName();
+
+     /*
+     构造函数模式：用来创建特定类型的对象。
+     * 与工厂模式的不同之处：不用显示创建一个对象；直接将属性赋值给this对象；不用显示返回对象；
+     *          使用new操作符创建对象。
+     *
+     * constructor可标识对象类型，instanceof检测对象类型更可靠。
+     *  优点：
+     *  自定义构造函数可以将它的实例标识为一种特定类型。
+     *
+     * 缺点：每个方法都要在实例上创建一遍
+     * */
+     function Person(name,age){
+         this.name = name;
+         this.age= age;
+         this.sayName = function(){
+             console.log(this.name);
+         }
+     }
+
+     var p1 = new Person("mick",43);
+     console.log(p1.constructor == Person)
+    console.log(p1 instanceof Person)
+
+    /*原型模式
+    * 函数的prototype原型属性包含可以由特定类型的所有实例共享的属性和方法。
+    * 优点：使用原型创建的所有对象实例共享它所包含的属性和方法。
+    * 缺点：原型上的属性和方法都是共享的，（基本值的话可以屏蔽原型在实例上建立，
+    *   如果想要引用类型是实例独有的话，原型上放这个引用类型不妥，
+    *   引用类型值在原型上会被修改，它不能是实例独有）
+    *   ，但是实例一般有自己的属性
+    * */
+    function Person1(){}
+    Person1.prototype={
+        constructor:Person1,
+        name:'大白',
+        friends:['shly','mick'],
+        sayName:function(){
+            console.log(this.name)
+        }
+    }
+    var p1 = new Person1();
+    p1.friends.push('Van');
+    var p2 = new Person1();
+
+   console.log(p1.friends)
+   console.log(p2.friends)
+   console.log(p1.friends===p2.friends)
+
+    /*
+    * 组合构造函数和原型模式
+    *
+    * 构造函数用于定义实例属性，原型模式用于定义方法和共享属性。
+    *
+    *
+    *
+    * */
+
+    function Person2(){
+        this.name='大白';
+        this.friends=['shly','mick'];
+    }
+    Person2.prototype={
+        constructor:Person2,
+        sayName:function(){
+            console.log(this.name)
+        }
+    }
+    var p1 = new Person2();
+    p1.friends.push('Van');
+    var p2 = new Person2();
+    console.log(p1.friends)
+    console.log(p2.friends)
+    console.log(p1.friends===p2.friends)
+
+    /*
+    * 动态原型模式
+    *
+    * 解决OO语言经验的开发人员对独立的构造函数和原型写法的困惑，将信息都封装在构造函数中，
+    * 通过在构造函数中初始化原型，保持了同时使用构造函数和原型的优点。并解决他们的困惑
+    * 通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。
+    * 优点：对OO语言开发人员友好，原型只初始化一次，在实例创建的时候初始化
+    *
+    *
+    * */
+    function Person3(name,age,job){
+        this.name = name;
+        this.age = age;
+        if(typeof this.sayName != "function"){
+            Person3.prototype.sayName = function(){
+                console.log(this.name)
+            }
+        }
+    }
+
+    var p = new Person3('打下',33)
+    p.sayName();
+
+    /*
+    * 寄生构造函数模式
+    * 基本思想：创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后再返回新创建的对象。
+    *
+    * 注意：返回的对象与构造函数 和构造函数原型属性之间没有关系，不能依赖instance of 检查类型
+    *
+    * */
+
+    function SpecialArray() {
+        var values =   new Array();
+        values.push.apply(values,arguments);
+        values.toPipeString = function () {
+            return this.join('|')
+        }
+
+        return values;
+    }
+
+    var colos = new SpecialArray('red','yellow')
+    colos.toPipeString();
+
+    /*稳妥构造函数
+    *
+    *   没有公共属性，其方法也不引用this的对象。适合在一些安全环境中（禁止使用this和new），或者
+    *   在防止数据被其他应用程序改动时使用。
+    *   与寄生式区别：
+    *   1.新创建对象的实例方法不引用this，2.不使用new操作符调用构造函数。
+    *
+    *   创建 一个稳妥对象， 除了内部定义的方法外，外部不能访问其内部成员
+    *
+    *   注意：返回的对象与构造函数 和构造函数原型属性之间没有关系，不能依赖instance of 检查类型
+    * */
+    function Person4(name,age) {
+        var o = new Object();
+        o.name = name ;
+        o.age = age;
+        // 可定义私有变量 和函数
+
+        o.sayName = function () {
+            console.log(name);
+        }
+    }
+    var p4 = new Person4('大华',27)
+    p4.sayName();
+
+
+
+</script>
+
+</body>
+</html>

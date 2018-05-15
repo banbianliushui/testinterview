@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+内嵌也
+<div id="content"></div>
+<button id="sent">发送</button>
+<script>
+
+    var bc = new BroadcastChannel('test_channel');
+
+    bc.onmessage = function (ev) { console.log(ev);
+        document.getElementById('content').innerHTML=ev.data
+    }
+    document.getElementById('sent').onclick=function(){
+        bc.postMessage(new Date().getTime()+'iframe的消息.');
+    }
+</script>
+
+</body>
+</html>
