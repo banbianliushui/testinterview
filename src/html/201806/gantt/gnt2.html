@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:relative;
+        }
+        .head1{
+            position: absolute;
+            left: 60px;
+            width: 500px;
+            overflow: hidden;
+            /*overflow-x: auto;*/
+        }
+        .head2 {
+            position: absolute;
+            top: 54px;
+            height: 210px;
+            overflow:hidden;
+
+            /*  overflow-y: auto;*/
+        }
+        .main{
+            position: absolute;
+            top: 54px;
+            left: 60px;
+            width: 520px;
+            height: 230px;
+            overflow-y: auto;
+        }
+        .footer{
+            position: absolute;
+        }
+        .hfirst {
+            position: absolute;
+            width: 60px;
+            height: 44px;
+            text-align: center;
+        }
+        .h1-cell {
+            float: left;
+            width: 54px;
+            height: 44px;
+        }
+        .h2-container{
+
+        }
+        .h1-container{
+            width: 1000px;
+        }
+        .main-grid{
+            width: 1000px;
+            height: 880px;
+        }
+        .grid-col {
+            float: left;
+            width: 54px;
+            border-right: 1px solid #eee;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .view-main-blocks {
+            position: absolute;
+            top: 0px;
+        }
+        .view-block-row{
+            height: 80px;
+            box-sizing: border-box;
+            padding: 5px 0px;
+            position: relative;
+        }
+
+        .h2-cell {
+            height: 80px;
+            line-height: 80px;
+            width: 60px;
+            text-align: center;
+        }
+        .view-block .appointtime {
+            border: 1px solid #29c3f8;
+            background: #e6f5f6;
+            text-align: center;
+            margin-bottom: 10px;
+            height: 28px;
+            line-height: 28px;
+            position: absolute;
+        }
+        .view-block.appoint-block{
+
+        }
+        .view-block.work-block{
+            top:40px;
+        }
+        .view-block .worktime {
+            border: 1px solid orange;
+            background: #fae1b2;
+            text-align: center;
+            height: 28px;
+            line-height: 28px;
+            position: absolute;
+        }
+        .view-block {
+            height: 28px;
+            line-height: 28px;
+            position: absolute;
+        }
+        .clearfix{
+
+            *zoom:1;/*对于暂不支持:after伪类的IE6/IE7，可以使用IE私有的zoom缩放属性让div远离浮动的破坏。hasLayout */
+        }
+        .clearfix:after{
+            content:" "; /* 这个必须，这是和after配对使用的,不加这个，页面就不显示after相关的样式 */
+            height:0;/* 不让他有高度，影响实际需求，实际只要获得浮动元素的高度就可以了 */
+            display:block;/* 块级元素 */
+            clear: both;
+            visibility: hidden;/*如果 content 中有内容，content:"1111";不加hidden，content里面的内容会显示出来。  */
+
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="gatt">
+
+</div>
+<script>
+
+    var h1 =['8:30','9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00']
+    var h2=[];
+    var data = [{name:'技师1',
+        appointlist:[{text:'关键的预约',
+            start:new Date('2018','6','23','9','15').getTime(),end:new Date('2018','6','23','10','0').getTime()}],
+        worklist:[{text:'',
+            start:new Date('2018','6','23','9','30').getTime(),end:new Date('2018','6','23','11','30').getTime()}]
+        },
+        {name:'技师2',
+            appointlist:[{text:'套表预约',
+                start:new Date('2018','6','23','13','15').getTime(),end:new Date('2018','6','23','14','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','12','30').getTime(),end:new Date('2018','6','23','14','30').getTime()}]
+        },
+        {name:'技师3',
+            appointlist:[{text:'适合预约',
+                start:new Date('2018','6','23','10','15').getTime(),end:new Date('2018','6','23','12','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','8','30').getTime(),end:new Date('2018','6','23','11','30').getTime()}]
+        },
+        {name:'技师4',
+            appointlist:[{text:'想通预约',
+                start:new Date('2018','6','23','9','15').getTime(),end:new Date('2018','6','23','10','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','9','30').getTime(),end:new Date('2018','6','23','11','30').getTime()}]
+        },
+        {name:'技师5',
+            appointlist:[{text:'多步的预约',
+                start:new Date('2018','6','23','11','15').getTime(),end:new Date('2018','6','23','13','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','9','30').getTime(),end:new Date('2018','6','23','11','30').getTime()},
+                {text:'',
+                    start:new Date('2018','6','23','12','30').getTime(),end:new Date('2018','6','23','14','30').getTime()}]
+        },
+        {name:'技师6',
+            appointlist:[{text:'感情预约',
+                start:new Date('2018','6','23','9','15').getTime(),end:new Date('2018','6','23','10','0').getTime()},
+                {text:'纯阳的预约',
+                    start:new Date('2018','6','23','11','15').getTime(),end:new Date('2018','6','23','13','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','9','30').getTime(),end:new Date('2018','6','23','11','30').getTime()},
+                {text:'',
+                    start:new Date('2018','6','23','12','30').getTime(),end:new Date('2018','6','23','14','30').getTime()}]
+        },
+        {name:'技师7',
+            appointlist:[{text:'真的的预约',
+                start:new Date('2018','6','23','9','15').getTime(),end:new Date('2018','6','23','10','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','9','30').getTime(),end:new Date('2018','6','23','11','30').getTime()}]
+        },
+        {name:'技师8',
+            appointlist:[{text:'关键的预约',
+                start:new Date('2018','6','23','10','15').getTime(),end:new Date('2018','6','23','12','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','8','30').getTime(),end:new Date('2018','6','23','11','30').getTime()}]
+        },
+        {name:'技师9',
+            appointlist:[{text:'偶尔的预约',
+                start:new Date('2018','6','23','13','15').getTime(),end:new Date('2018','6','23','15','0').getTime()}],
+            worklist:[{text:'',
+                start:new Date('2018','6','23','13','30').getTime(),end:new Date('2018','6','23','15','0').getTime()}]
+        },
+    ]
+
+    function Gattn(options){
+        this.options = options ;
+        this.head1 =  options.head1;
+        this.head2 = options.head2?options.head2 : null;
+        this.data = options.data?options.data:[];
+        this.rootselector = options.el;
+        this.firstcell = options.firstcell;
+        this.$el = document.querySelector(options.el);
+        this.head2Field='name';//左侧标题在data中对应的域
+        this.cellWidth = 54
+        this.cellHeight = 80
+        this.init()
+        this.bind()
+        this.gattertimer=null
+    }
+    Gattn.prototype.init = function(){
+        this.draw()
+    }
+
+    Gattn.prototype.draw = function(){
+        var hd1 = '';
+        var gridcol='';
+        for(var i = 0;i<this.head1.length;i++){
+            hd1+='  <div class="h1-cell">'+this.head1[i]+'</div>';
+            gridcol+='<div class="grid-col"></div>';
+        }
+        var hd2 = '';
+        var rowh = '';
+        for(var i = 0;i<this.data.length;i++){
+
+            hd2 +='<div class="h2-cell">'+this.data[i].name+'</div>'
+            rowh +='<div class="view-block-row">';
+            var appl = this.data[i].appointlist;
+            var workl = this.data[i].worklist;
+            var appoinh = ''
+            var workh=''
+            for(var j = 0;j<appl.length;j++){
+                var waleft = this.getBlockWidth(appl[j].start,appl[j].end)
+                appoinh+= '<div class="appointtime" style="left:'+waleft.left+'px;width:'+waleft.width+'px;">' +
+
+                '<div>'+appl[j].text+'</div>'+
+
+                '</div>'
+            }
+            appoinh='<div class="view-block " >' +appoinh+
+                '</div>';
+            for(var j = 0;j<workl.length;j++){
+                 var waleft = this.getBlockWidth(workl[j].start,workl[j].end)
+                workh+='<div class="worktime" style="left:'+waleft.left+'px;width:'+waleft.width+'px;">'+
+                '<div>'+workl[j].text+'</div>'+
+                '</div>'
+            }
+            workh='<div class="view-block work-block" >' +workh+
+                '</div>';
+            rowh=rowh+appoinh+workh +' </div>';
+
+        }
+
+        var h1width = this.head1.length * this.cellWidth;
+        var h2height = this.data.length * this.cellHeight;
+        var mainWH =  'style="width:'+h1width+'px;height:'+h2height+'px"';
+        h1width = 'style="width:'+h1width+'px"';
+        h2height = 'style="height:'+h2height+'px"';
+
+        var h = ' <div class="hfirst">'+(this.firstcell==null?'':this.firstcell)+'</div>' +
+            ' <div class="head1">' +
+            '            <div class="h1-container clearfix" '+h1width+'>' +hd1+
+            '   </div>' +
+            '</div>' +
+            '<div class="head2">' +
+            '   <div class="h2-container"'+h2height+'>'+hd2+
+            '   </div>' +
+            '</div>' +
+            '<div class="main">' +
+            '   <div class="main-grid" '+mainWH+'>' +gridcol+
+            '   </div>' +
+            '   <div class="view-main-blocks" '+mainWH+'>' +rowh+
+            '   </div>' +
+            ' <div class="footer"></div>';
+
+        this.$el.innerHTML=h;
+
+    }
+    Gattn.prototype.getBlockWidth = function(start,end){
+        var timelist = this.head1;
+        var ndate = new Date(start);
+       // var edate = new Date(end);
+        var y = ndate.getFullYear()
+        var m = ndate.getMonth()
+        var d = ndate.getDate()
+        var left = 0
+        var isFirst = true
+        var lstleft =0;
+        var num = 0;
+        var leftnum = 0;
+        for(var i = 0;i<timelist.length;i++){
+            var t = timelist[i].split(':');
+            var c= new Date(y,m,d,t[0],t[1])
+            if(start<=c.getTime()&&isFirst){
+                if(start<c.getTime()){
+                    var prev = timelist[i-1].split(':');
+                    var p= new Date(y,m,d,prev[0],prev[1])
+                    left +=   (start-p) /(c-p) * this.cellWidth
+                    leftnum>0?leftnum--:'';
+                }else{
+                    left=0;
+                }
+                isFirst = false;
+            }
+
+            if(end<=c.getTime()){//结束
+                if(end<c.getTime()){
+                    var prev = timelist[i-1].split(':');
+                    var p= new Date(y,m,d,prev[0],prev[1])
+                    lstleft =   (end-p) /(c-p) * this.cellWidth
+                }else{
+                    num++;
+                    lstleft = 0;
+                }
+                break;
+            }
+            if(start>c.getTime()&&isFirst){
+                leftnum++;
+            }
+            if(c.getTime()>start&&c.getTime()<end&&!isFirst){
+                num++;
+            }
+
+        }
+
+        return {left:left+leftnum*this.cellWidth,width:num*this.cellWidth+(this.cellWidth-left)+lstleft}
+    }
+    //
+    Gattn.prototype.bind = function(){
+        var that = this;
+        this.$el.querySelector('.main').addEventListener('scroll',function(e){
+            window.clearInterval(that.gattertimer);
+            that.gattertimer = setInterval(function(){
+                window.clearInterval(that.gattertimer);
+                var el = e.currentTarget==null?e.srcElement: e.currentTarget;
+                var h2container =  document.querySelector(".head2")
+                var h1container = document.querySelector(".head1")
+                h2container.scrollTop =   el.scrollTop
+                h1container.scrollLeft =   el.scrollLeft
+                console.log(' el.scrollTop =', el.scrollTop)
+                console.log(' h2container.scrollTop =', h2container.scrollTop)
+            },10)
+        })
+    }
+
+    new Gattn({
+        el:'#gatt',
+        data:data,
+        head1:h1,
+        firstcell:'技师',
+        head2Field:'name'
+
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .gantt-container{
+            position:relative;
+        }
+        .gantt-lt-tbl{/*左上*/
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .gantt-lb-tbl{/*左下*/
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .gantt-rt-tbl{/*左上*/
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .gantt-rb-tbl{/*右下*/
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .gantt-tblbodycell {
+            background-color: rgba(255, 245, 230, 0.51);
+        }
+
+        .gantt-rb-tbl td, .ganttTable th {
+            overflow: hidden;
+            text-overflow: clip;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="gantt-container">
+    <div>
+        <table cellspacing="0" cellpadding="0" class="gantt-lt-tbl" >
+            <thead>
+            <tr style="height: 40px">
+                <th style="width:50px">技师</th>
+            </tr>
+            </thead>
+        </table>
+        <table cellspacing="0" cellpadding="0" class="gantt-rt-tbl">
+            <thead>
+            <tr style="height: 40px">
+                <th style="width:50px">技师</th>
+                <th style="width:50px">8:30</th>
+                <th style="width:50px">9:00</th>
+                <th style="width:50px">9:30</th>
+                <th style="width:50px">10:00</th>
+                <th style="width:50px">10:30</th>
+                <th style="width:50px">11:00</th>
+                <th style="width:50px">11:30</th>
+                <th style="width:50px">12:00</th>
+                <th style="width:50px">12:30</th>
+                <th style="width:50px">13:00</th>
+                <th style="width:50px">13:30</th>
+                <th style="width:50px">14:00</th>
+            </tr>
+            </thead>
+        </table>
+        <table cellspacing="0" cellpadding="0" class="gantt-lb-tbl">
+            <thead>
+            <tr style="height: 40px">
+                <th style="width:50px">技师</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td>大信息</td>
+            </tr>
+            <tr>
+                <td>baidy</td>
+            </tr>
+            <tr>
+                <td>后裔</td>
+            </tr>
+            <tr>
+                <td>八戒</td>
+            </tr>
+            <tr>
+                <td>欣欣</td>
+            </tr>
+            <tr>
+                <td>哈哈</td>
+            </tr>
+            <tr>
+                <td>岳飞</td>
+            </tr>
+            </tbody>
+
+        </table>
+        <table cellspacing="0" cellpadding="0" class="gantt-rb-tbl">
+            <thead>
+            <tr style="height: 40px">
+                <th style="width:50px">技师</th>
+                <th style="width:50px">8:30</th>
+                <th style="width:50px">9:00</th>
+                <th style="width:50px">9:30</th>
+                <th style="width:50px">10:00</th>
+                <th style="width:50px">10:30</th>
+                <th style="width:50px">11:00</th>
+                <th style="width:50px">11:30</th>
+                <th style="width:50px">12:00</th>
+                <th style="width:50px">12:30</th>
+                <th style="width:50px">13:00</th>
+                <th style="width:50px">13:30</th>
+                <th style="width:50px">14:00</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>大信息</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            <tr>
+                <td>baidy</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            <tr>
+                <td>后裔</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            <tr>
+                <td>八戒</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+
+            <tr>
+                <td>欣欣</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            <tr>
+                <td>哈哈</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            <tr>
+                <td>岳飞</td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+                <td class="gantt-tblbodycell"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div></div>
+</div>
+</body>
+</html>

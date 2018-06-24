@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position:relative;
+        }
+        .head1{
+            position: absolute;
+            left: 60px;
+            width: 500px;
+            overflow: hidden;
+            /*overflow-x: auto;*/
+        }
+        .head2 {
+            position: absolute;
+            top: 54px;
+            height: 210px;
+            overflow:hidden;
+
+          /*  overflow-y: auto;*/
+        }
+        .main{
+            position: absolute;
+            top: 54px;
+            left: 60px;
+            width: 520px;
+            height: 230px;
+            overflow-y: auto;
+        }
+        .footer{
+            position: absolute;
+        }
+        .hfirst {
+            position: absolute;
+            width: 60px;
+            height: 44px;
+            text-align: center;
+        }
+        .h1-cell {
+            float: left;
+            width: 54px;
+            height: 44px;
+        }
+        .h2-container{
+
+        }
+        .h1-container{
+            width: 1000px;
+        }
+        .main-grid{
+            width: 1000px;
+            height: 880px;
+        }
+        .grid-col {
+            float: left;
+            width: 54px;
+            border-right: 1px solid #eee;
+            height: 100%;
+        }
+        .view-main-blocks {
+            position: absolute;
+            top: 0px;
+        }
+        .view-block-row{
+            height: 80px;
+            box-sizing: border-box;
+            padding: 5px 0px;
+        }
+
+        .h2-cell {
+            height: 80px;
+            line-height: 80px;
+            width: 60px;
+            text-align: center;
+        }
+        .view-block.appointtime {
+            border: 1px solid #29c3f8;
+            background: #e6f5f6;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .view-block.worktime {
+            border: 1px solid orange;
+            background: #fae1b2;
+            text-align: center;
+        }
+        .view-block {
+            height: 28px;
+            line-height: 28px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hfirst">技师</div>
+    <div class="head1">
+        <div class="h1-container">
+            <div class="h1-cell">8:30</div>
+            <div class="h1-cell">9:00</div>
+            <div class="h1-cell">9:30</div>
+            <div class="h1-cell">10:00</div>
+            <div class="h1-cell">10:30</div>
+            <div class="h1-cell">11:00</div>
+            <div class="h1-cell">11:30</div>
+            <div class="h1-cell">12:00</div>
+            <div class="h1-cell">12:30</div>
+            <div class="h1-cell">13:00</div>
+            <div class="h1-cell">13:30</div>
+        </div>
+    </div>
+    <div class="head2">
+        <div class="h2-container">
+            <div class="h2-cell"  style="    background: oldlace;">有空</div>
+            <div class="h2-cell">工作</div>
+            <div class="h2-cell">好了</div>
+            <div class="h2-cell">局部</div>
+            <div class="h2-cell">很赞</div>
+            <div class="h2-cell">希望</div>
+            <div class="h2-cell">悠悠</div>
+            <div class="h2-cell">加油</div>
+            <div class="h2-cell">回去</div>
+            <div class="h2-cell">剧本</div>
+            <div class="h2-cell">小心</div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-grid">
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+        </div>
+        <div class="view-main-blocks">
+            <div class="view-block-row">
+                <div class="view-block appointtime" style="    margin-left:400px;width:140px;">
+                    <div>text</div>
+                </div>
+                <div class="view-block worktime" style="    margin-left:150px;width:60px;">
+                    <div>text</div>
+                </div>
+            </div>
+            <div class="view-block-row">
+                <div class="view-block appointtime" style="    margin-left:130px;width:100px;">
+                    <div>text</div>
+                </div>
+                <div class="view-block worktime" style="    margin-left:200px;width:100px;">
+                    <div>text</div>
+                </div>
+            </div>
+            <div class="view-block-row">
+                <div class="view-block appointtime" style="    margin-left:130px;">
+                    <div></div>
+                </div>
+                <div class="view-block worktime" style="    margin-left:100px;width:100px;">
+                    <div>text2</div>
+                </div>
+            </div>
+            <div class="view-block-row">
+                <div class="view-block appointtime" style="    margin-left:130px;width:100px;">
+                    <div>text</div>
+                </div>
+                <div class="view-block worktime" style="    margin-left:200px;width:100px;">
+                    <div>text</div>
+                </div>
+            </div>
+            <div class="view-block-row">
+                <div class="view-block appointtime" style="    margin-left:130px;width:100px;">
+                    <div>text</div>
+                </div>
+                <div class="view-block worktime" style="    margin-left:200px;width:100px;">
+                    <div>text</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+</div>
+
+<script>
+    var el = document.querySelector(".main");
+    var gant = 0;
+    el.addEventListener('scroll',function(e){
+        window.clearInterval(gant);
+        gant = setInterval(function(){
+            window.clearInterval(gant);
+            var el = e.currentTarget==null?e.srcElement: e.currentTarget;
+            var h2container =  document.querySelector(".head2")
+            var h1container = document.querySelector(".head1")
+            h2container.scrollTop =   el.scrollTop
+            h1container.scrollLeft =   el.scrollLeft
+            console.log(' el.scrollTop =', el.scrollTop)
+            console.log(' h2container.scrollTop =', h2container.scrollTop)
+        },10)
+    })
+   /* //bind editor scroll
+    self.splitter.firstBox.scroll(function () {
+
+        //notify scroll to editor and gantt
+        self.gantt.element.stopTime("test").oneTime(10, "test", function () {
+            var oldFirstRow = self.firstScreenLine;
+            var newFirstRow = Math.floor(self.splitter.firstBox.scrollTop() / self.rowHeight);
+            if (Math.abs(oldFirstRow - newFirstRow) >= self.rowBufferSize) {
+                self.firstScreenLine = newFirstRow;
+                self.scrolled(oldFirstRow);
+            }
+        });
+    });
+*/
+</script>
+</body>
+</html>
