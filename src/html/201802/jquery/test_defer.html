@@ -8,6 +8,52 @@
 </head>
 <body>
 <script type="text/javascript">
+ /*jquery用$.Deferred实现了Promise规范*/
+var wait = function(){
+    var dtd = $.Deferred();
+    dtd.notify("jix")
+    var tasks = function(){
+        console.log("执行完毕！");
+        dtd.resolve();
+    };
+    //setTimeout(tasks,5000);
+    tasks();
+    return dtd.promise();
+}
+
+
+$.when(wait()).then(function(){
+    console.log("成功")
+    /*var df1 = $.Deferred();
+    var tasks1 = function(){
+        alert("执行完毕！");
+        df1.resolve();
+    };
+    setTimeout(tasks1,2000);
+    return df1;*/
+},function(){
+    console.log("出错了")
+},function(){
+    console.log("进行中")
+}).then(function(value){
+    console.log("value=",value)
+    console.log("成功2")
+  /*  var df1 = $.Deferred();
+    var tasks1 = function(){
+        alert("执行完毕！");
+        df1.resolve();
+    };
+    setTimeout(tasks1,2000);
+    return df1;*/
+},function(){
+    console.log("出错了2")
+},function(){
+    console.log("进行中2")
+});/*.progress(function () {
+
+    alert("在进行中")
+}).done(function(){alert("哈哈")})
+    .fail(function(){alert("出错了")});*/
 
 
     /*var obj1 ={
@@ -42,7 +88,7 @@
     }
     console.log("end");*/
 
-
+    /*
     //测试 callback
     function fn1(value){
         console.log("fn1=",value)
@@ -50,11 +96,11 @@
     function fn2(value){
         console.log("fn2=",value)
     }
-    var callb =$.Callbacks('once memory');
+    var callb =$.Callbacks('momery');
     callb.add(fn1)
     callb.fire("啊啊哈哈哈")
     callb.fire("2333")
-    callb.add(fn1)
+    callb.add(fn1)*/
     /*
     * $.Callbacks(tagstr)
     *  memory , once, unique, stopOnFalse 标记是相对于回调函数列表的处理方式

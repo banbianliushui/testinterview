@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+    第一个点击时返回一个函数，而不是执行函数
+    <a onclick="console.log(a.click)">第一个</a>
+
+<a onclick="a.click()">第二个</a>
+</pre>
+<a onclick="console.log(a.click)">第一个</a>
+
+<a onclick="a.click()">第二个</a>
+<script>
+    var a={
+        click:function(){
+            console.log("等待")
+        }
+    }
+</script>
+</body>
+</html>

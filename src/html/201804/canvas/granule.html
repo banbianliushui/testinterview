@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="draw" width="400" height="500">
+
+</canvas>
+<script>
+    /*
+    *
+    *
+    * 一次运动结束时，平滑继续下一次移动，还有边界
+    *    触边后反弹：变化量
+    *       哪一边触边哪一边减少
+    *    粒子运动结束后， 每个球的开始时间 和结束时间 重置
+    *
+    *
+    * */
+    var canvas = document.getElementById("draw");
+    var ctx = canvas.getContext("2d");
+    var bo = {x:10,y:30,r:6,xdir:1,ydir:1,cx:10,cy:20};
+    var btime = 0;
+    var etime = 1000;
+    var chx =  Math.random()*200;
+    var chy =  Math.random()*200;
+    function  radboll() {
+        ctx.beginPath();
+         radbparam(bo);
+        ctx.arc(bo.x,bo.y,bo.r,0,2* Math.PI,false)
+        ctx.fillStyle="#82ab00";
+        ctx.fill();
+        ctx.closePath();
+    }
+    //通过连续输入多个值，然后利用贝塞尔曲线公式输出不同的值，最终形成了一条光滑的曲线。
+    //因为一条曲线上的值的不一样的，所以我们可以利用曲线的特性创造出不同的效果。
+    /*
+     * t: current time（当前时间）；
+     * b: beginning value（初始值）；
+     * c: change in value（变化量）；
+     * d: duration（持续时间）。
+     */
+    function easeInOut (t,b,c,d){
+
+         if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+         return -c / 2 * ((--t) * (t-2) - 1) + b;
+    }
+    /* function easeInOut(t, b, c, d) {
+        if((t /= d / 2) < 1) return c / 2 * t * t * t + b;
+        return c / 2 * ((t -= 2) * t * t + 2) + b;
+    }*/
+    function drawbg(){
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400,500);
+    }
+    function radbparam(ob){
+
+       var r =  Math.random()*30;
+       /* var x =  Math.random()*200;
+        var y =  Math.random()*200;*/
+        var nob={};
+
+       nob.x = easeInOut (btime,bo.x,chx,etime);
+        nob.y =  easeInOut (btime,bo.y,chy,etime);
+        nob.r = 10;
+        if(nob.x>=400||(ob.xdir == 0&&nob.x>0)){//右侧反向
+            nob.x = bo.x - (nob.x- bo.x);
+            ob.xdir =0;
+        }
+        if(nob.x<=0){//左侧反向
+            nob.x = - nob.x;
+            ob.xdir =1;
+        }
+
+        if(nob.y>=500||(ob.ydir == 0&&nob.y>0)){//上侧反向
+            nob.y = bo.y - (nob.y- bo.y);
+            ob.ydir =0;
+        }
+        if(nob.y<=0){//下侧反向
+            nob.y = - nob.y;
+            ob.ydir =1;
+        }
+        bo.x = nob.x;
+        bo.y = nob.y;
+      //  return nob;
+
+    }
+
+    function start() {
+        drawbg()
+        radboll()
+        /* setTimeout(function(){*/
+        chx =  Math.random()*5;
+        chy =  Math.random()*5;
+             btime++;
+            if(btime>=500){
+
+                 btime=120;
+             }
+             window.requestAnimationFrame(start);
+        /* },20)*/
+
+    }
+    start()
+
+    /*
+    * elem : dom元素
+    * ctx : 上下文
+    *   粒子半径 浓度 运动时间 活动范围  粒子数量（浓度？）
+    *
+    * 小球属性：半径、 运动速度、 轨迹 、颜色
+    * */
+    function Granule(){}
+    Granule.prototype.init = function(){
+
+    }
+
+</script>
+</body>
+</html>

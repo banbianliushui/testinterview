@@ -71,6 +71,7 @@ $(function() {
 					if (secondary.length > 0) {						
 						if(secondary.parent()[0]==$(this).parent().parent().parent().parent()[0]){
 							// 在同一个节点下
+							console.log("111")
 							isSelbtn=true;
 						}else{
 							// 不在同一个节点下，需删除secondarypane

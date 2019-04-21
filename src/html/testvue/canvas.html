@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-    <script src="../test/jquery-3.1.1.js"></script>
+    <script src="../201802/jquery/jquery-3.3.1.js" type="text/javascript"></script>
 </head>
 <body>
     <!--需要合成图片，因为没法直接读取本地图片，所以将图片放在这里并隐藏-->
@@ -26,9 +26,7 @@
 
     function hechen(){
         //获取时间2012-12-12
-        var mydate = new Date();
-        var date = mydate.getFullYear()+'-'+(mydate.getMonth()+1)+'-'+mydate.getDate();
-        //获取画布对象
+              //获取画布对象
         var mainCtx = getCanvasContext('main');
         var maxWidth = mainCtx.width;
         var maxHeight = mainCtx.height;
@@ -40,19 +38,7 @@
         starImg.onload=function(){
             //先把图片绘制在这里
             mainCtx.drawImage(starImg,0,0,420,730);
-            //读取用户的文本
-            if($('#desc').val()){
-                //设置用户文本的大小字体等属性
-                mainCtx.font = "small-caps bold 18px STXinwei";
-                //设置用户文本填充颜色
-                mainCtx.fillStyle = "black";
-                //绘制文字
-                mainCtx.fillText($('#desc').val(),108,335);
-                //设置时间文本的大小字体属性
-                mainCtx.font = "small-caps bold 16px STXinwei";
-                //绘制时间
-                mainCtx.fillText(date,326,447);
-            }
+            addText()
 
         };
 
@@ -63,10 +49,31 @@
     }
     //将画布生成图片
     function saveImageInfo() {
+
         var mycanvas = document.getElementById("main");
         var image = mycanvas.toDataURL("image/jpg");
         var w=window.open('about:blank','image from canvas');
         w.document.write("<img src='"+image+"' alt='from canvas'/>");
+    }
+
+    function addText(){
+        var mydate = new Date();
+        var date = mydate.getFullYear()+'-'+(mydate.getMonth()+1)+'-'+mydate.getDate();
+
+        var mainCtx = getCanvasContext('main');
+        //读取用户的文本
+        if($('#desc').val()){
+            //设置用户文本的大小字体等属性
+            mainCtx.font = "small-caps bold 18px STXinwei";
+            //设置用户文本填充颜色
+            mainCtx.fillStyle = "black";
+            //绘制文字
+            mainCtx.fillText($('#desc').val(),108,335);
+            //设置时间文本的大小字体属性
+            mainCtx.font = "small-caps bold 16px STXinwei";
+            //绘制时间
+            mainCtx.fillText(date,326,447);
+        }
     }
     //下载图片
     function saveAsLocalImage(){

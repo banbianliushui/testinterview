@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 100%;
+            font-size: 0;
+            text-align: center;
+        }
+
+        div {
+            display: inline-block;
+            width: 20%;
+            background: green;
+            font-size: 12px;
+            position: relative;
+            vertical-align: middle;
+        }
+        div:nth-child(2n) {
+            background: orange;
+        }
+        div:before {
+            content: "";
+            display: inline-block;
+            padding-bottom: 100%;
+            width: .1px;
+            vertical-align: middle;
+        }
+        div span {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 4em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body translate="no">
+
+<div><span>1</span></div>
+<div><span>2</span></div>
+<div><span>3</span></div>
+<div><span>4</span></div>
+<div><span>5</span></div>
+<div><span>6</span></div>
+<div><span>7</span></div>
+<div><span>8</span></div>
+<div><span>9</span></div>
+<div><span>10</span></div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

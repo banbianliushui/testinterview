@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>《js设计模式》--- module模式</title>
+    <title>《js设计模式》--- module模块模式</title>
+    <script src="../201802/jquery/jquery-3.3.1.js"></script>
 </head>
 <body>
 <script>
@@ -36,6 +37,44 @@
     })();
     testModule.incremCounter();
 
+    //jquery:  将非jQuery插件代码包装在Module模式， 可以在模块模式内部模块定义附件使用函数包装器
+
+    function library(module){
+
+        console.log("33")
+        $(function(){
+            console.log('hans ');
+            if(module().init){
+                //
+                module().init();//初始化模块
+                // 可以使用模块
+
+            }
+
+        })
+        return module(); //返回模块
+
+    }
+
+    var mlib = library(function(){
+
+        console.log("模块函数")
+        this.privatemethod = function(){
+
+        }
+        return {
+            init:function(){
+                //组件初始化。。。
+
+
+                //return this;
+            }
+        }
+    })
+console.log(mlib)
+/*
+* AMD模式 Asynchronous Module Definition
+* */
 </script>
 
 </body>

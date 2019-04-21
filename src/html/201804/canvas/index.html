@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+<img src="3.jpg">
+</div>
+<canvas id="draw" width="400" height="500">
+
+</canvas>
+<script>
+    var canvas = document.getElementById("draw");
+    var ctx = canvas.getContext("2d");
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+  /*  ctx.shadowOffsetX = 2;
+    ctx.shadowOffsetY = 2;
+    ctx.shadowBlur = 2;
+    ctx.shadowColor = '#666666'*/;
+    //ctx.font = '24px Arial';
+    //ctx.fillStyle = '#333333';
+    //ctx.fillText('带阴影的文字', 20, 40);
+    //ctx.fillRect(0,0,100,100)
+   /* ctx.strokeStyle="#fff000";
+    ctx.strokeRect(10,10,100,100);
+// 矩形
+    ctx.strokeStyle="rgba(0,0,255,0.4)";
+    ctx.strokeRect(30,30,130,130);
+    ctx.fillStyle="rgba(0,124,255,0.5)";
+    ctx.fillRect(40,40,40,40);
+    ctx.clearRect(50,50,10,10)
+
+    //路径
+    ctx.beginPath();
+    ctx.arc(250,250,60,0,2* Math.PI,false)
+    ctx.strokeStyle="#82ab00";
+    ctx.stroke();
+    ctx.arc(250,250,55,0,2* Math.PI,false)
+    ctx.strokeStyle="#a6e0b0";
+
+    ctx.moveTo(250,250)
+    ctx.lineTo(250,220)
+    ctx.stroke();
+
+    ctx.moveTo(250,250)
+    ctx.lineTo(230,290)
+    ctx.stroke();
+
+    ctx.font="bold 14px   Arial";
+    ctx.textAlign='center';
+    ctx.textBaseline="middle";
+    ctx.fillText("12",250,205)
+    ctx.font="bold 14px   Arial";
+    ctx.textAlign='start';
+    ctx.textBaseline="top";
+    ctx.fillText("12",250,225)*/
+
+  /* ctx.translate(100,100)//变化原点
+    ctx.strokeStyle="rgba(0,33,47,0.8)";
+    ctx.strokeRect(0,0,130,130);*/
+    //var gradient = ctx.createRadialGradient(100, 100, 50, 100, 100, 60);
+ /*   var gradient = ctx.createLinearGradient(100,100,100,200)
+    gradient.addColorStop(0, 'red');
+    gradient.addColorStop(1, 'green');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 200, 200);*/
+   /* var grad = ctx.createRadialGradient();
+    grad.addColorStop(0,'red');
+    //grad.addColorStop(0.5,'green');
+    grad.addColorStop(1,'blue');
+
+    ctx.fillStyle="#ff0000";
+    ctx.fillRect(10,10,50,50)
+    ctx.fillStyle=grad;
+    ctx.fillRect(50,50,50,50)*/
+
+  /* var image = document.images[0];
+   var patt = ctx.createPattern(image,"repeat");
+   ctx.fillStyle=patt;
+   ctx.fillRect(10,10,350,350)*/
+   /* ctx.strokeStyle="rgba(0,0,255,0.4)";
+    ctx.strokeRect(30,30,130,130);*/
+
+
+
+
+        ctx.fillStyle="#ff0000";
+        ctx.fillRect(10,10,50,50)
+       // ctx.globalAlpha = 0.4
+        //ctx.globalCompositeOperation='source-over';
+        //ctx.globalCompositeOperation='source-in';
+        //ctx.globalCompositeOperation='source-out';
+        //ctx.globalCompositeOperation='source-atop';
+        //ctx.globalCompositeOperation='destination-over';
+        //ctx.globalCompositeOperation='destination-in';
+        //ctx.globalCompositeOperation='destination-out';
+        //ctx.globalCompositeOperation='destination-atop';
+        //ctx.globalCompositeOperation='lighter';
+        //ctx.globalCompositeOperation='copy';
+        ctx.globalCompositeOperation='xor';
+        ctx.fillStyle = "rgba(0,0,255,1)";
+        ctx.fillRect(30,30,50,50);
+       // ctx.globalAlpha=0;
+
+
+   /* ctx.fillStyle="rgba(0,124,255,0.5)";
+    ctx.fillRect(0,0,40,40);
+    //ctx.clearRect(50,50,10,10)
+    var imagedata = ctx.getImageData(10,5,50,50);
+   console.log(imagedata)*/
+
+   /* setInterval(function () {
+       var data =  imagedata.data
+        data = changeImg(data);
+        imagedata.data= data;
+       ctx.putImageData(imagedata,0,0)
+    },1000)*/
+    function changeImg(imgdata){
+
+       for(var i=0,len=imgdata.length;i<len;i+=4){
+            var red = imgdata[i];
+           var green = imgdata[i];
+           var blue = imgdata[i];
+           var alpha = imgdata[i];
+           var n = 60;
+           //var n = Math.ceil( Math.random()*250);
+           red = (red+n) >255?(red+n-255):red+n;
+          // n = Math.ceil( Math.random()*250);
+           green = (red+n) >255?(red+n-255):red+n;
+          // n = Math.ceil( Math.random()*250);
+           blue = (red+n) >255?(red+n-255):red+n;
+           imgdata[i] = red;
+           imgdata[i+1] = green;
+           imgdata[i+1] = blue;
+       }
+
+       return imgdata;
+
+    }
+</script>
+</body>
+</html>

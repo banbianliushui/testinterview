@@ -3300,14 +3300,14 @@ var Watcher = function Watcher (
   isRenderWatcher
 ) {
   this.vm = vm;
-  if (isRenderWatcher) {
+  if (isRenderWatcher) {//如果是渲染监听器，将当前上下文记录到watcher
     vm._watcher = this;//组件监听器
   }
-  vm._watchers.push(this);
+  vm._watchers.push(this);//将当前上下文存入监听器列表
   // options
   if (options) {
     this.deep = !!options.deep;
-    this.user = !!options.user;//
+    this.user = !!options.user;//!!规范属性值设置 true或false
     this.lazy = !!options.lazy;//懒加载
     this.sync = !!options.sync;//异步
   } else {
@@ -3316,16 +3316,16 @@ var Watcher = function Watcher (
   this.cb = cb;//callback 回调
   this.id = ++uid$2; // uid for batching  混合？定量？
   this.active = true;
-  this.dirty = this.lazy; // for lazy watchers 懒加载监视器
+  this.dirty = this.lazy; // for lazy watchers 懒加载监视器，脏读
   this.deps = [];
   this.newDeps = [];//依赖
-  this.depIds = new _Set();
+  this.depIds = new _Set();//记录依赖id不重复
   this.newDepIds = new _Set();
-  this.expression = expOrFn.toString();
+  this.expression = expOrFn.toString(); //表达式转成字符串，函数或标识符（待查）
   // parse expression for getter  
   if (typeof expOrFn === 'function') {
-    this.getter = expOrFn;//监听器的getter
-  } else {
+    this.getter = expOrFn;//监听器的getter，用于watcher.get时获取被监听者的值
+  } else {//parsePath一般返回一个接受一个对象的函数，从对象中分离出符合点分标识符的值，如标识符a.b.c  ,obj = {a:{b:{c:'uuu',d:'0'}},a.b.c为uuu
     this.getter = parsePath(expOrFn);//观察者只接受简单的点分隔的路径，从指定对象（getter调用时传）获取表达式值的函数
     if (!this.getter) {
       this.getter = function () {};
@@ -3337,6 +3337,7 @@ var Watcher = function Watcher (
       );
     }
   }
+  //如果是懒加载则value直接设置为undefined，否则使用Watcher.get()取值返回给value,
   this.value = this.lazy
     ? undefined
     : this.get();
@@ -3638,7 +3639,7 @@ function initComputed (vm, computed) {
 
   for (var key in computed) {
     var userDef = computed[key];
-    var getter = typeof userDef === 'function' ? userDef : userDef.get;
+    var getter = typeof userDef === 'function' ? userDef : userDef.get;//返回计算属性对应的get函数，如果用户未将get,set分开，默认就是get
     if ("development" !== 'production' && getter == null) {
       warn(
         ("Getter is missing for computed property \"" + key + "\"."),
@@ -3648,7 +3649,9 @@ function initComputed (vm, computed) {
 
     if (!isSSR) {
       // create internal watcher for the computed property.
-    	//为计算属性创建内部watcher监视，vm vue虚拟节点；getter || noop  计算属性的访问函数；noop 函数；计算属性监听选项
+        //为计算属性创建内部watcher监视，vm vue虚拟节点；getter || noop  计算属性的访问函数，watcher.get调用监听器时通过
+        // value = this.getter.call(vm, vm)返回value值；
+        //noop 函数,回调函数cb；computedWatcherOptions计算属性监听选项,计算属性的lazy:true
       watchers[key] = new Watcher(
         vm,
         getter || noop,
@@ -3661,7 +3664,7 @@ function initComputed (vm, computed) {
     // component prototype. We only need to define computed properties defined
     // at instantiation here.
     if (!(key in vm)) {
-      defineComputed(vm, key, userDef);
+      defineComputed(vm, key, userDef);//vm 上下文对象，key 计算属性， userDef 计算属性的get函数
     } else {
       if (key in vm.$data) {
         warn(("The computed property \"" + key + "\" is already defined in data."), vm);
@@ -3677,8 +3680,9 @@ function defineComputed (
   key,
   userDef
 ) {
-  var shouldCache = !isServerRendering();
+  var shouldCache = !isServerRendering();//非服务器端渲染需要缓存
   if (typeof userDef === 'function') {
+    //sharedPropertyDefinition 一个可共享的属性定义对象，它设置了对象属性定义的基本内容，可简化对象的属性定义
     sharedPropertyDefinition.get = shouldCache
       ? createComputedGetter(key)
       : userDef;
@@ -3710,7 +3714,7 @@ function createComputedGetter (key) {
     var watcher = this._computedWatchers && this._computedWatchers[key];
     if (watcher) {
       if (watcher.dirty) {
-        watcher.evaluate();
+        watcher.evaluate();//内容为this.get();dirty=false，watcher计算值后存入watcher.value
       }
       if (Dep.target) {
         watcher.depend();

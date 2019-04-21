@@ -9,7 +9,7 @@ const server =http.createServer((req,res)=>{
 
     var pathobj=path.parse( req.url);
     var urlquery=url.parse(req.url);
-    if(pathobj.ext=='.html'){//__dirname+
+    if(pathobj.ext=='.html'||pathobj.ext=='.jpg'||pathobj.ext=='.png'||pathobj.ext=='.js'||pathobj.ext=='.css'){//__dirname+
         fs.readFile(path.resolve(__dirname,"./src","./"+req.url),(err,data) => {
 
         if(err)  {
@@ -34,8 +34,17 @@ const server =http.createServer((req,res)=>{
 server.on('clientError',(err,socket)=>{
     socket.end('HTTP/1.1 400 Bad Request \r\n\r\n')
 })
-server.listen(8000);
+server.listen(8084);
 /*
+ listen(1337, '127.0.0.1')
+ listen(1337, '192.168.1.110')
+ listen(1337, 'localhost')
+
+ Listen to address 0.0.0.0 instead of 127.0.0.1
+ This means it will listen to all, you can listen to specific IP but this would work on both local and network.
+
+ 如果忽略了hostname，那么服务器将会接受所有IPV4地址的链接，IPv4地址包括127.0.0.1 localhost和本地IP。
+ 没有认真看API，以后要注意。那么这样做就可以实现监听本地IP、localhost、127.0.0.1了
 var express = require('express')
 
 var app = express();

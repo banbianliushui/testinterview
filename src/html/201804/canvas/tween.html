@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="rec" style="background-color: green;position: absolute;left: 0;top: 0; width: 30px;height: 30px;"></div>
+<script>
+    /*
+     * t: current time（当前时间）；
+     * b: beginning value（初始值）；
+     * c: change in value（变化量）；
+     * d: duration（持续时间）。
+     */
+    function easeInOut (t,b,c,d){
+
+        if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+        return -c / 2 * ((--t) * (t-2) - 1) + b;
+    }
+
+   /*  function easeInOutBack (x, t, b, c, d, s) {
+        if (s == undefined) s = 1.70158;
+        if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+        return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+    }*/
+/*     function easeInOut(t, b, c, d, s) {
+        if (typeof s == "undefined") s = 1.70158;
+        if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
+        return c / 2*((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+    }*/
+    var currt = 1;
+    var edtime = 1000;
+    function start() {
+        var rec = document.getElementById('rec');
+        var l = Number(rec.style.left.replace("px",""));
+         l = easeInOut (currt,l,1,edtime);
+         if(currt>=edtime){
+             currt=Math.random()*10;
+         }
+        currt++;
+        rec.style.left = l+'px';
+        window.requestAnimationFrame(start);
+    }
+    start()
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../201708/jquery-2.0.3.js"></script>
+</head>
+<body>
+<div id="text">
+    <div id="parent">
+        <div></div>
+        <div>
+            <div class="child">
+                <div class="child"></div>
+            </div>
+        </div>
+    </div>
+    <input id='aaron'  class="aaron"  type="checkbox" name="readme" value="Submit"
+</div>
+<script>
+    var $parent = $('#parent')
+    $('.child', $parent)
+    $parent.find('.child')
+    $parent.children('.child')
+    $('#parent > .child')
+    $('#parent .child')
+    $('.child', $('#parent'))
+
+
+    // 2>1>6>3>4>5
+</script>
+</body>
+</html>

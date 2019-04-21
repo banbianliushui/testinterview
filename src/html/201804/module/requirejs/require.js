@@ -1748,7 +1748,7 @@ var requirejs, require, define;
     }
 
     /**
-     * Main entry point.
+     * Main entry point.  主入口
      *
      * If the only argument to require is a string, then the module that
      * is represented by that string is fetched for the appropriate context.
@@ -1760,6 +1760,16 @@ var requirejs, require, define;
      * Make a local req variable to help Caja compliance (it assumes things
      * on a require that are not standardized), and to give a short
      * name for minification/local scope use.
+     *
+     * 如果require唯一的参数是一个字符串，那么为该适当的上下文获取由该字符串表示的模块。
+     *
+     * 如果第一个参数是一个数组，那么它将被视为要获取的依赖性字符串名称数组。
+     * 当所有这些依赖关系都可用时，可以指定可选的函数回调。
+     *
+     * 创建一个本地req变量来帮助Caja遵从性（它假定事物的要求没有标准化），
+     * 并给出一个缩写/局部范围使用的简称。
+     *
+     *
      */
     req = requirejs = function (deps, callback, errback, optional) {
 

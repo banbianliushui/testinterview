@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*https://www.w3schools.com/css/css3_animations.asp*/
+        html,body{
+            margin:0;
+        }
+        body{
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            min-height: 100vh;
+        }
+        .loading{
+            max-width:50%;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .loading_author{
+            color:rgba(189,189,189,1);
+            margin:0.6rem 0 2rem 0;
+            display: block;
+
+        }
+        .loading-anim{
+            width:35px;
+            height:35px;
+            border-radius: 50%;
+            border:5px solid rgba(189,189,189,0.25);
+            border-left-color:rgba(3,155,229,1);
+            border-top-color:rgba(3,155,229,1);
+            display:inline-block;
+            animation: rotateloading 600ms infinite linear ;
+            animation-name: rotateloading;
+            animation-duration: 600ms;/*一个动画完成需要的时间*/
+            animation-timing-function: linear;/*速度曲线：ease、linear、ease-in，cubic-bezier(n,n,n,n)*/
+            animation-delay: initial;/*指定动画开始之前的延迟时间*/
+            animation-iteration-count: infinite;/*动画运行次数*/
+            animation-direction: initial;/*normal - 默认值forwards；reverse -动画反向(backwards)
+                                            alternate - 动画先向前forwards first,然后 backwards
+                                            alternate-reverse - 动画先向后 backwards first, 然后向前 forwards*/
+            animation-fill-mode: initial;/*在第一个关键帧被播放之前或在最后一个关键帧被播放之后，CSS动画不会影响元素。
+             动画填充模式属性可以覆盖此行为。 指定动画未播放时的目标元素的样式（开始之前，结束之后或两者）。
+             forwards （最后帧的位置，基于 direction、iteration-count）、backwards（首帧位置，基于direction） 、
+             both(根据f、b规则，继承属性两个方向)*/
+            animation-play-state: initial;/*动画的状态：running （运行）、paused（暂停不动）*/
+        }
+        @keyframes rotateloading{
+             to {
+                 transform: rotate(1turn);
+             }
+        }
+    </style>
+</head>
+<body>
+
+<section class="loading">
+    For new sidebar colors, click your workspace name, then     Preferences > Sidebar > Theme
+    <span class="loading_author"> - Your friends at Slack </span>
+    <span class="loading-anim"></span>
+</section>
+</body>
+</html>

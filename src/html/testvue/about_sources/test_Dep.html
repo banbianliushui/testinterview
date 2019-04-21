@@ -6,6 +6,12 @@
 </head>
 <body>
 <script>
+
+    /*
+    *   watcher  提供一个update时需要的处理函数，
+    *
+    *
+    * */
     class Dep{
         constructor(){
             this.subs=[];
@@ -23,7 +29,7 @@
     /*观察者： 就是提供接口的，对象的每个属性[[Getter]]时给属性加wacher*/
     class Watcher{
         constructor(fn){
-            Dep.target=this;//此处为什么？
+            Dep.target=this;//此处为什么？  new watch时将 watcher设置到全局 Dep.target，然后在get的时候好收集（vue在渲染函数中收集）
             this.fn = fn;
         }
         update(param){
@@ -45,7 +51,7 @@
             } ,
             get : function defineGetter(){//将观察者加入订阅者中
 
-                dep.addSub(Dep.target);//当前的watcher对象
+                dep.addSub(Dep.target);//当前的watcher对象，用于监听更新view的
                 return val;
             }
         })
@@ -61,7 +67,7 @@
         constructor(options){
             this._data = options.data;
             observer(this._data);
-            new Watcher();
+            new Watcher(this.toshow);//这里设置了全局的Dep.target
 /*「依赖收集」的前提条件还有两个：
 
  触发 get 方法；
@@ -70,6 +76,10 @@
             console.log('render~', this._data.a);
             console.log('另一个地方需要获得a属性的render~', this._data.a);
 
+        }
+
+        toshow (){
+            console.log("toshow")
         }
     }
 

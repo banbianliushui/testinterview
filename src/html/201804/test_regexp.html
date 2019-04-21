@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var re = null,i;
+     for(i=0;i<10;i++){
+         re = /cat/g;
+         re.test("catastrophe");
+
+         console.log(re.lastIndex)
+         console.log(re)
+     }
+
+</script>
+</body>
+</html>

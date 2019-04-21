@@ -12,6 +12,9 @@ https://blog.csdn.net/github_26672553/article/details/52269158
 1.抽取css单独打包
     extract-text-webpack-plugin
     抽离css样式，防止将样式打包在js中引起页面样式加载错乱。
+    问题：
+    就用这个的话会把所有的css都打包一起，其实需要排除某些组件自带的样式，单独放，
+    只有部分需要被抽取到一个css文件
     module.exports = {
       module: {
         rules: [

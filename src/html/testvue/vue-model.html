@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue-intro_2_12.js"></script>
+</head>
+<body>
+<div id="e4">
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+</div>
+<script>
+    var uve = new Vue({
+        el: '#e4',
+        data: {
+            message: '测试'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--http://www.zhangxinxu.com/wordpress/2011/02/html5-drag-drop-%E6%8B%96%E6%8B%BD%E4%B8%8E%E6%8B%96%E6%94%BE%E7%AE%80%E4%BB%8B/-->
+<!--<div id="dustbin" class="dustbin"><br />垃<br />圾<br />箱</div>
+<div class="dragbox">
+    <div id ="draglist" class="draglist" title="拖拽我" draggable="true">列表1</div>
+
+</div>
+<div class="dragremind"></div>-->
+<br>
+<input id="input">
+<script>
+
+    document.getElementById('input').addEventListener('abort',function(e){
+        console.log("abort")
+    })
+    document.getElementById('input').addEventListener('beforeinput',function(e){
+        console.log("beforeinput")
+    })
+    document.getElementById('input').addEventListener('blur',function(e){
+        console.log("blur")
+    })
+    document.getElementById('input').addEventListener('click',function(e){
+        console.log("click")
+    })
+    document.getElementById('input').addEventListener('compositionstart',function(e){
+        console.log("compositionstart")
+    })
+
+    document.getElementById('input').addEventListener('compositionupdate',function(e){
+        console.log("compositionupdate")
+    })
+    document.getElementById('input').addEventListener('compositionend',function(e){
+        console.log("compositionend")
+    })
+    document.getElementById('input').addEventListener('error',function(e){
+        console.log("error")
+    })
+    document.getElementById('input').addEventListener('focus',function(e){
+        console.log("focus")
+    })
+    document.getElementById('input').addEventListener('dblclick',function(e){
+        console.log("dblclick")
+    })
+    document.getElementById('input').addEventListener('focusin',function(e){
+        console.log("focusin")
+    })
+    document.getElementById('input').addEventListener('focusout',function(e){
+        console.log("focusout")
+    })
+    document.getElementById('input').addEventListener('input',function(e){
+        console.log("input")
+    })
+    document.getElementById('input').addEventListener('keydown',function(e){
+        console.log("keydown")
+    })
+    document.getElementById('input').addEventListener('keyup',function(e){
+        console.log("keyup")
+    })
+    document.getElementById('input').addEventListener('load',function(e){
+        console.log("load")
+    })
+    document.getElementById('input').addEventListener('mousedown',function(e){
+        console.log("mousedown")
+    })
+    document.getElementById('input').addEventListener('mouseenter',function(e){
+        console.log("mouseenter")
+    })
+    document.getElementById('input').addEventListener('mouseleave',function(e){
+        console.log("mouseleave")
+    })
+    document.getElementById('input').addEventListener('mousemove',function(e){
+        console.log("mousemove")
+    })
+    document.getElementById('input').addEventListener('mouseout',function(e){
+        console.log("mouseout")
+    })
+    document.getElementById('input').addEventListener('mouseover',function(e){
+        console.log("mouseover")
+    })
+    document.getElementById('input').addEventListener('mouseleave',function(e){
+        console.log("mouseleave")
+    })
+    document.getElementById('input').addEventListener('mouseup',function(e){
+        console.log("mouseup")
+    })
+    document.getElementById('input').addEventListener('resize',function(e){
+        console.log("resize")
+    })
+    document.getElementById('input').addEventListener('scroll',function(e){
+        console.log("scroll")
+    })
+    document.getElementById('input').addEventListener('wheel',function(e){
+        console.log("wheel")
+    })
+    document.getElementById('input').addEventListener('unload',function(e){
+        console.log("unload")
+    })
+    document.getElementById('input').addEventListener('select',function(e){
+        console.log("select")
+    })
+
+
+/*
+    document.getElementById('draglist').addEventListener('drag',function(e){
+        e.dataTransfer.setData("text","ddd")
+        console.log("drag")
+    })
+document.getElementById('draglist').addEventListener('dragstart',function(e){
+e.dataTransfer.setData("text","对对对")
+    console.log("dragstart")
+})
+document.getElementById('draglist').addEventListener('dragend',function(e){
+    e.dataTransfer.clearData("text")
+    console.log("dragend")
+})
+document.getElementById('dustbin').addEventListener('dragenter',function(e){
+    console.log("dragenter")
+})
+document.getElementById('dustbin').addEventListener('dragover',function(e){
+e.preventDefault()
+    console.log("dragover")
+})
+    document.getElementById('dustbin').addEventListener('dragleave',function(e){
+        e.preventDefault()
+        console.log("dragover")
+    })
+document.getElementById('dustbin').addEventListener('drop',function(e){
+console.log("被防止");
+    console.log("drop")
+})
+
+
+    document.getElementById('draglist').addEventListener('mouseenter',function(e){
+
+        console.log("mouseenter")
+    })
+    document.getElementById('draglist').addEventListener('mouseleave',function(e){
+
+        console.log("mouseleave")
+    })
+    document.getElementById('draglist').addEventListener('mousemove',function(e){
+
+        console.log("mousemove")
+    })
+    document.getElementById('draglist').addEventListener('mouseout',function(e){
+
+        console.log("mouseout")
+    })
+    document.getElementById('draglist').addEventListener('mouseover',function(e){
+
+        console.log("mouseover")
+    })*/
+</script>
+</body>
+</html>

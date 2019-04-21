@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件兼容不同模块规范</title>
+    <link  rel="stylesheet" href="//g.alicdn.com/aliyun/yunqi/1.0.46/css/blogDetail.css" charset="utf-8" />
+</head>
+<body>
+<!--https://github.com/requirejs/almond-->
+<!--比如 requirejs组件-->
+
+<script>
+
+  /*  /!*定义一个模块*!/
+    (function(root,factory){
+        if(typeof define === 'function'&& define.amd){//是本requirejs插件 表示
+            define([],factory)
+
+        }else{
+            root.libGlobalName = factory();//根部挂载模块返回
+        }
+            })(this,function(){
+
+        return// require('main') ;
+    })*/
+
+    ((root, factory) => {
+        if (typeof define === 'function' && define.amd) {
+            //AMD
+            define(['jquery'], factory);
+        } else if (typeof exports === 'object') {
+            //CommonJS
+            var $ = requie('jquery');
+            module.exports = factory($);
+        } else {
+            //都不是，浏览器全局定义
+            root.testModule = factory(root.jQuery);
+        }
+    })(this, ($) => {
+        //do something...  这里是真正的函数体
+    });
+</script>
+
+
+</body>
+</html>
