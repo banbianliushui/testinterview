@@ -34,7 +34,9 @@ const server =http.createServer((req,res)=>{
 server.on('clientError',(err,socket)=>{
     socket.end('HTTP/1.1 400 Bad Request \r\n\r\n')
 })
-server.listen(8084);
+server.listen(8084,()=>{
+    console.log('port:8084 已开启')
+});
 /*
  listen(1337, '127.0.0.1')
  listen(1337, '192.168.1.110')
