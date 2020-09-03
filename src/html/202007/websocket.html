@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <textarea id="showtext" style="height:150px;width: 250px" value=""></textarea>
+  </br>
+  <input type="text" id="my1">
+  </br>
+  <button id="send">发送</button>
+  <script>
+    var i = (Math.random() * 100 + 14).toFixed(0);
+    var name = '丁一' + i;
+    var textarr = [];
+    var ws = new WebSocket("ws://127.0.0.1:3000",['appProtocol','appProtocol-v2'])
+    ws.onopen = function (evt) {
+      if(ws.protocol == 'appProtocol'){
+        
+      }else{
+
+      }
+    }
+
+    document.getElementById("send").addEventListener('click', function () {
+      var text = document.getElementById("my1").value;
+      if (text != "")
+        var data = { name: name, msg: text };
+        if(ws.bufferedAmount == 0){//客户端缓冲区没数据了再发送
+          ws.send(JSON.stringify(data));
+        }
+    
+      document.getElementById("my1").value = "";
+    })
+
+    ws.onmessage = function (evt) {
+
+      var data = evt.data;
+      var text = document.getElementById("showtext").value;
+      text += data + "\n";
+      document.getElementById("showtext").value = text;
+    }
+    ws.onclose = function () {
+      console.log('close')
+    }
+    ws.onerror = function () {
+      console.log('error')
+    }
+  </script>
+
+</body>
+
+</html>

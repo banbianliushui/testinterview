@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>footer始终处在底部</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body { height: 100%;}
+    .wrap{
+        min-height: 100%;
+    }
+    .min{
+        padding-bottom: 60px;
+    }
+    header { 
+        height: 60px; 
+        background: #1381cc; 
+        color: #FFF; 
+        
+    }
+    section { 
+        background: #fff; 
+    }
+    footer { 
+        height:60px; 
+        margin-top: -60px; 
+        background: #0c4367; 
+        color: #FFF;
+    }
+    
+</style>
+<body>
+    <div class="wrap">
+        <div class="min">
+            <header></header>
+            <section class="content">
+                <div style="height:10px;"></div>
+            </section>
+        </div>
+    </div>
+    <footer class="footer"></footer>
+    <script>
+      let i = 1
+function asyncLoadBMap() {
+
+  return new Promise(function(resolve, reject) {
+    if (typeof BMap !== 'undefined') {
+      resolve(BMap)
+     return true
+    }
+    window.onBMapCallback = function() {
+      resolve(BMap)
+    }
+    window.BMap={id:'cc'}
+   console.log('bottom',++i)
+   onBMapCallback()
+  })
+}
+asyncLoadBMap()
+setTimeout(()=>{
+  i=9
+  asyncLoadBMap()
+},2000)
+    </script>
+</body>
+</html>

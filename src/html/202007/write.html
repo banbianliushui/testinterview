@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title><code>document.write()</code> example</title>
+
+  <script>
+    function newContent() {
+      // document.open();
+      //document.write("<h1>Out with the old - in with the new!</h1>");
+      // document.close();
+      
+      document.write('<script type="text/javascript" src=\"https://api.map.baidu.com/api?v=2.0&amp;ak=yBfw0Q10rrBUtj2KwwAL26qd\"\>\<\/script>');
+    }
+    //这个不行 
+    newContent()
+  </script>
+
+<!-- <script type="text/javascript"  src="https://api.map.baidu.com/api?v=2.0&ak=yBfw0Q10rrBUtj2KwwAL26qd"></script> -->
+</head>
+<!-- onload="newContent();" -->
+<body >
+  <p>Some original document content.</p>
+</body>
+
+</html>

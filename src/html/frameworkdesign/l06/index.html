@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="cs">
+      <div id="inner"></div>
+    </div>
+
+    <div id="a"></div>
+    <div id="b"></div>
+    <script type="text/javascript" src="selector.js?t=1"></script>
+    <script>
+      console.log(isXML(document));
+      console.log(
+        document
+          .getElementById("cs")
+          .compareDocumentPosition(document.getElementById("inner"))
+      );
+      console.log(
+        document
+          .getElementById("inner")
+          .compareDocumentPosition(document.getElementById("cs"))
+      );
+      console.log(
+        document
+          .getElementById("a")
+          .compareDocumentPosition(document.getElementById("b"))
+      );
+      console.log(
+        document
+          .getElementById("b")
+          .compareDocumentPosition(document.getElementById("a"))
+      );
+    </script>
+  </body>
+</html>

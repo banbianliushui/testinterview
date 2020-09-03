@@ -30,9 +30,9 @@ var Q = (function () {
     //可以使用用户创建的类的函数,子类
     var C = function () {
       let self = new Bare();
-      //definition.init是用户定义在实例对象上的函数
-      if (typeof definition.init === "function") {
-        definition.init.apply(self, arguments); //用户创建对象时传的 参数值
+      //proto.init是用户定义在实例对象上的函数
+      if (typeof proto.init === "function") {
+        proto.init.apply(self, arguments); //用户创建对象时传的 参数值
       }
       return self;
     };
@@ -50,15 +50,19 @@ var Q = (function () {
     // }
     // })(definition)
     function Open(define) {
+      let customDefine = {};
       if (typeof define === "function") {
         //proto 子类原型,_super 父类原型,C 子类构造函数,_superClass  父类构造函数
         define.call(C, proto, _super, C, _superClass);
       }
+      console.log("customDefine=", customDefine);
       if (typeof define === "object" && define !== null) {
-        Object.assign(proto, define);
+        Object.assign(proto, customDefine);
       }
+
+      return C;
     }
-    C.Open = Open;//暴露给外部修改？
+    C.Open = Open; //暴露给外部修改？
     Open(definition);
 
     return C;
@@ -76,7 +80,7 @@ var Animal = Q(function (proto, superProto) {
   };
 });
 
-let  a1 =Animal("花花");
-a1.say()
+let a1 = Animal("花花");
+a1.say();
 let a2 = new Animal("小凯");
-a2.say()
+a2.say();

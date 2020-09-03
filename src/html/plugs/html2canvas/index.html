@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="script/text" src="https://cdn.bootcdn.net/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+  <!-- http://daner1990.github.io/plugins/2020/04/23/html2canvas%E6%88%AA%E5%9B%BE%E6%A8%A1%E7%B3%8A/ -->
+</head>
+<body>
+  <div class="" id="target">
+    <img src="https://cdn.51yanpu.com/normandy/FtO23jB7f7QRGmnKBFQiA3AkraVK.jpg"/>
+  </div>
+  <div>
+    <button onclick="genImage">生成图片</button>
+  </div>
+  <script>
+    function genImage(){
+      const target = document.getElementById('target');
+      const canvas = document.createElement('canvas')
+      canvas.width = 100;
+      canvas.height = 100;
+      const ctx = canvas.getContext('2d')
+const exportImage=(canvas)=>{
+  const canvasImage = document.createElement('img')
+  canvasImage.src = canvas.toDataURL();
+  
+}
+
+
+    }
+
+  </script>
+</body>
+</html>

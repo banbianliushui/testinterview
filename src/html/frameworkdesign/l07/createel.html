@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    window.onload = function () {
+      var div = document.createElement("div");
+      //使用innerHTML 浏览器不会自动下载script标签下的js
+      //div.innerHTML = `<script type="text/javascript" src="./test.js"\>\<\/script> `;
+
+        div.innerHTML = `<script type="text/javascript" \> var H = '对的'; console.log(H) <\/script> `;
+      // var scriptel = document.createElement('script')
+      // scriptel.src = "./test.js"
+
+      // div.appendChild(scriptel)
+      document.body.appendChild(div)
+
+      // document.body.appendChild(scriptel)
+
+
+      // console.log(KK)
+    }
+  </script>
+
+
+
+</body>
+
+</html>
