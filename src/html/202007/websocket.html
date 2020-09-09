@@ -17,9 +17,9 @@
     var i = (Math.random() * 100 + 14).toFixed(0);
     var name = '丁一' + i;
     var textarr = [];
-    var ws = new WebSocket("ws://127.0.0.1:3000",['appProtocol','appProtocol-v2'])
+    var ws = new WebSocket("ws://127.0.0.1:3000",['appProtocol-test1','appProtocol-v2'])
     ws.onopen = function (evt) {
-      if(ws.protocol == 'appProtocol'){
+      if(ws.protocol == 'appProtocol-test1'){
         
       }else{
 

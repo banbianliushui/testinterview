@@ -27,7 +27,9 @@ wss.broadcast = function broadcast(tag,ws){
 
 //
 wss.on('connection',function connection(ws){
+  
     ws.send("您是第"+wss.clients.size+"位");
+
     ws.on('message',function incoming(message,flags){
         console.log('received:%s',message);
         var user = JSON.parse(message);

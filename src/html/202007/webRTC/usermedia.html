@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    video {
+      background: #222;
+      margin: 0 0 20px 0;
+      --width: 100%;
+      width: var(--width);
+      height: calc(var(--width) * 0.75);
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay></video>
+<audio  autoplay></audio>
+  <button id="showVideo">Open camera</button>
+  <script>
+    const constraints = window.constraints = {
+      audio: true,//指定请求音频Track
+      video: true
+      // video:{//指定请求视频Track
+      //   mandatory:{//对视频Track的强制约束条件
+      //     width:{min:320},
+      //     height:{min:180}
+      //   },
+      //   optional:[//对视频Track的可选约束条件
+      //     {width:{max:1280}},
+      //     {frameRate:30},{facingMode:'user'}
+      //   ]
+      // }
+    }
+    // function gotStream(stream) {//处理MediaStream对象的回调函数
+    //   var video = document.querySelector('video')
+    //   video.src = window.URL.createObjectURL(stream)
+    // }
+    function gotStream(stream) {
+      var video = document.querySelector('video')
+      const videoTracks = stream.getVideoTracks()
+      console.log('Got stream with constraints:', constraints);
+      console.log(`Using video device: ${videoTracks[0].label}`);
+      window.stream = stream;
+      video.srcObject = stream
+      var audio = document.querySelector('audio')
+      const audioTracks = stream.getAudioTracks()
+
+      audio.srcObject = stream
+    }
+    function logError(error) {
+      console.log(error)
+    }
+    //  navigator.getUserMedia(constraints,gotStream,logError)//从浏览器中请求音频和视频流
+    function init() {
+      navigator.getUserMedia(constraints, gotStream, logError)
+    }
+    document.querySelector('#showVideo').addEventListener('click', e => init(e));
+  </script>
+</body>
+
+</html>
